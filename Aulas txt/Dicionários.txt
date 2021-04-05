@@ -1,0 +1,516 @@
+Util:
+
+==================================
+TEORIA
+==================================
+==================================
+==================================
+==================================
+==================================
+Dicionarios são como listas e tuplas porem ao inves de eu utilizar um valor numerico para localizar um item nele, eu posso usar um nome
+
+Para defir um dicionario usa as chaves
+
+dados = dict{} or
+dados = {}
+==================================
+IDETIFICAR ELEMENTOS
+==================================
+Para idetificar um elemento usando nomes no dicionario eu defino da seguinte forma:
+
+variavel = {'idetificador': 'Item'}
+dados = {'nome':'Pedro','idade':25}
+
+dessa forma quando eu mandar printar vai ser bem mais facil:
+==================================
+PRINT
+==================================
+escrevendo:
+
+print(variavel['idetificador'})
+print(dados['nome'])
+
+o resultado sera:
+
+Pedro
+
+print(dados['idade'])
+
+o resultado sera:
+
+25
+==================================
+ADICIONAR ELEMENTOS
+==================================
+para adicionar elementos não é nessecario vc usar comandos como o apend de lista, é bem mais simples
+
+variavel['idetificador'] = 'Item'
+dados['sexo'] = 'M'
+
+dessa forma ele ira colocar no dicionario o identificador "sexo" recebendo o sexo masculino
+==================================
+REMOVENDO ELEMENTOS
+==================================
+Para remover elementos usa o comando del
+
+del variavel['idetificador']
+del dados['idade']
+
+dessa forma ele ira remover tanto o idetificador quanto o item escolhidos
+==================================
+ACESSANDO ITENS ESPECIFICOS
+==================================
+Primeiramente temos que enteder que um dicionario é dividio entre "VALUES", "KEYS" e "ITEMS"
+
+Os VALUES são os itens:
+
+filme = {'titulo': 'Star Wars', 'ano': 1977, 'diretor': 'Geroge Lucas'}
+
+ao usar o Values ele ira mostrar apenas os itens
+
+print(variavel.values())
+print(filme.values())
+
+o resultado sera:
+
+(['Star Wars', 1977, 'Geroge Lucas'])
+
+As KEYS são os idetificadores
+
+filme = {'titulo': 'Star Wars', 'ano': 1977, 'diretor': 'Geroge Lucas'}
+
+ao usar o Keys ele ira mostra apenas os idetifciadores:
+
+print(variavel.keys())
+print(filme.keys())
+
+o resultado sera:
+
+(['titulo', 'ano', 'diretor'])
+
+O ITEMS são todo o conjuto (idetificadores + itens):
+
+filme = {'titulo': 'Star Wars', 'ano': 1977, 'diretor': 'Geroge Lucas'}
+
+print(variavel.items())
+print(filme.items())
+
+o resultado sera:
+
+([('titulo', 'Star Wars'), ('ano', 1977), ('diretor', 'Geroge Lucas')])
+
+=================================
+FOR
+=================================
+
+Usar o for é bem semelhante a usar o enumerate nas listas:
+
+filme = {'titulo': 'Star Wars', 'ano': 1977, 'diretor': 'Geroge Lucas'}
+
+for k, v in filme.items():# para cada chave e valor em itens do filme
+    print(f'O {k} é {v}')#escreva, a chave é o item
+
+resultado:
+
+O titulo é Star Wars
+O ano é 1977
+O diretor é Geroge Lucas
+
+=================================
+LISTAS
+=================================
+Da para utilizar as listas + os dicionarios:
+
+lista = [{'Idetificador': 'Item'}]
+
+locadora = [{'titulo': 'Star Wars', 'ano': 1977, 'diretor': 'Geroge Lucas'}, 
+            {'titulo': 'Avengers', 'ano': 2012, 'diretor': 'Joss Whedon'},
+            {'titulo': 'Matrix', 'ano': 1999, 'diretor': 'Wachowski'}]
+
+a lista é locadora, o filme 0 é star wars, o 1 é avengers e o 2 é matrix
+
+para printar eu tenho a opção de so printar o dicionario ou printar o um item especifico de um dicionario:
+
+print(locadora[0]['ano'])
+
+resultado:
+
+1977
+
++
+
+print(locadora[2]['titulo'])
+
+resultado:
+
+Matrix
+==================================
+PRATICA
+==================================
+==================================
+==================================
+==================================
+==================================
+BASICO
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+print(pessoas)
+
+resultado:
+
+{'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+==================================
+PRINT ESPECIFICO
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+print(pessoas['nome'])
+
+resultado:
+
+Emanuel
+==================================
+PRINT ESPECIFICO FORMATADO
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+print(f'O {pessoas["nome"]} tem {pessoas["idade"]} anos de idade') #como o print é formtado, vc deve usar aspas duplas para exibir valor
+
+resultado:
+
+O Emanuel tem 15 anos de idade
+
+obs: como o print é formtado, vc deve usar aspas duplas para exibir valor
+==================================
+PRINT KEYS
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+print(pessoas.keys())
+
+resultado:
+
+dict_keys(['nome', 'sexo', 'idade'])
+==================================
+PRINT VALUES
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+print(pessoas.values())
+
+resultado:
+
+dict_values(['Emanuel', 'M', 15])
+==================================
+PRINT ITEMS
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+print(pessoas.items())
+
+resultado:
+
+dict_items([('nome', 'Emanuel'), ('sexo', 'M'), ('idade', 15)])
+==================================
+FOR KEYS
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+for k in pessoas.keys():
+    print(k)
+
+resultado:
+
+nome
+sexo
+idade
+==================================
+FOR VALUES
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+for k in pessoas.values():
+    print(k)
+
+resultado:
+
+Emanuel
+M
+15
+==================================
+FOR ITEMS
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+for k, v in pessoas.items():
+    print(f'{k} = {v}')
+
+resultado:
+
+nome = Emanuel
+sexo = M
+idade = 15
+==================================
+DEL
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+del pessoas['sexo']
+for k, v in pessoas.items():
+    print(f'{k} = {v}')
+
+resultado:
+
+nome = Emanuel
+idade = 15
+==================================
+SUBISTITUIÇÃO
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+pessoas['nome'] = 'Leandro'
+for k, v in pessoas.items():
+    print(f'{k} = {v}')
+
+resultado:
+
+nome = Leandro
+sexo = M
+idade = 15
+==================================
+ADICIONAR
+==================================
+pessoas = {'nome': 'Emanuel', 'sexo': 'M', 'idade': 15}
+pessoas['peso'] = 49.0
+for k, v in pessoas.items():
+    print(f'{k} = {v}')
+
+resultado:
+
+nome = Emanuel
+sexo = M
+idade = 15
+peso = 49.0
+==================================
+DICIONARIOS EM LISTA
+==================================
+brasil = []
+estado1 = {'uf': 'Paraiba', 'sigla': 'PB'}
+estado2 = {'uf': 'Pernabuco', 'sigla': 'PE'}
+brasil.append(estado1)
+brasil.append(estado2)
+print(brasil)
+
+resultado:
+
+[{'uf': 'Paraiba', 'sigla': 'PB'}, {'uf': 'Pernabuco', 'sigla': 'PE'}]
+==================================
+DICIONARIOS EM LISTA, PRINT ESPECIFICO
+==================================
+brasil = []
+estado1 = {'uf': 'Paraiba', 'sigla': 'PB'}
+estado2 = {'uf': 'Pernabuco', 'sigla': 'PE'}
+brasil.append(estado1)
+brasil.append(estado2)
+print(brasil[0])
+
+resultado:
+
+{'uf': 'Paraiba', 'sigla': 'PB'}
+==================================
+DICIONARIOS EM LISTA, PRINT ESPECIFICO, VALOR
+==================================
+brasil = []
+estado1 = {'uf': 'Paraiba', 'sigla': 'PB'}
+estado2 = {'uf': 'Pernabuco', 'sigla': 'PE'}
+brasil.append(estado1)
+brasil.append(estado2)
+print(brasil[0]['uf'])
+
+resultado:
+
+Paraiba
+==================================
+COPIAR DICIONARIOS PARA LISTA
+==================================
+estado = {}
+brasil = []
+for c in range(0, 3):
+    estado['uf'] = str(input('Nome do estado ')).capitalize().strip()
+    estado['sigla'] = str(input('Sigla do estado ')).upper().strip()
+    brasil.append(estado.copy())
+print(brasil)
+
+resultado:
+
+[{'uf': 'Paraiba', 'sigla': 'PB'}, {'uf': 'Rio de janeiro', 'sigla': 'RJ'}, {'uf': 'Acre', 'sigla': 'AC'}]
+
+obs: A função copy serve para copiar o dicionario
+==================================
+FOR LISTA COM DICIONARIOS NELA
+==================================
+estado = {}
+brasil = []
+for c in range(0, 3):
+    estado['uf'] = str(input('Nome do estado ')).capitalize().strip()
+    estado['sigla'] = str(input('Sigla do estado ')).upper().strip()
+    brasil.append(estado.copy())
+for e in brasil:#para cado estado em brasil
+    for k, v in e.items():#para cada chave, valor em estado.itens, nesse processo ele converte a lista em dicionarios, ai fica bem mais facil de escrever
+        print(f'O campo {k} tem o valor {v}')
+
+resultado:
+
+O campo uf tem o valor Paraiba
+O campo sigla tem o valor PB
+O campo uf tem o valor Pernambuco
+O campo sigla tem o valor PE
+O campo uf tem o valor São paulo
+O campo sigla tem o valor SP
+==================================
+EXERCICIOS
+==================================
+==================================
+==================================
+==================================
+==================================
+FEITO
+90:
+
+aluno = {}
+aluno['nome'] = str(input('Qual é o nome do aluno? ')).capitalize().strip()
+aluno['nota'] = float(input('Qual é a media do aluno? '))
+print(f'\nO nome do aluno é {aluno["nome"]}')
+print(f'A media do aluno é {aluno["nota"]}')
+if aluno['nota'] <= 6.9:
+    print(f'{aluno["nome"]} está em recuperação')
+else:
+    print(f'{aluno["nome"]} está passado por media')
+==================================
+92:
+
+from datetime import date
+tra = {}
+tra['Nome'] = str(input('Nome ')).capitalize().strip()
+tra['Idade'] = int(input('Ano de nascimento '))
+tra['Ctps'] = int(input('Carteira de trabalho (0 não tem) '))
+tra['Idade'] = date.today().year - tra['Idade']
+if tra['Ctps'] != 0:
+    tra['Ano de contratação'] = int(input('Ano de contratação '))
+    tra['Salário'] = float(input('Salário '))
+    tra['Aposentadoria'] = tra['Idade'] + (tra['Ano de contratação'] + 35 - date.today().year)
+
+print('=' * 30)
+for k, v in tra.items():
+    print(f'{k} tem o valor de {v}')
+
+==================================
+CORRIGIDO
+91:
+from random import randint
+from operator import itemgetter
+jogo = {'jogador1': randint(1, 6),
+        'jogador2': randint(1, 6),
+        'jogador3': randint(1, 6),
+        'jogador4': randint(1, 6)}
+print('Valores sorteados')
+rank = []
+for k, v in jogo.items():
+    print(f'{k} tirou {v} no dado')
+print('='* 30)
+rank = sorted(jogo.items(), key=itemgetter(1), reverse=True)#o itemgetter vai ser responsavel por permitr uma organização de forma mais facil, ele ira pegar os dados do dicionario, e utiliza-los de forma organizada
+for i, v in enumerate(rank):
+    print(f'{i+1}° o lugar: {v[0]} com {v[1]}')
+
+==================================
+93:
+
+game = {}
+partidass = []
+game['nome'] = str(input('Nome do jogador: '))
+partidas = int(input(f'Quantas partidas {game["nome"]} jogou? '))
+for c in range(0, partidas):
+    partidass.append(int(input(f'      Quantos gols na partida {c} ')))
+game['gols'] = partidass[:]
+game['total'] = sum(partidass)#o comando sum serve para somar os numeros da lista indicada
+print('=+' * 60)
+print(game)
+print('=+' * 60)
+for k, v in game.items():
+    print(f'O campo {k} tem o valor {v}')
+print('=+' * 60)
+print(f'O jogador {game["nome"]} jogou {len(game["gols"])} partidas')
+for i, v in enumerate(game['gols']):
+    print(f'Na partida {i} fez {v} gols')
+print(f'Um total de {game["total"]} gols')
+
+==================================
+94:
+
+temp = {}
+galera = []
+soma = 0
+while True:
+    temp['nome'] = str(input('Nome da pessoa: ')).capitalize()
+    while True:
+        temp['sexo'] = str(input(f'Sexo de {temp["nome"]}: ')).strip().upper()
+        if temp['sexo'] in 'MF':
+            break
+        else:
+            print('Sexo invalido, por favor digite \033[1:31mM\033[m ou \033[1:31mF\033[m')
+    temp['idade'] = int(input(f'Idade de {temp["nome"]}: '))
+    soma += temp['idade']
+    galera.append(temp.copy())
+    fim = ' '
+    while fim not in 'SN':
+        fim = str(input('Deseja continuar? ')).strip().upper()
+        if fim not in 'SN':
+            print('Digite apenas \033[1:32mS\033[m ou \033[1:32mN\033[m')
+    if fim in 'N':
+        break
+print(f'Ao todo temos {len(galera)} pessoas cadastradas')
+print()
+print(f'A media das idade é de {soma / len(galera):5.2f} anos')
+print()
+print('As mulheres cadastradas foram: ', end='')
+for p in galera:
+    if p['sexo'] in 'Ff':
+        print(f'{p["nome"]}', end=', ')
+print(' ')
+print('\nAs pessoas com idade acima da media são: ')
+for p in galera:
+    if p['idade'] >= soma / len(galera):
+        print('     ')
+        for k, v in p.items():
+            print(f' {k} = {v} ', end='')
+==================================
+95:
+
+jogador = {}
+jogadores = []
+gols = []
+while True:
+    jogador['nome'] = str(input('Nome do jogador '))
+    par = int(input(f'Quantas partidas {jogador["nome"]} jogou? '))
+    for c in range(1, par+1):
+        gols.append(int(input(f'Quantos gols na partida {c} ')))
+    jogador['gols'] = gols[:]
+    jogador['total'] = sum(gols)
+    jogadores.append(jogador.copy())
+    gols.clear()
+    fim = ' '
+    while fim not in 'SsNn':
+        fim = str(input('Deseja continuar? ')).upper().strip()
+    if fim in 'Nn':
+        break
+print('=+' * 60)
+print('cod', end=' ')
+for i in jogador.keys():
+    print(f'{i:<15}', end='')
+print()
+for k, v in enumerate(jogadores):
+    print(f'{k:>3} ', end='')
+    for d in v.values():
+        print(f'{str(d):<15}', end='')
+    print()
+while True:
+    n = int(input('Codigo do jogador (999 para parar) '))
+    if n == 999:
+        break
+    if n >= len(jogadores):
+        print('Erro, não existe jogador com esse codigo')
+    else:
+        print(f'Levantamento do jogador {jogadores[n] ["nome"]}')
+        for i, g in enumerate(jogadores[n] ['gols']):
+            print(f' No jogo {i+1} fez {g} gols')
+        print('=+' * 60)

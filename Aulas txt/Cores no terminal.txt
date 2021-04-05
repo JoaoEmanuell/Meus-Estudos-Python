@@ -1,0 +1,63 @@
+lembrando que esse é para o padrão do python
+Teoria:
+começo do codigo:
+
+\033[0;33;44m 
+
+para finalizar o codigo e impedir que ele var ate outros digitos digite: \033[m
+
+# o \033[ é obrigatorio para o codigo de cores funcionar (lembrando que todo codigo de cores deve terminar com m
+
+# o ''0'' que vem depois do [ é o estilo da fonte, negrito, italico ect (observação, caso não coloque o padrão da fonte ele usara o padrão do terminal
+
+o estilo "0" é a fonte na forma padrão
+
+o estilo "1" é a fonte negrito
+
+o estilo "4" é a fonte sublinhada
+
+o estilo "7" inverte a cor do texto pela cor do fundo
+
+# '':33:'' que vem depois do estilo da fonte é a cor do texto
+
+cores:
+
+30 = branco
+31 = vermelho
+32 = verde
+33 = amarelo
+34 = azul
+35 = roxo
+36 = ciano
+37 = cinza
+
+# ":44m'' que vem depois da cor do texto é a cor do plano de fundo, lembrando que todo codigo de cor deve terminar com "m" no final (se não colocar nada tmb esqueça de colocar ";" pois ira bugar, se não colocar ele fica com a cor padrão do terminal
+
+cores:
+
+40 = branco
+41 = vermelho
+42 = verde
+43 = amarelo
+44 = azul
+45 = roxo
+46 = ciano
+47 = cinza
+
+pratica:
+
+print('\033[1;31;40mOla mundo!\033[m')
+
+a = 3
+b = 4
+print('Os valores são \033[32m{}\033[m e \033[31m{}\033[m'.format(a,b))
+
+nome = 'Emanuel'
+print('Muito prazer em te conhecer {}{}{}!!!'.format('\033[4;34m',nome,'\033[m'))
+
+nome = 'Emanuel'
+cores = {'limpa':'\033[m',
+         'azul':'\033[0;34m',
+         'amarelo':'\033[0;33m]',
+         'pretoebranco':'\033[7;30m'} #isso aqui se chama dicionario, baseado nele eu posso usar cores sem muita dor de cabeça
+print('Muito prazer em te conhecer {}{}{}!!!'.format(cores['azul'], nome, cores ['limpa']))

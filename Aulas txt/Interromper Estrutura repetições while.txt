@@ -1,0 +1,153 @@
+Teoria:
+
+While True:
+    if terra:
+        pega
+    if espaço:
+        pula
+    if moeda:
+        pega
+    if trofeu:
+        pula
+        break
+pega
+
+Pratica:
+
+n = s = 0
+while True:#Loop infinito
+    n = int(input('Digite um numero '))
+    if n == 999:
+        break#break ira interomper o loop infinito, basicamente indo direto para o final do progama
+    s += n#se o break for executado primeiro o comando abaixo dele não ira ser executado
+#print('A soma vale {}'.format(s))#o que esta fora do while vira logo em seguida
+print(f'A some vale {s}')#uma string ja formatada, coloque o f minisculo no inicio dela que não precisara usar o .format
+
+exercicios:
+
+feitos:
+
+66:
+
+n = s = c = 0
+while True:
+    n = int(input('Digite um numero [Digite \033[1;31m999\033[m para parar] '))
+    if n == 999:
+        break
+    s += n
+    c += 1
+print(f'Você digitou {c} valores, a soma entre eles foi de {s}')
+
+69:
+
+idade = fem = man = 0
+while True:
+    per1 = int(input('Qual é a idade da pessoa? '))
+    per2 = ' '
+    while per2 not in 'MF':
+        per2 = str(input('Qual é o sexo da pessoa? [M/F] ')).strip().upper()[0]
+    if per1 >= 18:
+        idade += 1
+    if per2 in 'Mm':
+        man += 1
+    if per2 in 'Ff' and per1 < 20:
+        fem += 1
+    fim = ' '
+    while fim not in 'SN':
+        fim = str(input('Você quer encerrar o progama? [S/N] ')).strip().upper()[0]
+    if fim in 'Ss':
+        break
+print(f'Houveram {idade} pessoa com mais de 18 anos.')
+print(f'{man} homens foram cadastrados')
+print(f'{fem} mulheres tem menos de 20 anos')
+
+70:
+
+soma = somc = cont = prec = menor = contm = 0
+barato = ''
+while True:
+    produto = str(input('Qual é o nome do produto? '))
+    prec = float(input('Qual é o preço do produto? '))
+    soma += prec
+    contm += 1
+    fim = ' '
+    while fim not in 'SN':
+        fim = str(input('Você deseja encerrar o progama? [S/N] ')).strip().upper()[0]
+    if contm == 1 or prec < menor:
+        menor = prec
+        barato = produto
+    if prec >= 1000:
+        somc += prec
+        cont += 1
+    if fim in 'Ss':
+        break
+print(f'O valor das compras foi de {soma}')
+print(f'{cont} produtos tiveram o valor superior a R$ 1000')
+print(f'{barato} foi o produto mais barato')
+
+
+corrigidos:
+
+67:
+
+while True:
+    n = int(input('Quer ver a tabuada de qual numero? '))
+    if n < -1:
+        break
+    for c in range(1, 11):
+        print(f'\033[1;31m{n}\033[m x \033[1;32m{c}\033[m = \033[1;33m{n*c}\033[m')
+print('Fim do progama, obrigado por utilizar!')
+
+68:
+
+from random import randint
+v = 0
+while True:
+    jogador = int(input('Diga um valor '))
+    computador = randint(0, 10)
+    total = jogador + computador
+    tipo = ' '
+    while tipo not in 'PI':#serve para perguntar uma pergunta infinitamente ate que a resposta seja util para o progama
+        tipo = str(input('Par ou Impar? ')).strip().upper()[0]
+    print(f'Você jogou {jogador} e o computador jogou {computador}, o total foi de {total}')
+    print('Deu par' if total % 2 == 0 else 'Deu impar', end=' ')
+    if tipo == 'P':
+        if total % 2 == 0:
+            print('Você ganhou!')
+            v += 1
+        else:
+            print('Você perdeu')
+            break
+    elif tipo == 'I':
+        if total % 2 == 1:
+            print(f'Você ganhou!')
+            v += 1
+        else:
+            print('Você perdeu')
+            break
+print(f'Você ganhou {v} vezes')
+
+
+71:
+
+valor = int(input('Que valor você quer sacar? '))
+total = valor
+ced = 50
+totalced = 0
+while True:
+    if total >= ced:
+        total -= ced
+        totalced += 1
+    else:
+        if totalced > 0:
+            print(f'Total de {totalced} cedulas de R${ced}')
+        if ced == 50:
+            ced = 20
+        elif ced == 20:
+            ced = 10
+        elif ced == 10:
+            ced = 1
+        totalced = 0
+        if total == 0:
+            break
+

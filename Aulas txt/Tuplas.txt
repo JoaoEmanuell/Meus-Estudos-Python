@@ -1,0 +1,181 @@
+Teoria:
+
+As tuplas são imutáveis
+
+pratica:
+
+lanche = 'Hamburger', 'Pizza', 'Suco', 'Pudim'#isso é uma tupla, pode colocar com () ou sem, ele vai idetificar do mesmo jeito
+print(lanche[1])#caso coloque um numero entre [] ele dira o item que está naquela posicão, lembrando que a contagem começa sempre a parti do 0
+
+lanche = 'Hamburger', 'Pizza', 'Suco', 'Pudim'#isso é uma tupla, pode colocar com () ou sem, ele vai idetificar do mesmo jeito
+for comida in lanche:
+    print(f'Eu vou comer {comida}')#caso use esse comando ele vai escrever cada item uma vez separadamente, sem usar () ou ""
+print('Comi demais')
+
+lanche = 'Hamburger', 'Pizza', 'Suco', 'Pudim'#isso é uma tupla, pode colocar com () ou sem, ele vai idetificar do mesmo jeito
+print(len(lanche))#vai mostrar a quantidade de itens dentro de uma tupla
+
+lanche = 'Hamburger', 'Pizza', 'Suco', 'Pudim'#isso é uma tupla, pode colocar com () ou sem, ele vai idetificar do mesmo jeito
+
+for cont in range(0, len(lanche)):#resumindo, isso daqui vai fazer o mesmo que a de baixo
+    print(f'Eu vou comer {lanche[cont]}')#lembresse que depois da tupula vc deve colocar [] se não da erro
+
+for comida in lanche:
+    print(f'Eu vou comer {comida}')'''#caso use esse comando ele vai escrever cada item uma vez separadamente, sem usar () ou " "
+
+print('Comi demais')
+
+lanche = 'Hamburger', 'Pizza', 'Suco', 'Pudim'#isso é uma tupla, pode colocar com () ou sem, ele vai idetificar do mesmo jeito
+
+for cont in range(0, len(lanche)):
+    print(f'Eu vou comer {lanche[cont]} na posição {cont}')#vai mostrar o item + a posição em que se encontra ele
+
+for pos, comida in enumerate(lanche):
+    print(f'Eu vou comer {comida} na posição {pos}')#faz o mesmo que o anterior, enumerate serve para subistituir as posições pelos itens da tupula
+
+print('Comi demais')
+
+lanche = 'Hamburger', 'Pizza', 'Suco', 'Pudim'#isso é uma tupla, pode colocar com () ou sem, ele vai idetificar do mesmo jeito
+
+for comida in lanche:#jeito mais facil de fazer caso não precise exibir as posições dos intens, caso precise tem as duas maneiras de baixo
+    print(f'Vou comer {comida}')
+
+for cont in range(0, len(lanche)):
+    print(f'Eu vou comer {lanche[cont]} na posição {cont}')#vai mostrar o item + a posição em que se encontra ele
+
+for pos, comida in enumerate(lanche):
+    print(f'Eu vou comer {comida} na posição {pos}')#faz o mesmo que o anterior, enumerate serve para subistituir as posições pelos itens da tupula
+
+print('Comi demais')
+
+lanche = 'Hamburger', 'Pizza', 'Suco', 'Pudim'#isso é uma tupla, pode colocar com () ou sem, ele vai idetificar do mesmo jeito
+
+print(sorted(lanche))#ira exibir a tupla em ordem alfabetica
+
+a = (2, 5 , 4)
+b = (3, 6, 7, 8)
+c = a + b#ele ira colocar primeiro a tupla "a" e logo em seguida ira escrever a "b"
+print(c)
+
+a = (2, 5 , 4)
+b = (3, 6, 7, 8)
+c = a + b#ele ira colocar primeiro a tupla "a" e logo em seguida ira escrever a "b"
+print(a + b)#tambem pode ser feito dessa forma, poupa uma variavel, a ordem das tupulas fazem total diferença
+
+a = (2, 5 , 4)
+b = (3, 6, 2, 8)
+c = a + b#ele ira colocar primeiro a tupla "a" e logo em seguida ira escrever a "b"
+print(sorted(a + b))#aqui ele colocara "a" + "b" em ordem cresente, do menor para o maior
+
+a = (2, 5 , 4)
+b = (3, 6, 2, 8)
+c = a + b#ele ira colocar primeiro a tupla "a" e logo em seguida ira escrever a "b"
+print(b)#aqui ele colocara "a" + "b" em ordem cresente, do menor para o maior
+#algo que eu pude notar foi que, caso uma tupula tenha um valor de int e str ele não consigurar escrever a mesma em ordem alfabetica
+
+a = (2, 5, 4)
+b = (3, 6, 2, 8)
+c = a + b
+print(c)
+print(c.index(4))#ele vai verificar onde o numero 4 aparece pela primeira vez
+
+a = (2, 5, 4)
+b = (3, 6, 2, 8)
+c = a + b
+print(c)
+print(c.index(2, 1))#ele ira iginora o primeiro 2 que aparece e verificar se a outro e se tiver em que posição o outro está
+
+pessoa = ('Apolo', 14, 'M', 38)#aqui temos uma tupula com str e int, ele consegue escrever de boa
+print(pessoa)
+
+util:
+
+Sorted = Faz a tupula ficar em ordem alfabetica, forma de executar: sorted(tupula)
+
+Index = Localiza a posição de um item na tupula, forma de executar: tupula.index('Nome do item')
+
+Max = Indica o maior valor na tupla, forma de executar: max(nome da tupla)
+
+Mim = Indica o menor valor na tupla, forma de executar: mim(nome da tupla)
+
+Count = Indica a quantidade de vezes que determinado valor apareceu, forma de executar: tupla.count(valor)
+
+exercicios:
+
+feitos:
+
+73:
+
+times = ('Internacional', 'São Paulo', 'Flamengo', 'Atlétoco-MG', 'Palmeiras', 'Gremio', 'Fluminese', 'Ceará SC', 'Corintias',
+         'Santos', 'Athletico-PR', 'Atlético)-Go', 'Bragantiono', 'Sport Recife', 'Vasco da gama', 'Fortaleza', 'Bhaia', 'Goiás',
+         'Coritiba', 'Botafogo')
+print(times[0:5])
+print(times[16:21])
+print(sorted(times))
+print(f'O time {times[8]} está na posição {times.index("Corintias")+1}')
+
+corrigidos:
+
+72:
+
+extenso = ('zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove',
+           'dez', 'onze', 'doze', 'treze', 'quartoze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove', 'vinte')
+num = 21
+end = ' '
+while True:
+    while num >= 21:
+        num = int(input('Digite um numero entre 0 e 20 '))
+        if num >= 21:
+            print('Numero incorreto, por favor digite novamente')
+    print(f'Você digitou o numero {extenso[num]}')
+    while end not in 'SsNn':
+        end = str(input('Você quer continuar? ')).strip().upper()[0]
+    if 'N' in end:
+        print('Fim do progama, adeus')
+        break
+    num = 21
+    end = ' '
+
+74:
+
+from random import randint
+n = (randint(1,10), randint(1,10), randint(1,10), randint(1,10), randint(1,10), )
+print(f'Eu sortei os valores {n}')
+print(f'O maior valor foi {max(n)}')#comando MAX exibe o maior valor dentro da tupla
+print(f'O menor valor foi {min(n)}')#comando MIN exibe o menor valor dentro da tupla
+
+75:
+
+num = ((int(input('Digite um numero: '))), (int(input('Digite um numero: '))), (int(input('Digite um numero: '))),
+(int(input('Digite um numero: '))))
+print(f'Vc digitou os valores {num}')
+print(f'O numero 9 aparece {num.count(9)} vezes')#conta quantas vezes o valor aparece
+if 3 in num:
+    print(f'O valor 3 apareceu pela primeira vez na {num.index(3)+1}° posição')#ver a primeira posição onde o valor apareceu
+else:
+    print('O valor 3 não foi digitado em nenhuma posição')
+print('Os valores pares digitados foram: ')
+for n in num:
+    if n % 2 == 0:
+        print(n, end=' ')
+
+76:
+
+lista = ('Lapis', 2.0,
+         'Borracha', 3.0,
+         'Caneta', 1.0)
+for pos in range(0, len(lista)):
+    if pos % 2 == 0:
+        print(f'{lista[pos]:.<30}', end='')#vai alinhar a direita
+    else:
+        print(f'R$ {lista[pos]:.2f}')#vai alinhar a esquerda
+
+77:
+
+palavra = ('oi', 'ola', 'xau', 'chato')
+for p in palavra:# para cada letra in palavra
+    print(f'\nNa palavra {p.upper()} temos as vogais ',end='')
+    for letra in p:#para cada letra em palavra temos
+        if letra.lower() in 'aeiou':#calula quais são as vogais
+            print(letra, end=' ')
+

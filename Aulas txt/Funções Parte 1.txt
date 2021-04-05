@@ -1,0 +1,344 @@
+Util:
+
+==================================
+TEORIA:
+==================================
+==================================
+==================================
+==================================
+==================================
+O que são funções:
+
+Funções são basicamente rotinas, coisas que você usa durante os exercicios
+
+Funções Basicas: Print, len, input, int, float, todas são funções que vem padrão no python
+
+==================================
+DEFINIR FUNÇÕES
+==================================
+Caso eu precise fazer uma tarefa repetitiva, eu posso por exemplo criar uma função:
+
+def nome da função():
+      comando
+
+def linha():
+    print('=' * 60)
+
+esse seria um exemplo de função
+==================================
+EXIBIR FUNÇÕES
+==================================
+Para exibir basta colocar o nome da função e ()
+
+função()
+mostraLinha():
+
+linha()
+print('Teste')
+linha()
+linha()
+print('Oi')
+linha()
+linha()
+print('Tomara que funcione')
+linha()
+
+resultado:
+
+============================================================
+Teste
+============================================================
+============================================================
+Oi
+============================================================
+============================================================
+Tomara que funcione
+============================================================
+
+==================================
+CRIANDO FUNÇÕES COM PARAMETROS
+==================================
+Funções com paramentros são funções que tem algo personalizado no meio dela, exemplo:
+
+def função(parametro)
+     função
+     função(parametro)
+     função
+def mensagem(msg):
+    print('=' * 30)
+    print(msg)
+    print('=' * 30)
+
+quando eu executar ela : 
+
+pmensagem('oi') # mando executar a função e dentro da função, defino o paramentro como 'oi' e ordeno a digitação disso
+
+resultado:
+
+==============================
+oi
+==============================
+
+==================================
+EMPACOTAMENTO DE PARAMENTROS FUNÇÕES
+==================================
+O empacotamento siginifica que eu posso pedir quantas coisas eu quiser dentro da função e ele ira me atender:
+
+def função(*núm):
+
+def cont(*núm)
+
+caso eu faça isso ele ira me atender independete de quantos numeros quiser colocar
+
+def cont(*núm):
+    print(núm)
+
+
+cont(0, 2, 3, 4)#veja que nenhum dos conts tem uma quantidade especifica
+cont(9, 6, 5, 3, 8,)
+cont(3, 6, 2, 3, 6, 0, 9)
+
+resultado:
+
+(0, 2, 3, 4)
+(9, 6, 5, 3, 8)
+(3, 6, 2, 3, 6, 0, 9)
+==================================
+FUNÇÃO COM LISTA:
+==================================
+Nesse caso eu poderei utilizar a função com uma lista
+
+def função(lista):
+
+def dobra(lst):#aqui eu tenho a função de dobrar
+    cont = 0
+    while cont != len(lst):#enquanto o contador for diferente da quantidade de numeros de lst
+        lst[cont] *= 2#lst na posição cont recebe ele mesmo * 2
+        cont += 1#cont + 1
+
+
+valores = [3, 6, 8, 9, 20]#essa é a lista valores
+dobra(valores)#aqui eu pedi para executar a função dobra
+print(valores)#quando eu printar, ele vai printar os valores dobrado
+
+resultado:
+
+[6, 12, 16, 18, 40]
+
+==================================
+PRATICA
+==================================
+==================================
+==================================
+==================================
+==================================
+DEFINIR FUNÇÕES BASICAS MATEMATICA SIMPLES
+==================================
+Eu irei definir uma função para somar 2 numeros:
+
+def soma(a, b):
+    s = a + b
+    print(s)
+
+
+soma(2, 3)
+soma(9, 6)
+soma(10.6895474, 4465545642.22465454654)
+
+resultado:
+
+5
+15
+4465545652.914202
+
+============
+ESPECIFICAR NUMEROS
+============
+Eu posso especificar quem é A e que é B usando:
+
+a=x, b=y
+
+soma(a=2, b=3)
+
+tambem posso mudar a ordem
+
+soma(b=2, a=3)
+
+==================================
+EXERCICIOS
+==================================
+==================================
+==================================
+==================================
+==================================
+FEITO:
+==================================
+96:
+
+def area(a, b):
+    s = a * b
+    print(f'A aréa de um terreno de {a} x {b} é de {s}m²')
+
+
+def linha(txt):
+    print('-' * 30)
+    print(txt)
+    print('-' * 30)
+
+
+linha('  Controle de terrenos  ')
+l = float(input('Largura do terreno '))
+c = float(input('Comprimento do terreno '))
+area(l, c)
+==================================
+99:
+
+from time import sleep
+
+
+def lis(* lista):
+    print('-' * 30)
+    print('Analisando os valores informados')
+    sleep(1)
+    print(f'{lista} Foram informados {len(lista)} valores ao todo')
+    cont = 1
+    maior = menor = 0
+    for valor in lista:
+        if cont == 1:
+            maior = menor = valor
+        else:
+            if valor > maior:
+                maior = valor
+            if valor < menor:
+                menor = valor
+        cont += 1
+    sleep(1)
+    print(f'O maior valor informado foi {maior}')
+
+
+lis(3, 6, 9, 20)
+lis(6, 9, 3, 5, 6, 9, 8, 10, 3, 6,)
+lis(9, 66, 887, 9898, 363656, 21, -366)
+==================================
+100:
+
+from random import randint
+from time import sleep
+
+
+valores = []
+
+
+def aleatorio():
+    print('Sorteando 5 valores da lista: ', end='')
+    for c in range(0, 5):
+        valores.append(randint(1, 10))
+    for v in valores:
+        print(f'{v}', end=' ')
+        sleep(0.3)
+
+def soma():
+    pares = 0
+    print(f'Somando os valores pares de {valores},', end=' ')
+    sleep(1)
+    for v in valores:
+        if v % 2 == 0:
+            pares += v
+
+    print(f'a soma de todos os valores pares é igual a {pares}')
+
+
+aleatorio()
+print()
+soma()
+
+==================================
+CORRIGIDO:
+97:
+
+def escreva(msg):
+    tam = len(msg) + 4
+    print('~' * tam)
+    print(f'  {msg}')
+    print('~' * tam)
+
+
+escreva('João Emanuel')
+escreva('oi')
+escreva('Massa')
+==================================
+98:
+
+from time import sleep
+def linha():
+    print('-' * 30)
+def contador(i, f, p):
+    print('-' * 30)
+    print(f'Contagem de {i} ate {f} de {p} em {p}')
+    print('-' * 30)
+    if i < f:
+        cont = i
+        while cont <= f:
+            print(f'{cont}', end=' ')
+            cont += p
+            sleep(0.30)
+    else:
+        cont = i
+        while cont >= f:
+            print(f'{cont}', end=' ')
+            cont -= p
+            sleep(0.30)
+
+
+contador(1, 10, 1)
+print()
+contador(10, 0, 2)
+print()
+linha()
+print('Sua vez')
+linha()
+i = int(input('Inicio '))
+f = int(input('Fim '))
+p = int(input('Passo '))
+contador(i, f, p)
+
+==================================
+
+98:
+
+from time import sleep
+
+
+def linha():
+    print('-' * 30)
+    
+
+def contador(i, f, p):
+    print('-' * 30)
+    print(f'Contagem de {i} ate {f} de {p} em {p}')
+    print('-' * 30)
+    if i < f:
+        cont = i
+        while cont <= f:
+            print(f'{cont}', end=' ')
+            cont += p
+            sleep(0.30)
+    else:
+        cont = i
+        while cont >= f:
+            print(f'{cont}', end=' ')
+            cont -= p
+            sleep(0.30)
+
+
+contador(1, 10, 1)
+print()
+contador(10, 0, 2)
+print()
+linha()
+print('Sua vez')
+linha()
+i = int(input('Inicio '))
+f = int(input('Fim '))
+p = int(input('Passo '))
+contador(i, f, p)

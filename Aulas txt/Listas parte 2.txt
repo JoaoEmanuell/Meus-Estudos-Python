@@ -1,0 +1,356 @@
+util:
+
+Max = Indica o maior valor na lista, forma de executar: max(lista)
+
+Mim = Indica o menor valor na lista, forma de executar: mim(lista)
+
+Count = Indica a quantidade de vezes que determinado valor apareceu, forma de executar: lista.count(valor)
+
+
+Teoria:
+
+==================================
+LISTAS COMPOSTAS
+==================================
+Listas compostas são listas dentro de outra lista:
+
+lista = [[x],[y],[z]]
+pessoas = [['Pedro'25],['Maria'19]['João'32]]
+
+cada um dos colchetes são uma lista dentro da lista principal, o primeiro e o ultimo colchete é onde se inicia e termina a lista principal, cada um que abre e fecha são outras listas e por estarem dentro da lista principal, se classificam como listas compostas.
+
+Cada lista composta tem seu propio fatiamento, cada uma recebe uma posição, ou seja, a primeira lista recebe 0, a segunda 1, a terceira 2 e assim por diante.
+
+print(lista[x][x])
+print(pessoas[0][0])
+
+O primeiro digito entre os colchetes sera a lista que eu quero usar, no caso eu estou mandando ele escrever a lista que esta na posição 0 da lista pessoas, ja o segundo digito é a posição do item dentro da lista 0, no caso eu mando ele escrever o nome 'Pedro'
+
+Caso eu escreva para printar sem indicar a posição do item na lista, ele escrevera a lista toda:
+
+print(lista[x])
+print(pessoas[1]):
+
+['Maria',19]
+
+==================================
+PRATICA
+==================================
+==================================
+==================================
+==================================
+==================================
+LISTA COMPOSTA UNIDA SIMPLES
+==================================
+teste = []
+teste.append('Gustavo')
+teste.append(40)
+galera = []
+galera.append(teste)
+print(galera)
+
+ao unir a lista teste com a lisa galera, eu acabo criando uma lista composta
+==================================
+UNIÃO LISTA COMPOSTA
+==================================
+teste = []
+teste.append('Gustavo')
+teste.append(40)
+galera = []
+galera.append(teste)
+teste[0] = 'Maria'
+teste[1] = 22
+galera.append(teste)
+print(galera)
+
+ao mudar o elemento e depois juntar com a outra lista, eu acabo criando uma lista que "copie" os dois elementos, criando uma lista com 2 listas dentro
+==================================
+COPIA LISTA COMPOSTA
+==================================
+teste = []
+teste.append('Gustavo')
+teste.append(40)
+galera = []
+galera.append(teste[:])
+teste[0] = 'Maria'
+teste[1] = 22
+galera.append(teste[:])
+print(galera)
+
+ao utilizar a função de copiar ao inves da função de juntar, eu crio uma lista composta com as duas variações, a lista composta agora tera ['Gustavo', 40] e ['Maria', 22] dentro dela:
+
+[['Gustavo', 40], ['Maria', 22]]
+
+==================================
+LISTA COMPOSTA SIMPLES
+==================================
+galera = [['João', 19], ['Ana', 33], ['Joaquim', 13], ['Maria', 45]]
+print(galera)
+
+ao fazer a lista dessa forma e escrver, ele ira escrever toda a lista
+
+==================================
+LISTA COMPOSTA ESCREVENDO DETERMINADO INTEM
+==================================
+galera = [['João', 19], ['Ana', 33], ['Joaquim', 13], ['Maria', 45]]
+print(galera[0])
+
+ao usar dessa forma ele ira escrever o item 0, ou seja ele ira escrever: ['João', 19]
+
+==================================
+LISTA COMPOSTA ESCREVENDO DETERMINADO INTEM E SUA POSIÇÃO
+==================================
+
+galera = [['João', 19], ['Ana', 33], ['Joaquim', 13], ['Maria', 45]]
+print(galera[2][1])
+
+ao usar dessa forma ele ira escrever o item 2 porem so ira escrever o item na posição 1, ou seja ele ira esrever o numero 13
+==================================
+FOR SIMPLES
+==================================
+
+galera = [['João', 19], ['Ana', 33], ['Joaquim', 13], ['Maria', 45]]
+for p in galera:
+    print(p)
+
+caso eu faça dessa forma ele ira escrever cada item em uma linha:
+
+['João', 19]
+['Ana', 33]
+['Joaquim', 13]
+['Maria', 45]
+
+==================================
+FOR SIMPLES MOSTRANDO APENAS O PRIMEIRO ITEM
+==================================
+galera = [['João', 19], ['Ana', 33], ['Joaquim', 13], ['Maria', 45]]
+for p in galera:
+    print(p[0])
+
+caso eu faça dessa forma ele ira apenas exibir o primeiro item, no caso o nome:
+
+João
+Ana
+Joaquim
+Maria
+==================================
+FOR SIMPLES MOSTRANDO APENAS O  SEGUNDO ITEM
+==================================
+
+galera = [['João', 19], ['Ana', 33], ['Joaquim', 13], ['Maria', 45]]
+for p in galera:
+    print(p[1])
+
+caso eu faça dessa forma ele ira exibir apenas o 1 item, ou seja a idade:
+
+19
+33
+13
+45
+==================================
+FOR SIMPLES MOSTRANDO CADA ITEM DE FORMA ORGANIZADA
+==================================
+
+galera = [['João', 19], ['Ana', 33], ['Joaquim', 13], ['Maria', 45]]
+for p in galera:
+    print(f'{p[0]} tem {p[1]} de idade')
+
+caso eu faça dessa forma ele ira exibir cada item de forma mais organizada
+
+João tem 19 de idade
+Ana tem 33 de idade
+Joaquim tem 13 de idade
+Maria tem 45 de idade
+
+==================================
+ADICIONANDO NOME E IDADE DE PESSOAS EM UMA LISTA COMPOSTA
+==================================
+galera = []
+dado = []
+for c in range(0, 3):
+    dado.append(str(input('Nome da pessoa: ')))
+    dado.append(int(input('Idade da pessoa: ')))
+    galera.append(dado[:])#galera vai receber uma copia de dado
+    dado.clear()#o comando clear serve para limpar a lista, apagando tudo dentro dela
+
+print(galera)
+
+o resultado sera:
+
+[['apolo', 13], ['joão', 15], ['maria', 48]]
+==================================
+VERIFICANDO A IDADE EM LISTA COMPOSTA
+==================================
+
+galera = []
+dado = []
+maior = menor = 0
+for c in range(0, 3):
+    dado.append(str(input('Nome da pessoa: ')))
+    dado.append(int(input('Idade da pessoa: ')))
+    galera.append(dado[:])#galera vai receber uma copia de dado
+    dado.clear()#o comando clear serve para limpar a lista, apagando tudo dentro dela
+
+for p in galera:#para cada pessoa em galera
+    if p[1] >= 18:#verifique se a idade (p[1]) é igual ou maior do que 18
+        print(f'{p[0]} é maior de idade\n')#se for escreva o nome dela (p[0])
+        maior += 1
+    else:
+        print(f'{p[0]} é menor de idade\n')#se não escreva o nome dela (p[0])
+        menor += 1
+
+print(f'Temos {maior} pessoas maior de idade\n')
+print(f'Temos {menor} pessoas menor de idade')
+==================================
+EXERCICIOS
+==================================
+==================================
+==================================
+==================================
+==================================
+FEITOS
+
+88:
+
+from random import randint
+lista = []
+jogo = []
+print('MEGA-SENA')
+print('='*30)
+quant = int(input('Quantos jogos você quer que eu sortei? '))
+print('='*30)
+tot = 1
+while tot <= quant:
+    cont = 0
+    while True:
+        num = randint(1, 60)
+        if num not in lista:
+            lista.append(num)
+            cont += 1
+        if cont >= 6:
+            tot += 1
+            break
+
+    lista.sort()
+    jogo.append(lista[:])
+    lista.clear()
+cont = 1
+for c in jogo:
+    print(f'Jogo {cont}° {c}')
+    print('='*30)
+    cont += 1
+==================================
+89:
+
+perm = []
+cont = 0
+while True:
+    nome = (str(input('Nome do aluno: ')).capitalize())
+    n1 = (float(input('Primeira nota: ')))
+    n2 = (float(input('Segunda nota: ')))
+    media = n1 + n2 / 2
+    fim = ' '
+    perm.append([nome, [n1, n2], media])
+    while fim not in 'SsNn':
+        fim = str(input('Deseja continuar? '))[0].upper()
+    if fim in 'N':
+        fim = ' '
+        break
+
+print(f'{"N°":<4}{"NOME":<10}{"MÉDIA":>8}')
+for c in perm:
+    print(f'{cont:<4} {c[0]:<10} {c[2]:>8.1f}')
+    cont += 1
+while True:
+    opc = int(input('Mostrar notas de qual aluno? (999 interrompe) '))
+    if opc == 999:
+        print('fim')
+        break
+    else:
+        print(f'Notas de {perm[opc][0]} são {perm[opc][1]}')
+==================================
+CORRIGIDOS
+==================================
+84:
+
+temp = []
+princ = []
+mai = men = 0
+
+while True:
+    temp.append(str(input('Qual é o nome da pessoa ')).capitalize())
+    temp.append(int(input('Qual é o peso da pessoa ')))
+    if len(princ) == 0:
+        mai = men = temp[1]
+    else:
+        if temp[1] > mai:
+            mai = temp[1]
+        if temp[1] < men:
+            men = temp[1]
+    princ.append(temp[:])
+    temp.clear()
+    fim = ' '
+    while fim not in 'SsNn':
+        fim = str(input('Deseja continuar? ')).upper()[0]
+    if fim == 'N':
+        break
+print(f'{len(princ)} pessoas foram cadastradas')
+for p in princ:
+    if p[1] == mai:
+        print(f'{p[0]}, ', end='')
+print(f'pesam {mai} Kg, sendo os mais pesados')
+for p in princ:
+    if p[1] == men:
+        print(f'{p[0]}, ', end='')
+print(f'pesam {men} Kg, sendo os mais leves')
+==================================
+85:
+
+num = [[], []]
+valor = 0
+for c in range(1, 8):
+    valor = int(input(f'Digite o {c}° valor '))
+    if valor % 2 == 0:
+        num[0].append(valor)
+    else:
+        num[1].append(valor)
+print(f'Todos os valores digitados foram {sorted(num)}')
+print(f'Os valores pares foram {sorted(num[0])}')
+print(f'Os valores impares foram {sorted(num[1])}')
+==================================
+86:
+matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+for l in range(0, 3):
+    for c in range(0, 3):
+        matriz[l][c] = int(input(f'Digite um valor para [{l}] [{c}]: '))
+
+for l in range(0, 3):
+    for c in range(0, 3):
+        print(f'[{matriz [l] [c]}]', end=' ')
+    print()
+
+==================================
+87:
+
+matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+spar = mai = scol = 0
+for l in range(0, 3):
+    for c in range(0, 3):
+        matriz[l][c] = int(input(f'Digite um valor para [{l}] [{c}]: '))
+
+for l in range(0, 3):
+    for c in range(0, 3):
+        print(f'[{matriz [l] [c]}]', end=' ')
+        if matriz[l][c] % 2 == 0:
+            spar += matriz[l][c]
+    print()
+print(f'A soma dos valores pares digitado sera igual a {spar}')
+for l in range(0, 3):
+    scol += matriz[l][2]
+print(f'A soma dos valores da terceira coluna sera igual a {scol}')
+for c in range(0, 3):
+    if c == 0:
+        mai = matriz[1][c]
+    elif matriz[1][c] > mai:
+        mai = matriz[1][c]
+print(f'O maior valor da segunda linha é {mai}')

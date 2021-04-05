@@ -1,0 +1,285 @@
+Util:
+
+==================================
+TEORIA:
+==================================
+INTERACTIVE HELP
+==================================
+==================================
+Ajuda interativa, serve para saber tudo sobre bibilotecas, ou funções ja prontas no python
+
+digite help() no python console, e depois digite a função (ou biblioteca) que você quer aprender a usar
+
+usando quit vc sai da ajuda interativa
+==================================
+DOCSTRINGS
+==================================
+==================================
+Docstrings servem para exibir comentarios dentro de funções, o que facilitam na hora de utilizar as funções pois o help não exibe os comentarios, para criar uma docstring usa-se """ depois da função e """ para fechar, quando eu aperto enter ele organiza automaticamente, nesse espaço eu coloco as instruções de uso e o que siginifca cada parametro:
+
+cod:
+
+def contador(i, f, p):
+    """
+    conta do numero desejado ate o numero final nos passos indicado
+    :param i: serve como inicio
+    :param f: serve como fim
+    :param p: serve como passo
+    :return: sem retorno
+    """
+
+    c = i
+    while c <= f:
+        print(f'{c} ', end='')
+        c += 1
+    print('FIM')
+
+quando eu utilizar o comando help(função) ele ira mostrar toda a docstring
+==================================
+PARÂMETROS OPCIONAIS
+==================================
+==================================
+Parâmetros opcionais servem para quando a função tem um tamanho indicado porem eu não utilizei todo os parametros, dessa forma o codigo irira dar erro, porem se eu transformar os paramentros em parametros opcionais, mesmo se eu não dizer quanto vale determinado paramentro, ele ira ser preenchido automaticamente
+
+cod:
+
+def soma(a=0, b=0, c=0):
+    """
+    Soma três valores
+    :param a: o parametro A recebe um valor, porem se não tiver valor ele é definido como 0
+    :param b: o parametro B recebe um valor, porem se não tiver valor ele é definido como 0
+    :param c: o parametro C recebe um valor, porem se não tiver valor ele é definido como 0
+    :return: Soma dos três numeros
+    """
+    s = a + b + c
+    print(f'A soma vale {s}')
+==================================
+ESCOPO DE VARIÂVEIS
+==================================
+==================================
+Basicamente o escopo é um lugar onde a variavel vai existir e onde ela não vai existir
+
+cod:
+
+def teste():
+    x = 8
+    print(f'Na função teste n vale {n}')
+    print(f'Na função teste x vale {x}')
+
+
+n = 5
+print(f'No progama principal n vale {n}')#ja n podera ser definido indepedente da onde se encontra
+teste()
+print(f'No progama principal x vale {x}')#x não podera ser definido pois x so vale dentro da função teste, por isso x é chamado de variavel local
+
+caso dentro da função eu crie uma variavel igual a uma variavel global, a variavel local ira receber o valor definido na função, ja a global não sera alterada
+
+caso dentro da função eu use global a, o a global vai passar a valer o valor indicado dentro da função
+
+cod:
+
+def teste(b):
+    global a
+    a = 8
+    b += 4
+    c = 2
+    print(f'A dentro vale {a}')
+    print(f'B dentro vale {b}')
+    print(f'C dentro vale {c}')
+
+
+a = 5
+teste(a)
+print(f'A fora vale {a}')
+==================================
+RETORNANDO VALORES
+==================================
+==================================
+Retornar valores serve para ao inves do progama simplismete escrever tudo de forma rigida, ele ir retornar o valor para a variavel que detem a pergunta (ou para o print)
+
+cod:
+
+def somar(a=0, b=0, c=0):
+    s = a + b + c
+    return s
+
+
+r1 = somar(3, 6)
+r2 = somar(6, 7, 9)
+r3 = somar(6)
+
+print(f'Meus calculos deram {r1}, {r2}, {r3}')#basicamente ele pegou os dados de somar e transformou as variaveis nesses dados
+==================================
+PRATICA
+==================================
+==================================
+==================================
+==================================
+==================================
+RETURN NUMERICO
+==================================
+def fatorial(n=1):
+    f = 1
+    for c in range(n, 0, -1):
+        f *= c
+    return f
+
+
+f1 = fatorial(6)
+f2 = fatorial(4)
+f3 = fatorial(2)
+
+print(f'Os resultados são {f1}, {f2} e {f3}')
+==================================
+RETURN FALSE OR TRUE
+==================================
+def par(n=0):
+    if n % 2 == 0:
+        return True
+    else:
+        return False
+
+
+n = int(input('Digite um numero '))
+if par(n):
+    print('É par')
+else:
+    print('É impar')
+==================================
+EXERCICIOS
+==================================
+==================================
+==================================
+==================================
+==================================
+FEITOS
+101:
+def ano(n=0):
+    from datetime import date#ao fazer a importação somente durante a execução da função, vc economiza memoria
+    idade = date.today().year - n
+    if idade >= 18 and idade <= 70:
+        return (f'Com {idade} anos o voto é \033[1:31mOBRIGATORIO\033[m')
+    if idade >= 16 and idade <= 17 or idade >= 65:
+        return (f'Com {idade} anos o voto é \033[1:31mOPCIONAL\033[m')
+    if idade <= 15:
+        return (f'Com {idade} anos \033[1:31mNão\033[m vota')
+
+
+i = int(input('Em que ano você nasceu? '))
+print(ano(i))
+==================================
+
+==================================
+CORRIGIDOS
+102:
+def fatorial(n, show=False):
+    f = 1
+    for c in range(n, 0, -1):
+        if show:
+            print(c, end='')
+            if c > 1:
+                print(' x ', end='')
+            else:
+                print(' = ', end='')
+        f *= c
+    return f
+
+
+
+print(fatorial(99999))
+==================================
+103
+def gols(nome='Desconhecido', gols=0):
+    print(f'O jogador {nome} fez {gols} gols no campeonato')
+
+
+j = str(input('Nome do jogador '))
+g = str(input('Quantos gols o jogador fez? '))
+if g.isnumeric():
+    g = int(g)
+else:
+    g = 0
+if j.strip() == '':
+    gols(gols=g)
+else:
+    gols(j, g)
+==================================
+104:
+
+def leia(msg):
+    ok = False
+    valor = 0
+    while True:
+        n = str(input(msg))
+        if n.isnumeric():
+            valor = int(n)
+            ok = True
+        else:
+            print('Porfavor digite um numero valido')
+        if ok:
+            break
+    return n
+
+
+n = leia('Digite um numero ')
+print(f'Você digitou {n}')
+==================================
+105:
+
+def notas(*n, sit=False):
+    r = {}
+    r['total'] = len(n)
+    r['maior'] = max(n)
+    r['menor'] = min(n)
+    r['media'] = sum(n)/len(n)
+    if sit:
+        if r['media'] >= 7:
+            r['situação'] = 'boa'
+        if r['media'] >= 5:
+            r['situação'] = 'razoavel'
+        else:
+            r['situação'] = 'ruim'
+    return r
+
+
+resp = notas(6.0, 5.6, 4.3, 6.9, sit=True)
+print(resp)
+==================================
+106:
+
+from time import sleep
+c = ['\033[m',       # 0 sem cor
+     '\033[0:30:41m',#red
+     '\033[0:30:42m',#green
+     '\033[0:30:43m',#yellow
+     '\033[0:30:44m',#blue
+     '\033[0:30:45m',#purple
+     '\033[m']#white
+
+def ajuda(com):
+    titulo(f'Acessando o manual do comando \'{com}\'', 4)
+    print(c[6], end='')
+    help(com)
+    print(c[0], end='')
+    sleep(2)
+
+
+def titulo(msg, cor=0):
+    tam = len(msg) + 4
+    print(c[cor], end='')
+    print('~' * tam)
+    print(f'    {msg}')
+    print('~' * tam)
+    print(c[0], end='')
+    sleep(1)
+
+
+comando = ''
+while True:
+    titulo('Sistema de ajuda PyHelp', 2)
+    comando = str(input('Função ou biblioteca '))
+    if comando.upper() == 'FIM':
+        break
+    else:
+        ajuda(comando)
+titulo('ATÉ LOGO!', 1)

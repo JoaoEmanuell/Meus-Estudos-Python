@@ -1,0 +1,92 @@
+Util:
+
+==================================
+Teoria:
+
+Modulos seria as funções so que colocadas dentro de um arquivo a parte, essas funções facilitiariam a escrita dos arquivos e a utilização do progama, ja que ao inves de escrever milhares de linhas para cada função, é so eu criar um progama com as funções e importar elas no meu codigo principal
+
+Para importar funções do codigo de funções é so utilizar "import nome do progama" lembrando que eles tem que estar no mesmo diretorio
+
+import uteis
+num = int(input('Digite um numero '))
+fat = uteis.factorial(num)
+uteis.line()
+print(f'O fatorial de {num} é {fat}')
+uteis.line()
+print(f'O dobro de {num} é {uteis.double(num)}')
+uteis.title('LOTERIA')
+==================================
+PRATICA
+==================================
+==================================
+==================================
+==================================
+==================================
+PACOTES:
+==================================
+Pacotes são conjuntos de funções, ao inves de ter um modulo com milhares de funções, eu posso ter um pacote com todas elas separadas por categoria
+==================================
+CRIAR PACOTES:
+==================================
+Primeiro, na pasta onde você está, crie um python package, dentro do pacote de python vc cria outro pacote, esse pacote ira conter os arquivos de organização, para importar ele é so usar o comando "from nome do package imort modulos"
+
+from uteis import numbers, strs
+num = int(input('Digite um numero '))
+fat = numbers.factorial(num)
+strs.line()
+print(f'O fatorial de {num} é {fat}')
+strs.line()
+print(f'O dobro de {num} é {numbers.double(num)}')
+==================================
+EXERCICIOS
+==================================
+==================================
+==================================
+==================================
+==================================
+FEITOS:
+107:
+
+from uteis import numbers
+n = float(input('Digite o preço '))
+print(f'A metade de {numbers.coin(n)} é {numbers.coin(numbers.half(n))}')
+print(f'O dobro de {numbers.coin(n)} é {numbers.coin(numbers.double(n))}')
+print(f'Aumentado 10% de {numbers.coin(n)} teremos {numbers.coin(numbers.positive_percentage(n, 10))}')
+
+110:
+
+from uteis import numbers
+
+n = float(input('Valor '))
+numbers.abstract(n, 10, 10)
+
+111:
+
+#O 111 seria somente para transformar todos os pacotes em um unico modulo
+# , porem vc ja andou fazendo isso . . .
+==================================
+CORRIGIDOS:
+108:
+
+from uteis import numbers
+n = float(input('Digite o preço '))
+print(f'A metade de {numbers.coin(n)} é {numbers.coin(numbers.half(n))}')
+print(f'O dobro de {numbers.coin(n)} é {numbers.coin(numbers.double(n))}')
+print(f'Aumentado 10% de {numbers.coin(n)} teremos {numbers.coin(numbers.positive_percentage(n, 10))}')
+
+109:
+
+from uteis import numbers
+n = float(input('Digite o preço '))
+print(f'A metade de {numbers.coin(n)} é {numbers.half(n, True)}')
+print(f'O dobro de {numbers.coin(n)} é {numbers.double(n, True)}')
+print(f'Aumentado 10% de {numbers.coin(n)} teremos {numbers.positive_percentage(n, 10, True)}')
+
+112:
+
+from uteis import numbers
+
+p = numbers.ex112('Digite um numero ')
+numbers.abstract(p, 10, 10)
+
+==================================

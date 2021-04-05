@@ -1,0 +1,29 @@
+frase.count('letra') = serve para contar quantas vezes uma letra aparece na frase, ele diferencia 'o' minusculo de 'O' maiusculo 
+
+frase.upper() = joga toda a frase para letras maiusculas 
+
+frase.lower() = transforma toda a frase em minuscula
+
+len(frase) = serve para saber quantos digitos tem a frase 
+
+frase.strip() = strip remove espaços indesejados tanto a esquerda quanto a direita da frase
+
+lstrip = remove espaços a esquerda da frase
+
+rstrip = remove espaços a direita da frase 
+
+frase.replace('palavra 1','palavra 2') = troca a palavra um pela palavra dois se a palavra um tiver na frase
+
+comando "==" serve para localizar se ha uma deterinada palavra no inicio do texto:
+
+ cidade = str(input('Em qual cidade você nasceu?'))
+mai = cidade.upper().strip()
+print(mai[:5] == 'SANTO') lembresse de apois colocar a variavel que converte tudo para maisculo coloque [:] e o numero de letras da palavra para localizar a palavra no inicio da frase
+
+"IN" serve para localizar se determinada palavra esta no texto: ('Silva' in nome), se silva esta no nome ele dira true, se não ele dirar false
+
+frase.find = localiza a posição da frase ou letra
+
+frase.rfind = localiza a posiçaõ da letra ou da frase a partir do lado direito
+
+frase.splith() = cria uma lista com os intes da frase: 'Curso em Vídeo Python' = ['Curso', 'em', 'Vídeo', 'Python']

@@ -1,0 +1,7 @@
+    if cont == 1:#estrutura para saber se um numero é maior ou menor
+        maior = menor = soma
+    else:
+        if soma > maior:
+            maior = soma
+        if soma < menor:
+            menor = soma

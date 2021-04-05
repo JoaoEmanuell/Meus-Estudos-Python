@@ -1,0 +1,64 @@
+biblioteca math
+
+variavel floar = math.ceil = arredonda o numero de forma positiva
+
+num = float(input('Digite um numero decimal'))
+numt = (math.ceil(num))
+print('O numero decimal ao ser arredondado de forma positiva sera {}'.format(numt))
+
+int = math.copysign = exibe o primeiro numero digitado
+
+num = int(input('Numero'))
+numn = int(input('Numero 2'))
+numm = math.copysign(num, numn)
+
+float = math.fabs = transforma o numero digitado em positivo
+
+num = float(input('Numero'))
+numm = math.fabs(num)
+print('Resultado {}'.format(numm))
+
+int = math.factorial = exibe o fatorial de um numero
+
+num = int(input('Numero'))
+numm = math.factorial(num)
+print('Resultado {}'.format(numm))
+
+float = math.floor = arredondador abosluto
+
+num = float(input('Numero'))
+numm = math.floor(num)
+print('Resultado {}'.format(numm))
+
+math.fmod = exibe o resto da divisão
+
+num = int(input('Numero'))
+numn = int(input('Numero 2'))
+numm = math.fmod(num,numn)
+print('Resultado {}'.format(numm))
+
+int = math.fsum = exibe a soma dos digitos do numero digitado
+
+num = int(input('Numero'))
+numm = math.fsum(range(num))
+print('Resultado {}'.format(numm))
+
+int = math.gcd = exibe o mairo divisor comum entre dois numeros
+
+num = int(input('Numero'))
+nam = int(input('Numero2'))
+numm = math.gcd(num, nam)
+print('Resultado {}'.format(numm))
+
+float = math.sin = calcular o seno de um angulo
+float = math.cos = calcula o cosseno de um angulo
+float = math.tan = calcula a tangente de um angulo 
+(lembrando que tudo tem que ser convertido em radiano usando math.radians)
+
+an = float(input('Digite o ângulo que você deseja'))
+seno = math.sin(math.radians(an))
+print('O ângulo {} tem o seno de {:.2f}'.format(an,seno))
+cos = math.cos(math.radians(an))
+print('O ângulo {} tem o cosseno de {:.2f}'.format(an,cos))
+tan = math.tan(math.radians(an))
+print('O ângulo {} tem a tangente de {:.2f}'.format(an,tan))

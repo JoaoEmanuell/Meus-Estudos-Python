@@ -1,0 +1,235 @@
+Teoria:
+
+Diferente do For que nessecita de um limite o While vai se repetindo ate que a variavel se cumpra:
+
+while not maça:
+       passo
+pega
+
+while not maça:
+       if chão:
+          passo
+       if buraco:
+          pula
+       c = 1
+
+pratica:
+
+while c < 11: #enquanto c for inferior a 10 repita
+    print(c)
+    c += 1 #c recebe + 1, lembresse que o comando é += e não =+
+print('Fim')
+
+n = 1
+while n != 0: #enquanto n for diferente de 0 repita
+    n = int(input('Digite um valor '))
+print('fim')
+
+r = 'S'
+while r == 'S': #se r for igual a S continue rodando o progama, senão encerre
+    n = int(input('Digite um valor '))
+    r = str(input('Quer Continuar? [S/N] ')).upper().strip()
+print('fim')
+
+n = 1
+par = impar = 0 #da pra colocar assim pra não ter que digitar 2 linhas
+while n != 0: #enquanto numero for diferente de 0
+    n = int(input('Digite um valor '))
+    if n != 0: #so vai executar se o numero for diferente de 0
+        if n % 2 == 0:
+            par += 1
+        else:
+            impar += 1
+print('Você digitou {} numeros pares e {} numeros impares.'.format(par, impar))
+
+exercicios:
+
+feitos:
+
+057:
+
+s = 'p'
+fim = 'S'
+m = f = 0
+while fim != 'N': #enquanto fim for diferente de FIM repita
+    s = str(input('Qual é o seu sexo? ')).upper().strip()
+    if s == 'M':
+        m += 1
+    elif s == 'F':
+        f += 1
+    else:
+        print('{} Não é um sexo valido, digite novamente'.format(s))
+
+058:
+
+from random import randint
+from time import sleep
+aleatorizador = randint(1,10)
+tentativas = 0
+resultado = 0
+print('\033[1;31mO computador pensara em um numero entre 1 e 10, tente acertar\033[m')
+print('\033[1;33mSorteando . . .\033[m')
+sleep(0.25)
+while resultado != aleatorizador: #repita se resultado for diferente de aleatorizador
+    resultado = int(input('Qual foi o valor pensado pelo computador? '))
+    if resultado != aleatorizador:
+        tentativas += 1
+print('\033[1;35mParabens\033[m vc ganhou, o numero pensado pelo computador foi \033[1;31m{}\033[m'.format(aleatorizador))
+print('Foram nessesarias \033[1;32m{}\033[m tentativas'.format(tentativas))
+
+059:
+
+'''v1 = 0
+v2 = 0'''
+op = 0
+v1 = int(input('\033[1;31mDigite o primeiro valor: \033[m'))
+v2 = int(input('\033[1;32mDigite o segundo valor: \033[m'))
+while op != 5:
+    print('''\033[1;33m[1] Soma\033[m
+\033[1;34m[2] Subtração\033[m
+\033[1;35m[3] Maior\033[m
+\033[1;36m[4] Novos numeros\033[m
+\033[1;37m[5] Sair do progama\033[m''')
+    op = int(input(' '))
+    if op == 1:
+        print('\033[1;31m{}\033[m mais \033[1;32m{}\033[m é igual a \033[1;33m{}\033[m'.format(v1, v2, v1 + v2))
+    elif op == 2:
+        print('\033[1;31m{}\033[m menos \033[1;32m{}\033[m é igual a \033[1;34m{}\033[m'.format(v1, v2, v1 - v2))
+    if op == 3:
+        menor = v1
+        maior = v1
+        if (v2 < menor):
+            menor = v2
+        if (v2 > maior):
+            maior = v2
+        print('\033[1;31m{}\033[m é maior do que \033[1;32m{}\033[m '.format(maior, menor))
+    elif op == 5:
+        print('Fim do progama')
+    if op == 4:
+        v1 = int(input('\033[1;31mDigite o primeiro valor: \033[m'))
+        v2 = int(input('\033[1;32mDigite o segundo valor: \033[m'))
+        print('''
+\033[1;33m[1] Soma\033[m
+\033[1;34m[2] Subtração\033[m
+\033[1;35m[3] Maior\033[m
+\033[1;36m[4] Novos numeros\033[m
+\033[1;37m[5] Sair do progama\033[m''')
+        op = int(input(' '))
+        if op == 1:
+            print('\033[1;31m{}\033[m mais \033[1;32m{}\033[m é igual a \033[1;33m{}\033[m'.format(v1, v2, v1 + v2))
+        elif op == 2:
+            print('\033[1;31m{}\033[m menos \033[1;32m{}\033[m é igual a \033[1;34m{}\033[m'.format(v1, v2, v1 - v2))
+        if op == 3:
+            menor = v1
+            maior = v1
+            if (v2 < menor):
+                menor = v2
+            if (v2 > maior):
+                maior = v2
+            print('\033[1;31m{}\033[m é maior do que \033[1;32m{}\033[m '.format(maior, menor))
+        elif op == 5:
+            print('Fim do progama')
+        else:
+            print('{} não é uma opção valida, tente novamente'.format(op))
+
+61:
+
+primeiro = int(input('Primeiro termo '))
+razao = int(input('Razão '))
+decimo = primeiro + (11 - 1) * razao
+while primeiro != decimo:
+    print('{}'.format(primeiro), end=' ')
+    primeiro += razao
+print('fim')
+
+64:
+
+nd = 0
+soma = 0
+sm = 0
+while soma != 999:
+    soma = int(input('Digite um valor '))
+    nd += 1
+    sm += soma
+print('A quantidade de numeros digitados foi de {}'.format(nd - 1))
+if 999 > sm:
+    sm = 999 - sm
+    print('A soma dos numeros digitados foi de {}'.format(sm))
+else:
+    sm = sm - 999
+    print('A soma dos numeros digitados foi de {}'.format(sm))
+
+
+corrigidos:
+
+60:
+
+n = int(input('Numero '))
+c = n
+f = 1#vai servir pra calcular o fatorial
+while c > 0:
+    print('{}'.format(c), end=' ')
+    print(' X ' if c > 1 else ' = ', end=' ')
+    f *= c #vai pegar o valor de 1 e multiplicar por c
+    c -= 1
+print(f)
+
+62:
+
+print('Gerador de PA')
+primeiro = int(input('Primeiro termo: '))
+razao = int(input('Razão: '))
+termo = primeiro
+cont = 1
+total = 0
+mais = 10
+while mais != 0:#enquanto a variavel mais for diferente de 0 ele continua rodando
+    total = total + mais#aqui ele vai pegar o total e somar com mais
+    while cont <= total:#aqui ele vai rodar enqunato cont for igual ou inferior ao total
+        print('{} '.format(termo),end='')
+        termo += razao
+        cont += 1#conta os termos
+    print('Pausa')
+    mais = int(input('Quantos termos você quer mostrar a mais? '))
+print('Foram exibidos {} termos'.format(cont))
+
+63:
+
+print('Sequencia de Fibonacci')
+n = int(input('Quantos termos você quer mostrar: '))
+t1 = 0#os dois primeiros termos sempre serão esses
+t2 = 1
+print('{} {}'.format(t1, t2), end=' ')
+cont = 3
+while cont <= n:
+    t3 = t1 + t2#aqui ele vai somar o primeior + segundo termo e da o terceiro termo
+    print('{}'.format(t3), end=' ')
+    t1 = t2#aqui ele transforma o primeiro termo em segundo
+    t2 = t3#e aqui ele transforma o segundo em terceiro, assim por diante ate que a sequencia
+    cont += 1
+print('Fim')
+
+65:
+
+maior = menor = 0
+cm = 0
+sm = 0
+soma = 0
+media = 0
+cont = 0
+repetidor = 'S'
+while repetidor != 'N':
+    soma = int(input('Digite um valor '))
+    media += soma + sm
+    cont += 1
+    repetidor = str(input('Você deseja continuar? [S/N] ')).strip().upper()
+    if cont == 1:#estrutura para saber se um numero é maior ou menor, ser contador foi igual a 1 ele excecuta
+        maior = menor = soma #o primeiro numero vai ser o maior e o menor ao mesmo tempo
+    else:#a parti daqui ele já executa sempre
+        if soma > maior:#verifica se o num digitado agora é o maior
+            maior = soma#se for ele transforma o maior no atual
+        if soma < menor:#se o menor num for inferior ao digitado agora
+            menor = soma#ele transforma o menor no atual
+cm += media / cont
+print('A media entre os valores digitados foi: {}'.format(cm))
+print('O maior valor foi {} e o menor valor foi {}'.format(maior, menor))

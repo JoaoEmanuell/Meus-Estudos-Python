@@ -1,0 +1,10 @@
+estrutura de comparação de coisas baratas:
+if contm == 1 or prec < menor:
+        menor = prec
+        barato = produto
+
+Calcular a idade da pessoa:
+
+from datetime import date # biblioteca
+
+date.today().year - ano de nascimento #vai pegar o ano da data de hoje e subtrair do ano de nascimento da pessoa

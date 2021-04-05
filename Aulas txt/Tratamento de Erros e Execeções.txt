@@ -1,0 +1,128 @@
+Util:
+
+==================================
+Teoria:
+==================================
+Erros são dados dentro do codigo, como uma palavra escrita errada por exemplo, isso é chamado de erro de sintaxe, ja as execessões são quando o codigo esta escrito corretemente porem o progama recebe dados que ele não consegue interpretar, exemplo:
+
+a = int(input('Numerador '))
+b = int(input('Denominador '))
+c = a / b
+print(f'A divisão resultara em {c}')
+
+se eu digitar dessa forma não a erro de sintaxe, mas se eu escrever o numero por extenso ou colocar o denominador como 0, ele dara uma execeção, pois no primeiro caso ele estaria esperando um numero inteiro e no segundo é impossivel dividir por 0
+==================================
+PRATICA
+==================================
+==================================
+==================================
+==================================
+==================================
+TRY:
+==================================
+O comando try serve para tentar, testar, ele ira executar o codigo:
+
+try:
+    a = int(input('Numerador '))
+    b = int(input('Denominador '))
+    r = a / b
+==================================
+EXCEPT:
+==================================
+O except serve como exeções, caso der algum erro ele ira exibir uma mensagem personalizada:
+
+except:
+    print('Infelizmente ouve um problema, por favor tente novamente')
+==================================
+ELSE
+==================================
+Caso eu não tenha nenhum erro, ele ira executar esse comando
+
+else:
+    print(f'A divisão resultara em {r}')
+
+obs, else é opcional
+==================================
+FINALLY
+==================================
+Finally sera exibido independete do codigo funcionar ou se ele der erro:
+
+finally:
+    print('Volte sempre :)')
+==================================
+EXIBIR QUAL FOI O ERRO EXECPETION
+==================================
+Para exibir qual foi o meu erro em forma de mensagem personalizada eu uso o comando
+
+except Exception as erro:
+    print(f'Infelizmente ouve um problema, por favor tente novamente, erro {erro.__class__}')
+
+nesse caso ele ira exibir a classe do erro
+==================================
+VALUEERROR, TYPEERROR
+==================================
+Caso ele tenha um erro de valor ou de tipo ele ira exibir a mensagem:
+
+except (ValueError, TypeError):
+    print('Tivemos um erro com os tipos de dado que você digitou')
+==================================
+ZERODIVISIONERROR
+==================================
+Caso o erro seja divisão por 0 ele ira exibir:
+
+except ZeroDivisionError:
+    print('O denominador não pode ser igual a zero')
+==================================
+KEYBOARDINTERRUPT
+==================================
+Caso o usuario não deseje informar ele ira exibir:
+
+except KeyboardInterrupt:
+    print('O usuario preferiu não informar os dados')
+==================================
+OBS:
+
+Dentro de um Try eu posso ter milhares de except, não existe limitação para a quantidade de exept, assim como o else e o finnaly são opcionais, e eu posso colocar um try para cada parte do progama, tente algo, depois tente outro, e ect
+==================================
+EXERCICIOS
+==================================
+==================================
+==================================
+==================================
+==================================
+FEITOS
+
+113:
+while True:
+    while True:
+        try:
+            i = int(input('Digite um numero inteiro '))
+        except:
+            print(f'Por favor digite um numero inteiro valido')
+        else:
+            break
+    while True:
+        try:
+            r = float(input('Digite um numero real '))
+        except:
+            print(f'Por favor digite um numero real valido')
+        else:
+            break
+    break
+print(f'O valor inteiro digitado foi {i} e o real foi {r}')
+
+==================================
+CORRIGIDOS
+114:
+
+import urllib
+import urllib.request
+
+try:
+    site = urllib.request.urlopen('http://pudim.com.br')
+except urllib.erro.URLError:
+    print('O site Pudim não está acessivel no momento')
+else:
+    print('Consegui acessar o site Pudim com sucesso')
+
+==================================

@@ -1,0 +1,440 @@
+util:
+
+Max = Indica o maior valor na lista, forma de executar: max(lista)
+
+Mim = Indica o menor valor na lista, forma de executar: mim(lista)
+
+Count = Indica a quantidade de vezes que determinado valor apareceu, forma de executar: lista.count(valor)
+
+
+Teoria:
+
+Diferente das tuplas as listas são mutaveis.
+
+Listas sempre começam e terminam usando [] 
+
+==================================
+SUBISTITUIÇÃO
+==================================
+Para Substituir um item em uma lista é so colocar:
+
+lista[x] = item
+lanche[4] = picole
+
+lembrando que a contagem começa a parti do 0
+==================================
+ADIÇÃO
+==================================
+Para adicionar um novo item na POSIÇÃO FINAL em uma lista usa o comando:
+
+lista.append('item')
+lanche.append('biscoito')
+==================================
+Para adicionar um novo item na POSIÇÃO QUE EU QUERO usa o comando:
+
+lista.insert(x,'item')
+lanche.insert(0,'cachoro quente')
+
+obs: todos os item ganham uma posição a partir do momento em que eu adicionei isso, exemplo, se eu colocar algo na posição 0, todos os itens a parti da posição 0 sobem uma posição, o que antes era 0 vira 1, antes 1 vira 2 e assim por diante, lembrando que a contagem começa a partir do 0
+==================================
+DELETAR
+==================================
+Para deletar um item na lista eu posso usar os comandos:
+
+del lista[x]
+del lanche[3]
+
+vai deletar o item na posição em que eu mandar, lembrando que a contagem começa a parti do 0
+==================================
+esse comando normalmente deleta o ultimo item da lista, mas caso a posição seja informada ele ira deletar o que esta na posição:
+
+lista.pop() [caso deixe sem nada ele ira apagar o ultimo item]
+lanche.pop()
+
+lista.pop(x) [caso informe a posição ele ira apagar o item naquela posição, lembrando que a contagem começa a parti do 0]
+lanche.pop(3)
+==================================
+esse daqui remove o item com o nome indicado:
+
+lista.remove('item')
+lanche.remove('pizza')
+
+obs remove: caso o item não exista na lista ele normalmente dara um erro, mas se usar um comando como if ele pode evitar o erro:
+
+if 'item'  in lista:
+   lista.remove('item')
+if'pizza' in lanche:
+   lanche.remove('pizza')
+
+obs geral: ao remover um item a lista se organiza automaticamente, todos os valores acima do valor deletado perdem um, exemplo, se o valor 3 for deletado o 4 vira o 3, o 5 vira 4 e assim por diante, mas caso seja um numero ele ira remover a primeira ocorrencia do numero indicado
+==================================
+RANGE NAS LISTAS
+==================================
+Basicamente vai criar uma lista baseado em um alcance (RANGE):
+
+variavel = list(range(x, y))
+
+list == declara que isso sera uma lista
+
+valores = list(range(4, 11))
+
+a lista ira receber os valores numericos, começando de 4 e indo ate 10, no caso sera uma lista com 6 chaves, criando os elementos em ordem cresente, lembrando que ele ira parar 1 item antes do numero indicado no final
+==================================
+ORDEM
+==================================
+esse comando vai servir para deixar os valores em ordem cresente:
+
+lista = ['a','c','b','g','y','e','f']
+lista.sort()
+lista == ['a', 'b', 'c', 'e', 'f', 'g', 'y']
+
+valores = [8,2,5,4,9,3,0]
+valores.sort()
+valores == [0, 2, 3, 4, 5, 8, 9]
+
+ou seja esse comando deixa os valores em ordem alfabetica ou numerica
+==================================
+esse comando vai servir para deixar os valores em ordem decresente:
+
+lista = ['a','c','b','g','y','e','f']
+lista.sort(reverse=True) #comando reverse
+lista == ['y', 'g', 'f', 'e', 'c', 'b', 'a']
+
+valores = [8,2,5,4,9,3,0]
+valores.sort(reverse=True)
+valores == [9, 8, 5, 4, 3, 2, 0]
+
+ou seja, esse comando deixa os valores na ordem reversa
+==================================
+CONTAGEM
+==================================
+usa esse comando para saber a quantidade de valores na lista:
+
+len(lista) == x
+len(valores) == 7
+
+==================================
+==================================
+==================================
+PRATICA
+==================================
+==================================
+==================================
+ESCREVER LISTA
+==================================
+
+num = [1, 2, 3, 4]
+print(num)
+
+==================================
+SUBISTITUIR ITEM
+==================================
+
+num = [1, 2, 3, 4]
+num[3] = 5
+print(num)
+
+==================================
+ADICIONAR ITEM NA POSIÇÃO FINAL
+==================================
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+print(num)
+
+==================================
+ORDEM ALFABETICA
+==================================
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+num.sort()
+print(num)
+
+================================== 
+ORDEM REVERSA
+================================== 
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+num.sort(reverse=True)
+print(num)
+
+==================================
+CONTAGEM
+================================== 
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+num.sort(reverse=True)
+print(num)
+print(f'Essa lista tem {len(num)} elementos')
+
+==================================
+INSERIR
+==================================
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+num.sort(reverse=True)
+num.insert(3, 6)
+print(num)
+print(f'Essa lista tem {len(num)} elementos')
+
+==================================
+ELIMINAR ULTIMO ELEMENTO
+==================================
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+num.sort(reverse=True)
+num.insert(3, 6)
+num.pop()
+print(num)
+print(f'Essa lista tem {len(num)} elementos')
+
+==================================
+ELIMINAR ELEMENO EM UMA POSIÇÃO ESPECIFICA USANDO O POP
+==================================
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+num.sort(reverse=True)
+num.insert(3, 6)
+num.pop(2)
+print(num)
+print(f'Essa lista tem {len(num)} elementos')
+
+==================================
+REMOVE
+==================================
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+num.sort()
+num.insert(3, 6)
+num.remove(2) # ele ira remover o primeiro 2 que aparecer
+print(num)
+print(f'Essa lista tem {len(num)} elementos')
+
+caso de erro:
+
+num = [1, 2, 3, 4]
+num[3] = 5
+num.append(9)
+num.sort()
+num.insert(3, 2)
+if 2 in num:
+    num.remove(2)
+print(num)
+print(f'Essa lista tem {len(num)} elementos')
+
+==================================
+RANGE
+==================================
+
+valores = []
+valores.append(2)
+valores.append(6)
+valores.append(8)
+
+for v in valores:# para cada valor em valores escreva cada um individualmente
+    print(f'{v}...')
+
+==================================
+RANGE COM OS VALORES E POSIÇÕES
+==================================
+
+valores = []
+valores.append(2)
+valores.append(6)
+valores.append(8)
+
+for c, v in enumerate(valores):# aqui ele ira exibir a posição e o valor daquela posição
+    print(f'Posição {c} valor {v}!')
+
+==================================
+RANGE COM VALORES DE LISTA EDITAVEL, POSIÇÃO E VALOR
+==================================
+
+valores = []
+
+for cont in range(0, 5):#ira pedir para digitar 5 valores diferentes
+    valores.append(int(input('\033[1:32mDigite um valor \033[m')))
+
+for c, v in enumerate(valores):# aqui ele ira exibir a posição e o valor daquela posição
+    print(f'Posição {c} valor {v}!')
+
+==================================
+LIGAÇÃO DE LISTAS
+==================================
+
+a = [1, 2, 3, 4, 7]
+b = a
+b[2] = 8
+print(f'Lista A:{a}')
+print(f'Lista B:{b}')
+# acaba por acontecer que uma alteração afete todas as listas
+
+==================================
+COPIA DE LISTAS
+==================================
+
+a = [1, 2, 3, 4, 7]
+b = a[:]#isso aqui vai pegar todos os valores de A e copiar para B, assim se eu alterar algo em B não ira mudar nada em A
+b[2] = 8
+print(f'Lista A:{a}')
+print(f'Lista B:{b}')
+==================================
+EXERCICIOS
+==================================
+==================================
+==================================
+==================================
+==================================
+FEITOS:
+==================================
+81:
+
+lista = []
+fim = ' '
+
+while True:
+    lista.append(int(input('Digite um valor ')))
+    while fim not in 'SsNn':
+        fim = str(input('Deseja continuar? '))[0]
+    if fim in 'Nn':
+        break
+    fim = ' '
+
+print('='*30)
+print(f'Foram digitados {len(lista)} numeros')
+print('='*30)
+print(f'A lista escrita de forma reversa fica: ')
+lista.sort(reverse=True)
+print(lista)
+print('='*30)
+if lista.count(5) == True:
+    print('O numero cinco está \033[1:32mpresente\033[m na lista na lista')
+else:
+    print('O numero cinco \033[1:31mnão\033[m está na lista')
+==================================
+82:
+
+lista = []
+listapar = []
+listaimpar = []
+fim = ' '
+
+while True:
+    n = int(input('Digite um valor: '))
+    lista.append(n)#a lista principal sempre ira receber o numero digitado
+    if n % 2 == 0:#se o resto da divisão do numero por 2 for igual a 0
+        listapar.append(n)#a lista par recebe o numero digitado
+    else:
+        listaimpar.append(n)#se não a lista impar recebe o numero digitado
+    while fim not in 'SsNn':
+        fim = str(input('Você deseja continuar? '))[0]
+    if fim in 'Nn':
+        break
+    fim = ' '
+
+print(f'A lista completa apresenta os valores {lista}\n')
+print(f'Os numeros pares digitados foram {listapar}\n')
+print(f'Os numeros impares digitados foram {listaimpar}\n')
+
+==================================
+CORRIGIDOS:
+==================================
+78:
+
+valores = []
+mai = 0
+men = 0
+for c in range(0, 5):
+    valores.append(int(input(f'Digite um valor na posição {c} ')))
+    if c == 0:
+        mai = men = valores[c]
+    else:
+        if valores[c] > mai:
+            mai = valores[c]
+        if valores[c] < men:
+            men = valores[c]
+
+print(f'Os valores digitados foram {valores}')
+print(f'O maior valor digitado foi {mai} nas posições: ', end='')
+for i, v in enumerate(valores):
+    if v == mai:
+        print(f'{i}, ', end='')
+print()
+print(f'O menor valor digitado foi {men} nas posições: ', end='')
+for i, v in enumerate(valores):
+    if v == men:
+        print(f'{i}, ', end='')
+==================================
+79:
+
+val = []#lista vazia
+fim = ' '#fim é definido como str com um espaço
+while True:
+    pergunta = (int(input('Digite um valor: ')))#aqui temos uma pergunta
+    if pergunta not in val:#se o valor de pergunta não estiver na lista
+        val.append(pergunta)#adicione o valor de pergunta a lista
+    else:#se não
+        print('Numero duplicado, não ira ser adicionado')#escreva 'numero duplicado' esse numero não sera adicionado
+    while fim not in 'SsNn':#enquanto fim não tiver uma resposta como 'SsNn' repita
+        fim = str(input('Deseja Finalizar? '))[0].upper()#pergunta fim
+    if fim in 'Ss':#se dentro de fim tiver 'Ss'
+        break#encerre
+    fim = ' '#fim retorna a uma str com um espaço
+print(sorted(val))#escreva a lista em ordem numerica
+
+==================================
+80:
+
+lista = []
+for c in range(0, 5):#repita 5 vezes
+    n = int(input('Digite um valor: '))
+    if c == 0:#primeiro valor
+        lista.append(n)
+        print('Primeiro valor adicionado')
+    elif n > lista[-1]:#verifica se o ultimo valor digitado é superior ao ultimo valor da lista, usa o [-1] para saber qual é o ultimo valor da lista
+        lista.append(n)
+    else:
+        pos = 0
+        while pos < len(lista): #enquanto a posição for inferior ao numero de intes na lista, repita
+            if n <= lista[pos]:#se o numero digitado for igual ou superior a posição da lista
+                lista.insert(pos, n)#coloque na lista o numero digitado antes da posição
+                print(f'Adicionado na posição {pos} da lista')
+                break
+            pos += 1
+
+print(lista)
+==================================
+83:
+
+expr = str(input('Digite a expressão: '))
+pilha = []
+for símb in expr:#para cada simbolo na expressão
+    if símb == '(':#se o simbolo for um parentese abrindo
+        pilha.append('(')#coloque ele na lista
+    elif símb == ')':#se for um parentese fechando
+        if len(pilha) > 0:#e se a quantidade de intens em pilha for maior do que 0
+            pilha.pop()#delete o ultimo adicionado
+    else:
+        pilha.append(')')#se não, adicione um parentese fechado a pilha e encerre
+        break
+if len(pilha) == 0:#se a quantidade de intens a pilha for igual a 0
+    print('Sua expressão está valida')
+else:#se não
+    print('Sua expressão está invalida')
+print(pilha)
+==================================

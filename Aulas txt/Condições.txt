@@ -1,0 +1,140 @@
+condições:
+
+if = se (em um bloco positivo, se determinada ação for tomada o bloco é executado, caso o contrario o outro bloco sera executado)
+
+else = senão
+
+exemplo com if:
+
+nome = str(input('Qual é o seu nome?')).strip()
+fname = nome.upper()
+if fname == 'EMANUEL':
+    print('Que nome lindo você tem!')
+print('Bom dia {}!'.format(nome))
+
+exemplo com else:
+
+nome = str(input('Qual é o seu nome?')).strip()
+fname = nome.upper()
+if fname == 'EMANUEL':
+    print('Que nome lindo você tem!')
+else:
+    print('Seu nome é tão normal!')
+print('Bom dia {}!'.format(nome))
+
+exemplo if:
+
+m1 = float(input('Primeira nota'))
+m2 = float(input('Segunda nota'))
+me = (m1+m2)/2
+print('Sua media foi {}'.format(me))
+if me >=7.0:
+    print('Sua media foi boa')
+
+exemplo else:
+
+m1 = float(input('Primeira nota'))
+m2 = float(input('Segunda nota'))
+me = (m1+m2)/2
+print('Sua media foi {}'.format(me))
+if me >=7.0:
+    print('Sua media foi boa')
+else:
+    print('Sua media foi ruim')
+
+==================================
+Jogo das adivinhações numericas:
+
+from random import randint
+from time import sleep #comando sleep faz o computador dar um delay para executar o proximo comando
+print('Jogo das adivinhações')
+print('O computador sorteara um numero entre 0 a 5 e você tera que dizer qual numero é esse!')
+print('Sorteando . . .')
+num = randint(0,5)
+sleep(3.0) #no caso ele conta 3 segundos e executa
+cho = int(input('Qual foi o numero escolhido pelo computador?'))
+if num == cho:
+    print('Parabens você acertou!')
+else:
+    print('Você errou, mais sorte da proxima vez')
+print('resultado:',num)
+==================================
+Radar Eletronico:
+
+km = int(input('A quantos km/h o carro estava andando?'))
+mu = (km-80)*7.00
+if km >80:
+    print('Parado, você esta multado no valor de {} reais'.format(mu))
+else:
+    print('Tudo bem pode passar')
+==================================
+Par ou Impar:
+
+num = int(input('Me diga um número'))
+resultado = num % 2
+par = (0)
+impar = (1)
+if resultado == impar:
+    print('O número {} é impar'.format(num))
+else:
+    print('O número {} é par'.format(num))
+==================================
+Custo viagem:
+
+vi = float(input('Qual é a distancia da viagem?'))
+if vi<=200.0:
+    print('O custo da viagem será {} reais'.format(vi*0.50))
+else:
+    print('O custo da viagem será {} reais'.format(vi*0.45))
+===================================
+Ano bixesto:
+
+from datetime import date
+ano = int(input('Qual ano você quer analisar? Coloque 0 para o ano atual'))
+if ano == 0:
+    ano = date.today().year # a biblioteca datetime serve para eu contabilizar dias, o comando diz: dia do ano de hj, no caso 2021
+if ano % 4 == 0 and ano % 100 != 0 or ano % 400 == 0: #o sinal != quer dizer diferente, and = e, or = ou
+    print('O ano {} é bixessto'.format(ano))
+else:
+    print('O ano {} não é bixessto'.format(ano))
+==================================
+Menor e maior valor digitado:
+
+vu = float(input('Digite o primeiro valor'))
+vd = float(input('Digite o segundo valor'))
+vt = float(input('Digite o terceiro valor'))
+#menor valor
+menor = vu
+if vd < vu and vd < vt:
+    menor = vd
+if vt < vu and vt < vd:
+    menor = vt
+print('O menor valor digitado foi {}'.format(menor))
+#maior valor
+maior = vu
+if vd > vu and vd > vt:
+    maior = vd
+if vt > vu and vt > vd:
+    maior = vt
+print('O maior valor digitado foi {}'.format(maior))
+
+==================================
+Salario:
+
+salario = float(input('Qual é o salario do funcionario?'))
+if salario <= 1250.00:
+    aumento = (salario/100)*15
+    print('O salario com aumento passara a ser de {}'.format(salario+aumento))
+else:
+    aumentoo = (salario/100)*10
+    print('O salario com aumento passara a ser de {}'.format(aumentoo+salario))
+==================================
+Analisador de triangulos:
+
+r1 = float(input('Primeiro segmento'))
+r2 = float(input('Segundo segmento'))
+r3 = float(input('Terceiro segmento'))
+if r1 < r2 + r3 and r2 < r1 + r3 and r3 <r1 + r2:
+    print('Os segmentos acima podem formar tirangulo')
+else:
+    print('Os segmentos acima não podem formar triangulo')
