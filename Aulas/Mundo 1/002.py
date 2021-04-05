@@ -1,0 +1,5 @@
+nome = input ('Qual é o seu nome?')
+idade = input ('Qual é a sua idade?')
+peso = input ('Qual é o seu peso?')
+cor = input ('Qual é a sua cor favortia?')
+print (nome,idade,peso,cor)

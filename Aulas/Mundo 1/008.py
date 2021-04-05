@@ -1,0 +1,18 @@
+'''n1=int(input('Primeiro Numero'))
+n2=int(input('Segundo Numero'))
+s=n1+n2
+#print('A soma entre',n1, 'e',n2, 'vale',s)
+print('A soma entre \033[31m{}\033[m e \033[34m{}\033[m vale \033[1;36m{}\033[m!'.format(n1,n2,s) )'''
+n = (input('\033[31mDigite algo\033[m'))
+print("\033[30mÉ letra?\033[m", n.isalpha())
+#print('É uma letra?'n.isalpha())
+print("\033[31mÉ numeral?\033[m", n.isnumeric())
+print('\033[32mÉ alphanumerico?\033[m',n.isalnum())
+# print("É numerico?", n.isnumeric())
+# print('Idetificador?', n.isidentifier())
+print('\033[33mÉ imprimivel?\033[m', n.isprintable())
+print('\033[34mÉ espaço?\033[m', n.isspace())
+print('\033[35mEsta em letra de forma?\033[m', n.isupper())
+print('\033[36mÉ miniscula?\033[m', n.islower())
+# print('Esta em letra de forma ou minuscula?', n.isupper() + n.islower())
+print('\033[37mEstá capitalizada?\033[m', n.istitle())

@@ -1,0 +1,7 @@
+print('\033[1;31mAlguel de carros!\033[m')
+dias = int(input('\033[1;32mQuantos dias o carro foi alugado? \033[m'))
+km = int(input('\033[1;33mQuantos Kilometros o carro andou? \033[m'))
+preçodias = (dias * 60)
+preçokm = (km * 0.15)
+preçofinal = (preçodias + preçokm)
+print('O total do valor do aluguel do carro sera \033[1;35m{}\033[m'.format(preçofinal))
