@@ -1,3 +1,5 @@
+#Note que no mundo 1 e no mundo 2 existem um arquivo py com o mesmo nome, isso foi um erro na hora em que eu estava criando os arquivos, perdoem a confusão
+
 from time import sleep
 print('\033[1;31mEmprestimo casa!\033[m')
 sleep(0.75)
