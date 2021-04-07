@@ -1,0 +1,147 @@
+Toda a fonte desse bloco de notas estará no site da w3schools
+
+https://www.w3schools.com/python/python_classes.asp
+
+==================================
+
+Python é uma linguagem orienta a objeto, quase tudo dentro de py é um objeto, uma classe é como um contrutor de objetos ou um "projeto" para a criação de objetos
+
+==================================
+
+Para criar uma classe você utiliza o comando "class":
+
+class Nome_da_Classe:
+     atributos
+
+==================================
+
+Criar objeto
+
+Agora vamos usar a classe para criar um objeto
+
+class MyClass:#crio uma classe
+     x = 5#essa classe possui a variavel x que tem o valor igual a 5
+
+p1 = MyClass()# crio o objeto p1 que recebe "MyClass"
+
+print(p1.x)#mando com que print o objeto p1 e a var x que esta dentro da classe, o . serve para indicar o item dentro da classe.
+
+==================================
+
+Função init
+
+A função __init__() existe em todas as classes, ela é executada assim que a classe é chamada, normalmente usa-se para atribuir valores às propiedades do objeto ou outras operações que são necessárias quando o objeto esta sendo criado:
+
+Exemplo usando a função init para passar valores de nome e idade
+
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+p1 = Person("John", 36)
+
+print(p1.name)
+print(p1.age)
+
+Dessa forma a função init ira receber os parametros de nome e idade, ela sera executada em primeira mão ao executar a classe
+
+Note que a função __init__() é chamada automaticamente toda vez que a classe está sendo usada para criar um novo objeto.
+
+==================================
+
+Metodo de objeto
+
+Obejtos tambem podem conter metodos, metodos dentro do obejtos são funções que pertecem ao objeto
+
+Exemplo:
+
+class Pessoa:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def myfunc(self):
+        print("Ola, meu nome é " + self.name)#Metodo dentro da função
+
+p1 = Pessoa('João', 15)
+
+p1.myfunc()
+
+O objeto atribui a função init o nome e a idade, depois ele pega a função myfunc e usa o metodo dela que faz escrever o nome
+
+Note que o parâmetro self é uma referência à instância atual da classe e é usado para acessar variàveis que pertencem à classe, de forma geral, ele perimite acessar e utilizar diversas variaveis dentro das funções mesmo que as mesmas não estejam dentro da função desejada
+
+==================================
+
+Parametro propio (self)
+
+O parametro self é uma referência à instância atual da classe e é usado para acessar variáveis que pertencem a classe
+
+Não precisa ser nomeado self, nós podemos chamá-lo do que quisermos mas ele deve ser obrigatoriamente o primeiro parâmetro de qualquer função na classe:
+
+Exemplo usando outras palavras ao inves de self:
+
+class Pessoa:
+    def __init__(cleiton, name, age):
+        cleiton.name = name
+        cleiton.age = age
+    
+    def myfunc(cleitinho):
+        print("Ola, meu nome é " + cleitinho.name)
+
+p1 = Pessoa('João', 15)
+
+p1.myfunc()
+
+Mesmo que eles estejam com nomes diferentes ainda sim por estarem na primeira posição de cada def, eles irão serão tratados como self, permitindo acessar outras vars dentro da class
+
+==================================
+
+Modificando propiedades de objetos
+
+Para modificar as propiedades de um objeto é bem simples:
+
+obejct_name.funciontion = dado
+
+p1.age = 40
+
+a idade de p1 passara a ser 40 ao inves de 15
+
+==================================
+
+Deletando propiedades de objetos
+
+Para deletar propiedades de objetos usa-se o comando del:
+
+del object.propertie
+
+del p1.age
+
+dessa forma ele ira deletar a idade do objeto p1
+
+==================================
+
+Deletando Objetos
+
+Para deletar obejetos usa-se o comando del
+
+del object
+
+del p1
+
+Dessa forma por exemplo ele ira deletar o objeto p1
+
+==================================
+
+Declaração de passagem (pass Statement)
+
+Normalmente as definições de class não podem estar vazias, mas se por acaso elas estiverem você utiliza pass para evitar erros:
+
+class name_class:
+     pass
+
+class Pessoas:
+     pass
+
+Dessa forma ele não ira acusar erro ou bugar.
