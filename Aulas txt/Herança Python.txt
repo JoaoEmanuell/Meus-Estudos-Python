@@ -1,0 +1,110 @@
+Toda a fonte desse txt é do site da w3scools
+
+https://www.w3schools.com/python/python_inheritance.asp
+
+==================================
+
+A herança nos permite definir uma classe que herdara os métodos e propiedades de outra classe.
+
+A classe pai é a classe da qual está sendo herdada a informação, também chamada de classe base
+
+A classe filha é a classe que herda de outra classe, também chamada de classe derivada
+
+==================================
+
+CRIAR CLASSE PAI
+
+Para criar uma classe pai é bem simples, alias qualquer classe pode ser uma classe pai por isso que a sintaxe é a mesma de criar qualquer outra classe:
+
+teor:
+
+class name_class:
+     propiets
+
+ex:
+
+class Pessoa:#criei uma classe chamada Pessoa
+    def __init__(self, pname, uname):#função que inicia a classe
+        self.primeiro_nome = pname#var com self recebe o pname
+        self.ultimo_nome = uname#var com self recebe o uname
+        
+    def escrevernome(self):#função que escreve o nome
+        print(self.primeiro_nome, self.ultimo_nome)#escreva o primeiro_nome e o ultimo_nome
+        
+x = Pessoa('João', 'Emanuel')#x recebe pessoa e 2 parametros
+x.escrevernome()#x.escrevernome
+
+==================================
+
+CRIAR CLASSE FILHA
+
+Para criar uma classe filha é so criar uma classe e passar a classe pai como parametro
+
+teor:
+
+class class_name(daddy_class_name)
+    funciont
+
+ex:
+
+class Estudante(Pessoa):
+    pass #pass serve para quando não quiser adicionar nenhuma outra propiedade ou método à classe
+
+agora a class estudante recebe os mesmos paramentros da classe pai
+
+x = Estudante('João', 'Emanuel')
+x.escrevernome()
+
+==================================
+
+ADICIONAR __init__() A FUNÇÃO FILHA
+
+Ate agora so criamos uma class filha que recebe todos a class pai, porem queremos adicionar uma __init__ que ira subistituir a hirearquia da class pai na class filha, ao inves de usar a pass
+
+class Estudante(Pessoa):
+    def __init__(self, pname, uname):
+        #propiedades
+
+Mas como eu disse caso a __init__ seja adicionada a função __init__ da classe pai sera perdida para manter a herança da função do pai, adicione uma __init__() a função do pai dentro da class filha
+
+class Estudante(Pessoa):
+    def __init__(self, pname, uname):
+        Pessoa.__init__(self, pname, uname)
+
+Agora manteremos a herança da class pai e estamos prontos para adicionar funcionalidade na __init__()
+
+==================================
+
+FUNÇÃO SUPER
+
+py tmb tem uma função chamada super() que fará a classe filha herdar todos os métodos e propiedades de seu pai
+
+class Estudante(Pessoa):
+    def __init__(self, pname, uname):
+        super()__init__(pname, uname)
+
+==================================
+
+ADICIONAR PROPIEDADES
+
+Para adicionar propeidades em uma classe filha é bem simples
+
+crie uma var dentro da def e adicione um paramentro a def:
+
+class Estudante(Pessoa):
+    def __init__(self, pname, uname, ano):
+        super()__init__(pname, uname)
+        self.Ano_de_graduação = ano
+
+==================================
+
+ADICIONAR METODOS
+
+Para adicionar um metodo na class filha é igual a adicionar um na class pai
+
+def bem_vindo(sef):
+        print('Bem vindo', self.primeiro_nome, self.ultimo_nome, "para a classe do ano", self.Ano_de_graduação)
+
+Note q caso vc adicione um método que ja exista na classe pai, a hernaça da classe pai sera subistituida
+
+==================================
