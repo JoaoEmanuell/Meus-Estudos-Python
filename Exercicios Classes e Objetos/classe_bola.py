@@ -1,5 +1,14 @@
 class bola():
+    """[Classe bola]
+    """
     def __init__(self, cor, circ, mat):
+        """[summary]
+
+        Args:
+            cor ([str]): [Determina a cor da bola]
+            circ ([int]): [Determina a circuferencia da bola]
+            mat ([str]): [Determina o material da bola]
+        """
         self.cor  = cor
         self.circ = circ
         self.mat  = mat
