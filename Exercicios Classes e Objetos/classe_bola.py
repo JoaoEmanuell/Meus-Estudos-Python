@@ -12,9 +12,12 @@ class bola():
         print(f"A cor da bola é {self.cor}")
         print(f"A circuferencia da bola é {self.circ}")
         print(f"O material da bola é {self.mat}")
+        
+    def mostrarcor(self):
+        print(f'A cor da bola é {self.cor}')
 
 p1 = bola('Branco', 10, "Plastico")
 
 p1.trocarcor()
 
-p1.escrever()
+p1.mostrarcor()
