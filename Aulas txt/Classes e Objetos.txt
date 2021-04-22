@@ -52,7 +52,7 @@ Note que a função __init__() é chamada automaticamente toda vez que a classe 
 
 Metodo de objeto
 
-Obejtos tambem podem conter metodos, metodos dentro do obejtos são funções que pertecem ao objeto
+Obejetos tambem podem conter metodos, metodos dentro do obejetos são funções que pertecem ao objeto
 
 Exemplo:
 

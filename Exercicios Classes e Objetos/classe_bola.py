@@ -4,11 +4,17 @@ class bola():
         self.circ = circ
         self.mat  = mat
 
+    def trocarcor(self):
+        corn = str(input("Qual é a cor da bola? "))
+        self.cor = corn
+    
     def escrever(self):
         print(f"A cor da bola é {self.cor}")
         print(f"A circuferencia da bola é {self.circ}")
         print(f"O material da bola é {self.mat}")
 
 p1 = bola('Branco', 10, "Plastico")
+
+p1.trocarcor()
 
 p1.escrever()
