@@ -6,7 +6,7 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 [Clique aqui para ir para o site dos exercicios](https://wiki.python.org.br/ExerciciosClasses)
 
-- [x] Classe Bola
+- [x] [Classe Bola](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_bola.py)
 
 - [x] Classe Quadrado
 
