@@ -8,13 +8,13 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 - [x] [Classe Bola](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_bola.py)
 
-- [x] Classe Quadrado
+- [x] [Classe Quadrado](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_quadrado.py)
 
-- [x] Classe Retangulo
+- [x] [Classe Retangulo](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_retangulo.py)
 
-- [x] Classe Pessoa
+- [x] [Classe Pessoa](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_pessoa.py)
 
-- [x] Classe Conta Corrente
+- [x] [Classe Conta Corrente](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_conta_corrente.py)
 
 - [ ] Classe TV
 
