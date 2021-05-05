@@ -16,7 +16,7 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 - [x] [Classe Conta Corrente](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_conta_corrente.py)
 
-- [x] Classe TV[https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_TV.py]
+- [x] [Classe TV](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_TV.py)
 
 - [ ] Classe Bichinho Virtual
 
