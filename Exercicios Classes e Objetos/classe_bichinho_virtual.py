@@ -10,9 +10,20 @@ class bichinho():
         self.fome = fome
         self.saude = saude
         self.idade = idade
-  
+        self.humor = ''
+        
+        atual = self.fome + self.saude
+        if atual < 25:
+            self.humor = 'Irritado'
+        elif atual < 50:
+            self.humor = 'Triste'
+        elif atual < 75:
+            self.humor = 'Feliz'
+        else:
+            self.humor = "Muito feliz"
+
     def status(self):
-        return (f"O nome do bichinho é {self.nome}A fome de {self.nome} está em {self.fome}%\nA saúde de {self.nome} está em {self.saude}%\nA idade de {self.nome} é {self.idade} anos")
+        return (f"O nome do bichinho é {self.nome}\nA fome de {self.nome} está em {self.fome}%\nA saúde de {self.nome} está em {self.saude}%\nA idade de {self.nome} é {self.idade} anos\n{self.nome} está em {self.humor}")
     
     def alterar_nome(self):
         self.nome = str(input("Qual o novo nome do bichinho? "))
@@ -29,10 +40,7 @@ class bichinho():
     def alterar_idade(self):
         self.idade = abs(int(input(f"Qual a nova idade de {self.nome}? ")))
         return (f"A idade de {self.nome} é {self.idade} anos")
-    
-    
-    
 
 bichinho = bichinho("Midas")
 
-print(bichinho.alterar_idade())
+print(bichinho.status())
