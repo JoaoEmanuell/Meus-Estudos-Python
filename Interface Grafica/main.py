@@ -12,25 +12,28 @@ class TelaPython:
             [sg.Button('Enviar dados')]
         ]
         
-        janela = sg.Window('Dados do Usuário').layout(layout) #sg.Window, cria uma janela com o nome especificado, .layout() passa o layout da janela
+        self.janela = sg.Window('Dados do Usuário').layout(layout) #sg.Window, cria uma janela com o nome especificado, .layout() passa o layout da janela
         
-        self.button, self.values = janela.Read() #isso aqui servirar para extrair os dados da janela para o codigo
+        
         
     def Iniciar(self):
-        nome = self.values['nome'] # recebe o item que possue a key nome, do dicionario valores
-        idade = self.values['idade']
-        gmail = self.values['gmail']
-        outlook = self.values['outlook']
-        yahoo = self.values['yahoo']
-        cartao_sim = self.values['cartao_sim']
-        cartao_nao = self.values['cartao_não']
-        print(f'nome: {nome}')
-        print(f'idade: {idade}')
-        print(f'aceita gmail: {gmail}')
-        print(f'aceita outlook: {outlook}')
-        print(f'aceita yahoo: {yahoo}')
-        print(f'aceita cartao, sim: {cartao_sim}')
-        print(f'aceita cartao, não: {cartao_nao}')
+        while True:
+            self.button, self.values = self.janela.Read() #isso aqui servirar para extrair os dados da janela para o codigo
+            nome = self.values['nome'] # recebe o item que possue a key nome, do dicionario valores
+            idade = self.values['idade']
+            gmail = self.values['gmail']
+            outlook = self.values['outlook']
+            yahoo = self.values['yahoo']
+            cartao_sim = self.values['cartao_sim']
+            cartao_nao = self.values['cartao_não']
+            print(f'nome: {nome}')
+            print(f'idade: {idade}')
+            print(f'aceita gmail: {gmail}')
+            print(f'aceita outlook: {outlook}')
+            print(f'aceita yahoo: {yahoo}')
+            print(f'aceita cartao, sim: {cartao_sim}')
+            print(f'aceita cartao, não: {cartao_nao}')
+
 tela = TelaPython()#var tela 
 
 tela.Iniciar()#inicia a tela

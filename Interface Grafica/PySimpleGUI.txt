@@ -14,4 +14,4 @@ Checkbox = cria uma caixa de clique
 
 key = define uma chave personalizada, deve ser colocado dentro dos ()
 
-Radio('nome', 'grupo') = cria um radio, que recebera o nome e o grupo ao qual ele pertence
+Radio('nome', 'grupo') = cria um radio, que recebera o nome e o grupo ao qual ele pertence, diferente do Checkbox, o radio so aceita um valor de clique
