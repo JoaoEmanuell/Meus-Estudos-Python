@@ -27,3 +27,5 @@ Radio('nome', 'grupo') = cria um radio, que recebera o nome e o grupo ao qual el
         o = orientação, pode ser 'h' ou 'v', h = horizontal, v = vertical
 
 .theme(new_theme = 'theme') = define o tema da janela, no site da documentação, tem todos os temas aceitos
+
+.Image('caminho/foto.extensão') = insere a imagem desejada, lembre-se que tem que informar todo o caminho

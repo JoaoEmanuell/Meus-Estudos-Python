@@ -12,6 +12,7 @@ class TelaPython:
             [sg.Radio('Sim', 'cartoes', key = 'cartao_sim'), sg.Radio('Não', 'cartoes', key = 'cartao_não')],
             [sg.Slider(range = (0, 100), default_value = 0, orientation = 'h', size = (15, 20), key = 'slider')],#Slider, range será o valor minimo e maximo que ele ira receber, default_value é o valor padrão, orientation = 'h' ou 'v', h = 'horizontal', v = 'vertical'
             [sg.Button('Enviar dados')],
+            [sg.Image('~/Documentos/GitHub/Meus-Estudos-Python/Interface Grafica/teste_image.png')],
             [sg.Output(size = (30,20))] #output, tudo que seria printado no console é enviado para essa aréa
         ]
         
