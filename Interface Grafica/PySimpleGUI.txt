@@ -7,3 +7,9 @@ sg.Button('Nome') = Cria um botão com o nome desejado
 sg.Window('Nome').layout(layout) = Cria uma janela, .layout serve para carregar o layout desejado
 
 .Iniciar() = Inicia a sua janela
+
+size = define o tamanho do campo, deve ser colocado dentro dos ()
+
+Checkbox = cria uma caixa de clique
+
+key = define uma chave personalizada, deve ser colocado dentro dos ()
