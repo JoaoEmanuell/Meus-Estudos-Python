@@ -15,3 +15,13 @@ Checkbox = cria uma caixa de clique
 key = define uma chave personalizada, deve ser colocado dentro dos ()
 
 Radio('nome', 'grupo') = cria um radio, que recebera o nome e o grupo ao qual ele pertence, diferente do Checkbox, o radio so aceita um valor de clique
+
+.Output = cria uma saida do codigo, onde normalmente seriam exibidos itens no console, será agora exibido no Output
+
+.Slider(range = (i, v), default_value = d, orientation = 'o'): 
+    range:
+        i = valor inicial, v = valor final
+    default_value:
+        d = valor padrão
+    orientation:
+        o = orientação, pode ser 'h' ou 'v', h = horizontal, v = vertical

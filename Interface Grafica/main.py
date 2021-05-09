@@ -9,7 +9,9 @@ class TelaPython:
             [sg.Checkbox('Gmail', key = 'gmail'), sg.Checkbox('Outlook', key = 'outlook'), sg.Checkbox('Yahoo', key = 'yahoo')], #Checkbox cria uma caixa para você clicar
             [sg.Text('Aceita cartão')],
             [sg.Radio('Sim', 'cartoes', key = 'cartao_sim'), sg.Radio('Não', 'cartoes', key = 'cartao_não')],
-            [sg.Button('Enviar dados')]
+            [sg.Slider(range = (0, 100), default_value = 0, orientation = 'h', size = (15, 20), key = 'slider')] #Slider, range será o valor minimo e maximo que ele ira receber, default_value é o valor padrão, orientation = 'h' ou 'v', h = 'horizontal', v = 'vertical'
+            [sg.Button('Enviar dados')],
+            [sg.Output(size = (30,20))] #output, tudo que seria printado no console é enviado para essa aréa
         ]
         
         self.janela = sg.Window('Dados do Usuário').layout(layout) #sg.Window, cria uma janela com o nome especificado, .layout() passa o layout da janela
