@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 
 class TelaPython:
     def __init__(self):
-        sg.theme(new_theme = 'DarkBrown4')# define o tema da janela, por padrão o tema sera none, no site da documentação há uma lista de temas.
+        sg.theme(new_theme = 'Dark2')# define o tema da janela, por padrão o tema sera Dark Blue 3, no site da documentação há uma lista de temas.
         layout = [#layout da pagina
             [sg.Text('Nome', size = (5,0)),sg.Input(size = (50,0), key = 'nome')], #cada lista dessa é uma linha da janela
             [sg.Text('Idade', size = (5,0)),sg.Input(size = (3,0), key = 'idade')],
