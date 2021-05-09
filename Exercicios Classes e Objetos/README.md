@@ -18,7 +18,7 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 - [x] [Classe TV](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_TV.py)
 
-- [ ] Classe Bichinho Virtual
+- [x] [Classe Bichinho Virtual](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_bichinho_virtual.py)
 
 - [ ] Classe Macaco
 
