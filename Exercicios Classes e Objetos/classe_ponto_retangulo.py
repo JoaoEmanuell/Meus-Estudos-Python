@@ -25,9 +25,12 @@ class retangulo:
     def __init__(self, largura = 10, altura = 10):
         self.largura = largura
         self.altura = altura
+        
+    def centro(self):
+        center = (self.largura + self.altura) / 2
+        print(f'O centro do retangulo é {center}')
+        return (center)
 
 ponto = ponto(10, 10)
-
-ponto.escrever()
 
 retangulo = retangulo(10, 10)
