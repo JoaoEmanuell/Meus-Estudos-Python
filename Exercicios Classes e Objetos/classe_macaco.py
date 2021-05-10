@@ -7,10 +7,17 @@ class macaco():
         self.estomago = [estomago]
     
     def comer(self):
-        comida = str(input("O que o macaco ira comer? "))
+        comida = str(input(f"O que o {self.nome} ira comer? "))
         self.estomago.append(comida)
-        print(f'Sucesso, o macaco comeu {comida}')
+        print(f'Sucesso, o {self.nome} comeu {comida}')
+        
+    def ver_estomago(self):
+        atual = self.estomago
+        print (f'O estomago de {self.nome} tem: ')
+        for i in atual:
+            print(f'{i}')
+
 
 mamaco = macaco('Simba')
 
-mamaco.comer()
+mamaco.ver_estomago()
