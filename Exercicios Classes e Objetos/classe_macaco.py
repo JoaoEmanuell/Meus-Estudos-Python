@@ -29,8 +29,15 @@ class macaco():
             print(f'Digerindo {i}')
             self.estomago.remove(i)
 
+class macaco1(macaco):
+    pass
+
 mamaco = macaco('Simba')
 
-mamaco.comer()
+mamaco1 = macaco1('Julio')
+
+mamaco1.comer()
 
 mamaco.ver_estomago()
+
+mamaco1.ver_estomago()
