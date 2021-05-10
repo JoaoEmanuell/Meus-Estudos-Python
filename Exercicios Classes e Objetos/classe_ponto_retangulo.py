@@ -16,5 +16,18 @@ class ponto:
         self.x = x
         self.y = y
         
+    def escrever(self):
+        print (f'x = {self.x}')
+        print (f'y = {self.y}')
+        return (f'x = {self.x}\ny = {self.y}')
+
+class retangulo:
+    def __init__(self, largura = 10, altura = 10):
+        self.largura = largura
+        self.altura = altura
 
 ponto = ponto(10, 10)
+
+ponto.escrever()
+
+retangulo = retangulo(10, 10)
