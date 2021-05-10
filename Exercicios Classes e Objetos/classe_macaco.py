@@ -7,9 +7,13 @@ class macaco():
         self.estomago = [estomago]
     
     def comer(self):
-        comida = str(input(f"O que o {self.nome} ira comer? "))
-        self.estomago.append(comida)
-        print(f'Sucesso, o {self.nome} comeu {comida}')
+        while True:
+            comida = str(input(f"O que o {self.nome} ira comer? "))
+            self.estomago.append(comida)
+            print(f'Sucesso, o {self.nome} comeu {comida}')
+            fim = str(input("Sair? ")).upper()
+            if fim[0] == 'S':
+                break
         
     def ver_estomago(self):
         if len(self.estomago) == 0:
@@ -26,5 +30,7 @@ class macaco():
             self.estomago.remove(i)
 
 mamaco = macaco('Simba')
+
+mamaco.comer()
 
 mamaco.ver_estomago()
