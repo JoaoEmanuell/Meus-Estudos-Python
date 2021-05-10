@@ -22,7 +22,7 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 - [x] [Classe Macaco](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_macaco.py)
 
-- [ ] Classe Ponto e Retangulo
+- [x] [Classe Ponto e Retangulo](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_ponto_retangulo.py)
 
 - [ ] Classe Bomba de Combustivel
 
