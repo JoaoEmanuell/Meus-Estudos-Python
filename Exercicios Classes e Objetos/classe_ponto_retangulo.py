@@ -15,20 +15,42 @@ No caso eu não irei fazer as e, f, g, h e i, uma vez que eu não entendi o que 
 
 class ponto:
     def __init__(self, x = 10, y = 10):
+        """[init]
+
+        Args:
+            x (int, optional): [valor x]. Defaults to 10.
+            y (int, optional): [valor y]. Defaults to 10.
+        """        
         self.x = x
         self.y = y
         
     def escrever(self):
+        """[escreve os valores de x e y]
+
+        Returns:
+            [type]: [retorna x e y]
+        """        
         print (f'x = {self.x}')
         print (f'y = {self.y}')
         return (f'x = {self.x}\ny = {self.y}')
 
 class retangulo:
     def __init__(self, largura = 10, altura = 10):
+        """[init]
+
+        Args:
+            largura (int, optional): [largura]. Defaults to 10.
+            altura (int, optional): [altura]. Defaults to 10.
+        """        
         self.largura = largura
         self.altura = altura
         
     def centro(self):
+        """[calcula o centro do retangulo]
+
+        Returns:
+            [float]: [retorna o centro do triangulo]
+        """        
         center = (self.largura + self.altura) / 2
         print(f'O centro do retangulo é {center}')
         return (center)
