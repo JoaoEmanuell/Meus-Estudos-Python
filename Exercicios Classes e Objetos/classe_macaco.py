@@ -2,12 +2,15 @@
 """
     
 class macaco():
-    def __init__(self, nome, estomago = 'banana')
+    def __init__(self, nome, estomago = 'banana'):
         self.nome = nome
-        self.estomago = estomago
+        self.estomago = [estomago]
     
     def comer(self):
-        self.estomago = str(input("O que o macaco ira comer? "))
-        print(f'Sucesso, o macaco comeu {self.estomago}')
+        comida = str(input("O que o macaco ira comer? "))
+        self.estomago.append(comida)
+        print(f'Sucesso, o macaco comeu {comida}')
 
 mamaco = macaco('Simba')
+
+mamaco.comer()
