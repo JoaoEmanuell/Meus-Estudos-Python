@@ -12,11 +12,18 @@ class macaco():
         print(f'Sucesso, o {self.nome} comeu {comida}')
         
     def ver_estomago(self):
-        atual = self.estomago
-        print (f'O estomago de {self.nome} tem: ')
-        for i in atual:
-            print(f'{i}')
+        if len(self.estomago) == 0:
+            print(f'O estomago de {self.nome} está vazio')
+        else:
+            print (f'O estomago de {self.nome} tem: ')
+            for i in self.estomago:
+                print(f'{i},',end=' ')
 
+    def digerir(self):
+        print('Digerindo os alimentos:')
+        for i in self.estomago:
+            print(f'Digerindo {i}')
+            self.estomago.remove(i)
 
 mamaco = macaco('Simba')
 
