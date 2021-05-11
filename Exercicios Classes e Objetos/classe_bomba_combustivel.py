@@ -48,13 +48,15 @@ class bomba:
         return(self.preço)
 
     def alterarCombustivel(self):
-        self.combustivel = str(input(f"Qual é o novo tipo de combustivel? "))
+        self.combustivel = str(input("Qual é o novo tipo de combustivel? "))
         print(f"Sucesso, o novo combustivel é {self.combustivel}")
         return(self.combustivel)
     
     def alterarQuantidadeCombustivel(self):
-        pass   
-        
+        self.quantidade = float(input(f"Qual é a nova quantidade em litros de {self.combustivel}? "))
+        print(f"Sucesso, a nova quantidade de {self.combustivel} é {self.quantidade} litros")
+        return(self.quantidade)
+    
 posto = bomba()
 
-posto.alterarCombustivel()
+posto.alterarQuantidadeCombustivel()
