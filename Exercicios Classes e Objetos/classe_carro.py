@@ -16,8 +16,14 @@ class carro():
         distancia = float(input("Deseja andar quantos km? "))
         consumo = distancia / self.consumo
         self.combustivel -= consumo
-        print(f"O carro andou {distancia} km, e consumiu {consumo} litros de combustivel")
-        return consumo
+        if self.combustivel < 0:
+            self.combustivel = 0
+            print("A gasolina acabou")
+            carro.obterGasolina(self)
+            return False
+        else:
+            print(f"O carro andou {distancia} km, e consumiu {consumo} litros de combustivel")
+            return consumo
     
     def obterGasolina(self):
         print(f"O nivel de gasolina é {self.combustivel} litros")
