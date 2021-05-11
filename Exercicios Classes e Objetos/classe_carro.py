@@ -24,12 +24,17 @@ class carro():
         return self.combustivel
     
     def adicionarGasolina(self):
-        pass
+        gasolina = float(input("Quantos litros de gasolina serão colocados? "))
+        self.combustivel += gasolina
+        print(f"Sucesso, adicionado {gasolina} litros de gasolina no carro")
+        return(gasolina)
 
 carrinho = carro(combustível = 100)
 
-#carrinho.andar()
+carrinho.andar()
 
-#carrinho.obterGasolina()
+carrinho.obterGasolina()
 
 carrinho.adicionarGasolina()
+
+carrinho.obterGasolina()
