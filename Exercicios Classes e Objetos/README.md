@@ -24,7 +24,7 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 - [x] [Classe Ponto e Retangulo](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_ponto_retangulo.py)
 
-- [ ] Classe Bomba de Combustivel
+- [x] [Classe Bomba de Combustivel](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_bomba_combustivel.py)
 
 - [ ] Classe Carro
 
