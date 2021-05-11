@@ -29,8 +29,27 @@ class bomba:
             return(False)
         else:
             print(f"Sucesso, você abasteceu {tot} litros de {self.combustivel}")
-            return(True)
-       
+            return(tot)
+    
+    def abastecerPorLitro(self):
+        quantidade = float(input(f"Quantos litros de {self.combustivel} você deseja abastecer? "))
+        tot = quantidade * self.preço
+        valor = quantidade * self.preço
+        if quantidade > self.quantidade:
+            print(f"Desculpe, mas a bomba não tem {self.combustivel} o suficiente")
+        else:
+            print(f"Sucesso, você abasteceu {quantidade} litros de {self.combustivel}, o preço fica em {valor} reais")
+            return(valor)
+
+    def alterarValor(self):
+        pass
+     
+    def alterarCombustivel(self):
+        pass
+    
+    def alterarQuantidadeCombustivel(self):
+        pass   
+        
 posto = bomba()
 
-posto.abastecerPorValor()
+posto.abastecerPorLitro()
