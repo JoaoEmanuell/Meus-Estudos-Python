@@ -20,11 +20,16 @@ class carro():
         return consumo
     
     def obterGasolina(self):
-        pass
+        print(f"O nivel de gasolina é {self.combustivel} litros")
+        return self.combustivel
     
     def adicionarGasolina(self):
         pass
 
 carrinho = carro(combustível = 100)
 
-carrinho.andar()
+#carrinho.andar()
+
+#carrinho.obterGasolina()
+
+carrinho.adicionarGasolina()
