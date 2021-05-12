@@ -5,5 +5,18 @@ class conta_investimento:
     def __init__(self, saldo = 1000, juros = 10):
         self.saldo = saldo
         self.juros = juros
+    
+    def adicionarJuros(self):
+        self.saldo += (self.saldo / 100) * self.juros
+        print(self.saldo)
         
-conta = conta_investimento()
+class poupança(conta_investimento):
+    pass
+
+conta = poupança()
+
+conta.adicionarJuros()
+conta.adicionarJuros()
+conta.adicionarJuros()
+conta.adicionarJuros()
+conta.adicionarJuros()
