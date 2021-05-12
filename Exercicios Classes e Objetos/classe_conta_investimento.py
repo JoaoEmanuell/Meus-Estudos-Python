@@ -3,12 +3,24 @@
 
 class conta_investimento:
     def __init__(self, saldo = 1000, juros = 10):
+        """[init]
+
+        Args:
+            saldo (float, optional): [Saldo da conta]. Defaults to 1000.
+            juros (float, optional): [Juros da conta]. Defaults to 10.
+        """        
         self.saldo = saldo
         self.juros = juros
     
     def adicionarJuros(self):
+        """[adiciona juros ao saldo da conta]
+
+        Returns:
+            [floa]: [retorna saldo com o juros]
+        """        
         self.saldo += (self.saldo / 100) * self.juros
         print(self.saldo)
+        return (self.saldo)
         
 class poupança(conta_investimento):
     pass
