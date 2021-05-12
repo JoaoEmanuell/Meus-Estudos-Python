@@ -27,8 +27,5 @@ class poupança(conta_investimento):
 
 conta = poupança()
 
-conta.adicionarJuros()
-conta.adicionarJuros()
-conta.adicionarJuros()
-conta.adicionarJuros()
-conta.adicionarJuros()
+for v in range(0, 5):
+    conta.adicionarJuros()
