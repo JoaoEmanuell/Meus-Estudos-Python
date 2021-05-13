@@ -89,16 +89,7 @@ class interface():
                     l += 1
 #bloco dos numeros
         elif self.numeros == True:
-            if self.numeros and self.minusculas == True:
-                while l != limite:
-                    lista = randint(2 , 3)
-                    if lista == 2:
-                        car = self.Minusculas[randint(0, 25)]
-                    elif lista == 3:
-                        car = self.Numeros[randint(0, 9)]
-                    print(f"{car}", end='')
-                    l += 1
-            elif self.numeros and self.especiais == True:
+            if self.numeros and self.especiais == True:
                 while l != limite:
                     lista = randint(1 , 2)
                     if lista == 1:
