@@ -8,6 +8,7 @@ class interface():
         layout = [
             [sg.Text("GERADOR DE SENHAS", justification = 'center')],
             [sg.Text("Tamanho"), sg.Input(size = (20,0), key = 'Tam')],
+            [sg.Checkbox("Letras maisculas", key = 'Max')],
             [sg.Checkbox("Letras minusculas", key = 'Min')],
             [sg.Checkbox("Numeros", key = 'Nums')],
             [sg.Checkbox("Caracteres especiais (#$?!)", key = 'Esp')],
@@ -25,6 +26,7 @@ class interface():
             self.minusculas = self.values['Min']
             self.numeros = self.values['Nums']
             self.especiais = self.values['Esp']
+            self.maisculas = self.values['Max']
             '''print(int(self.tamanho))
             print(self.minusculas)
             print(self.numeros)
@@ -41,7 +43,7 @@ class interface():
     def geração(self):
         limite = int(self.tamanho)
         l = 0
-        if self.minusculas and self.numeros and self.especiais == True:
+        if self.minusculas and self.numeros and self.especiais and self.maisculas == True:
             while l != limite:
                 lista = randint(1 , 4)
                 if lista == 1:
@@ -56,6 +58,62 @@ class interface():
                     car = car = self.Maisculas[randint(0, 25)]
                 print(f"{car}", end='')
                 l += 1
+#bloco das letras maisculas
+        elif self.maisculas == True:
+            #sub bloco letras minusculas
+            if self.maisculas and self.minusculas == True:
+                if self.maisculas and self.minusculas and self.numeros == True:
+                    while l != limite:
+                        lista = randint(2 , 4)
+                        if lista == 2:
+                            car = self.Maisculas[randint(0, 25)]
+                        elif lista == 3:
+                            car = self.Minusculas[randint(0, 25)]
+                        elif lista == 4:
+                            car = self.Numeros[randint(0, 9)]
+                        print(f"{car}", end='')
+                        l += 1
+                elif self.maisculas and self.minusculas and self.especiais == True:
+                        while l != limite:
+                            lista = randint(1 , 2)
+                            if lista == 1:
+                                car = self.Especiais[randint(0, 12)]
+                            elif lista == 2:
+                                car = self.Maisculas[randint(0, 25)]
+                            print(f"{car}", end='')
+                            l += 1
+                else:
+                    while l != limite:
+                        lista = randint(2 , 3)
+                        if lista == 2:
+                            car = self.Maisculas[randint(0, 25)]
+                        elif lista == 3:
+                            car = self.Minusculas[randint(0, 25)]
+                        print(f"{car}", end='')
+                        l += 1
+            elif self.maisculas and self.numeros == True:
+                while l != limite:
+                    lista = randint(2 , 3)
+                    if lista == 2:
+                        car = self.Maisculas[randint(0, 25)]
+                    elif lista == 3:
+                        car = self.Numeros[randint(0, 9)]
+                    print(f"{car}", end='')
+                    l += 1
+            elif self.maisculas and self.especiais == True:
+                while l != limite:
+                    lista = randint(1 , 2)
+                    if lista == 1:
+                        car = self.Especiais[randint(0, 12)]
+                    elif lista == 2:
+                        car = self.Maisculas[randint(0, 25)]
+                    print(f"{car}", end='')
+                    l += 1
+            else:
+                while l != limite:
+                    car = self.Maisculas[randint(0, 25)]
+                    print(f"{car}", end='')
+                    l += 1
 #bloco das letras minusculas
         elif self.minusculas == True:
             if self.minusculas and self.numeros == True:
