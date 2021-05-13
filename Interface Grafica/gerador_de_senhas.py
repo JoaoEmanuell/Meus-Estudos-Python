@@ -69,6 +69,17 @@ class interface():
                     car = car = self.Maisculas[randint(0, 25)]
                 print(f"{car}", end='')
                 l += 1
+        elif self.minusculas and self.especiais == True:
+            while l != limite:
+                lista = randint(1 , 2)
+                if lista == 1:
+                    car = self.Maisculas[randint(0, 25)]
+                elif lista == 2:
+                    car = self.Minusculas[randint(0, 25)]
+                else:
+                    car = car = self.Maisculas[randint(0, 25)]
+                print(f"{car}", end='')
+                l += 1
 #Progama
 
 tela = interface()
