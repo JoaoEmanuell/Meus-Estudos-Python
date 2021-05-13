@@ -56,8 +56,27 @@ class interface():
                     car = car = self.Maisculas[randint(0, 25)]
                 print(f"{car}", end='')
                 l += 1
+#bloco das letras minusculas
         elif self.minusculas == True:
-            if self.minusculas == True:
+            if self.minusculas and self.numeros == True:
+                while l != limite:
+                    lista = randint(2 , 3)
+                    if lista == 2:
+                        car = self.Minusculas[randint(0, 25)]
+                    elif lista == 3:
+                        car = self.Numeros[randint(0, 9)]
+                    print(f"{car}", end='')
+                    l += 1
+            elif self.minusculas and self.especiais == True:
+                while l != limite:
+                    lista = randint(1 , 2)
+                    if lista == 1:
+                        car = self.Especiais[randint(0, 12)]
+                    elif lista == 2:
+                        car = self.Minusculas[randint(0, 25)]
+                    print(f"{car}", end='')
+                    l += 1
+            else:
                 while l != limite:
                     lista = randint(1, 1)
                     if lista == 0:
@@ -68,30 +87,34 @@ class interface():
                         car = car = self.Maisculas[randint(0, 25)]
                     print(f"{car}", end='')
                     l += 1
-            elif self.minusculas and self.numeros == True:
+#bloco dos numeros
+        elif self.numeros == True:
+            if self.numeros and self.minusculas == True:
                 while l != limite:
-                    lista = randint(1 , 3)
-                    if lista == 1:
-                        car = self.Maisculas[randint(0, 25)]
-                    elif lista == 2:
+                    lista = randint(2 , 3)
+                    if lista == 2:
                         car = self.Minusculas[randint(0, 25)]
                     elif lista == 3:
                         car = self.Numeros[randint(0, 9)]
-                    else:
-                        car = car = self.Maisculas[randint(0, 25)]
                     print(f"{car}", end='')
                     l += 1
-            elif self.minusculas and self.especiais == True:
+            elif self.numeros and self.especiais == True:
                 while l != limite:
                     lista = randint(1 , 2)
                     if lista == 1:
-                        car = self.Maisculas[randint(0, 25)]
+                        car = self.Numeros[randint(0, 9)]
                     elif lista == 2:
-                        car = self.Minusculas[randint(0, 25)]
-                    else:
-                        car = car = self.Maisculas[randint(0, 25)]
+                        car = self.Especiais[randint(0, 12)]
                     print(f"{car}", end='')
                     l += 1
+            else:
+                while l != limite:
+                    car = self.Numeros[randint(0, 9)]
+                    print(f"{car}", end='')
+                    l += 1
+#bloco dos especiais
+        
+        
 #Progama
 
 tela = interface()
