@@ -113,7 +113,11 @@ class interface():
                     print(f"{car}", end='')
                     l += 1
 #bloco dos especiais
-        
+        else:
+            while l != limite:
+                car = self.Especiais[randint(0, 12)]
+                print(f"{car}", end='')
+                l += 1
         
 #Progama
 
