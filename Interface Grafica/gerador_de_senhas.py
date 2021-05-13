@@ -131,15 +131,29 @@ class interface():
                     l += 1
 #bloco das letras minusculas
         elif self.minusculas == True:
+            #sub bloco numeros
             if self.minusculas and self.numeros == True:
-                while l != limite:
-                    lista = randint(2 , 3)
-                    if lista == 2:
-                        car = self.Minusculas[randint(0, 25)]
-                    elif lista == 3:
-                        car = self.Numeros[randint(0, 9)]
-                    print(f"{car}", end='')
-                    l += 1
+                if self.minusculas and self.numeros and self.especiais == True:
+                    while l != limite:
+                        lista = randint(2 , 4)
+                        if lista == 2:
+                            car = self.Minusculas[randint(0, 25)]
+                        elif lista == 3:
+                            car = self.Numeros[randint(0, 9)]
+                        elif lista == 4:
+                            car = self.Especiais[randint(0, 12)]
+                        print(f"{car}", end='')
+                        l += 1
+                else:
+                    while l != limite:
+                        lista = randint(2 , 3)
+                        if lista == 2:
+                            car = self.Minusculas[randint(0, 25)]
+                        elif lista == 3:
+                            car = self.Numeros[randint(0, 9)]
+                        print(f"{car}", end='')
+                        l += 1
+            #sub bloco especiais
             elif self.minusculas and self.especiais == True:
                 while l != limite:
                     lista = randint(1 , 2)
