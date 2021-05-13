@@ -25,6 +25,11 @@ class funcionario:
         return(self.salario)
     
     def aumentar_salario(self, aumento = 10):
+        """[função para aumentar o salario do funcionario]
+
+        Args:
+            aumento (int, optional): [Porcentagem de aumento que sera adicionada ao salario]. Defaults to 10.
+        """        
         self.salario += (self.salario / 100) * aumento
         print(f"O salario de {self.nome} é {self.salario} reais")
         return(self.salario)
