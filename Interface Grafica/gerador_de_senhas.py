@@ -75,11 +75,13 @@ class interface():
                         l += 1
                 elif self.maisculas and self.minusculas and self.especiais == True:
                         while l != limite:
-                            lista = randint(1 , 2)
+                            lista = randint(1 , 3)
                             if lista == 1:
                                 car = self.Especiais[randint(0, 12)]
                             elif lista == 2:
                                 car = self.Maisculas[randint(0, 25)]
+                            elif lista == 3:
+                                car = self.Minusculas[randint(0, 25)]
                             print(f"{car}", end='')
                             l += 1
                 else:
@@ -91,15 +93,28 @@ class interface():
                             car = self.Minusculas[randint(0, 25)]
                         print(f"{car}", end='')
                         l += 1
+            #sub bloco numeros
             elif self.maisculas and self.numeros == True:
-                while l != limite:
-                    lista = randint(2 , 3)
-                    if lista == 2:
-                        car = self.Maisculas[randint(0, 25)]
-                    elif lista == 3:
-                        car = self.Numeros[randint(0, 9)]
-                    print(f"{car}", end='')
-                    l += 1
+                if self.maisculas and self.especiais and self.numeros == True:
+                    while l != limite:
+                            lista = randint(1 , 3)
+                            if lista == 1:
+                                car = self.Especiais[randint(0, 12)]
+                            elif lista == 2:
+                                car = self.Maisculas[randint(0, 25)]
+                            elif lista == 3:
+                                car = self.Numeros[randint(0, 9)]
+                            print(f"{car}", end='')
+                            l += 1
+                else:
+                    while l != limite:
+                        lista = randint(2 , 3)
+                        if lista == 2:
+                            car = self.Maisculas[randint(0, 25)]
+                        elif lista == 3:
+                            car = self.Numeros[randint(0, 9)]
+                        print(f"{car}", end='')
+                        l += 1
             elif self.maisculas and self.especiais == True:
                 while l != limite:
                     lista = randint(1 , 2)
