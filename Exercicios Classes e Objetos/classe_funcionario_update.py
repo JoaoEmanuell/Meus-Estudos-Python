@@ -24,8 +24,15 @@ class funcionario:
         print(f"O salario do funcionario é {self.salario} reais")
         return(self.salario)
     
+    def aumentar_salario(self, aumento = 10):
+        self.salario += (self.salario / 100) * aumento
+        print(f"O salario de {self.nome} é {self.salario} reais")
+        return(self.salario)
+        
 fun = funcionario('Apolo')
 
 fun.nome_funcionario()
 
 fun.salario_funcionario()
+
+fun.aumentar_salario()
