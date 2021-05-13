@@ -28,11 +28,11 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 - [x] [Classe Carro](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_carro.py)
 
-- [x] (Classe Conta de Investimento)[https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_conta_investimento.py]
+- [x] [Classe Conta de Investimento](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_conta_investimento.py)
 
-- [x] (Classe Funcionário)[https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_funcionario.py]
+- [x] [Classe Funcionário](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_funcionario.py)
 
-- [x] (Classe Funcionário Update)[https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_funcionario_update.py]
+- [x] [Classe Funcionário Update](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_funcionario_update.py)
 
 - [ ] Classe Bichinho Virtual++
 
