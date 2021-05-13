@@ -32,7 +32,7 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 - [ ] Classe Funcionário
 
-- [ ] Aprimore a classe do exercício anterior para adicionar o método aumentarSalario (porcentualDeAumento) que aumente o salário do funcionário em uma certa porcentagem.
+- [ ] Classe Funcionário Update.
 
 - [ ] Classe Bichinho Virtual++
 
