@@ -41,23 +41,10 @@ class interface():
         self.Especiais = ['?', ';', ',', '.', '!', '{', '}', '(', ')', '/', '*', '-', '+']
     
     def geração(self):
+#bloco com todas as opções marcadas
         limite = int(self.tamanho)
-        l = 0
         if self.minusculas and self.numeros and self.especiais and self.maisculas == True:
-            while l != limite:
-                lista = randint(1 , 4)
-                if lista == 1:
-                    car = self.Maisculas[randint(0, 25)]
-                elif lista == 2:
-                    car = self.Minusculas[randint(0, 25)]
-                elif lista == 3:
-                    car = self.Numeros[randint(0, 9)]
-                elif lista == 4:
-                    car = self.Especiais[randint(0, 12)]
-                else:
-                    car = car = self.Maisculas[randint(0, 25)]
-                print(f"{car}", end='')
-                l += 1
+            interface.aleatorio_4(self.Maisculas, self.Minusculas, self.Numeros, self.Especiais, limite)
 #bloco das letras maisculas
         elif self.maisculas == True:
             #sub bloco letras minusculas
@@ -131,7 +118,21 @@ class interface():
                 car = lista3[randint(0, (len(lista3) - 1))]
             print(f"{car}", end='')
             l += 1
-        
+    
+    def aleatorio_4(lista1, lista2, lista3, lista4, limite):
+        l = 0
+        while l != limite:
+            lista = randint(1 , 4)
+            if lista == 1:
+                car = lista1[randint(0, (len(lista1) - 1))]
+            elif lista == 2:
+                car = lista2[randint(0, (len(lista2) - 1))]
+            elif lista == 3:
+                car = lista3[randint(0, (len(lista3) - 1))]
+            elif lista == 4:
+                car = lista4[randint(0, (len(lista4) - 1))]
+            print(f"{car}", end='')
+            l += 1    
 #Progama
 
 tela = interface()
