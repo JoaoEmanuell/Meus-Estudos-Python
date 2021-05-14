@@ -121,14 +121,11 @@ class interface():
                     if lista == 1:
                         car = self.Especiais[randint(0, 12)]
                     elif lista == 2:
-                        car = self.Maisculas[randint(0, 25)]
+                        car = self.Maisculas[randint(0, (len(self.Maisculas) - 1))]# 25
                     print(f"{car}", end='')
                     l += 1
             else:
-                while l != limite:
-                    car = self.Maisculas[randint(0, 25)]
-                    print(f"{car}", end='')
-                    l += 1
+                interface.aleatorio_1(self.Maisculas, limite)
 #bloco das letras minusculas
         elif self.minusculas == True:
             #sub bloco numeros
@@ -164,16 +161,7 @@ class interface():
                     print(f"{car}", end='')
                     l += 1
             else:
-                while l != limite:
-                    lista = randint(1, 1)
-                    if lista == 0:
-                        car = self.Maisculas[randint(0, 25)]
-                    elif lista == 1:
-                        car = self.Minusculas[randint(0, 25)]
-                    else:
-                        car = car = self.Maisculas[randint(0, 25)]
-                    print(f"{car}", end='')
-                    l += 1
+                interface.aleatorio_1(self.Minusculas, limite)
 #bloco dos numeros
         elif self.numeros == True:
             if self.numeros and self.especiais == True:
@@ -186,14 +174,15 @@ class interface():
                     print(f"{car}", end='')
                     l += 1
             else:
-                while l != limite:
-                    car = self.Numeros[randint(0, 9)]
-                    print(f"{car}", end='')
-                    l += 1
+                interface.aleatorio_1(self.Numeros, limite)
 #bloco dos especiais
         else:
-            while l != limite:
-                car = self.Especiais[randint(0, 12)]
+            interface.aleatorio_1(self.Especiais, limite)
+#Função de aleatoridade
+    def aleatorio_1(lista, limite):
+        l = 0
+        while l != limite:
+                car = lista[randint(0, (len(lista) - 1))]
                 print(f"{car}", end='')
                 l += 1
         
