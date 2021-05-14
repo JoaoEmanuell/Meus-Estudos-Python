@@ -85,14 +85,7 @@ class interface():
                             print(f"{car}", end='')
                             l += 1
                 else:
-                    while l != limite:
-                        lista = randint(2 , 3)
-                        if lista == 2:
-                            car = self.Maisculas[randint(0, 25)]
-                        elif lista == 3:
-                            car = self.Minusculas[randint(0, 25)]
-                        print(f"{car}", end='')
-                        l += 1
+                    interface.aleatorio_2(self.Maisculas, self.Minusculas, limite)
             #sub bloco numeros
             elif self.maisculas and self.numeros == True:
                 if self.maisculas and self.especiais and self.numeros == True:
@@ -107,23 +100,9 @@ class interface():
                             print(f"{car}", end='')
                             l += 1
                 else:
-                    while l != limite:
-                        lista = randint(2 , 3)
-                        if lista == 2:
-                            car = self.Maisculas[randint(0, 25)]
-                        elif lista == 3:
-                            car = self.Numeros[randint(0, 9)]
-                        print(f"{car}", end='')
-                        l += 1
+                    interface.aleatorio_2(self.Maisculas, self.Numeros, limite)
             elif self.maisculas and self.especiais == True:
-                while l != limite:
-                    lista = randint(1 , 2)
-                    if lista == 1:
-                        car = self.Especiais[randint(0, 12)]
-                    elif lista == 2:
-                        car = self.Maisculas[randint(0, (len(self.Maisculas) - 1))]# 25
-                    print(f"{car}", end='')
-                    l += 1
+                interface.aleatorio_2(self.Maisculas, self.Especiais, limite)
             else:
                 interface.aleatorio_1(self.Maisculas, limite)
 #bloco das letras minusculas
@@ -142,37 +121,16 @@ class interface():
                         print(f"{car}", end='')
                         l += 1
                 else:
-                    while l != limite:
-                        lista = randint(2 , 3)
-                        if lista == 2:
-                            car = self.Minusculas[randint(0, 25)]
-                        elif lista == 3:
-                            car = self.Numeros[randint(0, 9)]
-                        print(f"{car}", end='')
-                        l += 1
+                    interface.aleatorio_2(self.Minusculas, self.Numeros, limite)
             #sub bloco especiais
             elif self.minusculas and self.especiais == True:
-                while l != limite:
-                    lista = randint(1 , 2)
-                    if lista == 1:
-                        car = self.Especiais[randint(0, 12)]
-                    elif lista == 2:
-                        car = self.Minusculas[randint(0, 25)]
-                    print(f"{car}", end='')
-                    l += 1
+                interface.aleatorio_2(self.Minusculas, self.Especiais, limite)
             else:
                 interface.aleatorio_1(self.Minusculas, limite)
 #bloco dos numeros
         elif self.numeros == True:
             if self.numeros and self.especiais == True:
-                while l != limite:
-                    lista = randint(1 , 2)
-                    if lista == 1:
-                        car = self.Numeros[randint(0, 9)]
-                    elif lista == 2:
-                        car = self.Especiais[randint(0, 12)]
-                    print(f"{car}", end='')
-                    l += 1
+                interface.aleatorio_2(self.Numeros, self.Especiais, limite)
             else:
                 interface.aleatorio_1(self.Numeros, limite)
 #bloco dos especiais
@@ -185,6 +143,17 @@ class interface():
                 car = lista[randint(0, (len(lista) - 1))]
                 print(f"{car}", end='')
                 l += 1
+    
+    def aleatorio_2(lista1, lista2, limite):
+        l = 0
+        while l != limite:
+            lista = randint(1 , 2)
+            if lista == 1:
+                car = lista1[randint(0, (len(lista1) - 1))]
+            elif lista == 2:
+                car = lista2[randint(0, (len(lista2) - 1))]
+            print(f"{car}", end='')
+            l += 1
         
 #Progama
 
