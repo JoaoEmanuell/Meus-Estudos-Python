@@ -1,3 +1,5 @@
+#Como eu não conseguia resolver os bugs, decidi criar 2 arquivos, esse arquivo abre e toca o lofi e tem o bug do lofi tocar infinitamente indepedente do tempo :/
+
 from time import sleep
 import PySimpleGUI as sg
 from audioplayer import AudioPlayer
@@ -26,6 +28,7 @@ def tempo(t, janela, chave):
             segundos -= 1
         print(texto, end = "\r")
         sleep(1)
+    AudioPlayer("./Interface Grafica/tree_lofi/beeps1.mp3").play(False, True)
 
 def musica():   
     AudioPlayer("./Interface Grafica/tree_lofi/lofi.mp3").play(True, True)
@@ -52,8 +55,8 @@ class interface():
             if __name__ == "__main__":
                 main()
             tempo(minutos, self.janela, 'saida')
-            print("Encerrado")
- 
+            event = 'Quit'
+
 tela = interface()
 
 tela.iniciar()
