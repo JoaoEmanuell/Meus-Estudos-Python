@@ -23,7 +23,7 @@ def tempo(t, janela, chave):
         else:
             segundos -= 1
         print(texto, end = "\r")
-        sleep(0.15)
+        sleep(1)
 
 class interface():
     def __init__(self):
