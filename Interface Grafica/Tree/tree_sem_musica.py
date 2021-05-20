@@ -6,10 +6,12 @@ from PySimpleGUI.PySimpleGUI import Tree
 from audioplayer import AudioPlayer
 
 def tempo(t, janela, chave):
-    """[Função para contar o tempo, serve como o nome já diz para contar o tempo que você irar passar]
+    """[Serve para contar o tempo que você irar passar]
 
     Args:
-        t ([int]): [Minutos que o contandor passara contando]
+        t ([int]): [Minutos que o progama ira contar]
+        janela ([str]): [Janela que a interface está executando]
+        chave ([str]): [chave para modifcar o elemento e subistituir ele]
     """
     minutos = int(t)
     segundos = 60
