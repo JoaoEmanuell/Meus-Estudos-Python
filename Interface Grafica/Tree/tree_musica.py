@@ -4,7 +4,7 @@ from time import sleep
 import PySimpleGUI as sg
 from audioplayer import AudioPlayer
 from PySimpleGUI.PySimpleGUI import Tree
-import threading
+from threading import Thread 
 
 def tempo(t, janela, chave):
     """[Função para contar o tempo, serve como o nome já diz para contar o tempo que você irar passar]
@@ -28,14 +28,14 @@ def tempo(t, janela, chave):
             segundos -= 1
         print(texto, end = "\r")
         sleep(1)
-    AudioPlayer("./Interface Grafica/tree_lofi/beeps1.mp3").play(False, True)
+    AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True)
 
 def musica():   
-    AudioPlayer("./Interface Grafica/tree_lofi/lofi.mp3").play(True, True)
+    AudioPlayer("./Interface Grafica/Tree/tree_lofi/lofi.mp3").play(True, True)
 
 def main():
-    t1 = threading.Thread(target = tempo)
-    t2 = threading.Thread(target = musica)
+    t1 = Thread(target = tempo)
+    t2 = Thread(target = musica)
     t1.start()
     t2.start()
 
