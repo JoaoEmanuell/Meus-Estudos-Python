@@ -14,17 +14,17 @@ def tempo(t, janela, chave):
         chave ([str]): [chave para modifcar o elemento e subistituir ele]
     """
     minutos = int(t)
-    segundos = 60
+    segundos = 59
     while True:
         janela.FindElement(chave).Update('')
         texto = '{:02d}:{:02d}'.format(minutos, segundos)
         if minutos < 0:
             break
-        elif segundos == 60:
+        elif segundos == 59:
             minutos -= 1
             segundos -= 1
         elif segundos == 0:
-            segundos = 60
+            segundos = 59
         else:
             segundos -= 1
         print(texto, end = "\r")
