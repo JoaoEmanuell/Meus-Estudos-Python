@@ -27,12 +27,8 @@ class interface():
             self.numeros = self.values['Nums']
             self.especiais = self.values['Esp']
             self.maisculas = self.values['Max']
-            '''print(int(self.tamanho))
-            print(self.minusculas)
-            print(self.numeros)
-            print(self.especiais)'''
-            interface.limpar(self.janela, 'saida')
-            interface.geração(self)
+            interface.limpar(self.janela, 'saida') # limpa o output toda vez que um novo é chamado, vem antes da geração para limpar toda vez
+            interface.geração(self) #gera os valores
             
 #Gerador
     def listas(self):
