@@ -27,10 +27,14 @@ def tempo(t, janela, chave):
             segundos -= 1
         print(texto, end = "\r")
         sleep(1)
-    AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True)
+    AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True) #toca o som dos beeps ao fim do progama
 
 class interface():
+    """[Classe responsavel pela interface grafica]
+    """    
     def __init__(self):
+        """[init, cria o layout]
+        """        
         layout = [
             [sg.Text("Minutos: ") ,sg.Input(size = '2', key = "Tempo")],
             [sg.Button("Iniciar")],
@@ -39,6 +43,8 @@ class interface():
         
         self.janela = sg.Window('Tree').layout(layout)
     def iniciar(self):
+        """[Recolhe as informações da tela e chama a função tempo]
+        """        
         while True:
             self.button, self.values = self.janela.Read()
             minutos = self.values["Tempo"]
