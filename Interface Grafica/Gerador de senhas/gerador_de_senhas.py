@@ -27,11 +27,8 @@ class interface():
             self.numeros = self.values['Nums']
             self.especiais = self.values['Esp']
             self.maisculas = self.values['Max']
-            '''print(int(self.tamanho))
-            print(self.minusculas)
-            print(self.numeros)
-            print(self.especiais)'''
-            interface.geração(self)
+            interface.limpar(self.janela, 'saida') # limpa o output toda vez que um novo é chamado, vem antes da geração para limpar toda vez
+            interface.geração(self) #gera os valores
             
 #Gerador
     def listas(self):
@@ -43,49 +40,49 @@ class interface():
     def geração(self):
 #bloco com todas as opções marcadas
         limite = int(self.tamanho)
-        if self.minusculas and self.numeros and self.especiais and self.maisculas == True:
+        if self.minusculas and self.numeros and self.especiais and self.maisculas:
             interface.aleatorio_4(self.Maisculas, self.Minusculas, self.Numeros, self.Especiais, limite)
 #bloco das letras maisculas
-        elif self.maisculas == True:
+        elif self.maisculas:
             #sub bloco letras minusculas
-            if self.maisculas and self.minusculas == True:
-                if self.maisculas and self.minusculas and self.numeros == True:
+            if self.maisculas and self.minusculas:
+                if self.maisculas and self.minusculas and self.numeros:
                     interface.aleatorio_3(self.Maisculas, self.Minusculas, self.Numeros, limite)
-                elif self.maisculas and self.minusculas and self.especiais == True:
+                elif self.maisculas and self.minusculas and self.especiais:
                     interface.aleatorio_3(self.Especiais, self.Maisculas, self.Minusculas, limite)
                 else:
                     interface.aleatorio_2(self.Maisculas, self.Minusculas, limite)
             #sub bloco numeros
-            elif self.maisculas and self.numeros == True:
+            elif self.maisculas and self.numeros:
                 if self.maisculas and self.especiais and self.numeros == True:
                     interface.aleatorio_3(self.Especiais, self.Maisculas, self.Numeros, limite)
                 else:
                     interface.aleatorio_2(self.Maisculas, self.Numeros, limite)
-            elif self.maisculas and self.especiais == True:
+            elif self.maisculas and self.especiais:
                 interface.aleatorio_2(self.Maisculas, self.Especiais, limite)
             else:
                 interface.aleatorio_1(self.Maisculas, limite)
 #bloco das letras minusculas
-        elif self.minusculas == True:
+        elif self.minusculas:
             #sub bloco numeros
-            if self.minusculas and self.numeros == True:
-                if self.minusculas and self.numeros and self.especiais == True:
+            if self.minusculas and self.numeros:
+                if self.minusculas and self.numeros and self.especiais:
                     interface.aleatorio_3(self.Minusculas, self.Numeros, self.Especiais, limite)
                 else:
                     interface.aleatorio_2(self.Minusculas, self.Numeros, limite)
             #sub bloco especiais
-            elif self.minusculas and self.especiais == True:
+            elif self.minusculas and self.especiais:
                 interface.aleatorio_2(self.Minusculas, self.Especiais, limite)
             else:
                 interface.aleatorio_1(self.Minusculas, limite)
 #bloco dos numeros
-        elif self.numeros == True:
-            if self.numeros and self.especiais == True:
+        elif self.numeros:
+            if self.numeros and self.especiais:
                 interface.aleatorio_2(self.Numeros, self.Especiais, limite)
             else:
                 interface.aleatorio_1(self.Numeros, limite)
 #bloco dos especiais
-        else:
+        elif self.especiais:
             interface.aleatorio_1(self.Especiais, limite)
 #Função de aleatoridade
     def aleatorio_1(lista, limite):
@@ -133,6 +130,8 @@ class interface():
                 car = lista4[randint(0, (len(lista4) - 1))]
             print(f"{car}", end='')
             l += 1    
+    def limpar(janela, chave):
+        janela.FindElement(chave).Update('')
 #Progama
 
 tela = interface()

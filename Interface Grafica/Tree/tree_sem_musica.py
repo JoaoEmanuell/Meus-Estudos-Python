@@ -1,46 +1,42 @@
-#Como eu não conseguia resolver os bugs, decidi criar 2 arquivos, esse arquivo abre e toca o lofi e tem o bug do lofi tocar infinitamente indepedente do tempo :/
+#Como eu não conseguia resolver os bugs, decidi criar 2 arquivos, esse arquivo abre e no final toca o beep assim com o primeiro, sem lofi
 
 from time import sleep
 import PySimpleGUI as sg
-from audioplayer import AudioPlayer
 from PySimpleGUI.PySimpleGUI import Tree
-import threading
+from audioplayer import AudioPlayer
 
 def tempo(t, janela, chave):
-    """[Função para contar o tempo, serve como o nome já diz para contar o tempo que você irar passar]
+    """[Serve para contar o tempo que você irar passar]
 
     Args:
-        t ([int]): [Minutos que o contandor passara contando]
+        t ([int]): [Minutos que o progama ira contar]
+        janela ([str]): [Janela que a interface está executando]
+        chave ([str]): [chave para modifcar o elemento e subistituir ele]
     """
     minutos = int(t)
-    segundos = 60
+    segundos = 59
     while True:
         janela.FindElement(chave).Update('')
         texto = '{:02d}:{:02d}'.format(minutos, segundos)
         if minutos < 0:
             break
-        elif segundos == 60:
+        elif segundos == 59:
             minutos -= 1
             segundos -= 1
         elif segundos == 0:
-            segundos = 60
+            segundos = 59
         else:
             segundos -= 1
         print(texto, end = "\r")
         sleep(1)
-    AudioPlayer("./Interface Grafica/tree_lofi/beeps1.mp3").play(False, True)
-
-def musica():   
-    AudioPlayer("./Interface Grafica/tree_lofi/lofi.mp3").play(True, True)
-
-def main():
-    t1 = threading.Thread(target = tempo)
-    t2 = threading.Thread(target = musica)
-    t1.start()
-    t2.start()
+    AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True) #toca o som dos beeps ao fim do progama
 
 class interface():
+    """[Classe responsavel pela interface grafica]
+    """    
     def __init__(self):
+        """[init, cria o layout]
+        """        
         layout = [
             [sg.Text("Minutos: ") ,sg.Input(size = '2', key = "Tempo")],
             [sg.Button("Iniciar")],
@@ -49,13 +45,13 @@ class interface():
         
         self.janela = sg.Window('Tree').layout(layout)
     def iniciar(self):
+        """[Recolhe as informações da tela e chama a função tempo]
+        """        
         while True:
             self.button, self.values = self.janela.Read()
             minutos = self.values["Tempo"]
-            if __name__ == "__main__":
-                main()
             tempo(minutos, self.janela, 'saida')
-            event = 'Quit'
+
 
 tela = interface()
 
