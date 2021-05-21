@@ -35,7 +35,7 @@ def tempo(t, janela, chave):
 def musica():
     """[Função que toca a musica]
     """       
-    AudioPlayer("./Interface Grafica/Tree/tree_lofi/lofi.mp3").play(True, True)
+    AudioPlayer("../Tree/tree_lofi/lofi.mp3").play(True, True)
 
 def main():
     """[main, executa ambas as funções em pararelo, infelizmente a função musica não para quando o progama termina de contar o tempo]
