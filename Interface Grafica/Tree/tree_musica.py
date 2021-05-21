@@ -14,36 +14,49 @@ def tempo(t, janela, chave):
         janela ([str]): [Janela que a interface está executando]
         chave ([str]): [chave para modifcar o elemento e subistituir ele]
     """
-    minutos = int(t)
-    segundos = 59
-    while True:
-        janela.FindElement(chave).Update('')
-        texto = '{:02d}:{:02d}'.format(minutos, segundos)
-        if minutos < 0:
-            break
-        elif segundos == 59:
-            minutos -= 1
-            segundos -= 1
-        elif segundos == 0:
-            segundos = 59
-        else:
-            segundos -= 1
-        print(texto, end = "\r")
-        sleep(1)
-    AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True) #toca o som dos beeps ao fim do progama
-
+    try:
+        minutos = abs(int(t))
+    except ValueError:
+        print("Descupe, o numero de minutos informados está invalido, sera considerado 1 minuto")
+        sleep(3)
+        minutos = 1
+    finally:
+        while True:
+            janela.FindElement(chave).Update('')
+            texto = '{:02d}:{:02d}'.format(minutos, segundos)
+            if minutos < 0:
+                break
+            elif segundos == 59:
+                minutos -= 1
+                segundos -= 1
+            elif segundos == 0:
+                segundos = 59
+            else:
+                segundos -= 1
+            print(texto, end = "\r")
+            sleep(1)
+        try:
+            AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True) #toca o som dos beeps ao fim do progama
+        except FileNotFoundError:
+            print("Arquivo de audio não encontrado")
 def musica():
     """[Função que toca a musica]
-    """       
-    AudioPlayer("./Interface Grafica/Tree/tree_lofi/lofi.mp3").play(True, True)
+    """
+    try:   
+        AudioPlayer("./Interface Grafica/Tree/tree_lofi/lofi.mp3").play(True, True)
+    except FileNotFoundError:
+        print("A musica não pode ser reproduzida, pois ouve um erro")
 
 def main():
     """[main, executa ambas as funções em pararelo, infelizmente a função musica não para quando o progama termina de contar o tempo]
-    """    
-    t1 = Thread(target = tempo)
-    t2 = Thread(target = musica)
-    t1.start()
-    t2.start()
+    """
+    try:
+        t1 = Thread(target = tempo)
+        t2 = Thread(target = musica)
+        t1.start()
+        t2.start()
+    except TypeError:
+        print("Erro de tipo na hora de chamar a função")
 
 class interface():
     """[Classe responsavel pela interface grafica]
