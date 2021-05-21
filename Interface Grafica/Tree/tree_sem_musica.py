@@ -29,7 +29,10 @@ def tempo(t, janela, chave):
             segundos -= 1
         print(texto, end = "\r")
         sleep(1)
-    AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True) #toca o som dos beeps ao fim do progama
+    try:
+        AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True) #toca o som dos beeps ao fim do progama
+    except FileNotFoundError:
+        print("Arquivo de audio não encontrado")
 
 class interface():
     """[Classe responsavel pela interface grafica]
