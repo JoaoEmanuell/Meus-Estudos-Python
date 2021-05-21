@@ -29,21 +29,29 @@ def tempo(t, janela, chave):
         else:
             segundos -= 1
         print(texto, end = "\r")
-        sleep(1)
-    AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True) #toca o som dos beeps ao fim do progama
-
+        sleep(0.015)
+    try:
+        AudioPlayer("./Interface Grafica/Tree/tree_lofi/beeps1.mp3").play(False, True) #toca o som dos beeps ao fim do progama
+    except FileNotFoundError:
+        print("Arquivo não encontrado")
 def musica():
     """[Função que toca a musica]
-    """       
-    AudioPlayer("../Tree/tree_lofi/lofi.mp3").play(True, True)
+    """
+    try:   
+        AudioPlayer("./Interface Grafica/Tree/tree_lofi/lofi.mp3").play(True, True)
+    except FileNotFoundError:
+        print("A musica não pode ser reproduzida, pois ouve um erro")
 
 def main():
     """[main, executa ambas as funções em pararelo, infelizmente a função musica não para quando o progama termina de contar o tempo]
-    """    
-    t1 = Thread(target = tempo)
-    t2 = Thread(target = musica)
-    t1.start()
-    t2.start()
+    """
+    try:
+        t1 = Thread(target = tempo)
+        t2 = Thread(target = musica)
+        t1.start()
+        t2.start()
+    except TypeError:
+        print("Erro de tipo na hora de chamar a função")
 
 class interface():
     """[Classe responsavel pela interface grafica]
