@@ -38,52 +38,56 @@ class interface():
         self.Especiais = ['"', '!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '=', '£', '¢', '¬', '{', '[', ']', '}', '§', '|', ';', '?', '°', '̣', 'ª', 'º', '´', '~', '^', '/', '+', '.']
     
     def geração(self):
-#bloco com todas as opções marcadas
-        limite = int(self.tamanho)
-        if self.minusculas and self.numeros and self.especiais and self.maisculas:
-            interface.aleatorio_4(self.Maisculas, self.Minusculas, self.Numeros, self.Especiais, limite)
-#bloco das letras maisculas
-        elif self.maisculas:
-            #sub bloco letras minusculas
-            if self.maisculas and self.minusculas:
-                if self.maisculas and self.minusculas and self.numeros:
-                    interface.aleatorio_3(self.Maisculas, self.Minusculas, self.Numeros, limite)
-                elif self.maisculas and self.minusculas and self.especiais:
-                    interface.aleatorio_3(self.Especiais, self.Maisculas, self.Minusculas, limite)
+        try:
+            limite = round(abs(float(str(self.tamanho).replace(',', '.'))))
+        except ValueError:
+            print("Erro, o valor informado não pode ser aceito, por favor insira um numero valido")
+        else:
+    #bloco com todas as opções marcadas
+            if self.minusculas and self.numeros and self.especiais and self.maisculas:
+                interface.aleatorio_4(self.Maisculas, self.Minusculas, self.Numeros, self.Especiais, limite)
+    #bloco das letras maisculas
+            elif self.maisculas:
+                #sub bloco letras minusculas
+                if self.maisculas and self.minusculas:
+                    if self.maisculas and self.minusculas and self.numeros:
+                        interface.aleatorio_3(self.Maisculas, self.Minusculas, self.Numeros, limite)
+                    elif self.maisculas and self.minusculas and self.especiais:
+                        interface.aleatorio_3(self.Especiais, self.Maisculas, self.Minusculas, limite)
+                    else:
+                        interface.aleatorio_2(self.Maisculas, self.Minusculas, limite)
+                #sub bloco numeros
+                elif self.maisculas and self.numeros:
+                    if self.maisculas and self.especiais and self.numeros == True:
+                        interface.aleatorio_3(self.Especiais, self.Maisculas, self.Numeros, limite)
+                    else:
+                        interface.aleatorio_2(self.Maisculas, self.Numeros, limite)
+                elif self.maisculas and self.especiais:
+                    interface.aleatorio_2(self.Maisculas, self.Especiais, limite)
                 else:
-                    interface.aleatorio_2(self.Maisculas, self.Minusculas, limite)
-            #sub bloco numeros
-            elif self.maisculas and self.numeros:
-                if self.maisculas and self.especiais and self.numeros == True:
-                    interface.aleatorio_3(self.Especiais, self.Maisculas, self.Numeros, limite)
+                    interface.aleatorio_1(self.Maisculas, limite)
+    #bloco das letras minusculas
+            elif self.minusculas:
+                #sub bloco numeros
+                if self.minusculas and self.numeros:
+                    if self.minusculas and self.numeros and self.especiais:
+                        interface.aleatorio_3(self.Minusculas, self.Numeros, self.Especiais, limite)
+                    else:
+                        interface.aleatorio_2(self.Minusculas, self.Numeros, limite)
+                #sub bloco especiais
+                elif self.minusculas and self.especiais:
+                    interface.aleatorio_2(self.Minusculas, self.Especiais, limite)
                 else:
-                    interface.aleatorio_2(self.Maisculas, self.Numeros, limite)
-            elif self.maisculas and self.especiais:
-                interface.aleatorio_2(self.Maisculas, self.Especiais, limite)
-            else:
-                interface.aleatorio_1(self.Maisculas, limite)
-#bloco das letras minusculas
-        elif self.minusculas:
-            #sub bloco numeros
-            if self.minusculas and self.numeros:
-                if self.minusculas and self.numeros and self.especiais:
-                    interface.aleatorio_3(self.Minusculas, self.Numeros, self.Especiais, limite)
+                    interface.aleatorio_1(self.Minusculas, limite)
+    #bloco dos numeros
+            elif self.numeros:
+                if self.numeros and self.especiais:
+                    interface.aleatorio_2(self.Numeros, self.Especiais, limite)
                 else:
-                    interface.aleatorio_2(self.Minusculas, self.Numeros, limite)
-            #sub bloco especiais
-            elif self.minusculas and self.especiais:
-                interface.aleatorio_2(self.Minusculas, self.Especiais, limite)
-            else:
-                interface.aleatorio_1(self.Minusculas, limite)
-#bloco dos numeros
-        elif self.numeros:
-            if self.numeros and self.especiais:
-                interface.aleatorio_2(self.Numeros, self.Especiais, limite)
-            else:
-                interface.aleatorio_1(self.Numeros, limite)
-#bloco dos especiais
-        elif self.especiais:
-            interface.aleatorio_1(self.Especiais, limite)
+                    interface.aleatorio_1(self.Numeros, limite)
+    #bloco dos especiais
+            elif self.especiais:
+                interface.aleatorio_1(self.Especiais, limite)
 #Função de aleatoridade
     def aleatorio_1(lista, limite):
         l = 0
