@@ -28,7 +28,7 @@ class bichinho():
         """        
         print (f"O nome do bichinho é {self.nome}\nA fome de {self.nome} está em {self.fome}%\nA saúde de {self.nome} está em {self.saude}%\nA idade de {self.nome} é {self.idade} anos")
         
-        bichinho.novo_humor()
+        bichinho.novo_humor(self)
         
         return (f"O nome do bichinho é {self.nome}\nA fome de {self.nome} está em {self.fome}%\nA saúde de {self.nome} está em {self.saude}%\nA idade de {self.nome} é {self.idade} anos")
     
@@ -111,6 +111,15 @@ class bichinho():
         self.brincarr = tempo
         return self.brincarr
 
-bichinho = bichinho("Midas")
+class bichinho2(bichinho):
+    pass
+class bichinho3(bichinho):
+    pass
 
-bichinho.status()
+Midas = bichinho("Midas")
+Miriel = bichinho2("Miriel")
+Asriel = bichinho3("Asriel")
+
+Midas.status()
+Miriel.status()
+Asriel.status()
