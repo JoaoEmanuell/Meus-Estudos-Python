@@ -34,7 +34,7 @@ O objetivo dessa pasta é treinar o uso de classes e objetos de python.
 
 - [x] [Classe Funcionário Update](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Exercicios%20Classes%20e%20Objetos/classe_funcionario_update.py)
 
-- [ ] Classe Bichinho Virtual++
+- [x] [Classe Bichinho Virtual++](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/Exercicios-de-classes/master/classe_bichinho_virtual%2B%2B.py)
 
 - [ ] Crie uma "porta escondida" no programa do programa do bichinho virtual que mostre os valores exatos dos atributos do objeto. Consiga isto mostrando o objeto quando uma opção secreta, não listada no menu, for informada na escolha do usuário. Dica: acrescente um método especial str() à classe Bichinho.
 
