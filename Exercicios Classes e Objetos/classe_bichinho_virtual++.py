@@ -90,18 +90,26 @@ class bichinho():
         """
         [Serve para calcular o humor do bichinho, baseado na sua fome e saúde]
         """        
-        if self.fome > 75 or self.saude < 25:
+        if self.fome > 75 or self.saude < 25 or self.brincar < 2:
             self.humor = print(f'{self.nome} está Irritado')
         
-        elif self.fome > 50 or self.saude < 50:
+        elif self.fome > 50 or self.saude < 50 or self.brincar < 5:
             self.humor = print(f'{self.nome} está Triste')
         
-        elif self.fome > 25 or self.saude < 75:
+        elif self.fome > 25 or self.saude < 75 or self.brincar < 10:
             self.humor = print(f'{self.nome} está Feliz')
         
         else:
             self.humor = print(f'{self.nome} está Muito feliz')
 
+    def brincar(self):
+        """[Serve para informar quanto tempo você deseja brincar com o bichinho]
+        """        
+        tempo = abs(float(input(f"Por quanto minutos deseja brincar com {self.nome}? ")))
+        self.brincar = tempo
+        return self.brincar
+
 bichinho = bichinho("Midas")
 
+bichinho.brincar()
 bichinho.status()
