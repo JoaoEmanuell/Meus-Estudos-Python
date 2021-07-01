@@ -1,16 +1,3 @@
-'''
-Esse projeto se trata de um cripitografador de mensagens, nos teclados de celulares antigos, temos que teclar mais de uma vez uma tecla para que a letra desejada apareça, cada tecla possui um número, portanto o criptiografador ira fazer a conversão da string desejada para o número que corresponde a ela.
-
-2 | a = 2; b = 22; c = 222;
-3 | d = 3; e = 33; f = 333;
-4 | g = 4; h = 44; i = 444;
-5 | j = 5; k = 55; l = 555;
-6 | m = 6; n = 66; o = 666;
-7 | p = 7; q = 77; r = 777; s = 7777;
-8 | t = 8; u = 88; v = 888;
-9 | w = 9; x = 99; y = 999; z = 9999;
-'''
-
 texto = 'agora indepedente do texto eu terei ele criptografado e discriptografado'
 def criptografador(texto):
     def grupo3(l, a, b, c, a1, b1, c1):
