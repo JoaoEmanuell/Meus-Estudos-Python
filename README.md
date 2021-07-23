@@ -1,9 +1,9 @@
 # Meus-Estudos-Python
-Meus estudos da linguagem de programação python, baseado no Curso em Video do Gustavo Guanabara
-
-Todos os codigos desse repositorio são baseados no Curso em Video de python do Gustavo Guanabara, so depois de muito tempo que eu vim aprender a utilizar o GitHub, por isso irei manter em backup esse repositorio.
+Meus estudos da linguagem de programação python.
 
 # My-Studies-Python
-My studies of the python programming language, based on Gustavo Guanabara's Video Course
+My studies of the python programming language.
 
-All the codes in this repository are based on Gustavo Guanabara's Python Video Course, only after a long time that I came to learn how to use GitHub, so I will keep this repository backed up.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/81983803/126818963-0c8a686c-f3d0-4b0d-a021-f7d4f1484baf.png" alt="python-icon"/>
+</p>
