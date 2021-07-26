@@ -12,7 +12,7 @@ def main():
             print(cript.criptografador(text))
             break
         elif res == 2:
-            text = []
+            text = ''
             clear()
             print(descpt.descriptografador(text))
             break
