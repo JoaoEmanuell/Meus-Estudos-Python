@@ -6,6 +6,7 @@ def criptografador(texto):
       Return:
          convert ([list]): [List with converted text]
     """    
+    # Text is empty?
     if texto == '':
         texto = str(input('Digite o texto: '))
     def grupo3(l, a, b, c, a1, b1, c1):
