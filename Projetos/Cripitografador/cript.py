@@ -1,6 +1,6 @@
 def criptografador(texto):
     if texto == '':
-        texto = str(input('Digite o texto '))
+        texto = str(input('Digite o texto: '))
     def grupo3(l, a, b, c, a1, b1, c1):
             if (l == a):
                 return(a1)
@@ -48,7 +48,7 @@ def criptografador(texto):
         elif (l == ' '):
             conver.append('')
     #Caracteres especiais
-        elif (l == ',' or l == '!' or l == '.' or l == '-' or l == '_' or l == '?'):
+        elif (l == '!' or l == '.' or l == '-' or l == '_' or l == '?'):
             if (l == ','):
                 conver.append(',')
             elif (l == '!'):
@@ -63,5 +63,6 @@ def criptografador(texto):
                 conver.append('?')
     #Erro
         else:
-            print('Erro')
+            #print(f'Erro, caractere "{l}" não é conhecido!')
+            pass
     return(conver)

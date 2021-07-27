@@ -1,17 +1,32 @@
+from re import sub
 def descriptografador(texto):
     if texto == '':
-        texto = input('Digite o texto ')
+        texto = input('Digite o texto: ')
 
     #Conversão da str para lista
     tmp = []
+    na = 0
+    ntmp = 0
     for i in texto:
-        if i == ',' or i == ' ':
+        if i == '[' or i == ']':
             pass
-        else:
-            try:
-                tmp.append(int(i))
-            except ValueError:
+        try:
+            ntmp = int(str(ntmp) + str(i))
+        except ValueError:
+            if i == ',':
+                tmp.append(ntmp)
+                ntmp = 0
+            elif i == ' ':
+                pass
+            else:
                 tmp.append(str(i))
+        if i == "'" and na != 1:
+            tmp.append('')
+            na += 1
+        elif na == 1:
+            na = 0
+
+    tmp.append(ntmp)
     texto = tmp
     def grupo3(l, a, b, c, a1, b1, c1):
             if (l == a):
@@ -72,4 +87,5 @@ def descriptografador(texto):
                 conver += '_'
             elif (l == '?'):
                 conver += '?'
+    conver = sub(' {2,}', ' ', conver).strip(' ')
     return conver
