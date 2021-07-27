@@ -1,7 +1,25 @@
 def criptografador(texto):
+    """[Encryptor, serves to encrypt the string that was passed to it.]
+
+      Args:
+          text ([str]): [text that should be passed to it]
+      Return:
+         convert ([list]): [List with converted text]
+    """    
     if texto == '':
         texto = str(input('Digite o texto: '))
     def grupo3(l, a, b, c, a1, b1, c1):
+            """[internal function to make writing the code easier and make it consume less]
+
+             Args:
+                 l ([str]): [current character]
+                 a ([str]): [character 1 of the conversion code]
+                 b ([str]): [character 2 of the conversion code]
+                 c ([str]): [character 3 of the conversion code]
+                 a1 ([int]): [conversion code number 1]
+                 b1 ([int]): [conversion code number 2]
+                 c1 ([int]): [conversion code number 3]
+             """        
             if (l == a):
                 return(a1)
             elif(l == b):
@@ -9,6 +27,19 @@ def criptografador(texto):
             else:
                 return(c1)
     def grupo4(l, a, b, c, d, a1, b1, c1, d1):
+            """[internal function to make writing the code easier and make it consume less]
+
+             Args:
+                 l ([str]): [current character]
+                 a ([str]): [character 1 of the conversion code]
+                 b ([str]): [character 2 of the conversion code]
+                 c ([str]): [character 3 of the conversion code]
+                 d ([str]): [character 4 of the conversion code]
+                 a1 ([int]): [conversion code number 1]
+                 b1 ([int]): [conversion code number 2]
+                 c1 ([int]): [conversion code number 3]
+                 d1 ([int]): [conversion code number 4]
+             """            
             if (l == a):
                 return(a1)
             elif(l == b):
