@@ -5,7 +5,7 @@ import descpt
 class TelaPython():
     def __init__(self):
         layout = [
-            [sg.Radio('CRIPTOGRAFAR', 'select', key='cript'), sg.Radio('DESCRIPTOGRAFAR', 'select', key='descript')],
+            [sg.Radio('CRIPTOGRAFAR', 'select', key='cript', default=True), sg.Radio('DESCRIPTOGRAFAR', 'select', key='descript')],
             [sg.Text('Texto de entrada')],
             [sg.Input(key = 'entrada', size=(80, 20))],
             [sg.Button('REALIZAR OPERAÇÃO')],
