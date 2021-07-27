@@ -26,8 +26,6 @@ class TelaPython():
                 print(progam.callCript(self.entrada))
             elif (self.descript):
                 print(progam.callDescript(self.entrada))
-            else:
-                print('Por favor, marque uma opção válida!')
 
     def limpar(janela, chave):
         janela.FindElement(chave).Update('')
