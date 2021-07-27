@@ -13,7 +13,7 @@ Imagem de um teclado antigo:
 
 - [x] Criptografador.
 - [x] Descriptografador.
-- [ ] Facilitação da entrega do código criptografado.
+- [x] Facilitação da entrega do código criptografado.
 - [ ] Interface Gráfica.
 
 ## Tabelas de conversão:
