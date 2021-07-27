@@ -7,16 +7,14 @@ Os Números 7 e 9 são os únicos números que recebem o quarto conjunto, uma ve
 
 Imagem de um teclado antigo:
 
-<p align="center">
-  <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F73%2FTelephone-keypad2.svg%2F300px-Telephone-keypad2.svg.png&f=1&nofb=1" alt="Foto de um teclado de telefone antigo, a foto pertence ao site da wikipédia"/>
-</p>
+![Foto de um teclado de telefone antigo, a foto pertence ao site da wikipédia](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F73%2FTelephone-keypad2.svg%2F300px-Telephone-keypad2.svg.png&f=1&nofb=1)
 
 ## Objetivos:
 
 - [x] Criptografador.
 - [x] Descriptografador.
 - [x] Facilitação da entrega do código criptografado.
-- [x] Interface Gráfica.
+- [ ] Interface Gráfica.
 
 ## Tabelas de conversão:
 
