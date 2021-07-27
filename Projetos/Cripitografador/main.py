@@ -3,7 +3,8 @@ import os
 def main():
     clear()
     tela = interface.TelaPython()
-    tela.Iniciar()  
+    tela.Iniciar()
+    clear()  
 
 def clear():
     os.system('clear')

@@ -1,11 +1,11 @@
 import PySimpleGUI as sg
-import cript
-import descpt
+import encrypt
+import decrypt
 
 class TelaPython():
     def __init__(self):
         layout = [
-            [sg.Radio('CRIPTOGRAFAR', 'select', key='cript', default=True), sg.Radio('DESCRIPTOGRAFAR', 'select', key='descript')],
+            [sg.Radio('CRIPTOGRAFAR', 'select', key='encrypt', default=True), sg.Radio('DESCRIPTOGRAFAR', 'select', key='decrypt')],
             [sg.Text('Texto de entrada')],
             [sg.Input(key = 'entrada', size=(80, 20))],
             [sg.Button('REALIZAR OPERAÇÃO')],
@@ -19,19 +19,19 @@ class TelaPython():
         while True:
             self.button, self.values = self.janela.Read()
             self.entrada = self.values['entrada']
-            self.cript = self.values['cript']
-            self.descript = self.values['descript']
+            self.encrypt = self.values['encrypt']
+            self.decrypt = self.values['decrypt']
             TelaPython.limpar(self.janela, 'output')
-            if (self.cript):
-                print(progam.callCript(self.entrada))
-            elif (self.descript):
-                print(progam.callDescript(self.entrada))
+            if (self.encrypt):
+                print(progam.callEncrypt(self.entrada))
+            elif (self.decrypt):
+                print(progam.callDecrypt(self.entrada))
 
     def limpar(janela, chave):
         janela.FindElement(chave).Update('')
 
 class progam():
-    def callCript(text):
-        return(cript.criptografador(text))
-    def callDescript(text):
-        return(descpt.descriptografador(text))
+    def callEncrypt(text):
+        return(encrypt.criptografador(text))
+    def callDecrypt(text):
+        return(decrypt.descriptografador(text))
