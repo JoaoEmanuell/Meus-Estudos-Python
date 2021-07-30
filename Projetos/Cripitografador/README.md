@@ -1,4 +1,7 @@
 # Encrypt Project
+
+[English](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Projetos/Cripitografador/README.md) | [Português](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Projetos/Cripitografador/README-br.md)
+
 This project is a message cryptographer, on old telephone keypads, we have to press a key more than once so that the desired letter appears, each key has a number, so the cryptographer will convert the desired string to the number that corresponds to it.
 
 The conversion formula is _N * Set_, this will determine the value that the letter will receive, ie depending on the number and the set, the letter will receive a value, starting from the letter A and the Number 2.
