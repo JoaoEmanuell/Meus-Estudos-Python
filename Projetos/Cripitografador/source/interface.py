@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
-import encrypt
-import decrypt
+from . import encrypt
+from . import decrypt
 
 class TelaPython():
     def __init__(self):

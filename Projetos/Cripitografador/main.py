@@ -1,4 +1,4 @@
-import interface
+from source import interface
 import os
 def main():
     clear()

@@ -1,54 +1,29 @@
-# Projeto Cript
-Esse projeto se trata de um cripitografador de mensagens, nos teclados de telefones antigos, temos que teclar mais de uma vez uma tecla para que a letra desejada apareça, cada tecla possui um número, portanto o criptiografador ira fazer a conversão da string desejada para o número que corresponde a ela.
+# Encrypt Project
 
-A formula da conversão é _N * Conjunto_, isso irá determinar o valor que a letra irá receber, ou seja depedendo do número e do conjunto, a letra irá receber um valor, começando a partir da letra A e do Número 2.
+[English](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Projetos/Cripitografador/README.md) | [Português](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Projetos/Cripitografador/README-br.md)
 
-Os Números 7 e 9 são os únicos números que recebem o quarto conjunto, uma vez que os teclados de telefones antigos recebiam quatro letras ao invés das três letras que todos os outros números apresentam.
+This project is a message cryptographer, on old telephone keypads, we have to press a key more than once so that the desired letter appears, each key has a number, so the cryptographer will convert the desired string to the number that corresponds to it.
 
-Imagem de um teclado antigo:
+The conversion formula is _N * Set_, this will determine the value that the letter will receive, ie depending on the number and the set, the letter will receive a value, starting from the letter A and the Number 2.
+
+Numbers 7 and 9 are the only numbers that receive the fourth set, as older telephone keypads were given four letters instead of the three letters that all other numbers have.
+
+Image of an old keyboard:
 
 <p align="center">
   <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F73%2FTelephone-keypad2.svg%2F300px-Telephone-keypad2.svg.png&f=1&nofb=1" alt="Foto de um teclado de telefone antigo, a foto pertence ao site da wikipédia"/>
 </p>
 
-## Objetivos:
+## Goals:
 
-- [x] Criptografador.
-- [x] Descriptografador.
-- [x] Facilitação da entrega do código criptografado.
-- [x] Interface Gráfica.
+- [x] Encryptor.
+- [x] Decryptor.
+- [x] Facilitating the delivery of encrypted code.
+- [x] Graphical Interface.
 
-## Tabelas de conversão:
+## Conversion table:
 
-## Tabela só com os números:
-
-Número|Conjunto 1|Conjunto 2|Conjunto 3|Conjunto 4
-:---: | ---: | ---: | ---: | ---:
-2 |2|22|222|
-3 |3|33|333|
-4 |4|44|444|
-5 |5|55|555|
-6 |6|66|666|
-7 |7|77|777|7777
-8 |8|88|888|
-9 |9|99|999|9999
-
-## Tabela só com as letras:
-
-Número|Conjunto 1|Conjunto 2|Conjunto 3|Conjunto 4
-:---: | ---: | ---: | ---: | ---:
-2 |A|B|C|
-3 |D|E|F|
-4 |G|H|I|
-5 |J|K|L|
-6 |M|N|O|
-7 |P|Q|R|S
-8 |T|U|V|
-9 |W|X|Y|Z
-
-## Tabela com letras e números após a conversão
-
-Número|Letra 1|Conversão 1|Letra 2|Conversão 2|Letra 3|Conversão 3|Letra 4|Conversão 4
+Number|Letter 1|Conversion 1|Letter 2|Conversion 2|Letter 3|Conversion 3|Letter 4|Conversion 4
 :---: | :---: | :---: | :---: | :---:| :---:| :---:| :---:| :---:
 2 |A|2|B|22|C|222||
 3 |D|3|E|33|F|333||
