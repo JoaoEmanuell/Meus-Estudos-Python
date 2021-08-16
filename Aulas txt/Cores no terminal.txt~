@@ -56,15 +56,8 @@ nome = 'Emanuel'
 print('Muito prazer em te conhecer {}{}{}!!!'.format('\033[4;34m',nome,'\033[m'))
 
 nome = 'Emanuel'
-colors = {
-    'limpa':'\033[m',
-    'branco': '\033[0;30m',
-    'vermelho': '\033[0;31m',
-    'verde': '\033[0;32m',
-    'amarelo':'\033[0;33m',
-    'azul':'\033[0;34m',
-    'roxo':'\033[0;35m',
-    'ciano':'\033[0;36m',
-    'cinza':'\033[0;37m',
-} #isso aqui se chama dicionario, baseado nele eu posso usar cores sem muita dor de cabeça
+cores = {'limpa':'\033[m',
+         'azul':'\033[0;34m',
+         'amarelo':'\033[0;33m]',
+         'pretoebranco':'\033[7;30m'} #isso aqui se chama dicionario, baseado nele eu posso usar cores sem muita dor de cabeça
 print('Muito prazer em te conhecer {}{}{}!!!'.format(cores['azul'], nome, cores ['limpa']))
