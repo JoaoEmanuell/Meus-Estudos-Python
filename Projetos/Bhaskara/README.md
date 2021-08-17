@@ -1,5 +1,7 @@
 # Bhaskara
 
+| [Versão Português](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/Projetos/Projetos/Bhaskara/README-br.md) |
+
 The aim of this project is to calculate the roots of a quadratic equation using the formula of bhaskara.
 
 ## Bhaskara's Formula:
