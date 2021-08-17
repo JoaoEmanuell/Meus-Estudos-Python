@@ -11,7 +11,8 @@ class screen():
         [sg.Button("Calcular")],
         [sg.Text("Δ "), sg.Output(key="delt", size=(20,0))],
         [sg.Text("X'"), sg.Output(key="x1", size=(20,0))], 
-        [sg.Text('X"'), sg.Output(key="x2", size=(20,0))]
+        [sg.Text('X"'), sg.Output(key="x2", size=(20,0))],
+        [sg.Output(key="delt-alert", visible=False, size=(20,0))]
         ]
         self.janela = sg.Window('EQUAÇÃO DO SEGUNDO GRAU').layout(layout)
 
@@ -23,9 +24,10 @@ class screen():
             self.c = float(self.values['C'])
             screen.ClearElements(self.janela)
             rot = roots.roots(self.a, self.b, self.c)
-            screen.Write(self.janela, 'x1', rot[0])
-            screen.Write(self.janela, 'x2', rot[1])
-            screen.Write(self.janela, 'delt', rot[2])
+            if rot[2] < 0:
+                self.janela.FindElement('delt-alert').update(visible=True)
+                screen.Write(self.janela, 'delt-alert', 'Delta negativo, portanto as raizes são indetermiandas!')
+            screen.WriteElements(self.janela, rot)
             
     def Clear(window, key):
         window.FindElement(key).Update('')
@@ -37,3 +39,8 @@ class screen():
 
     def Write(window, key, text):
         window.FindElement(key).Update(text)
+
+    def WriteElements(window, rot):
+        window.FindElement('x1').Update(rot[0])
+        window.FindElement('x2').Update(rot[1])
+        window.FindElement('delt').Update(rot[2])
