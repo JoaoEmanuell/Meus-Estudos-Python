@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+from download import DownloadVideo
 
 class Interface():
     def __init__(self) -> None:
@@ -13,9 +14,10 @@ class Interface():
 
     def start(self):
         while True:
+            self.clear('output')
             self.button, self.values = self.janela.Read()
             self.link = self.values['link']
-            print(self.link)
+            DownloadVideo(self.link)
     
     def clear(self, key):
         self.janela.FindElement(key).Update('')
