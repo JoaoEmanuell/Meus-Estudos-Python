@@ -1,5 +1,5 @@
 from pytube import YouTube, Playlist
-import os, sys, re
+import os, sys
 from re import findall
 
 class DownloadVerfiy():
@@ -31,7 +31,6 @@ class DownloadVerfiy():
         else :
             return False
     
-
     def createDirectory(name):
         path = sys.path[0]
         if not(os.path.isdir(f'{path}/{name}')):
@@ -74,6 +73,7 @@ class DownloadPlaylist():
             if self.CONVERT:
                 self.ConvertToMp3(video.title)
                 print(f'Vídeo "{video.title}" convertido para mp3')
+        print("Download da Playlist concluido!")
     
     def ConvertToMp3(self, videoName):
         path = sys.path[0]
