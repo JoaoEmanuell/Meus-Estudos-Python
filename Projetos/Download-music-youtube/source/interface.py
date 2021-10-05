@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+from PySimpleGUI.PySimpleGUI import ErrorElement
 from download import DownloadVideo
 
 class Interface():
@@ -14,10 +15,13 @@ class Interface():
 
     def start(self):
         while True:
-            self.clear('output')
-            self.button, self.values = self.janela.Read()
-            self.link = self.values['link']
-            DownloadVideo(self.link)
+            try:
+                self.button, self.values = self.janela.Read()
+                self.clear('output')
+                self.link = self.values['link']
+                DownloadVideo(self.link)
+            except:
+                print("Algo deu errado, portanto o download não pode ser concluido, por favor tente inserir uma nova url!")
     
     def clear(self, key):
         self.janela.FindElement(key).Update('')
