@@ -1,6 +1,7 @@
 from pytube import YouTube, Playlist
 import os, sys
 from re import findall
+from os.path import exists
 
 class DownloadVerfiy():
     def __init__(self, link) -> None:
@@ -40,21 +41,28 @@ class DownloadVideo():
     def __init__(self, link) -> None:
         self.video = YouTube(link)
         self.download()
-        self.source = sys.path[0]
-        self.ConvertToMp3()
 
     def download(self):
-        source = sys.path[0]
-        print(f"Baixando '{self.video.title}'")
-        stream = self.video.streams.get_audio_only()
-        stream.download(output_path=f'{source}/Musica')
-        print(f"Vídeo '{self.video.title}' baixado")
-
+        if DownloadVideo.VerifyIfFileNotExists(self, "Musica"):
+            source = sys.path[0]
+            print(f"Baixando '{self.video.title}'")
+            self.stream = self.video.streams.get_audio_only()
+            self.stream.download(output_path=f'{source}/Musica')
+            print(f"Vídeo '{self.video.title}' baixado")
+            DownloadVideo.ConvertToMp3(self)
+        else :
+            print(f"Vídeo '{self.video.title}' já foi baixado!")
 
     def ConvertToMp3(self):
-        filename = self.video.title.replace("|", '').replace(".", '')
-        os.rename(f"{self.source}/Musica/{filename}.mp4", f"{self.source}/Musica/{filename}.mp3")
+        source = sys.path[0]
+        filename = self.stream.default_filename.replace('.mp4', '')
+        os.rename(f"{source}/Musica/{filename}.mp4", f"{source}/Musica/{filename}.mp3")
         print(f"'{self.video.title}' convertido para mp3")
+
+    def VerifyIfFileNotExists(self, directoryName):
+        source = sys.path[0]
+        filename = self.video.title.replace("|", '').replace(".", '').replace("#", '')
+        return not(exists(f"{source}/{directoryName}/{filename}.mp3"))
 
 class DownloadPlaylist():
     def __init__(self, playlistLink, convertToMp3=True) -> None:
@@ -77,5 +85,5 @@ class DownloadPlaylist():
     
     def ConvertToMp3(self, videoName):
         path = sys.path[0]
-        filename = str(videoName).replace("|", '').replace(".", '')
+        filename = str(videoName).replace("|", '').replace(".", '').replace("#", '')
         os.rename(f"{path}/Musicas/{filename}.mp4", f"{path}/Musicas/{filename}.mp3")
