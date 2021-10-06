@@ -4,9 +4,9 @@ from . import download
 class Interface():
     def __init__(self) -> None:
         layout = [
-            [sg.Text('Link da Música', key='playlist')],
+            [sg.Text('Link da Música ou playlist', key='playlist')],
             [sg.Input(key = 'link', size=(80, 20))],
-            [sg.Button('Baixar Música ou playlist')],
+            [sg.Button('Baixar Música')],
             [sg.Output(size = (80, 5), key='output')]
         ]
     
