@@ -73,14 +73,17 @@ class DownloadPlaylist():
     def downloadVideos(self):
         for v in self.playlist:
             path = sys.path[0]
-            video = YouTube(v)
-            print(f"Baixando '{video.title}'")
-            stream = video.streams.get_audio_only()
-            stream.download(output_path=f'{path}/Musicas/')
-            print(f"Vídeo '{video.title}' baixado")
-            if self.CONVERT:
-                self.ConvertToMp3(video.title)
-                print(f'Vídeo "{video.title}" convertido para mp3')
+            self.video = YouTube(v)
+            if DownloadVideo.VerifyIfFileNotExists(self, "Musicas"):
+                print(f"Baixando '{self.video.title}'")
+                stream = self.video.streams.get_audio_only()
+                stream.download(output_path=f'{path}/Musicas/')
+                print(f"Vídeo '{self.video.title}' baixado")
+                if self.CONVERT:
+                    self.ConvertToMp3(self.video.title)
+                    print(f'Vídeo "{self.video.title}" convertido para mp3')
+            else :
+                print(f"Vídeo '{self.video.title}' já foi baixado!")
         print("Download da Playlist concluido!")
     
     def ConvertToMp3(self, videoName):
