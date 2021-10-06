@@ -1,12 +1,12 @@
 import PySimpleGUI as sg
-from download import DownloadVerfiy
+from . import download
 
 class Interface():
     def __init__(self) -> None:
         layout = [
             [sg.Text('Link da Música', key='playlist')],
             [sg.Input(key = 'link', size=(80, 20))],
-            [sg.Button('Baixar Música')],
+            [sg.Button('Baixar Música ou playlist')],
             [sg.Output(size = (80, 5), key='output')]
         ]
     
@@ -19,7 +19,7 @@ class Interface():
                 self.clear('output')
                 self.link = self.values['link']
                 if self.event == 'Baixar Música':
-                    DownloadVerfiy(self.link)
+                    download.DownloadVerfiy(self.link)
             except:
                 print("Algo deu errado, portanto o download não pode ser concluido, por favor tente inserir uma nova url!")
                 if self.event == sg.WIN_CLOSED:
@@ -30,6 +30,3 @@ class Interface():
 
     def write(self, key, text):
         self.janela.FindElement(key).Update(text)
-
-tela = Interface()
-tela.start()
