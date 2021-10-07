@@ -8,11 +8,11 @@ class DownloadVideo():
         self.download()
 
     def download(self):
-        if downloadEssential.DownloadEssential.VerifyIfFileNotExists(self, "Musicas"):
-            source = sys.path[0]
+        self.stream = self.video.streams.get_audio_only()
+        self.path = sys.path[0]
+        if downloadEssential.DownloadEssential.VerifyIfFileNotExists(self):
             print(f"Baixando '{self.video.title}'")
-            self.stream = self.video.streams.get_audio_only()
-            self.stream.download(output_path=f'{source}/Musicas/')
+            self.stream.download(output_path=f'{self.path}/Musicas/')
             print(f"Vídeo '{self.video.title}' baixado")
             downloadEssential.DownloadEssential.ConvertToMp3(self)
         else :
