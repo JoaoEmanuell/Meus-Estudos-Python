@@ -1,4 +1,5 @@
-import os, sys
+import os
+import pathlib
 from re import findall
 from .source_download import downloadVideo, downloadPlaylist
 
@@ -31,7 +32,7 @@ class DownloadVerfiy():
             return False
     
     def createDirectory(name):
-        path = sys.path[0]
+        path = pathlib.Path().absolute()
         if not(os.path.isdir(f'{path}/{name}')):
-            path = os.path.join(sys.path[0], name)
+            path = os.path.join(pathlib.Path().absolute(), name)
             os.mkdir(path)

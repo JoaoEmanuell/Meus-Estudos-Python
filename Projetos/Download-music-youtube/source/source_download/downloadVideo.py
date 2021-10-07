@@ -1,5 +1,5 @@
 from pytube import YouTube
-import sys
+import pathlib
 from . import downloadEssential
 
 class DownloadVideo():
@@ -9,7 +9,7 @@ class DownloadVideo():
 
     def download(self):
         self.stream = self.video.streams.get_audio_only()
-        self.path = sys.path[0]
+        self.path = pathlib.Path().absolute()
         if downloadEssential.DownloadEssential.VerifyIfFileNotExists(self):
             print(f"Baixando '{self.video.title}'")
             self.stream.download(output_path=f'{self.path}/Musicas/')
