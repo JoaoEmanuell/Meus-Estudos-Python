@@ -1,0 +1,2 @@
+PySimpleGUI==4.40.0
+pytube==11.0.1
