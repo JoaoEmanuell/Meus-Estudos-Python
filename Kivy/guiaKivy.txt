@@ -122,3 +122,29 @@ Interface dinamica :
                 return Tarefas(['Fazer compras', 'Ir para a escola', 'Regar as plantas'], orientation='horizontal')
 
     Quando instanciamos passamos a lista e a orientação que a tela deve ficar, essa orientação irá subistituir a que existe no arquivo Kivy.
+
+BoxLayout paramentros :
+
+    id : nome_da_id
+    orientation : 'orientação'
+    size_hint_y : None
+    height : self.minimum_height
+
+    size_hint_y = Por padrão começa em 1, assim a tela acaba sendo responsiva por cada número de elementos, se tiver 2, cada um irá ocupar 50% da tela, caso seja colocado como None, isso irá desligar a responsividade, assim você poderá organizar o espaçamento da forma que deseja.
+
+    height = Determina o tamanho minimo que cada elemento irá ocupar em largura, para não fazer um monte de calculos malucos, utilize a função "self.minimum_height" que irá determinar o tamanho minimo.
+
+ScrollView :
+
+    ScrollView é como uma BoxLayout porém ele cria uma barra de rolagem lateral caso o tamanho do conteudo utrapasse o total da tela.
+
+    class Tarefas(ScrollView):
+        def __init__(self, tarefas, **kwargs):
+            super().__init__(**kwargs)
+
+    Nesse caso como estamos criando usando o ScrollView não podemos adicionar os elementos a ele, portanto precisamos acessar a BoxLayout, para isso usamos self.ids.id_da_box.add_widget(Elemento)
+
+    for tarefa in tarefas :
+        self.ids.box.add_widget(Label(text=tarefa, font_size=30, size_hint_y=None, height=200))
+
+    Como desligamos a size_hint_y eles irão ficar uma bagunça, então precisamos desligar do Label e adicionar uma altura minima, que servirá de espaçamento entre os Labels.
