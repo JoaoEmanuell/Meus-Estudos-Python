@@ -148,3 +148,5 @@ ScrollView :
         self.ids.box.add_widget(Label(text=tarefa, font_size=30, size_hint_y=None, height=200))
 
     Como desligamos a size_hint_y eles irão ficar uma bagunça, então precisamos desligar do Label e adicionar uma altura minima, que servirá de espaçamento entre os Labels.
+
+    Também é possivel aplicar as mesmas regras a largura, subistituindo o size_hint_y por size_hint_x e o height por width.
