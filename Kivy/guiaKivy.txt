@@ -18,7 +18,15 @@ Botão :
         def build(self):
             button = Button(text="Texto do botão")
 
-    Insere um botão na interface
+    Insere um botão na interface.
+
+    Paramentros :
+
+        text = Texto do botão, string
+
+        font_size = Tamanho da fonte do texto, float
+
+        on_release = Função que será executada, assim que o botão for clicado essa função será executada, a função tem que pedir self e o botão como paramentros caso contrario ela não irá funcionar.
 
 Label :
 
@@ -28,7 +36,13 @@ Label :
         def build(self):
             label = Label(text="Texto")
 
-    Basicamente serve para inserir um texto na tela
+    Basicamente serve para inserir um texto na tela.
+
+    Paramentros :
+
+        text = Texto do botão, string
+
+        font_size = Tamanho da fonte do texto, float
 
 BoxLayout : 
 

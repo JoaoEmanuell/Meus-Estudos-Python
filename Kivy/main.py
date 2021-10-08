@@ -6,18 +6,14 @@ from kivy.uix.label import Label
 class Test(App):
     def build(self):
         box = BoxLayout(orientation="vertical")
-        button = Button(text="Botão 1")
-        label = Label(text="Hello world")
-        box.add_widget(label)
+        button = Button(text="Botão 1", font_size=30, on_release=self.incrementar)
+        self.label = Label(text="1", font_size=30)
+        box.add_widget(self.label)
         box.add_widget(button)
 
-        box2 = BoxLayout()
-        button2 = Button(text="Botão 2")
-        label2 = Label(text="Hello world 2")
-        box2.add_widget(label2)
-        box2.add_widget(button2)
-        
-        box.add_widget(box2)
         return box
+
+    def incrementar(self, button):
+        self.label.text = str(int(self.label.text) + 1)
 
 Test().run()
