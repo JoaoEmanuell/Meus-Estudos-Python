@@ -98,3 +98,27 @@ Arquivo kivy:
             font_size : 30
 
     Esse id serve para verificarmos o valor da Label e modificarmos ele.
+
+Interface dinamica :
+
+    O exemplo anterior ilustrava bem uma interface que é estatica, porém caso queiramos que ela seja dinamica devemos trabalhar de forma diferente : 
+
+        class Tarefas(BoxLayout):
+        def __init__(self, tarefas, **kwargs):
+            super().__init__(**kwargs)
+            for tarefa in tarefas :
+                self.add_widget(Label(text=tarefa, font_size=30))
+
+    Básicamente nessa classe estamos pedindo uma lista de tarefas e adicionando a mesma ao BoxLayout, primeiramente o __init__ sempre é chamado ao iniciar a classe, pedimos o self, as tarefas e o **kwargs.
+
+    O **kwargs é básicamente os argumentos do kivy, passando ele podemos modificar coisas da interface diretamente ao chamar a classe e evitamos que o progama se quebre.
+
+    Após isso temos o super().__init__(**kwargs), essa classe super serve para chamar o __init__ do BoxLayout, assim evitando o __init__ seja rescrito e passamos o **kwargs evitando que o sistema quebre.
+
+    Após isso adicionamos ao BoxLayout, Label que tem o texto que é o texto passado pela lista e o font_size, esses labels serão adicionados de acordo com o tamanho da lista.
+
+        class Test(App):
+            def build(self):
+                return Tarefas(['Fazer compras', 'Ir para a escola', 'Regar as plantas'], orientation='horizontal')
+
+    Quando instanciamos passamos a lista e a orientação que a tela deve ficar, essa orientação irá subistituir a que existe no arquivo Kivy.
