@@ -1,0 +1,44 @@
+Criando a tela :
+
+    from kivy.app import App # importa a tela
+
+    class NomeTela(App):
+        def build(self):
+            #conteudos da tela
+
+    NomeTela.run() # Inicia a tela
+
+    A def build é obrigatoria pois ela é quem é responsavel por inicar a tela, ela deve retornar o layout da tela.
+
+Botão :
+
+    from kivy.uix.button import Button # importa o Botão
+
+    class NomeTela(App):
+        def build(self):
+            button = Button(text="Texto do botão")
+
+    Insere um botão na interface
+
+Label :
+
+    from kivy.uix.label import Label # Importa a label
+
+    class NomeTela(App):
+        def build(self):
+            label = Label(text="Texto")
+
+    Basicamente serve para inserir um texto na tela
+
+BoxLayout : 
+
+    from kivy.uix.boxlayout import BoxLayout # importa o BoxLayout que vai servir como base para o layout da tela
+
+    class NomeTela(App):
+        def build(self):
+            box = BoxLayout(orientation="vertical") # por padrão é horizontal mas pode ser alterado conforme desejado
+            button = Button(text="Botão 1") # cria um botão
+            box.add_widget(button) # adiciona o botão a tela
+            return box # Retorna a o layout
+
+    Nota é possivel adicionar um layout dentro do outro, para isso é só criar o novo layout e adicionar usando o box.add_widget ao principal, dessa forma ao retornar será 2 layouts ao invés de um só.
