@@ -56,3 +56,45 @@ BoxLayout :
             return box # Retorna a o layout
 
     Nota é possivel adicionar um layout dentro do outro, para isso é só criar o novo layout e adicionar usando o box.add_widget ao principal, dessa forma ao retornar será 2 layouts ao invés de um só.
+
+Arquivo kivy:
+
+    Esse arquivo serve para gerenciar o layout e é mais facil de trabalhar, deve ser escrito usando a linguagem kivy.
+
+    Dentro do seu arquivo .py crie a classe de inicialização da interface:
+
+        class Test(App):
+            def build(self):
+                return Incrementador()
+
+        
+    Essa classe irá retornar a interface, mas nesse caso estamos retornando uma outra classe chamada de Incrementador : 
+
+        class Incrementador(BoxLayout):
+            pass
+
+    Essa classe herda a BoxLayout e simplismente é passada
+
+    após isso crie o arquivo escrevendo em letras minusculas o nome da sua classe de inicialização da interface.kv, nesse caso "test.ky"
+
+    Passe o nome da classe que irá ser retornada pela build dentro de <> :
+
+        <Incrementador>:
+
+    Como Incrementador herda a BoxLayout você pode configurar dentro dela as propiedades da box :
+
+        orientation : 'vertical'
+
+    Dentro desse espaço você deve configurar a interface, basicamente você irá colocar o Item de interface [button, label...] e as propiedades dele :
+
+        Button : 
+            text : 'Incrementar'
+            font_size : 30
+            on_release : label.text = str(int(label.text)+1)
+
+        Label: 
+            id : label
+            text : '1'
+            font_size : 30
+
+    Esse id serve para verificarmos o valor da Label e modificarmos ele.
