@@ -44,6 +44,8 @@ Label :
 
         font_size = Tamanho da fonte do texto, float
 
+         markup = Texto irá receber marcação, caso seja True ele podera receber uma marcação como [b]Texto[/b] deixa o texto em Negrito, [color=codigo_hexa]texto[/color] cor, ect...
+
 BoxLayout : 
 
     from kivy.uix.boxlayout import BoxLayout # importa o BoxLayout que vai servir como base para o layout da tela
