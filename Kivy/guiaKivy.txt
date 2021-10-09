@@ -168,3 +168,10 @@ Remover elemento da interface :
     ids = id do elemento, no caso box
 
     remove_widget(root) = remove o elemento da classe principal que está ativa, dessa forma se isso está em um botão e em cima dele tem um Label, ao você clicar no botão ele irá deletar o Label pois é o elemento que está instanciado acima dele.
+
+TextInput :
+
+    TextInput :
+        id:texto
+
+    Cria uma area para o usuario digitar, coloque uma id para poder extrair o texto digitado.
