@@ -5,6 +5,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 class Gerenciador(ScreenManager):
     pass
 
+class Menu(Screen):
+    pass
 class Tarefas(Screen):
     def __init__(self, tarefas=[], **kwargs):
         super().__init__(**kwargs)

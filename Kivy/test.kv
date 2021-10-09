@@ -1,11 +1,27 @@
 <Gerenciador> :
-    Screen:
-        name : 'start'
-        Button : 
-            text : 'Ver tarefas'
-            on_release : app.root.current = 'tarefas'
+    Menu:
+        name : 'menu'
     Tarefas :
         name : 'tarefas'
+
+<Menu>:
+    BoxLayout:
+        orientation:'vertical'
+        padding:100
+        spacing : 25
+        Image:
+            source:'imagem.jpg'
+            size_hint_y : None
+            height : 150
+            alow_stretch : True
+        Button:
+            text : 'Tarefas'
+            on_release : app.root.current = 'tarefas'
+        Button:
+            text: 'Assistente'
+        Button :
+            text : 'Sair'
+            on_release : app.stop()
 
 <Tarefas>:
     BoxLayout:
@@ -28,7 +44,7 @@
                 on_release : root.addWidget()
         Button:
             text : 'Retornar a tela anterior'
-            on_release : app.root.current = 'start'
+            on_release : app.root.current = 'menu'
             size_hint_y : None
             height : 50
 
