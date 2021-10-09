@@ -28,6 +28,8 @@ Botão :
 
         on_release = Função que será executada, assim que o botão for clicado essa função será executada, a função tem que pedir self e o botão como paramentros caso contrario ela não irá funcionar.
 
+        color : 'cor' insere uma cor no texto do botão, formato hexadecimal
+
 Label :
 
     from kivy.uix.label import Label # Importa a label
@@ -45,6 +47,8 @@ Label :
         font_size = Tamanho da fonte do texto, float
 
          markup = Texto irá receber marcação, caso seja True ele podera receber uma marcação como [b]Texto[/b] deixa o texto em Negrito, [color=codigo_hexa]texto[/color] cor, ect...
+
+         color : 'cor' insere uma cor no texto do botão, formato hexadecimal
 
 BoxLayout : 
 
@@ -152,3 +156,15 @@ ScrollView :
     Como desligamos a size_hint_y eles irão ficar uma bagunça, então precisamos desligar do Label e adicionar uma altura minima, que servirá de espaçamento entre os Labels.
 
     Também é possivel aplicar as mesmas regras a largura, subistituindo o size_hint_y por size_hint_x e o height por width.
+
+Remover elemento da interface :
+
+    app.root.ids.box.remove_widget(root)
+
+    app = referencia ao aplicativo
+
+    root = referencia a classe principal que está ativa
+
+    ids = id do elemento, no caso box
+
+    remove_widget(root) = remove o elemento da classe principal que está ativa, dessa forma se isso está em um botão e em cima dele tem um Label, ao você clicar no botão ele irá deletar o Label pois é o elemento que está instanciado acima dele.
