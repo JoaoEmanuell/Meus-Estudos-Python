@@ -262,3 +262,31 @@ ActionBar:
     ActionSeparator é basicamente um separador, ele irá separar os botões.
 
     ActionSeparator:
+
+Eventos :
+
+    Eventos são básicamente funçõe que serão executadas quando a tela receber alguma atualização.
+
+        from kivy.core.window import Window # Importa os eventos de janela
+
+        def on_pre_enter(self):
+            Window.bind(on_keyboard=self.events)
+
+        Essa função irá servir quando a tela for iniciada, basicamente ele irá capturar os eventos de teclas pressionadas e irá chamar a função events.
+
+    def events(self, window,key, *args):
+        if key == 27:
+            App.get_running_app().root.current = 'menu'
+            return True
+        elif key == 13:
+            self.addWidget()
+            return True
+
+    Nessa função verificamos se tecla pressionada [key] é igual a determinado valor, se ela for igual a 27 [correspondente a tecla esc] então iremos pegar o app que está sendo executado, verificar o root e alterar ele para o menu e retornar True para validar que o evento foi finalizado.
+
+    Se ela for igual a 13 que corresponde a tecla enter ele irá chamar a função addWidget que adiciona o texto a lista e retornar True para validar que o evento foi finalizado.
+
+    Porém uma vez que fazemos isso a tecla esc e enter irão ficar inuteis pois ela sempre vai executar a mesma ação para o evento mesmo estando em outra janela, para consertar isso precisamos criar a função on_pre_leave, ela basicamente diz que assim que o usuario sair da tela a tela irá parar de executar os comandos correspondente a ela.
+
+    def on_pre_leave(self):
+        Window.unbind(on_keyboard=self.events)
