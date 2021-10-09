@@ -1,21 +1,36 @@
+<Gerenciador> :
+    Screen:
+        name : 'start'
+        Button : 
+            text : 'Ver tarefas'
+            on_release : app.root.current = 'tarefas'
+    Tarefas :
+        name : 'tarefas'
+
 <Tarefas>:
-    orientation : 'vertical'
-    ScrollView :
+    BoxLayout:
+        orientation : 'vertical'
+        ScrollView :
+            BoxLayout :
+                id : box
+                orientation : 'vertical'
+                size_hint_y : None
+                height : self.minimum_height
         BoxLayout :
-            id : box
-            orientation : 'vertical'
             size_hint_y : None
-            height : self.minimum_height
-    BoxLayout :
-        size_hint_y : None
-        height : 60
-        TextInput :
-            id:texto
+            height : 60
+            TextInput :
+                id:texto
+            Button:
+                text : '+'
+                size_hint_x : None
+                width : 60
+                on_release : root.addWidget()
         Button:
-            text : '+'
-            size_hint_x : None
-            width : 60
-            on_release : root.addWidget()
+            text : 'Retornar a tela anterior'
+            on_release : app.root.current = 'start'
+            size_hint_y : None
+            height : 50
 
 <Tarefa>:
     size_hint_y : None
@@ -27,4 +42,4 @@
         text : 'X'
         size_hint_x : None
         width : 60
-        on_release : app.root.ids.box.remove_widget(root)
+        on_release : app.root.get_screen('tarefas').ids.box.remove_widget(root)

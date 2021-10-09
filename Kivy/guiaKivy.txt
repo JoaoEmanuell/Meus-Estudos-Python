@@ -175,3 +175,36 @@ TextInput :
         id:texto
 
     Cria uma area para o usuario digitar, coloque uma id para poder extrair o texto digitado.
+
+Telas :
+    from kivy.uix.screenmanager import ScreenManager, Screen
+    class Gerenciador(ScreenManager):
+        pass
+
+    A classe Gerenciador sera chamada pela build e irá se tornar um gerenciador.
+
+    class Tarefas(Screen):
+        code
+
+    A classe Tarefas se tornara uma Screen.
+
+    Como gerenciador está sendo chamado pela build ele se torna a primeira classe
+
+    <Gerenciador> :
+    Screen:
+        name : 'start'
+        Button : 
+            text : 'Ver tarefas'
+            on_release : app.root.current = 'tarefas'
+    Tarefas :
+        name : 'tarefas'
+
+    name é uma propiedade da Screen que determina o nome da tela.
+
+    app.root.current = 'nome_da_tela' esse comando faz com que a tela seja transitada para a tela desejada, ela altera a Scren atual.
+
+    Nesse caso como Tarefas foi modificada de BoxLayout para Screen todos os compontentes dela devem ser movidos para uma BoxLayout afim de evitar bugs.
+
+    Para remover um item que está dentro de uma box que está em outra tela use :
+
+        app.root.get_screen('nome_da_tela').ids.box.remove_widget(root)
