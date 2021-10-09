@@ -237,3 +237,28 @@ IMAGEM :
             alow_stretch : True
 
         Essa propiedade determina que a imagem possa ser esticada.
+
+ActionBar:
+
+    ActionBar é uma barra de ações que normalmente fica em cima da tela do dispositivo, como um menu de guia, esse objeto só aceita itens do tipo Action.
+
+    Tudo que é visualizado dentro dele deve ficar dentro de um ActionView.
+
+    ActionBar:
+        ActionView:
+
+    Irá ficar a esquerda da barra, caso nenhuma logo seja passada ele irá usar a logo do Kivy, normalmente serve para o usuario retornar para a pagina anterior.
+
+    ActionPrevious:
+        title: 'Tarefas'
+        on_release : app.root.current = 'menu'
+
+    ActionButton é um botão de ação, ele básicamente tem os mesmso métodos de um botão convencional e serve excluisvamente para a ActionBar, por definição todo botão que for colocado acaba sendo colocado a direita.
+
+    ActionButton:
+        text : 'Sair'
+        on_release : app.stop()
+
+    ActionSeparator é basicamente um separador, ele irá separar os botões.
+
+    ActionSeparator:

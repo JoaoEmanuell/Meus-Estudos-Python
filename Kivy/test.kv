@@ -26,6 +26,15 @@
 <Tarefas>:
     BoxLayout:
         orientation : 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: 'Tarefas'
+                    on_release : app.root.current = 'menu'
+                ActionButton:
+                    text : 'Sair'
+                    on_release : app.stop()
+                ActionSeparator:
         ScrollView :
             BoxLayout :
                 id : box
@@ -42,11 +51,6 @@
                 size_hint_x : None
                 width : 60
                 on_release : root.addWidget()
-        Button:
-            text : 'Retornar a tela anterior'
-            on_release : app.root.current = 'menu'
-            size_hint_y : None
-            height : 50
 
 <Tarefa>:
     size_hint_y : None
