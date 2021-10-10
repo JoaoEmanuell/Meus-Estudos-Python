@@ -300,3 +300,19 @@ Buildozer :
     buildozer -v android debug deploy run # Gera o apk caso ele não tenha sido gerado, transefere ele para o dispostivo e executa ele.
 
     buildozer android logcat | grep python # Basicamente extrai o log do android e filtra por elementos que tenham a palavra "python" isso serve para encontrar erros e bugs.
+
+Canvas :
+
+    Canvas é um elemento que todos os elementos possuem, ele serve para manipular o espaço de fundo da tela.
+
+    Caso seja definido uma cor ele irá aplicar ela ao elemento, porém nada será desenhado, para isso podemos desenhar um retangulo, definindo seu tamanho e sua posição, caso queiramos que ele ocupe toda a tela podemos preencher o size com self.size e a pos com self.pos.
+
+    O retangulo também pode receber um source, que irá definir uma imagem que será inserida nele.
+
+    canvas :
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle :
+            size : self.size
+            pos: self.pos
+            source : 'imagem.jpg'

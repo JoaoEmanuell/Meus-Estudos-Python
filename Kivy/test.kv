@@ -7,9 +7,16 @@
 
 <Menu>:
     BoxLayout:
+        id : menu_box
         orientation:'vertical'
         padding:100
         spacing : 25
+        canvas :
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle :
+                size : self.size
+                pos: self.pos
         Image:
             source:'imagem.jpg'
             size_hint_y : None
