@@ -290,3 +290,13 @@ Eventos :
 
     def on_pre_leave(self):
         Window.unbind(on_keyboard=self.events)
+
+Buildozer :
+
+    Serve para compilar o código fonte para um apk
+
+    buildozer -v android debug # Gera o apk na versão de debug
+
+    buildozer -v android debug deploy run # Gera o apk caso ele não tenha sido gerado, transefere ele para o dispostivo e executa ele.
+
+    buildozer android logcat | grep python # Basicamente extrai o log do android e filtra por elementos que tenham a palavra "python" isso serve para encontrar erros e bugs.
