@@ -30,7 +30,8 @@ class Tarefas(Screen):
 
     def addWidget(self):
         texto = self.ids.texto.text
-        self.ids.box.add_widget(Tarefa(text=texto))
+        if texto != '':
+            self.ids.box.add_widget(Tarefa(text=texto))
         self.ids.texto.text = ''
 
 class Tarefa(BoxLayout):

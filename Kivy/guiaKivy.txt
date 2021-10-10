@@ -316,3 +316,41 @@ Canvas :
             size : self.size
             pos: self.pos
             source : 'imagem.jpg'
+
+    No canvas também temos o canvas before, que basicamente serve para primeiro desenhar e inserir na tela, desse modo o canvas não subistitui outros elementos como o label.
+
+    canvas.before:
+        [. . .]
+
+    Circulo :
+
+        Ellipse :
+            pos:self.pos
+            size:self.height, self.height
+
+    Desenha um circulo na tela com a cor predefinida.
+
+REAPROVEITANDO WIDGETS:
+
+    Basicamente para criar widgets personalizados no arquivo .kv fazemos da seguinte maneira :
+
+        <Nome@Heranças>:
+            [. . .]
+    
+    Exemplo :
+
+        <Botao@ButtonBehavior+Label>:
+            canvas.before:
+                Color :
+                    rgba:0.1,0.5,0.7,1
+                Ellipse:
+                    pos:self.pos
+                    size:self.height, self.height
+                Ellipse:
+                    pos:self.x + self.width-self.height, self.y
+                    size : self.height, self.height
+                Rectangle:
+                    pos : self.x+self.height/2.0,self.y
+                    size:self.width-self.height, self.height
+
+    Nesse caso estamos criando um widget que tem o nome "Botao" ele herda as caracteristicas de um ButtonBehavior e de um label, assim onde for aplicado ele irá manter a caracteristicas de ambos, sendo assim você pode adicionar eventos de botões e textos como um label.

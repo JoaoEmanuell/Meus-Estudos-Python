@@ -13,7 +13,7 @@
         spacing : 25
         canvas :
             Color:
-                rgba: 1, 1, 1, 1
+                rgba: 0, 0, 0, 1
             Rectangle :
                 size : self.size
                 pos: self.pos
@@ -22,14 +22,28 @@
             size_hint_y : None
             height : 150
             alow_stretch : True
-        Button:
+        Botao:
             text : 'Tarefas'
             on_release : app.root.current = 'tarefas'
-        Button:
+        Botao:
             text: 'Assistente'
-        Button :
+        Botao :
             text : 'Sair'
             on_release : app.stop()
+
+<Botao@ButtonBehavior+Label>:
+    canvas.before:
+        Color :
+            rgba:0.1,0.5,0.7,1
+        Ellipse:
+            pos:self.pos
+            size:self.height, self.height
+        Ellipse:
+            pos:self.x + self.width-self.height, self.y
+            size : self.height, self.height
+        Rectangle:
+            pos : self.x+self.height/2.0,self.y
+            size:self.width-self.height, self.height
 
 <Tarefas>:
     BoxLayout:
