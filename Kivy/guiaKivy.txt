@@ -354,3 +354,12 @@ REAPROVEITANDO WIDGETS:
                     size:self.width-self.height, self.height
 
     Nesse caso estamos criando um widget que tem o nome "Botao" ele herda as caracteristicas de um ButtonBehavior e de um label, assim onde for aplicado ele irá manter a caracteristicas de ambos, sendo assim você pode adicionar eventos de botões e textos como um label.
+
+RADIO :
+
+    Radio é um elemento que pertence a um grupo e só podem ser selecionados um de cada grupo por vez.
+
+    ToggleButton :
+        id : id
+        text : 'TEXTO'
+        group: 'GRUPO'
