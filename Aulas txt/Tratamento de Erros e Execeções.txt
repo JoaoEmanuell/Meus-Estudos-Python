@@ -126,3 +126,16 @@ else:
     print('Consegui acessar o site Pudim com sucesso')
 
 ==================================
+
+Exibindo o erro após o Except :
+
+    try :
+        [. . .]
+    except Exception as erro:
+        print(erro.__class__) # Exception é uma classe que detem os erros, criamos um objeto usando ela esse objeto é chamado de erro e mandamos printar o a classe do erro dessa forma ele irá executar sem maiores problemas.
+        
+    else:
+        [. . .]
+    
+    finally:
+        [. . .]
