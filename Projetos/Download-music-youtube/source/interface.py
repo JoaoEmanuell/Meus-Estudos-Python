@@ -20,8 +20,8 @@ class Interface():
                 self.link = self.values['link']
                 if self.event == 'Baixar Música':
                     download.DownloadVerfiy(self.link)
-            except:
-                print("Algo deu errado, portanto o download não pode ser concluido, por favor tente inserir uma nova url!")
+            except Exception:
+                print(f"Algo deu errado, portanto o download não pode ser concluido, por favor tente inserir uma nova url!\n {Exception}")
                 if self.event == sg.WIN_CLOSED:
                     break
     

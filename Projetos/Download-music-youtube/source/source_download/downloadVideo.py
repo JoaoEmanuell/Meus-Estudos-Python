@@ -1,13 +1,15 @@
 from pytube import YouTube
 import pathlib
 from . import downloadEssential
+from threading import Thread
 
 class DownloadVideo():
     def __init__(self, link) -> None:
         self.video = YouTube(link)
-        self.download()
+        Thread(target=self.download).start()
 
     def download(self):
+        print("Download iniciado!")
         self.stream = self.video.streams.get_audio_only()
         self.path = pathlib.Path().absolute()
         if downloadEssential.DownloadEssential.VerifyIfFileNotExists(self):
