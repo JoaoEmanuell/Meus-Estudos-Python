@@ -236,3 +236,10 @@ pip-log.txt
 
 ##Jupyter
 .ipynb_checkpoints/
+
+## Env
+
+lib/
+lib64
+pyvenv.cfg
+share/
