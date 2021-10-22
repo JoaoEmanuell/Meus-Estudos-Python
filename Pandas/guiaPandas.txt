@@ -1,0 +1,17 @@
+import pandas as pd # Importa o pandas
+
+df = pd.read_csv('caminho/nome_base.csv', encoding = "UTF-8") # Cria uma variavel chamada dataframe [df] que recebe o valor de pd.read_csv, nesse caso ela está lendo um csv que é um formato de planilha.
+
+    encoding  : padrão de codificação do arquivo # encoding = "UTF-8"
+    
+    sep : Separador, isso é o caractere que separa as colunas. # sep=';'
+    
+    header : Especifica a linha onde começa o cabeçalho da sua planilha. # header=1
+    
+    usecols : Especifica as colunas que irã ser selecionadas # usecols=['Nome_coluna']
+    
+    nrows : Especifica o número máximo de linhas que irão ser lidas # nrows=200
+
+df.head() # Exibe a cabeça da planilha, isso é algumas colunas com algumas linhas [nem todas as linhas são exibidas], no meu caso ele exibiu o equivalente a 5 linhas e todas as colunas.
+
+df.shape # Retorna uma tupla que o primeiro elemento é o número de linahs e o segundo é o número de colunas da planilha.
