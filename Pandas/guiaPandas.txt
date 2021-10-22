@@ -15,3 +15,13 @@ df = pd.read_csv('caminho/nome_base.csv', encoding = "UTF-8") # Cria uma variave
 df.head() # Exibe a cabeça da planilha, isso é algumas colunas com algumas linhas [nem todas as linhas são exibidas], no meu caso ele exibiu o equivalente a 5 linhas e todas as colunas.
 
 df.shape # Retorna uma tupla que o primeiro elemento é o número de linahs e o segundo é o número de colunas da planilha.
+
+df = pd.read_excel("caminho/nome_base.xlsx") # Cria uma variavel chamada dataframe [df] que recebe o valor de pd.read_excel, nesse caso ela está lendo um xlsx que é um formato de planilha.
+
+    sheet_name : Abre a planilha no número da aba especificada # sheet_name=1 || sheet_name="nome_aba"
+    
+ef = pd.ExcelFile("caminho/nome_base.xlsx") # Cria uma variavel chamada de excel_file [ef] que recebe o valor de pd.ExcelFile, ele irá fazer a leitura desse arquivo.
+
+ef.sheet_names # Retorna o nome das abas da planilha
+
+tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da aba especificada.

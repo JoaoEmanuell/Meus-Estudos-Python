@@ -233,3 +233,6 @@ pip-log.txt
 ##OWN
 .idea/
 *.spec
+
+##Jupyter
+.ipynb_checkpoints/
