@@ -101,3 +101,33 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     # df.iloc[0 : 6, 0 : 6]
     
     No caso com exeção ao zero todos os outros valores acabam sendo considerados como eles mesmo - 1, dessa forma se eu ordenar que ele exbia até a linha 6 ele irá exibir até a linha 5 pois a contagem começa a partir do 0.
+    
+# ORDENAR VALORES
+
+    df.sort_values("coluna") # Ordena os valores de forma crescente a partir da coluna
+    
+    # df.sort_values("area")
+    
+    df.sort_values(by = ["coluna_1", "coluna_2"]) # Ordena os valores de forma crescente a partir das colunas, by é opcional
+    
+    # df.sort_values(["area", "total"])
+    
+    # Nesse tipo de comandos podemos definir o paramentro inplace como True, esse paramentro altera diretamente o dado, sendo assim não é necessario criar uma variavel que vai conter a reorganização, o dataframe já vai ser alterado obedecendo a nova organização
+    
+    # df.sort_values("area", inplace = True)
+    
+    # Podemos ordenar de forma crescente ou decrescente
+    
+    df.sort_values("coluna", ascending = True) # Ordena de forma crescente
+    
+    # df.sort_values("area", ascending = True)
+    
+    df.sort_values("coluna", ascending = False) # Ordena de forma decresente
+    
+    # df.sort_values("area", ascending = False)
+    
+    # Caso ordenemos multiplas colunas tempos que passar um ascending por ela, isso é feito por meio de uma lista, assim ele poderá organizar uma coluna de forma crescente a outra não.
+    
+    df.sort_values(by = ["coluna_1", "coluna_2"], ascending = [True, False])
+    
+    # df.sort_values(["area", "total"], ascending = [True, False])
