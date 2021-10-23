@@ -39,3 +39,65 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     df["nome_nova_coluna"] = valor
     
     # Esse valor pode ser tanto valores de outras colunas como dados propios.
+    
+# Para selecionar uma linha :
+
+    df.loc[numero_da_linha]
+    
+    df.loc[0]
+        
+    # Quando usamos df.head() ele nos retorna algumas linhas e antes dessas linhas temos o indice dela, começando em 0, esse numero_da_linha é o indice dessa linha, isso é o indice que o df gera.
+    
+    # Também podemos selecionar intervalos:
+    
+    df.loc[numero_da_linha : numero_da_linha : jump]
+    
+    # df.loc[0 : 3 : 2] 
+    
+    # Jump indica que ele irá ler uma linha e pular o número equivalente até chegar na proxima, caso não seja informado ele irá valer 1.
+    
+    # Selecionar Linhas especificas :
+    
+    df.loc[[linha, linha, linha]]
+    
+    # df.loc[[1, 5, 6]]
+    
+    # Selecionar linhas e colunas especificas
+    
+    df.loc[linha, "coluna"]
+    
+    # df.loc[0, "area"] # Seleciona uma coluna especifica 
+    
+    # df.loc[0:5, [["animal", "total"]] # Seleciona varias colunas 
+    
+    # df.loc[0:15:5, "area":"floor":1] # Seleciona um intervalo entre colunas
+    
+# Iloc
+
+# o iloc funciona como o loc porém ele só trabalha com números e segue a regra do python puro, isso é se eu mandar ele exibir até o indice 5 ele irá exibir somente até o indice 4 pois a contagem começa a partir do 0 e acresenta mais um sendo assim 5 - 1 = 4
+
+    df.iloc[linha] # Seleciona uma linha
+    
+    # df.iloc[0]
+    
+    df.iloc[[linha, linha]] # Seleciona linhas especificas.
+    
+    # df.iloc[[0, 6]]
+    
+    df.iloc[linha:linha:jump] # Seleciona o intervalo de linhas respeitando o jump.
+    
+    # df.iloc[0 : 6 : 1]
+    
+    df.iloc[linha:linha, coluna] # Seleciona o intervalo de linhas verificando a coluna que corresponde aquele número.
+    
+    # df.iloc[0 : 6, 2]
+    
+    df.iloc[linha:linha, [coluna, coluna] # Seleciona o intervalo de linhas e as colunas especificadas.
+    
+    # df.iloc[0 : 6, [1, 6]
+    
+    df.iloc[linha:linha, coluna:coluna] # Seleciona o intervalo de linhas e o intervalo de colunas.
+    
+    # df.iloc[0 : 6, 0 : 6]
+    
+    No caso com exeção ao zero todos os outros valores acabam sendo considerados como eles mesmo - 1, dessa forma se eu ordenar que ele exbia até a linha 6 ele irá exibir até a linha 5 pois a contagem começa a partir do 0.
