@@ -25,3 +25,17 @@ ef = pd.ExcelFile("caminho/nome_base.xlsx") # Cria uma variavel chamada de excel
 ef.sheet_names # Retorna o nome das abas da planilha
 
 tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da aba especificada.
+
+# Para selecionar uma ou varias colunas faça da seguinte forma :
+
+    df[["nome_coluna", "nome_coluna"]].head()
+    
+    ou
+    
+    df.nome_coluna.head()
+    
+# Para adicionar uma nova coluna faça da seguinte maneira : 
+
+    df["nome_nova_coluna"] = valor
+    
+    # Esse valor pode ser tanto valores de outras colunas como dados propios.
