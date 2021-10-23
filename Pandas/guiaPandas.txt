@@ -131,3 +131,23 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     df.sort_values(by = ["coluna_1", "coluna_2"], ascending = [True, False])
     
     # df.sort_values(["area", "total"], ascending = [True, False])
+    
+# Filtrando valores
+
+    # Podemos filtrar valores das formas mostradas anteriomentes ou usando o filter
+    
+    df.filter(items = ["coluna", "coluna", "coluna"])
+    
+    # df.filter(items = ["area", "rooms", "animal"])
+    
+    # Usando like para retornar a célula que contem determinado dado
+    
+    df.filter(like = 'dado')
+    
+    # df.filter(like = 'furnished')
+    
+    # Regex
+    
+    df.filter(regex = 'expressão')
+    
+    # df.filter(regex = '(R$121)')
