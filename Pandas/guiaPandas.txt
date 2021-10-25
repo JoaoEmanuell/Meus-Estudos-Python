@@ -151,3 +151,25 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     df.filter(regex = 'expressão')
     
     # df.filter(regex = '(R$121)')
+    
+# Operadores logicos || Condições
+
+    df['coluna'] Condição # Irá retornar as linhas da coluna do df que correspondem aquela condição
+    
+    # df['area'] == 240
+    
+    df[['coluna_1', 'coluna_2', 'coluna_3']] (condição) # Irá retornar as linhas da coluna do df que correspondem aquela condição
+    
+    # df[['area', 'rooms', 'total']].head() != (240, 2, 'R$1,493')
+    
+    df[coluna condição] # Irá retornar as linhas em que a coluna do df atende a condição especificada
+    
+    # df[df.total > 'R$1,000']
+    
+    df[(df.coluna condição) & (df.coluna condição)] # Retorna todas as linhas que atendam as condições, nesse caso podemos colocar quantas condições nós quisermos, usa-se & para representar o and e | para representar o or
+    
+    # df[(df.area > 500) & (df.rooms > 5) & (df.total > 'R$15,000') & (df.animal == 'acept')]
+    
+    # df[(df.area > 500) & (df.rooms > 5) & (df.total > 'R$15,000') & (df.animal == 'acept')][['city', 'area']] # irá filtrar da mesma forma mas também irá incluir as colunas.
+    
+    # df[(df.area > 100) & (df.total > 'R$15,000') & ((df.rooms == 1) | (df.rooms != 3))] # Essa é a forma de usar o or, coloque os paramentros entre () e cara paramentro deve ficar entre ()
