@@ -173,3 +173,11 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     # df[(df.area > 500) & (df.rooms > 5) & (df.total > 'R$15,000') & (df.animal == 'acept')][['city', 'area']] # irá filtrar da mesma forma mas também irá incluir as colunas.
     
     # df[(df.area > 100) & (df.total > 'R$15,000') & ((df.rooms == 1) | (df.rooms != 3))] # Essa é a forma de usar o or, coloque os paramentros entre () e cara paramentro deve ficar entre ()
+    
+# ISIN
+
+    O isin funciona da mesma maneira do is do sql, basicamente serve para você filtrar valores sem colocar diversos |
+    
+    df[(df.coluna.isin(['valor', 'valor'...]))] # Retorna todos os valores da coluna que atendem a condição do isin
+    
+    # df[(df.rooms.isin([2, 3]))]
