@@ -181,3 +181,23 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     df[(df.coluna.isin(['valor', 'valor'...]))] # Retorna todos os valores da coluna que atendem a condição do isin
     
     # df[(df.rooms.isin([2, 3]))]
+    
+# Funções de agrupamento
+
+    df.coluna.mean() # Retorna a média do valor da coluna, valido somente para colunas numericas
+    
+    # df.area.mean()
+    
+    df.coluna.min() # Retorna o valor minimo da coluna.
+    
+    # df.area.min()
+    
+    df.coluna.max() # Retorna o maior valo da coluna.
+    
+    # df.area.max()
+    
+# Agrupamento
+    
+    df[["coluna_1", "coluna_2"]].groupby(["coluna_1"]).função_agrupamento() # Básicamente irá selecionar 2 colunas [pode selecionar quantas você quiser] e irá agrupar elas de acordo com a coluna_1 [pode agrupar quantas você quiser], lembre-se de colocar a função de agrupamento pois se isso não for feito o python irá retornar um objeto.
+    
+    # df[["city", "area"]].groupby(["city"]).max()
