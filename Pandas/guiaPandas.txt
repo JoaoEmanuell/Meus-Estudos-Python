@@ -192,12 +192,29 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     
     # df.area.min()
     
-    df.coluna.max() # Retorna o maior valo da coluna.
+    df.coluna.max() # Retorna o maior valor da coluna.
     
     # df.area.max()
+    
+    df.coluna.sum() # Retorna a soma dos valores da coluna.
+    
+    # df.area.sum()
     
 # Agrupamento
     
     df[["coluna_1", "coluna_2"]].groupby(["coluna_1"]).função_agrupamento() # Básicamente irá selecionar 2 colunas [pode selecionar quantas você quiser] e irá agrupar elas de acordo com a coluna_1 [pode agrupar quantas você quiser], lembre-se de colocar a função de agrupamento pois se isso não for feito o python irá retornar um objeto.
     
     # df[["city", "area"]].groupby(["city"]).max()
+    
+# Replace
+
+    df[["colunas"]].applymap(lambda x : x.replace('R$', '').replace(',', '')) # Basicamente irá fazer com que as colunas selecionadas dentro do dataframe sofram as alterações do replace, dentro de applymap deve ser passado uma função, por isso o lambda, mas esse valores serão perdidos, por isso é necessario passar eles novamente para o dataframe.
+
+    # df[["hoa", "rent amount", "total", 'fire insurance', 'property tax']].applymap(lambda x : x.replace('R$', '').replace(',', ''))
+    
+    # df[["hoa", "rent amount", "total", 'fire insurance', 'property tax']] = df[["hoa", "rent amount", "total", 'fire insurance', 'property tax']].applymap(lambda x : x.replace('R$', '').replace(',', '')) # Faz a mesma coisa do anterior mas adiciona os valores para o dataframe.
+    
+    # Por motivos que ficaria enorme passar diversas colunas, você pode criar uma lista que já detenha as colunas e depois só passar ela.
+    
+    # colums = ["hoa", "rent amount", "total", 'fire insurance', 'property tax']
+    # df[colums] = df[colums].applymap(lambda x : x.replace('R$', '').replace(',', ''))
