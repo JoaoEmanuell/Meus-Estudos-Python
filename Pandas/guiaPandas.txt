@@ -34,6 +34,10 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     
     df.nome_coluna.head()
     
+# Colunas
+
+    df.columns.to_list() # Retorna uma tupla que contem uma lista com as colunas.
+
 # Para adicionar uma nova coluna faça da seguinte maneira : 
 
     df["nome_nova_coluna"] = valor
@@ -217,4 +221,15 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     # Por motivos que ficaria enorme passar diversas colunas, você pode criar uma lista que já detenha as colunas e depois só passar ela.
     
     # colums = ["hoa", "rent amount", "total", 'fire insurance', 'property tax']
+    
     # df[colums] = df[colums].applymap(lambda x : x.replace('R$', '').replace(',', ''))
+    
+# Rename
+
+    df.rename(columns = {'nome_coluna_original' : 'nome_nova_coluna'}) # Irá renomear as colunas passadas, mas não salva elas dentro do dataframe, para salvar é necessario você adicionar o valor de retorno ao df
+    
+    # df = df.rename(columns = {'city' : 'cidade', 'rooms' : 'quartos', 'floor' : 'piso'})
+    
+    # columns = {'city' : 'cidade', 'rooms' : 'quartos', 'floor' : 'piso'}
+    
+    # df = df.rename(columns = columns)
