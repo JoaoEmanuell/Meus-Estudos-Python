@@ -233,3 +233,7 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     # columns = {'city' : 'cidade', 'rooms' : 'quartos', 'floor' : 'piso'}
     
     # df = df.rename(columns = columns)
+    
+    # Renomear usando o columns
+    
+    df.columns = [x.replace(' ', '_') for x in df.columns.to_list()] # Básicamente irá subistituir todos os espaços dos nomes de colunas que contenham espaços por _ dentro do df, você também pode colocar para todos se tornarem letras minusculas usando um .lower() após o replace.
