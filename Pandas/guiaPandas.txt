@@ -40,7 +40,15 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
 
 # Para adicionar uma nova coluna faça da seguinte maneira : 
 
-    df["nome_nova_coluna"] = valor
+    df["nome_nova_coluna"] = valor # esse modifica o df
+    
+    # ou
+    
+    df.append({"nome_coluna" : valor}, ignore_index=True) # Esse método cria a coluna, adiciona em todas as linhas mas apenas a ultima linha [que será uma nova linha] irá receber o valor, todas as outras linhas irão receber NaN, esse valor não modifica o df, para isso é necessario adicionar ele ao df.
+    
+    # ou
+    
+    df.assign(nome_coluna = valor) # Esse faz basicamente o mesmo que o anterior mas ele não modifica o df e ele altera todas as linhas.
     
     # Esse valor pode ser tanto valores de outras colunas como dados propios.
     
@@ -237,3 +245,4 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     # Renomear usando o columns
     
     df.columns = [x.replace(' ', '_') for x in df.columns.to_list()] # Básicamente irá subistituir todos os espaços dos nomes de colunas que contenham espaços por _ dentro do df, você também pode colocar para todos se tornarem letras minusculas usando um .lower() após o replace.
+    
