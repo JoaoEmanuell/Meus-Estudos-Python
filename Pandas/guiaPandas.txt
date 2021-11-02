@@ -6,7 +6,7 @@ df = pd.read_csv('caminho/nome_base.csv', encoding = "UTF-8") # Cria uma variave
     
     sep : Separador, isso é o caractere que separa as colunas. # sep=';'
     
-    header : Especifica a linha onde começa o cabeçalho da sua planilha. # header=1
+    header : Especifica a linha onde começa o cabeçalho da sua planilha. # header=1, index
     
     usecols : Especifica as colunas que irã ser selecionadas # usecols=['Nome_coluna']
     
