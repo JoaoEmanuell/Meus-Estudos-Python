@@ -246,3 +246,30 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     
     df.columns = [x.replace(' ', '_') for x in df.columns.to_list()] # Básicamente irá subistituir todos os espaços dos nomes de colunas que contenham espaços por _ dentro do df, você também pode colocar para todos se tornarem letras minusculas usando um .lower() após o replace.
     
+    
+# Contar valores
+
+    df.value_counts() # Irá contar todos os valores do dataframe, porém esse retorno será uma bagunça.
+    
+    df.coluna.value_counts() # Irá contar todos os valores da coluna do dataframe, esse retorno será mais simples representando o valor e a quantidade de valores que ele tem.
+    
+    # df.animal.value_counts()
+    
+    # Retorno
+    
+    """
+    acept        4666
+    not acept    1414
+    Name: animal, dtype: int64
+    """
+# Sample
+
+    df.sample() # Retorna uma linha aleatoria do dataframe, ele pode receber multiplos paramentros :
+    
+        df.sample(n = x) # Retorna x linhas
+        
+        # df.sample(n = 5)
+        
+        df.sample(random_state = x) # Retorna os valores porém esse x ele é igual a um por padrão, caso seja definido um número superior a 0 ele irá retornar sempre os mesmos valores, indepedente de quantas vezes seja executado novamente.
+        
+        # df.sample(random_state = 6)
