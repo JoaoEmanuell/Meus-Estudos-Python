@@ -285,3 +285,15 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     # Em ambos os casos ele acaba exportantando com o numero do id que o pandas coloca, caso queira exportar sem o indice coloque o paramentro index=False
     
     # df.to_csv('nome_arquivo.csv', index=False)
+    
+# Info
+
+    df.info() # Retorna a numeração das colunas, nome dela, quantidade de linhas, se é nula e o tipo dela.
+    
+# Describe
+
+    df.describe().T # Retorna a quantidade de linhas, media, desvio padrão do determinado conjunto de números [std], valor minimo, 25, 50 e 75 % dos valores, valor maximo, nota que isso só irá retornar dos valores que são númericos.
+    
+    df.describe(percentiles=[0.6, 0.7, 0.8, 0.9]).T # Aumenta a quantidade de porcentagens, colocando dessa forma ele irá começar em 50% indo até 90%
+    
+    df.describe(include=[np.object]).T # Irá incluir os objetos, retornando a quantidade, numero de valores unicos, o top [primeiro valor que aparece] e a frequencia
