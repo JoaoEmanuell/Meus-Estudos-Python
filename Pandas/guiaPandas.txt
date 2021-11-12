@@ -11,6 +11,8 @@ df = pd.read_csv('caminho/nome_base.csv', encoding = "UTF-8") # Cria uma variave
     usecols : Especifica as colunas que irã ser selecionadas # usecols=['Nome_coluna']
     
     nrows : Especifica o número máximo de linhas que irão ser lidas # nrows=200
+    
+    index_col : Especifica a coluna que é o index # index_col = 0
 
 df.head() # Exibe a cabeça da planilha, isso é algumas colunas com algumas linhas [nem todas as linhas são exibidas], no meu caso ele exibiu o equivalente a 5 linhas e todas as colunas.
 
@@ -273,3 +275,13 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
         df.sample(random_state = x) # Retorna os valores porém esse x ele é igual a um por padrão, caso seja definido um número superior a 0 ele irá retornar sempre os mesmos valores, indepedente de quantas vezes seja executado novamente.
         
         # df.sample(random_state = 6)
+        
+# Exportar dataframe
+
+    df.to_csv('nome_arquivo.csv')
+    
+    df.to_excel('nome_arquivo.xlsx')
+    
+    # Em ambos os casos ele acaba exportantando com o numero do id que o pandas coloca, caso queira exportar sem o indice coloque o paramentro index=False
+    
+    # df.to_csv('nome_arquivo.csv', index=False)
