@@ -278,7 +278,7 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
         
 # Exportar dataframe
 
-    df.to_csv('nome_arquivo.csv')
+    df.to_csv('nome_arquivo.csv').
     
     df.to_excel('nome_arquivo.xlsx')
     
