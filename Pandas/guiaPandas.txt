@@ -272,7 +272,7 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
         
         # df.sample(n = 5)
         
-        df.sample(random_state = x) # Retorna os valores porém esse x ele é igual a um por padrão, caso seja definido um número superior a 0 ele irá retornar sempre os mesmos valores, indepedente de quantas vezes seja executado novamente.
+        df.sample(random_state = x) # Retorna os valores porém esse x ele é igual a um por padrão, caso seja definido um número superior a 0 ele irá retornar sempre os mesmos valores, indepedente de quantas vezes seja executado.
         
         # df.sample(random_state = 6)
         
