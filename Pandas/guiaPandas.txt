@@ -288,7 +288,7 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     
 # Info
 
-    df.info() # Retorna a numeração das colunas, nome dela, quantidade de linhas, se é nula e o tipo dela.
+    df.info() # Retorna a numeração das colunas, nome da coluna, quantidade de linhas, se é nula e o tipo dela.
     
 # Describe
 
