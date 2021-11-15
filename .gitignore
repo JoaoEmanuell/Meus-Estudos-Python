@@ -233,3 +233,13 @@ pip-log.txt
 ##OWN
 .idea/
 *.spec
+
+##Jupyter
+.ipynb_checkpoints/
+
+## Env
+
+lib/
+lib64
+pyvenv.cfg
+share/
