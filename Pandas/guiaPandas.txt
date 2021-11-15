@@ -2,15 +2,17 @@ import pandas as pd # Importa o pandas
 
 df = pd.read_csv('caminho/nome_base.csv', encoding = "UTF-8") # Cria uma variavel chamada dataframe [df] que recebe o valor de pd.read_csv, nesse caso ela está lendo um csv que é um formato de planilha.
 
-    encoding  : padrão de codificação do arquivo # encoding = "UTF-8"
+    encoding  : padrão de codificação do arquivo # encoding = "UTF-8".
     
-    sep : Separador, isso é o caractere que separa as colunas. # sep=';'
+    sep : Separador, isso é o caractere que separa as colunas. # sep=';'.
     
-    header : Especifica a linha onde começa o cabeçalho da sua planilha. # header=1
+    header : Especifica a linha onde começa o cabeçalho da sua planilha. # header=1, index.
     
-    usecols : Especifica as colunas que irã ser selecionadas # usecols=['Nome_coluna']
+    usecols : Especifica as colunas que irã ser selecionadas # usecols=['Nome_coluna'].
     
-    nrows : Especifica o número máximo de linhas que irão ser lidas # nrows=200
+    nrows : Especifica o número máximo de linhas que irão ser lidas # nrows=200.
+    
+    index_col : Especifica a coluna que é o index # index_col = 0.
 
 df.head() # Exibe a cabeça da planilha, isso é algumas colunas com algumas linhas [nem todas as linhas são exibidas], no meu caso ele exibiu o equivalente a 5 linhas e todas as colunas.
 
@@ -40,7 +42,15 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
 
 # Para adicionar uma nova coluna faça da seguinte maneira : 
 
-    df["nome_nova_coluna"] = valor
+    df["nome_nova_coluna"] = valor # esse modifica o df
+    
+    # ou
+    
+    df.append({"nome_coluna" : valor}, ignore_index=True) # Esse método cria a coluna, adiciona em todas as linhas mas apenas a ultima linha [que será uma nova linha] irá receber o valor, todas as outras linhas irão receber NaN, esse valor não modifica o df, para isso é necessario adicionar ele ao df.
+    
+    # ou
+    
+    df.assign(nome_coluna = valor) # Esse faz basicamente o mesmo que o anterior mas ele não modifica o df e ele altera todas as linhas.
     
     # Esse valor pode ser tanto valores de outras colunas como dados propios.
     
@@ -237,3 +247,89 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     # Renomear usando o columns
     
     df.columns = [x.replace(' ', '_') for x in df.columns.to_list()] # Básicamente irá subistituir todos os espaços dos nomes de colunas que contenham espaços por _ dentro do df, você também pode colocar para todos se tornarem letras minusculas usando um .lower() após o replace.
+    
+    
+# Contar valores
+
+    df.value_counts() # Irá contar todos os valores do dataframe, porém esse retorno será uma bagunça.
+    
+    df.coluna.value_counts() # Irá contar todos os valores da coluna do dataframe, esse retorno será mais simples representando o valor e a quantidade de valores que ele tem.
+    
+    # df.animal.value_counts()
+    
+    # Retorno
+    
+    """
+    acept        4666
+    not acept    1414
+    Name: animal, dtype: int64
+    """
+# Sample
+
+    df.sample() # Retorna uma linha aleatoria do dataframe, ele pode receber multiplos paramentros :
+    
+        df.sample(n = x) # Retorna x linhas
+        
+        # df.sample(n = 5)
+        
+        df.sample(random_state = x) # Retorna os valores porém esse x ele é igual a um por padrão, caso seja definido um número superior a 0 ele irá retornar sempre os mesmos valores, indepedente de quantas vezes seja executado.
+        
+        # df.sample(random_state = 6)
+        
+# Exportar dataframe
+
+    df.to_csv('nome_arquivo.csv').
+    
+    df.to_excel('nome_arquivo.xlsx')
+    
+    # Em ambos os casos ele acaba exportantando com o numero do id que o pandas coloca, caso queira exportar sem o indice coloque o paramentro index=False
+    
+    # df.to_csv('nome_arquivo.csv', index=False)
+    
+# Info
+
+    df.info() # Retorna a numeração das colunas, nome da coluna, quantidade de linhas, se é nula e o tipo dela.
+    
+# Describe
+
+    df.describe().T # Retorna a quantidade de linhas, media, desvio padrão do determinado conjunto de números [std], valor minimo, 25, 50 e 75 % dos valores, valor maximo, nota que isso só irá retornar dos valores que são númericos.
+    
+    df.describe(percentiles=[0.6, 0.7, 0.8, 0.9]).T # Aumenta a quantidade de porcentagens, colocando dessa forma ele irá começar em 50% indo até 90%
+    
+    df.describe(include=[np.object]).T # Irá incluir os objetos, retornando a quantidade, numero de valores unicos, o top [primeiro valor que aparece] e a frequencia
+    
+# Otimizando o uso de memoria
+
+    df.dtypes # Retorna os tipos de dados da coluna.
+    
+    df.memory_usage(deep = True) # Retorna o quanto de memoria cada coluna está usando no momento, esse valor é retornado em bytes, caso queira converte para mb faça o seguinte : bytes / 1024/1024.
+    
+    df['coluna'] = df['coluna'].astype(np.tipo_dado) # Basicamente converte o tipo de dado da coluna para o outro tipo de dado, isso acaba reduzindo o uso de memoria, para consultar os tipos de dados no numpy visite : " https://www.w3schools.com/python/numpy/numpy_data_types.asp ", lembresse que pode acabar ocorrendo perca de dados, então crie um df de copia para evitar dores de cabeça.
+    
+    '''
+    
+    Tipos de dados :
+    
+        Númericos :
+        
+            int8 # Valor pequeno
+            
+            int16 # Valor um pouco maior
+            
+            int32 # Valor grande
+            
+            int64 # Valor gigante
+            
+            [https://crystal-lang.org/reference/syntax_and_semantics/literals/integers.html] # Consulta valores numericos
+            
+            object # Valor de objeto, isso é número, texto ect
+            
+            category # Categoria, util para colunas com apenas 2 valores.
+    
+    '''
+    
+    df.select_dtypes(include = ['tipo_dado']).nunique() # Retorna a quantidade de valores unicos dos dados especificados, exibindo a coluna e a quantidade de valores.
+    
+    df.coluna.unique() # Retorna os valores unicos da coluna especificada, bem como o tipo dela
+    
+    # df.floor.unique()
