@@ -327,3 +327,7 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
     '''
     
     df.select_dtypes(include = ['tipo_dado']).nunique() # Retorna a quantidade de valores unicos dos dados especificados, exibindo a coluna e a quantidade de valores.
+    
+    df.coluna.unique() # Retorna os valores unicos da coluna especificada, bem como o tipo dela
+    
+    # df.floor.unique()
