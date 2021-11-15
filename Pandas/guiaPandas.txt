@@ -320,6 +320,8 @@ tab_one = ef.parse("Nome_Aba") # Cria uma variavel que recebe todos os dados da 
             
             int64 # Valor gigante
             
+            [https://crystal-lang.org/reference/syntax_and_semantics/literals/integers.html] # Consulta valores numericos
+            
             object # Valor de objeto, isso é número, texto ect
             
             category # Categoria, util para colunas com apenas 2 valores.
