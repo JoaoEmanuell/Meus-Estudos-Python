@@ -1,0 +1,18 @@
+django-admin startproject nome_projeto # Cria o inicial do projeto do django, nesse caso ele cria o projeto como uma subpasta dentro de outra, para evitar isso coloque um . após o nome do projeto " django-admin startproject main ."
+
+python manage.py startapp nome_app # Cria o app, adicione esse app a constante INSTALLED_APPS que está no settings.py do seu projeto, coloque uma , no final.
+
+'''
+INSTALLED_APPS = [
+    [. . .]
+    'django.contrib.staticfiles',
+    'contas',
+    [. . .]
+]
+'''
+
+python manage.py migrate # Cria o banco de dados.
+
+python manage.py runserver # Inicia o servidor e disponibiliza a url para você pode usar ele.
+
+pythomanage.py createsuperuser # Permite a você criar o superusuario, ele irá pedir o nome, o email [deixe em branco caso não queira] e a senha, acesse a url " http://127.0.0.1:8000/admin/ " e logue com a senha de administrador do sistema.
