@@ -16,3 +16,42 @@ python manage.py migrate # Cria o banco de dados.
 python manage.py runserver # Inicia o servidor e disponibiliza a url para você pode usar ele.
 
 pythomanage.py createsuperuser # Permite a você criar o superusuario, ele irá pedir o nome, o email [deixe em branco caso não queira] e a senha, acesse a url " http://127.0.0.1:8000/admin/ " e logue com a senha de administrador do sistema.
+
+# CRIAÇÃO DE URLS
+
+Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsavel por reter as paginas web, isso funciona da seguinte maneira :
+
+    Abra o arquivo.
+    
+    from django.http import HttpResponse # Básicamente importa um HttpResponse que irá retornar o html da página já construido.
+    
+    Crie uma função que irá se chamar o que você deseja, essa função é a página html, ela deve receber request como paramentro.
+    
+    # Vou usar o exemplo da documentação do django modificando a string.
+    
+    def home(request):
+        now = datetime.datetime.now()
+        html = f"<html><body>Agora é {now}.</body></html>"
+        return HttpResponse(html)
+        
+    E ao final ela irá retornar o HttpResponse passando o html da página como paramentro.
+    
+    from django.http import HttpResponse
+    
+    def name(request):
+        html = f"html"
+        return HttpResponse(html)
+        
+    Após isso vá ao arquivo urls.py que está na pasta do projeto, importe do app a função que é a página que acabou de criada.
+    
+    from contas.views import home
+    
+    E dentro da urlpatterns adicione o seguinte :
+    
+    path('nome_da_pagina_do_site/', função),
+    
+    Quando o usuario for acessar ele irá acessar por esse nome, isso é " url_site/nome_pagina/ "
+    
+    path('home/', home),
+    
+    # Caso tenha duvida veja a documentação sobre views " https://docs.djangoproject.com/en/2.0/topics/http/views/ "
