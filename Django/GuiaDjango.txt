@@ -69,3 +69,60 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     # return render(request, "contas/home.html")
     
     Isso tudo dentro da view.
+    
+# Models
+
+    Models são basicamente os modelos das tabelas do banco de dados.
+    
+    Parar criar uma tabela vá para o seu app, models.py
+    
+    Lá você tem que criar uma classe com o nome da tabela, o importante é que essa classe herde a classe models.Model.
+    
+    class name(models.Model):
+        [ . . . ]
+    Dentro dessa classe serão criado os dados da tabela, assim você coloca como variaveis que irão herdar tipos de dados, exemplo :
+    
+    name = model.CharField(max_length=100)
+    
+    Nesse caso acabamos de dizer que a coluna names irá receber um campo de texto com o tamanho maximo de 100 caracteres.
+    
+    # Aqui temos todos os campos que o django disponibiliza
+    
+    https://docs.djangoproject.com/pt-br/3.2/ref/models/fields/
+    
+    Por padrão da tabela já recebe um campo de id automaticamente configurado.
+    
+    '''
+    class Category(models.Model):
+        name = models.CharField(max_length=100)
+        dt_created = models.DateTimeField(auto_now_add=True)
+    '''
+
+    Após fazer isso rode o comando
+    
+    python manage.py makemigrations
+    
+    Isso irá fazer as migrações da tabela
+    
+    Após isso rode o comando
+    
+    python manage.py migrate
+    
+    Para migrar a nova tabela para o banco de dados.
+    
+    Você pode registrar a sua tabela no campo de admin fazendo o seguinte :
+    
+    Vá para o seu admin.py dentro do app
+    
+    from .models import NomeModel
+    
+    admin.site.register(NomeModel)
+    
+    Dessa forma dentro da area de admin já está o seu model
+    
+    '''
+    from .models import Category
+    # Register your models here.
+
+    admin.site.register(Category)
+    '''
