@@ -126,3 +126,26 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
 
     admin.site.register(Category)
     '''
+   
+   Os models podem ter subclasses que irão determinar algumas coisas sobre eles :
+   
+   class Meta
+   
+   Determina informações sobre a classe, nesse caso você pode passar o nome que ela deve conter ao ser utilizada em plural, nome padrão ect.
+   
+   https://docs.djangoproject.com/en/3.2/topics/db/models/#meta-options
+   
+   '''
+    class Meta:
+        verbose_name_plural = 'Transations'
+   '''
+   
+   E um nome que irá ser o retornado da linha no admin do model
+   
+   def __str__(self):
+        return self.item
+        
+    '''
+    def __str__(self):
+        return self.describe
+    '''
