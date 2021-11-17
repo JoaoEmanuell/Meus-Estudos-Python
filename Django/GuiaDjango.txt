@@ -55,3 +55,17 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     path('home/', home),
     
     # Caso tenha duvida veja a documentação sobre views " https://docs.djangoproject.com/en/2.0/topics/http/views/ "
+    
+# Templates
+
+    Por padrão dentro do arquivo views.py o django importa o render, ela é uma função que renderiza templates, templates são arquivos html, ou seja o template do site, portanto a view deve retornar o request e o template.
+    
+    return render(request, "nome_app/template.html")
+    
+    Por padrão dentro da pasta do app o django espera que exista uma pasta chamada de "templates" e que dentro dessa pasta exista uma pasta com o mesmo nome do seu app, lá irá ficar armazenado os templates.
+    
+    Dessa forma na hora de chamar o render, você irá passar o request, nome do app e o template.html
+    
+    # return render(request, "contas/home.html")
+    
+    Isso tudo dentro da view.

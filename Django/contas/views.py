@@ -5,5 +5,5 @@ import datetime
 
 def home(request):
     now = datetime.datetime.now()
-    html = f"<html><body>Agora é {now}.</body></html>"
-    return HttpResponse(html)
+    # html = f"<html><body>Agora é {now}.</body></html>"
+    return render(request, "contas/home.html")
