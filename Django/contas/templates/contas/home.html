@@ -8,5 +8,27 @@
 </head>
 <body>
     <h1>Seja bem vindo!</h1>
+    <p>{{ now }}</p>
+    <p>
+        <ul>
+            {% for day in days %}
+
+            {% if day == 8 %}
+
+                <li><b>{{ day }}</b></li>
+
+            {% elif day == 6 %}
+
+                <li><em>{{ day }}</em></li>
+
+            {% else %}
+
+                <li>{{ day }}</li>
+
+            {% endif %}
+
+            {% endfor %}
+        </ul>
+    </p>
 </body>
 </html>
