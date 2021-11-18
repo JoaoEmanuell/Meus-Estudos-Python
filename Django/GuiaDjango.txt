@@ -54,6 +54,10 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     
     path('home/', home),
     
+    Dentro desse path você pode passar um name, que irá servir para referenciar aquela url dentro do código python.
+    
+    # path('new/', new_transation, name='new'),
+    
     # Caso tenha duvida veja a documentação sobre views " https://docs.djangoproject.com/en/3.2/topics/http/views/ "
     
 # Templates
@@ -199,6 +203,8 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
         
     {% endfor %}
     
+    {% url 'nome_url' %} # Isso retorna a url completa até uma url referenciada com o paramentro name, util para fazer redirecionamentos.
+    
     Link da documentação do jinja, essa linguagem que permite a incorporação do python no html.
     
     https://jinja.palletsprojects.com/en/3.0.x/
@@ -238,3 +244,72 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     '''
     
     Nesse caso pedimos a transation que é o nome do objeto, depois a data dele, descrição ect.
+    
+# Formularios
+
+    # Documentação : https://docs.djangoproject.com/en/3.2/topics/forms/modelforms/
+
+    Primeiramente crie um arquivo chamado de forms.py dentro do seu app
+    
+    Esse arquivo deve importa o from django.forms import ModelForm e o model que você irá utilizar :
+    
+    # from django.forms import ModelForm
+    # from .models import Transation
+    
+    Crie uma classe que irá se chamar NomeModelForm ela tem que herdar ModelForm :
+    
+    # class TransationForm(ModelForm):
+    
+    Essa classe tem que ter uma sub classe chamada Meta, que irá definir deter duas variaveis, model que é o modulo a quem aquele formulario irá pertencer :
+    
+    # model = Transation
+    
+    E outra variavel chamada de fields, que é uma lista contendo os campos, cada campo é referente a uma coluna do model, NÃO COLOQUE O NOME DA COLUNA DE FORMA INCORRETA, CASO ISSO SEJA FEITO ELE IRÁ RETORNAR UM ERRO E NÃO IRÁ EXECUTAR NADA.
+    
+    Dentro do views.py você deve importar de .forms o Form recém criado : 
+    
+    # from .forms import TransationForm
+    
+    criar uma nova view que irá ser referente ao formulario :
+    
+    # def new_transation(request):
+    
+    crie a data
+    
+    # data = {}
+    
+    e uma key chamada 'form' que irá receber o form, passe para essa classe o seguinte :
+    
+    # data['form'] = TransationForm(request.POST or None)
+    
+    Isso irá fazer uma verificação de que se o formulario já está preenchido ou não.
+    
+    Após isso valide o formulario por meio da função is_valid
+    
+    # if data['form'].is_valid():
+    
+    Caso esse if seja verdadeiro peça para ele salvar o form
+    
+    # data['form'].save()
+    
+    E após isso retorne um redirect passando o nome da url que você deseja redirecionar, redirect faz parte de django.shortcuts :
+    
+    # return redirect('home')
+    
+    Caso esse if não seja atendido faça um retorno de um render, passando request, template e data.
+    
+    # return render(request, "contas/form.html", data)
+    
+    No template crie uma tag form, com o methodo POST
+    
+    # <form method="POST">
+    
+    Dentro dela coloque um {% csrf_token %} isso irá servir para proteger seu formulario de ataques.
+    
+    Depois coloque {{ form.as_p }} esse .as_p serve para organizar o formulario de forma empilhada.
+    
+    E não esqueça do button com o tipo submit para enviar os dados
+    
+    # <button type="submit">Salvar</button>
+    
+    Com isso o formulario já está funcional.
