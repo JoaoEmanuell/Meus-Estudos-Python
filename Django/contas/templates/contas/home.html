@@ -8,27 +8,16 @@
 </head>
 <body>
     <h1>Seja bem vindo!</h1>
-    <p>{{ now }}</p>
     <p>
-        <ul>
-            {% for day in days %}
+        {{ Transations }}
 
-            {% if day == 8 %}
+        {% for transation in Transations %}
 
-                <li><b>{{ day }}</b></li>
+            <p>
+                {{ transation }} ─ {{ transation.date }} ─ {{ transation.describe }} ─ {{ transation.value }} ─ {{ transation.category}}
+            </p>
 
-            {% elif day == 6 %}
-
-                <li><em>{{ day }}</em></li>
-
-            {% else %}
-
-                <li>{{ day }}</li>
-
-            {% endif %}
-
-            {% endfor %}
-        </ul>
+        {% endfor %}
     </p>
 </body>
 </html>

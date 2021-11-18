@@ -54,7 +54,7 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     
     path('home/', home),
     
-    # Caso tenha duvida veja a documentação sobre views " https://docs.djangoproject.com/en/2.0/topics/http/views/ "
+    # Caso tenha duvida veja a documentação sobre views " https://docs.djangoproject.com/en/3.2/topics/http/views/ "
     
 # Templates
 
@@ -201,4 +201,40 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     
     Link da documentação do jinja, essa linguagem que permite a incorporação do python no html.
     
-    https://jinja.palletsprojects.com/en/3.0.x/ 
+    https://jinja.palletsprojects.com/en/3.0.x/
+    
+# Listagem de dados.
+
+    Dentro da sua view você irá importar o model que você deseja listar.
+    
+    '''
+        from.models import Model
+        
+    '''
+    
+    Dentro da sua data você irá criar uma key com o nome que você deseja, ela irá receber o nome do model.objects e ai o que você deseja que seja realizado, esse .objects faz parte da herança de models.Model
+    
+    '''
+    data['key'] = Model.objects.all()
+    '''
+    
+    No nosso caso será um all que básicamente pega todos os objetos inseridos dentro do model.
+    
+    https://docs.djangoproject.com/en/3.2/topics/db/models/#model-attributes # Link da documentação dos atributos de model, logo abaixo temos os metodos.
+    
+    Passe a data como paramentro do render
+    
+    Para acessar os dados do model dentro do código html, você pode fazer um for e simplismente passar o que você deseja, esses objetos são identicos a objetos js portanto você pode acessar propriedades deles.
+    
+    '''
+        {% for transation in Transations %}
+
+            <p>
+                {{ transation }} ─ {{ transation.date }} ─ {{ transation.describe }} ─ {{ transation.value }} ─ {{ transation.category}}
+            </p>
+
+        {% endfor %}
+    
+    '''
+    
+    Nesse caso pedimos a transation que é o nome do objeto, depois a data dele, descrição ect.

@@ -1,12 +1,9 @@
 from django.shortcuts import render
-import datetime
+from.models import Transation
 # Create your views here.
 
 def home(request):
     data = {}
-
-    data['days'] = [5, 6, 7, 8, 9, 10]
-
-    data['now'] = datetime.datetime.now()
+    data['Transations'] = Transation.objects.all()
     
     return render(request, "contas/home.html", data)
