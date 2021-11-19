@@ -19,3 +19,13 @@ def new_transation(request):
         return redirect('home')
 
     return render(request, "contas/form.html", data)
+
+def update(request, pk):
+    transation = Transation.objects.get(pk=pk)
+    form = TransationForm(request.POST or None, instance=transation)
+
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    data = {'form' : form}
+    return render(request, 'contas/form.html', data)

@@ -14,7 +14,9 @@
         {% for transation in Transations %}
 
             <p>
+                <a href="{% url 'update_url' transation.id %}">
                 {{ transation }} ─ {{ transation.date }} ─ {{ transation.describe }} ─ {{ transation.value }} ─ {{ transation.category}}
+            </a>
             </p>
 
         {% endfor %}

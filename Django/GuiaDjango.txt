@@ -58,6 +58,12 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     
     # path('new/', new_transation, name='new'),
     
+    Dentro desse path no caminho da url você pode colocar para ela receber paramentros, esse paramentos irão servir para utilizar operações de update :
+    
+    # path('update/<int:pk>/', update, name='update_url')
+    
+    Nesse caso passaremos um paramentro do tipo inteiro.
+    
     # Caso tenha duvida veja a documentação sobre views " https://docs.djangoproject.com/en/3.2/topics/http/views/ "
     
 # Templates
@@ -313,3 +319,27 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     # <button type="submit">Salvar</button>
     
     Com isso o formulario já está funcional.
+    
+# Views, paraementos :
+
+    Além do request também podemos passar outros paramentros para a view, nesse caso vamos passar o paramentro pk que já está definido na url :
+    
+    # def update(request, pk)
+    
+    Então vamos criar uma variavel chamada de transation que irá usar o método interno get de objects de Transation, esse get serve para retornar todos os dados de um objeto onde a pk [primary key] seja igual a pk passada por paramentro
+    
+    # transation = Transation.objects.get(pk = pk)
+    
+    Após isso vamos criar um form que é básicamente igual aos anteriores, com o detalhe que ele irá recebeber um novo paramentro chamado instance, que básicamente instancia o form com os dados do objeto que possue aquela pk :
+    
+    # form = TransationForm(request.POST or None, instance=transation)
+    
+    Após isso faça uma validação do form e caso o if não seja atendido retorne o template de um render com o form padrão :
+    
+    '''
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    data = {'form' : form}
+    return render(request, 'contas/form.html', data)
+    '''
