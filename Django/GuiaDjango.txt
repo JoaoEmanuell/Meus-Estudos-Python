@@ -308,7 +308,7 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     
     Depois coloque {{ form.as_p }} esse .as_p serve para organizar o formulario de forma empilhada.
     
-    E não esqueça do button com o tipo submit para enviar os dados
+    E não esqueça do button com o tipo submit para enviar os dados :
     
     # <button type="submit">Salvar</button>
     
