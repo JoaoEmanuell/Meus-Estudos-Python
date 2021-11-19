@@ -343,3 +343,25 @@ Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsav
     data = {'form' : form}
     return render(request, 'contas/form.html', data)
     '''
+    
+# Delete
+
+    Para deletar um objeto é bastante simples, básicamente igual ao update, no seu urls.py um novo path pedindo o int:pk como paramentro :
+    
+    # path('delete/<int:pk>/', delete, name='delete_url'),
+    
+    Dentro da sua view crie uma que necessite do request e do pk que é necessario para o url.
+    
+    # def delete(request, pk):
+    
+    crie uma var transation que irá pegar o objeto que tem aquele pk
+    
+    # transation = Transation.objects.get(pk = pk)
+    
+    Após isso use o metodo delete, esse método deleta todos os dados daquele objeto do banco de dados.
+    
+    # transation.delete()
+    
+    Após isso automaticamente faça um redirect para onde você quiser
+    
+    return redirect('home')

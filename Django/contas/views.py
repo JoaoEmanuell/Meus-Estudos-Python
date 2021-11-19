@@ -27,5 +27,11 @@ def update(request, pk):
     if form.is_valid():
         form.save()
         return redirect('home')
-    data = {'form' : form}
+
+    data = {'form' : form, 'obj' : transation}
     return render(request, 'contas/form.html', data)
+
+def delete(request, pk):
+    transation = Transation.objects.get(pk=pk)
+    transation.delete()
+    return redirect('home')
