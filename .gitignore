@@ -243,3 +243,7 @@ lib/
 lib64
 pyvenv.cfg
 share/
+
+##Django
+
+secret.py
