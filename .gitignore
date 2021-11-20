@@ -246,4 +246,4 @@ share/
 
 ##Django
 
-secret.py
+key.txt
