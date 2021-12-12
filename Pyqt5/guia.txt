@@ -79,3 +79,37 @@ if __name__=="__main__":
         return button
 
     button.clicked.connect(função) # Quando o botão for clicado, chama a função
+
+# Label : 
+
+    # Imports
+
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+
+    # Função para criar o label
+
+    def createLabel(self, text, move=(100, 100)):
+
+        # Cria o label
+
+        label = QLabel(self)
+
+        # Seta o texto do label
+
+        label.setText(text)
+
+        # Move o label para a posição x e y
+
+        label.move(move[0], move[1])
+
+        # Seta o css do label
+
+        label.setStyleSheet("css") 
+
+        # Retorna o label
+
+        return label
+
+    No caso do label é importante notar que se o texto for trocado ele não será atualizado, para isso é necessário usar o adjustSize() que irá ajustar o tamanho do label para o texto.
+
+    # label.adjustSize()
