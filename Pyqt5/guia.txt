@@ -47,3 +47,35 @@ if __name__=="__main__":
     # Executa a aplicação e garante que quando fecharmos ela irá ser fechada.
 
     sys.exit(app.exec_())
+
+# Criando botões : 
+
+    # Imports
+
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
+
+    # Função para criar o botão
+
+    def createButton(self, name, x, y):
+
+        # Cria o botão
+
+        button = QPushButton(name, self)
+
+        # Move o botão para a posição x e y
+
+        button.move(x, y)
+
+        # Redimensiona o botão
+
+        button.resize(width, height)
+
+        # Seta o css do botão
+
+        button.setStyleSheet("css")
+
+        # Retorna o botão
+
+        return button
+
+    button.clicked.connect(função) # Quando o botão for clicado, chama a função
