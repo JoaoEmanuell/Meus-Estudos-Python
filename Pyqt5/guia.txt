@@ -1,0 +1,49 @@
+# Criando a janela
+
+# Imports
+
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
+# Class window que herda de QMainWindow
+
+class window(QMainWindow):
+
+    # Init da janela e o super da classe QMainWindow
+
+    def __init__(self):
+
+        super().__init__()
+
+        self.loadWindow()
+    
+    # Função que carrega a janela e inicia ela
+    def loadWindow(self):
+        # Seta as distancias e o tamanho da janela
+
+        self.setGeometry(distancia_do_top, distancia_da_esquerda, largura, altura)
+
+        # Seta o titulo da janela
+
+        self.setWindowTitle('Titulo')
+
+        # Exibe a janela
+
+        self.show()
+
+
+# Executando
+
+if __name__=="__main__":
+
+    # Cria a varivel app que é uma instancia de QApplication passando o sys.argv que vai servir inicializar a aplicação.
+
+    app = QApplication(sys.argv)
+
+    # Cria a variavel window que é uma instancia da classe window, sendo nossa janela.
+
+    window = window()
+
+    # Executa a aplicação e garante que quando fecharmos ela irá ser fechada.
+
+    sys.exit(app.exec_())
