@@ -113,3 +113,25 @@ if __name__=="__main__":
     No caso do label é importante notar que se o texto for trocado ele não será atualizado, para isso é necessário usar o adjustSize() que irá ajustar o tamanho do label para o texto.
 
     # label.adjustSize()
+
+# Imagens
+
+    # Imports
+
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+
+    from PyQt5 import QtGui
+
+    As imagens são criadas dentro dos labels, além disso para colocar elas é necessário importar a biblioteca QtGui.
+
+    Crie o label normalmente
+
+    self.image = self.createLabel("", move=(100, 300))
+
+    Após isso use a função "setPixmap" e passe o QtGui.QPixmap, dentro deles coloque o caminho para a imagem.
+
+    self.image.setPixmap(QtGui.QPixmap("car.webp"))
+
+    Não esqueça de ajustar o tamanho automaticamente para a imagem.
+    
+    self.image.adjustSize()
