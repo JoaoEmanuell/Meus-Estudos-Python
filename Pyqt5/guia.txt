@@ -133,5 +133,40 @@ if __name__=="__main__":
     self.image.setPixmap(QtGui.QPixmap("car.webp"))
 
     Não esqueça de ajustar o tamanho automaticamente para a imagem.
-    
+
     self.image.adjustSize()
+
+# Caixa de texto
+
+    # Imports
+
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit
+
+    # Função para criar a caixa de texto
+
+    def createTextBox(self, text='', move=(100, 100), resize=(100, 100), **kw):
+    
+        # Css da caixa
+        css = kw.get('css', '')
+
+        # Cria a caixa de texto
+        textbox = QLineEdit(self)
+
+        # Seta o texto da caixa de texto
+        textbox.setText(text)
+
+        # Move a caixa de texto para a posição x e y
+        textbox.move(move[0], move[1])
+    
+        # Determina o tamanho da caixa de texto
+        textbox.resize(resize[0], resize[1])
+
+        # Seta o css da caixa de texto
+        textbox.setStyleSheet(css)
+
+        # Retorna a caixa de texto
+        return textbox
+
+    Para pegar o texto da caixa de texto use o método text()
+
+    # textBox.text()
