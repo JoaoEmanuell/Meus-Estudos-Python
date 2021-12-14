@@ -178,3 +178,32 @@ Para gerar o seu .py a partir do .ui basta usar o comando:
     pyuic5 -x nome_arquivo_interface.ui -o nome_arquivo_interface.py
 
 Dessa forma você vai gerar um arquivo .py que contem a interface.
+
+# Usando a interface na forma de um arquivo .ui
+
+    # Imports
+
+    from PyQt5 import uic, QtWidgets
+
+    # App, passe uma lista vazia como paramentro.
+
+    app = QtWidgets.QApplication([])
+
+    # Carrega a interface.
+
+    form = uic.loadUi("interface.ui")
+
+    # Chamando uma função quando o botão for clicado.
+
+    form.pushButton.clicked.connect(main_function)
+
+    # Exibe a interface.
+
+    form.show()
+
+    # Executando o app.
+    
+    app.exec()
+
+    Nota para acesar os elementos da interface é so utilizar form e depois o nome do elemento. # No caso form se refere a variavel que está contendo a interface.
+    Dessa forma você pode acessar todos os métodos daquele elemento.
