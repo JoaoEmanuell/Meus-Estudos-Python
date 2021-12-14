@@ -1,20 +1,30 @@
 # Imports
 from PyQt5 import uic, QtWidgets
 
-def main_function():
-    radios_buttons_status = {'azul' : form.azul.isChecked(), 'amarelo' : form.amarelo.isChecked(), 'verde' : form.verde.isChecked(), 'vermelho' : form.vermelho.isChecked()}
-    for key, value in radios_buttons_status.items():
-        if value:
-            option = key
-            break
+# Functions
 
-    form.color_label.setText(f'Cor selecionada : {option}')
-    form.color_label.adjustSize()
+def add_to_list():
+    text = form.textBox.text()
+    if text != '':
+        form.list.addItem(text)
+        form.textBox.setText("")
+
+def remove_last_item_to_list():
+    #form.list.clear()
+    form.list.takeItem(form.list.count() - 1)
 
 app = QtWidgets.QApplication([])
 
+# Form
+
 form = uic.loadUi("interface.ui")
-form.pushButton.clicked.connect(main_function)
+
+# Buttons
+
+form.add.clicked.connect(add_to_list)
+form.remove.clicked.connect(remove_last_item_to_list)
+
+# Show, exec
 
 form.show()
 app.exec()

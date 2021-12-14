@@ -50,6 +50,8 @@ if __name__=="__main__":
 
 # Criando botões : 
 
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QPushButton.html # Link da documentação do QPushButton
+
     # Imports
 
     from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
@@ -81,6 +83,8 @@ if __name__=="__main__":
     button.clicked.connect(função) # Quando o botão for clicado, chama a função
 
 # Label : 
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QLabel.html # Link da documentação do QLabel
 
     # Imports
 
@@ -137,6 +141,8 @@ if __name__=="__main__":
     self.image.adjustSize()
 
 # Caixa de texto
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QLineEdit.html # Link da documentação do QLineEdit
 
     # Imports
 
@@ -207,3 +213,17 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
 
     Nota para acesar os elementos da interface é so utilizar form e depois o nome do elemento. # No caso form se refere a variavel que está contendo a interface.
     Dessa forma você pode acessar todos os métodos daquele elemento.
+
+# Lista
+
+    A lista é um widget que serve como lista, os itens não podem ser editados de forma direta.
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QListWidget.html # Link da documentação da lista.
+
+    list.addItem('text') # Adiciona um item a lista.
+
+    list.takeItem(row) # Remove o item que corresponde aquela row da lista.
+
+    list.clear() # Limpa a lista.
+
+    list.count() # Retorna o número de rows da lista.
