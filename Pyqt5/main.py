@@ -3,17 +3,13 @@ from PyQt5 import uic, QtWidgets
 
 # Functions
 
-value = 0
-def more_progresse_bar():
-    global value
-    value += 10
-    form.progressBar.setValue(value)
-
-def zero_progress_bar():
-    global value
-    value = 0
-    form.progressBar.setValue(0)
-
+def get_calendar_date():
+    date = str(form.calendar.selectedDate()).replace(',', '/').replace(' ', '').strip()
+    date = date[19:len(date)-1]
+    #date = {'year' : date[0:4], 'month' : date[4:6], 'day' : date[6:len(date)]}
+    #form.date.setText(f'Data selecionada : {date["day"]}/{date["month"]}/{date["year"]}')
+    form.date.setText(f'Data selecionada : {date}')
+    form.date.adjustSize()
 app = QtWidgets.QApplication([])
 
 # Form
@@ -22,8 +18,7 @@ form = uic.loadUi("interface.ui")
 
 # Buttons
 
-form.more.clicked.connect(more_progresse_bar)
-form.zero.clicked.connect(zero_progress_bar)
+form.calendar.selectionChanged.connect(get_calendar_date)
 
 # Show, exec
 

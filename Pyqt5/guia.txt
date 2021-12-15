@@ -262,3 +262,18 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
     https://doc.qt.io/qtforpython/PySide6/QtWidgets/QProgressBar.html # Link documentação da ProgressBar
 
     progressBar.setValue(valor) # Seta o valor da barra de progresso.
+
+# Calendario
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QCalendarWidget.html # Link da documentação do QCalendarWidget
+
+    Para verificar se a data do calendario foi alterada você pode utilizar :
+
+        calendar.selectionChanged.connect(função)
+
+    calendar.selectedDate() # Retorna a data selecionada.
+
+    # Formata a data deixando só os números e trocando a virugula por uma barra
+
+    date = str(form.calendar.selectedDate()).replace(',', '/').replace(' ', '').strip()
+    date = date[19:len(date)-1]
