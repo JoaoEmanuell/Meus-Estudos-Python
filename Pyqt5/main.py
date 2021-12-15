@@ -3,15 +3,13 @@ from PyQt5 import uic, QtWidgets
 
 # Functions
 
-def add_to_list():
-    text = form.textBox.text()
-    if text != '':
-        form.list.addItem(text)
-        form.textBox.setText("")
-
-def remove_last_item_to_list():
-    #form.list.clear()
-    form.list.takeItem(form.list.count() - 1)
+def show_mensage():
+    mensage = form.textBox.text()
+    form.textBox.setText("")
+    if mensage == "":
+        QtWidgets.QMessageBox.about(form, "Texto em branco !", mensage)
+    else:
+        QtWidgets.QMessageBox.about(form, "Bem vindo : ", mensage)
 
 app = QtWidgets.QApplication([])
 
@@ -21,8 +19,7 @@ form = uic.loadUi("interface.ui")
 
 # Buttons
 
-form.add.clicked.connect(add_to_list)
-form.remove.clicked.connect(remove_last_item_to_list)
+form.verify.clicked.connect(show_mensage)
 
 # Show, exec
 

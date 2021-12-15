@@ -227,3 +227,13 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
     list.clear() # Limpa a lista.
 
     list.count() # Retorna o número de rows da lista.
+
+# Caixa de alerta
+
+    Caixa de alerta é uma caixa que aparece no meio da tela com o titulo e a mensagem, util para informar que o usuario está cometendo erros.
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QMessageBox.html # Link da documentação da caixa de alerta.
+
+    # Como implementar :
+
+        QtWidgets.QMessageBox.about(variavel_interface, "Titulo da caixa", mensagem_da_caixa) # Exibe a caixa de alerta.
