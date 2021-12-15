@@ -256,3 +256,9 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
             form.close() # Esse form.close() é opcional mas ele serve para fechar a primeira tela e evitar do usuario ter varias telas sendo exibida, se uma tela já está sendo exibida ela não irá ser exibida novamente, com isso fechamos a segunda tela e deixamos a interface mais bonita.
 
     Dessa forma você estara utilizando duas telas, lembre-se que um objeto que pertence a uma tela não pertence a outra mesmo que eles tenham o mesmo nome.
+
+# Barra de progresso
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QProgressBar.html # Link documentação da ProgressBar
+
+    progressBar.setValue(valor) # Seta o valor da barra de progresso.

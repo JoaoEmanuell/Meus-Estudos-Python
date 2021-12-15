@@ -3,25 +3,27 @@ from PyQt5 import uic, QtWidgets
 
 # Functions
 
-def call_second_screen():
-    form_2.show()
-    form.close()
+value = 0
+def more_progresse_bar():
+    global value
+    value += 10
+    form.progressBar.setValue(value)
 
-def call_first_screen():
-    form.show()
-    form_2.close()
+def zero_progress_bar():
+    global value
+    value = 0
+    form.progressBar.setValue(0)
 
 app = QtWidgets.QApplication([])
 
 # Form
 
 form = uic.loadUi("interface.ui")
-form_2 = uic.loadUi("interface_2.ui")
 
 # Buttons
 
-form.pushButton.clicked.connect(call_second_screen)
-form_2.pushButton.clicked.connect(call_first_screen)
+form.more.clicked.connect(more_progresse_bar)
+form.zero.clicked.connect(zero_progress_bar)
 
 # Show, exec
 
