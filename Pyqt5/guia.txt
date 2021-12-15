@@ -237,3 +237,22 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
     # Como implementar :
 
         QtWidgets.QMessageBox.about(variavel_interface, "Titulo da caixa", mensagem_da_caixa) # Exibe a caixa de alerta.
+
+# Multiplas telas
+
+    Para usar multiplas telas primeiramente crie a ui de cada uma e carregue elas :
+
+        form = uic.loadUi("interface.ui")
+        form_2 = uic.loadUi("interface_2.ui")
+
+    Faça a primeira tela ser exibida.
+
+        form.show()
+
+    Para exibir a segunda tela você pode criar uma função que irá exibir ela.
+
+        def call_second_screen():
+            form_2.show()
+            form.close() # Esse form.close() é opcional mas ele serve para fechar a primeira tela e evitar do usuario ter varias telas sendo exibida, se uma tela já está sendo exibida ela não irá ser exibida novamente, com isso fechamos a segunda tela e deixamos a interface mais bonita.
+
+    Dessa forma você estara utilizando duas telas, lembre-se que um objeto que pertence a uma tela não pertence a outra mesmo que eles tenham o mesmo nome.

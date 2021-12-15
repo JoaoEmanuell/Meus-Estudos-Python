@@ -3,23 +3,25 @@ from PyQt5 import uic, QtWidgets
 
 # Functions
 
-def show_mensage():
-    mensage = form.textBox.text()
-    form.textBox.setText("")
-    if mensage == "":
-        QtWidgets.QMessageBox.about(form, "Texto em branco !", mensage)
-    else:
-        QtWidgets.QMessageBox.about(form, "Bem vindo : ", mensage)
+def call_second_screen():
+    form_2.show()
+    form.close()
+
+def call_first_screen():
+    form.show()
+    form_2.close()
 
 app = QtWidgets.QApplication([])
 
 # Form
 
 form = uic.loadUi("interface.ui")
+form_2 = uic.loadUi("interface_2.ui")
 
 # Buttons
 
-form.verify.clicked.connect(show_mensage)
+form.pushButton.clicked.connect(call_second_screen)
+form_2.pushButton.clicked.connect(call_first_screen)
 
 # Show, exec
 
