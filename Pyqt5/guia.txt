@@ -285,3 +285,15 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
     Para verificar se um dos itens do menu foi clickado você pode utilizar :
 
         menuAction.triggered.connect(função)
+
+# Checkbox
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QCheckBox.html # Link da documentação do QCheckBox
+
+    Para verificar se a checkbox foi marcada você pode utilizar :
+
+        checkbox.isChecked()
+
+    Para setar o estado de uma checkbox [True ou False] você pode utilizar :
+
+        checkbox.setChecked(True || False)
