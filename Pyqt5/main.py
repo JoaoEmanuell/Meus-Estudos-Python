@@ -3,13 +3,14 @@ from PyQt5 import uic, QtWidgets
 
 # Functions
 
-def get_calendar_date():
-    date = str(form.calendar.selectedDate()).replace(',', '/').replace(' ', '').strip()
-    date = date[19:len(date)-1]
-    #date = {'year' : date[0:4], 'month' : date[4:6], 'day' : date[6:len(date)]}
-    #form.date.setText(f'Data selecionada : {date["day"]}/{date["month"]}/{date["year"]}')
-    form.date.setText(f'Data selecionada : {date}')
-    form.date.adjustSize()
+def green_menu(): setOutput("Green", "green")
+
+def red_menu(): setOutput("Red", "red")
+
+def blue_menu(): setOutput("Blue", "blue")
+
+def setOutput(text, color): form.output.setText(f'<html><head/><body><p align="center"><span style=" font-size:20pt; font-weight:600; color : {color}">{text}</span></p></body></html>')
+
 app = QtWidgets.QApplication([])
 
 # Form
@@ -18,7 +19,9 @@ form = uic.loadUi("interface.ui")
 
 # Buttons
 
-form.calendar.selectionChanged.connect(get_calendar_date)
+form.menuGreen.triggered.connect(green_menu)
+form.menuRed.triggered.connect(red_menu)
+form.menuBlue.triggered.connect(blue_menu)
 
 # Show, exec
 

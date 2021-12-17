@@ -277,3 +277,11 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
 
     date = str(form.calendar.selectedDate()).replace(',', '/').replace(' ', '').strip()
     date = date[19:len(date)-1]
+
+# Menu
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QMenuBar.html # Link da documentação do QMenuBar
+
+    Para verificar se um dos itens do menu foi clickado você pode utilizar :
+
+        menuAction.triggered.connect(função)
