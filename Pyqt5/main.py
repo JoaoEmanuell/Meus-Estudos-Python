@@ -1,25 +1,13 @@
 # Imports
-from os import replace
 from PyQt5 import uic, QtWidgets
 
 # Functions
 
-def sum():
-    check_boxs_status = {'checkBox' : form.checkBox.isChecked(), 'checkBox_2' : form.checkBox_2.isChecked(), 'checkBox_3' : form.checkBox_3.isChecked(), 'checkBox_4' : form.checkBox_4.isChecked(), 'checkBox_5' : form.checkBox_5.isChecked()}
-    values = [15, 20, 10, 32, 5.50]
+def frame_1():
+    form.frame_2.close()
 
-    sum = 0
-    pos = 0
-    for key, value in check_boxs_status.items():
-        if value == True:
-            sum += values[pos]
-        pos += 1
-    
-    form.output.setText(f'<html><head/><body><p align="center"><span style=" font-size:16pt; font-weight:600;">Valor total : <span style="color : red">{(sum):.2f}</span></span></p></body></html>')
-
-    reset_check_boxs()
-
-def reset_check_boxs(): form.checkBox.setChecked(False) ,form.checkBox_2.setChecked(False) ,form.checkBox_3.setChecked(False) ,form.checkBox_4.setChecked(False) ,form.checkBox_5.setChecked(False)
+def frame_2():
+    form.frame_2.show()
 
 app = QtWidgets.QApplication([])
 
@@ -29,7 +17,8 @@ form = uic.loadUi("interface.ui")
 
 # Buttons
 
-form.pushButton.clicked.connect(sum)
+form.button_frame_1.clicked.connect(frame_1)
+form.button_frame_2.clicked.connect(frame_2)
 
 # Show, exec
 

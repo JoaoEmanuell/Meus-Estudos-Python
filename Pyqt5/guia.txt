@@ -297,3 +297,15 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
     Para setar o estado de uma checkbox [True ou False] você pode utilizar :
 
         checkbox.setChecked(True || False)
+
+# Frames
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFrame.html # Link da documentação do QFrame
+
+    Para fechar o frame use :
+
+        frame.close()
+
+    Para mostrar o frame use :
+
+        frame.show()
