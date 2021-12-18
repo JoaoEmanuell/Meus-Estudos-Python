@@ -309,3 +309,17 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
     Para mostrar o frame use :
 
         frame.show()
+
+# Combo textBox
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QComboBox.html # Link da documentação do QComboBox
+
+    Para adicionar itens a QComboBox use :
+
+        QComboBox.addItems(["Item", "Item_1"])
+
+    Para verificar o item selecionado use :
+
+        QComboBox.currentText()
+
+    Ela é igual ao select do html. # https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/select

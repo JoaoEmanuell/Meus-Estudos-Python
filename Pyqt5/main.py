@@ -3,11 +3,10 @@ from PyQt5 import uic, QtWidgets
 
 # Functions
 
-def frame_1():
-    form.frame_2.close()
+def city_selected():
+    city = form.cityBoxOptions.currentText()
 
-def frame_2():
-    form.frame_2.show()
+    form.selectedCity.setText(f'<html><head/><body><p align="center"><span style=" font-size:16pt; font-weight:600;">Cidade : <span style="color : red">{city}</span></span></p></body></html>')
 
 app = QtWidgets.QApplication([])
 
@@ -17,8 +16,8 @@ form = uic.loadUi("interface.ui")
 
 # Buttons
 
-form.button_frame_1.clicked.connect(frame_1)
-form.button_frame_2.clicked.connect(frame_2)
+form.cityBoxOptions.addItems(["Paraíba", "São Paulo", "Rio de Janeiro", "Belo Horizonte"])
+form.selectCityButton.clicked.connect(city_selected)
 
 # Show, exec
 
