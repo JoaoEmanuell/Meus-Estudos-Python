@@ -1,12 +1,18 @@
 # Imports
 from PyQt5 import uic, QtWidgets
+from json import JSONEncoder as JE
 
 # Functions
 
-def city_selected():
-    city = form.cityBoxOptions.currentText()
+def save():
+    name = form.name_input.text()
+    age = form.age_input.text()
+    cell = form.cell_input.text()
+    data = JE().encode({"Name" : name, "Age" : age, "Cell" : cell})
 
-    form.selectedCity.setText(f'<html><head/><body><p align="center"><span style=" font-size:16pt; font-weight:600;">Cidade : <span style="color : red">{city}</span></span></p></body></html>')
+    file = QtWidgets.QFileDialog.getSaveFileName(filter="Json (*.json)")[0].replace('.json', '')
+
+    with open(f'{file}.json', 'w') as f: f.write(data)
 
 app = QtWidgets.QApplication([])
 
@@ -16,8 +22,7 @@ form = uic.loadUi("interface.ui")
 
 # Buttons
 
-form.cityBoxOptions.addItems(["Paraíba", "São Paulo", "Rio de Janeiro", "Belo Horizonte"])
-form.selectCityButton.clicked.connect(city_selected)
+form.menuSave.triggered.connect(save)
 
 # Show, exec
 

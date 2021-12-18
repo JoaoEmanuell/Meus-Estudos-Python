@@ -323,3 +323,27 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
         QComboBox.currentText()
 
     Ela é igual ao select do html. # https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/select
+
+# Save file
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFileDialog.html # Link da documentação da classe QFileDialog
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFileDialog.html?highlight=qfiledialog#PySide6.QtWidgets.PySide6.QtWidgets.QFileDialog.getSaveFileName # Link da documentação da classe QFileDialog na função de saveFileName que é usada para salvar.
+
+    Para salvar um arquivo é necessario utilizar um método de uma classe do QtWidgets :
+
+        QtWidgets.QFileDialog.getSaveFileName()[0] # Retorna o nome do arquivo e o caminho no qual ele será salvo.
+
+        with open(f'{file}.extension', 'w') as f:
+            f.write(data) # Salva o arquivo.
+
+    Exemplo :
+
+        file = QtWidgets.QFileDialog.getSaveFileName(filter="Json (*.json)")[0].replace('.json', '')
+
+        No caso acima eu coloquei um filtro que forçara o usuario a salvar como um json e retirei o .json do nome do arquivo, porque caso ele coloque .json o arquivo será salvo como file.json.json.
+
+        Essa variavel file será o caminho + nome do arquivo até o ponto de salvamento, para salvar é só usar :
+
+        with open(f'{file}.json', 'w') as f:
+            f.write("text") # Salva o arquivo com o nome especificado no caminho especificado e com a extensão .json.

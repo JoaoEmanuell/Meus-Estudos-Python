@@ -20,96 +20,90 @@
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="title">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Selecione uma cidade!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QComboBox" name="cityBoxOptions">
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>35</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>400</width>
-            <height>35</height>
-           </size>
-          </property>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <pointsize>15</pointsize>
            </font>
           </property>
-          <property name="cursor">
-           <cursorShape>UpArrowCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(217, 217, 217);</string>
+          <property name="text">
+           <string>Nome :</string>
           </property>
          </widget>
         </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="selectCityButton">
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>75</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>150</width>
-            <height>75</height>
-           </size>
-          </property>
-          <property name="cursor">
-           <cursorShape>UpArrowCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(227, 227, 227);</string>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
           </property>
           <property name="text">
-           <string>Selecionar</string>
+           <string>Idade :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Telefone :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="name_input">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="age_input">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="cell_input">
+          <property name="text">
+           <string/>
           </property>
          </widget>
         </item>
        </layout>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
-       <widget class="QLabel" name="selectedCity">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
       </item>
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>629</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArquivo">
+    <property name="title">
+     <string>Arquivo</string>
+    </property>
+    <addaction name="menuSave"/>
+   </widget>
+   <addaction name="menuArquivo"/>
   </widget>
   <action name="menuGreen">
    <property name="text">
@@ -124,6 +118,11 @@
   <action name="menuBlue">
    <property name="text">
     <string>Azul</string>
+   </property>
+  </action>
+  <action name="menuSave">
+   <property name="text">
+    <string>Salvar</string>
    </property>
   </action>
  </widget>
