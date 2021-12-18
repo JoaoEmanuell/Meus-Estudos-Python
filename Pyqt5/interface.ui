@@ -101,7 +101,9 @@
     <property name="title">
      <string>Arquivo</string>
     </property>
+    <addaction name="menuOpen"/>
     <addaction name="menuSave"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuArquivo"/>
   </widget>
@@ -123,6 +125,11 @@
   <action name="menuSave">
    <property name="text">
     <string>Salvar</string>
+   </property>
+  </action>
+  <action name="menuOpen">
+   <property name="text">
+    <string>Abrir</string>
    </property>
   </action>
  </widget>

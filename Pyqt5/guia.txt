@@ -347,3 +347,26 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
 
         with open(f'{file}.json', 'w') as f:
             f.write("text") # Salva o arquivo com o nome especificado no caminho especificado e com a extensão .json.
+
+# Open file
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFileDialog.html # Link da documentação da classe QFileDialog
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFileDialog.html#PySide6.QtWidgets.PySide6.QtWidgets.QFileDialog.getOpenFileName # Link da documentação da classe QFileDialog na função de getOpenFileName que é usada para abrir um arquivo.
+
+    Para abrir um arquivo é necessario utilizar um método de uma classe do QtWidgets :
+
+        QtWidgets.QFileDialog.getOpenFileName()[0] # Retorna o nome do arquivo e o caminho no qual ele será salvo.
+
+        with open(f'{file}.extension', 'r') as f:
+            data = f.read() # Lê o arquivo.
+
+    Exemplo :
+
+        def open_register():
+            try :
+            # Abre um arquivo do tipo json e já converte ele para um dicionário.
+                data = JD().decode(open(QtWidgets.QFileDialog.getOpenFileName(filter="Json (*.json)")[0]).read())
+            # Caso o arquivo não seja encontrado ou caso o usuario cancele a abertura do arquivo.
+            except FileNotFoundError:
+                QtWidgets.QMessageBox.warning(form, "Error", "Arquivo não encontrado, insira um arquivo válido!")
