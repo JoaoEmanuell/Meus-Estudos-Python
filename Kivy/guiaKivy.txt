@@ -1,0 +1,365 @@
+Criando a tela :
+
+    from kivy.app import App # importa a tela
+
+    class NomeTela(App):
+        def build(self):
+            #conteudos da tela
+
+    NomeTela.run() # Inicia a tela
+
+    A def build é obrigatoria pois ela é quem é responsavel por inicar a tela, ela deve retornar o layout da tela.
+
+Botão :
+
+    from kivy.uix.button import Button # importa o Botão
+
+    class NomeTela(App):
+        def build(self):
+            button = Button(text="Texto do botão")
+
+    Insere um botão na interface.
+
+    Paramentros :
+
+        text = Texto do botão, string
+
+        font_size = Tamanho da fonte do texto, float
+
+        on_release = Função que será executada, assim que o botão for clicado essa função será executada, a função tem que pedir self e o botão como paramentros caso contrario ela não irá funcionar.
+
+        color : 'cor' insere uma cor no texto do botão, formato hexadecimal
+
+Label :
+
+    from kivy.uix.label import Label # Importa a label
+
+    class NomeTela(App):
+        def build(self):
+            label = Label(text="Texto")
+
+    Basicamente serve para inserir um texto na tela.
+
+    Paramentros :
+
+        text = Texto do botão, string
+
+        font_size = Tamanho da fonte do texto, float
+
+         markup = Texto irá receber marcação, caso seja True ele podera receber uma marcação como [b]Texto[/b] deixa o texto em Negrito, [color=codigo_hexa]texto[/color] cor, ect...
+
+         color : 'cor' insere uma cor no texto do botão, formato hexadecimal
+
+BoxLayout : 
+
+    from kivy.uix.boxlayout import BoxLayout # importa o BoxLayout que vai servir como base para o layout da tela
+
+    class NomeTela(App):
+        def build(self):
+            box = BoxLayout(orientation="vertical") # por padrão é horizontal mas pode ser alterado conforme desejado
+            button = Button(text="Botão 1") # cria um botão
+            box.add_widget(button) # adiciona o botão a tela
+            return box # Retorna a o layout
+
+    Nota é possivel adicionar um layout dentro do outro, para isso é só criar o novo layout e adicionar usando o box.add_widget ao principal, dessa forma ao retornar será 2 layouts ao invés de um só.
+
+    Paramentros :
+
+        orientation:'' # vertical ou horizontal.
+        padding:200 # Espaço interno que determina uma distancia entre os item até a borda.
+        spacing : 50 # Espaçamento entre os itens dentro da box.
+
+Arquivo kivy:
+
+    Esse arquivo serve para gerenciar o layout e é mais facil de trabalhar, deve ser escrito usando a linguagem kivy.
+
+    Dentro do seu arquivo .py crie a classe de inicialização da interface:
+
+        class Test(App):
+            def build(self):
+                return Incrementador()
+
+        
+    Essa classe irá retornar a interface, mas nesse caso estamos retornando uma outra classe chamada de Incrementador : 
+
+        class Incrementador(BoxLayout):
+            pass
+
+    Essa classe herda a BoxLayout e simplismente é passada
+
+    após isso crie o arquivo escrevendo em letras minusculas o nome da sua classe de inicialização da interface.kv, nesse caso "test.ky"
+
+    Passe o nome da classe que irá ser retornada pela build dentro de <> :
+
+        <Incrementador>:
+
+    Como Incrementador herda a BoxLayout você pode configurar dentro dela as propiedades da box :
+
+        orientation : 'vertical'
+
+    Dentro desse espaço você deve configurar a interface, basicamente você irá colocar o Item de interface [button, label...] e as propiedades dele :
+
+        Button : 
+            text : 'Incrementar'
+            font_size : 30
+            on_release : label.text = str(int(label.text)+1)
+
+        Label: 
+            id : label
+            text : '1'
+            font_size : 30
+
+    Esse id serve para verificarmos o valor da Label e modificarmos ele.
+
+Interface dinamica :
+
+    O exemplo anterior ilustrava bem uma interface que é estatica, porém caso queiramos que ela seja dinamica devemos trabalhar de forma diferente : 
+
+        class Tarefas(BoxLayout):
+        def __init__(self, tarefas, **kwargs):
+            super().__init__(**kwargs)
+            for tarefa in tarefas :
+                self.add_widget(Label(text=tarefa, font_size=30))
+
+    Básicamente nessa classe estamos pedindo uma lista de tarefas e adicionando a mesma ao BoxLayout, primeiramente o __init__ sempre é chamado ao iniciar a classe, pedimos o self, as tarefas e o **kwargs.
+
+    O **kwargs é básicamente os argumentos do kivy, passando ele podemos modificar coisas da interface diretamente ao chamar a classe e evitamos que o progama se quebre.
+
+    Após isso temos o super().__init__(**kwargs), essa classe super serve para chamar o __init__ do BoxLayout, assim evitando o __init__ seja rescrito e passamos o **kwargs evitando que o sistema quebre.
+
+    Após isso adicionamos ao BoxLayout, Label que tem o texto que é o texto passado pela lista e o font_size, esses labels serão adicionados de acordo com o tamanho da lista.
+
+        class Test(App):
+            def build(self):
+                return Tarefas(['Fazer compras', 'Ir para a escola', 'Regar as plantas'], orientation='horizontal')
+
+    Quando instanciamos passamos a lista e a orientação que a tela deve ficar, essa orientação irá subistituir a que existe no arquivo Kivy.
+
+BoxLayout paramentros :
+
+    id : nome_da_id
+    orientation : 'orientação'
+    size_hint_y : None
+    height : self.minimum_height
+
+    size_hint_y = Por padrão começa em 1, assim a tela acaba sendo responsiva por cada número de elementos, se tiver 2, cada um irá ocupar 50% da tela, caso seja colocado como None, isso irá desligar a responsividade, assim você poderá organizar o espaçamento da forma que deseja.
+
+    height = Determina o tamanho minimo que cada elemento irá ocupar em largura, para não fazer um monte de calculos malucos, utilize a função "self.minimum_height" que irá determinar o tamanho minimo.
+
+ScrollView :
+
+    ScrollView é como uma BoxLayout porém ele cria uma barra de rolagem lateral caso o tamanho do conteudo utrapasse o total da tela.
+
+    class Tarefas(ScrollView):
+        def __init__(self, tarefas, **kwargs):
+            super().__init__(**kwargs)
+
+    Nesse caso como estamos criando usando o ScrollView não podemos adicionar os elementos a ele, portanto precisamos acessar a BoxLayout, para isso usamos self.ids.id_da_box.add_widget(Elemento)
+
+    for tarefa in tarefas :
+        self.ids.box.add_widget(Label(text=tarefa, font_size=30, size_hint_y=None, height=200))
+
+    Como desligamos a size_hint_y eles irão ficar uma bagunça, então precisamos desligar do Label e adicionar uma altura minima, que servirá de espaçamento entre os Labels.
+
+    Também é possivel aplicar as mesmas regras a largura, subistituindo o size_hint_y por size_hint_x e o height por width.
+
+Remover elemento da interface :
+
+    app.root.ids.box.remove_widget(root)
+
+    app = referencia ao aplicativo
+
+    root = referencia a classe principal que está ativa
+
+    ids = id do elemento, no caso box
+
+    remove_widget(root) = remove o elemento da classe principal que está ativa, dessa forma se isso está em um botão e em cima dele tem um Label, ao você clicar no botão ele irá deletar o Label pois é o elemento que está instanciado acima dele.
+
+TextInput :
+
+    TextInput :
+        id:texto
+
+    Cria uma area para o usuario digitar, coloque uma id para poder extrair o texto digitado.
+
+Telas :
+    from kivy.uix.screenmanager import ScreenManager, Screen
+    class Gerenciador(ScreenManager):
+        pass
+
+    A classe Gerenciador sera chamada pela build e irá se tornar um gerenciador.
+
+    class Tarefas(Screen):
+        code
+
+    A classe Tarefas se tornara uma Screen.
+
+    Como gerenciador está sendo chamado pela build ele se torna a primeira classe
+
+    <Gerenciador> :
+    Screen:
+        name : 'start'
+        Button : 
+            text : 'Ver tarefas'
+            on_release : app.root.current = 'tarefas'
+    Tarefas :
+        name : 'tarefas'
+
+    name é uma propiedade da Screen que determina o nome da tela.
+
+    app.root.current = 'nome_da_tela' esse comando faz com que a tela seja transitada para a tela desejada, ela altera a Scren atual.
+
+    Nesse caso como Tarefas foi modificada de BoxLayout para Screen todos os compontentes dela devem ser movidos para uma BoxLayout afim de evitar bugs.
+
+    Para remover um item que está dentro de uma box que está em outra tela use :
+
+        app.root.get_screen('nome_da_tela').ids.box.remove_widget(root)
+
+Fechar janela :
+
+    app.stop()
+
+IMAGEM :
+
+    Insere um imagem, no arquivo kv coloque :
+
+        Image :
+
+            source:'path/imagem_name.format'
+            
+        Dessa forma a imagem será inserida, porém se tentarmos alterar o tamanho dela por meio do 
+        
+            size_hint_y : None
+            height : 300
+
+        Isso não irá funcionar, para isso precisamos determinar que a propriedade alow_stretch se torne verdadeira:
+
+            alow_stretch : True
+
+        Essa propiedade determina que a imagem possa ser esticada.
+
+ActionBar:
+
+    ActionBar é uma barra de ações que normalmente fica em cima da tela do dispositivo, como um menu de guia, esse objeto só aceita itens do tipo Action.
+
+    Tudo que é visualizado dentro dele deve ficar dentro de um ActionView.
+
+    ActionBar:
+        ActionView:
+
+    Irá ficar a esquerda da barra, caso nenhuma logo seja passada ele irá usar a logo do Kivy, normalmente serve para o usuario retornar para a pagina anterior.
+
+    ActionPrevious:
+        title: 'Tarefas'
+        on_release : app.root.current = 'menu'
+
+    ActionButton é um botão de ação, ele básicamente tem os mesmso métodos de um botão convencional e serve excluisvamente para a ActionBar, por definição todo botão que for colocado acaba sendo colocado a direita.
+
+    ActionButton:
+        text : 'Sair'
+        on_release : app.stop()
+
+    ActionSeparator é basicamente um separador, ele irá separar os botões.
+
+    ActionSeparator:
+
+Eventos :
+
+    Eventos são básicamente funçõe que serão executadas quando a tela receber alguma atualização.
+
+        from kivy.core.window import Window # Importa os eventos de janela
+
+        def on_pre_enter(self):
+            Window.bind(on_keyboard=self.events)
+
+        Essa função irá servir quando a tela for iniciada, basicamente ele irá capturar os eventos de teclas pressionadas e irá chamar a função events.
+
+    def events(self, window,key, *args):
+        if key == 27:
+            App.get_running_app().root.current = 'menu'
+            return True
+        elif key == 13:
+            self.addWidget()
+            return True
+
+    Nessa função verificamos se tecla pressionada [key] é igual a determinado valor, se ela for igual a 27 [correspondente a tecla esc] então iremos pegar o app que está sendo executado, verificar o root e alterar ele para o menu e retornar True para validar que o evento foi finalizado.
+
+    Se ela for igual a 13 que corresponde a tecla enter ele irá chamar a função addWidget que adiciona o texto a lista e retornar True para validar que o evento foi finalizado.
+
+    Porém uma vez que fazemos isso a tecla esc e enter irão ficar inuteis pois ela sempre vai executar a mesma ação para o evento mesmo estando em outra janela, para consertar isso precisamos criar a função on_pre_leave, ela basicamente diz que assim que o usuario sair da tela a tela irá parar de executar os comandos correspondente a ela.
+
+    def on_pre_leave(self):
+        Window.unbind(on_keyboard=self.events)
+
+Buildozer :
+
+    Serve para compilar o código fonte para um apk
+
+    buildozer -v android debug # Gera o apk na versão de debug
+
+    buildozer -v android debug deploy run # Gera o apk caso ele não tenha sido gerado, transefere ele para o dispostivo e executa ele.
+
+    buildozer android logcat | grep python # Basicamente extrai o log do android e filtra por elementos que tenham a palavra "python" isso serve para encontrar erros e bugs.
+
+Canvas :
+
+    Canvas é um elemento que todos os elementos possuem, ele serve para manipular o espaço de fundo da tela.
+
+    Caso seja definido uma cor ele irá aplicar ela ao elemento, porém nada será desenhado, para isso podemos desenhar um retangulo, definindo seu tamanho e sua posição, caso queiramos que ele ocupe toda a tela podemos preencher o size com self.size e a pos com self.pos.
+
+    O retangulo também pode receber um source, que irá definir uma imagem que será inserida nele.
+
+    canvas :
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle :
+            size : self.size
+            pos: self.pos
+            source : 'imagem.jpg'
+
+    No canvas também temos o canvas before, que basicamente serve para primeiro desenhar e inserir na tela, desse modo o canvas não subistitui outros elementos como o label.
+
+    canvas.before:
+        [. . .]
+
+    Circulo :
+
+        Ellipse :
+            pos:self.pos
+            size:self.height, self.height
+
+    Desenha um circulo na tela com a cor predefinida.
+
+REAPROVEITANDO WIDGETS:
+
+    Basicamente para criar widgets personalizados no arquivo .kv fazemos da seguinte maneira :
+
+        <Nome@Heranças>:
+            [. . .]
+    
+    Exemplo :
+
+        <Botao@ButtonBehavior+Label>:
+            canvas.before:
+                Color :
+                    rgba:0.1,0.5,0.7,1
+                Ellipse:
+                    pos:self.pos
+                    size:self.height, self.height
+                Ellipse:
+                    pos:self.x + self.width-self.height, self.y
+                    size : self.height, self.height
+                Rectangle:
+                    pos : self.x+self.height/2.0,self.y
+                    size:self.width-self.height, self.height
+
+    Nesse caso estamos criando um widget que tem o nome "Botao" ele herda as caracteristicas de um ButtonBehavior e de um label, assim onde for aplicado ele irá manter a caracteristicas de ambos, sendo assim você pode adicionar eventos de botões e textos como um label.
+
+RADIO :
+
+    Radio é um elemento que pertence a um grupo e só podem ser selecionados um de cada grupo por vez.
+
+    ToggleButton :
+        id : id
+        text : 'TEXTO'
+        group: 'GRUPO'

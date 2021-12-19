@@ -1,42 +1,14 @@
-#Imports
-import PySimpleGUI as sg
 from random import randint
 
-#Interface
-class interface():
-    def __init__(self):
-        layout = [
-            [sg.Text("GERADOR DE SENHAS", justification = 'center')],
-            [sg.Text("Tamanho"), sg.Input(size = (20,0), key = 'Tam')],
-            [sg.Checkbox("Letras maisculas", key = 'Max')],
-            [sg.Checkbox("Letras minusculas", key = 'Min')],
-            [sg.Checkbox("Numeros", key = 'Nums')],
-            [sg.Checkbox("Caracteres especiais (#$?!)", key = 'Esp')],
-            [sg.Button("Gerar senha")],
-            [sg.Output(size = (50, 5), key = 'saida')]
-        ]
+class generate:
 
-        self.janela = sg.Window('GERADOR DE SENHAS').layout(layout)
-        
-    def Iniciar(self):
-        interface.listas(self)
-        while True:
-            self.button, self.values = self.janela.Read()
-            self.tamanho = self.values['Tam']
-            self.minusculas = self.values['Min']
-            self.numeros = self.values['Nums']
-            self.especiais = self.values['Esp']
-            self.maisculas = self.values['Max']
-            interface.limpar(self.janela, 'saida') # limpa o output toda vez que um novo é chamado, vem antes da geração para limpar toda vez
-            interface.geração(self) #gera os valores
-            
-#Gerador
+    #Gerador
     def listas(self):
         self.Minusculas = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         self.Maisculas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P','Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
         self.Numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-        self.Especiais = ['"', '!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '=', '£', '¢', '¬', '{', '[', ']', '}', '§', '|', ';', '?', '°', '̣', 'ª', 'º', '´', '~', '^', '/', '+', '.']
-    
+        self.Especiais = ['"', '!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '=', ',','{', '[', ']', '}', ';', '?', '~', '^', '/', '+', '.']
+
     def geração(self):
         try:
             limite = round(abs(float(str(self.tamanho).replace(',', '.'))))
@@ -45,57 +17,57 @@ class interface():
         else:
     #bloco com todas as opções marcadas
             if self.minusculas and self.numeros and self.especiais and self.maisculas:
-                interface.aleatorio_4(self.Maisculas, self.Minusculas, self.Numeros, self.Especiais, limite)
+                generate.aleatorio_4(self.Maisculas, self.Minusculas, self.Numeros, self.Especiais, limite)
     #bloco das letras maisculas
             elif self.maisculas:
                 #sub bloco letras minusculas
                 if self.maisculas and self.minusculas:
                     if self.maisculas and self.minusculas and self.numeros:
-                        interface.aleatorio_3(self.Maisculas, self.Minusculas, self.Numeros, limite)
+                        generate.aleatorio_3(self.Maisculas, self.Minusculas, self.Numeros, limite)
                     elif self.maisculas and self.minusculas and self.especiais:
-                        interface.aleatorio_3(self.Especiais, self.Maisculas, self.Minusculas, limite)
+                        generate.aleatorio_3(self.Especiais, self.Maisculas, self.Minusculas, limite)
                     else:
-                        interface.aleatorio_2(self.Maisculas, self.Minusculas, limite)
+                        generate.aleatorio_2(self.Maisculas, self.Minusculas, limite)
                 #sub bloco numeros
                 elif self.maisculas and self.numeros:
                     if self.maisculas and self.especiais and self.numeros == True:
-                        interface.aleatorio_3(self.Especiais, self.Maisculas, self.Numeros, limite)
+                        generate.aleatorio_3(self.Especiais, self.Maisculas, self.Numeros, limite)
                     else:
-                        interface.aleatorio_2(self.Maisculas, self.Numeros, limite)
+                        generate.aleatorio_2(self.Maisculas, self.Numeros, limite)
                 elif self.maisculas and self.especiais:
-                    interface.aleatorio_2(self.Maisculas, self.Especiais, limite)
+                    generate.aleatorio_2(self.Maisculas, self.Especiais, limite)
                 else:
-                    interface.aleatorio_1(self.Maisculas, limite)
+                    generate.aleatorio_1(self.Maisculas, limite)
     #bloco das letras minusculas
             elif self.minusculas:
                 #sub bloco numeros
                 if self.minusculas and self.numeros:
                     if self.minusculas and self.numeros and self.especiais:
-                        interface.aleatorio_3(self.Minusculas, self.Numeros, self.Especiais, limite)
+                        generate.aleatorio_3(self.Minusculas, self.Numeros, self.Especiais, limite)
                     else:
-                        interface.aleatorio_2(self.Minusculas, self.Numeros, limite)
+                        generate.aleatorio_2(self.Minusculas, self.Numeros, limite)
                 #sub bloco especiais
                 elif self.minusculas and self.especiais:
-                    interface.aleatorio_2(self.Minusculas, self.Especiais, limite)
+                    generate.aleatorio_2(self.Minusculas, self.Especiais, limite)
                 else:
-                    interface.aleatorio_1(self.Minusculas, limite)
+                    generate.aleatorio_1(self.Minusculas, limite)
     #bloco dos numeros
             elif self.numeros:
                 if self.numeros and self.especiais:
-                    interface.aleatorio_2(self.Numeros, self.Especiais, limite)
+                    generate.aleatorio_2(self.Numeros, self.Especiais, limite)
                 else:
-                    interface.aleatorio_1(self.Numeros, limite)
+                    generate.aleatorio_1(self.Numeros, limite)
     #bloco dos especiais
             elif self.especiais:
-                interface.aleatorio_1(self.Especiais, limite)
-#Função de aleatoridade
+                generate.aleatorio_1(self.Especiais, limite)
+    #Função de aleatoridade
     def aleatorio_1(lista, limite):
         l = 0
         while l != limite:
                 car = lista[randint(0, (len(lista) - 1))]
                 print(f"{car}", end='')
                 l += 1
-    
+
     def aleatorio_2(lista1, lista2, limite):
         l = 0
         while l != limite:
@@ -119,7 +91,7 @@ class interface():
                 car = lista3[randint(0, (len(lista3) - 1))]
             print(f"{car}", end='')
             l += 1
-    
+
     def aleatorio_4(lista1, lista2, lista3, lista4, limite):
         l = 0
         while l != limite:
@@ -133,11 +105,4 @@ class interface():
             elif lista == 4:
                 car = lista4[randint(0, (len(lista4) - 1))]
             print(f"{car}", end='')
-            l += 1    
-    def limpar(janela, chave):
-        janela.FindElement(chave).Update('')
-#Progama
-
-tela = interface()
-tela.Iniciar()
-tela.geração()
+            l += 1

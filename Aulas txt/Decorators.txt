@@ -1,0 +1,21 @@
+Decorators são classes que modificam funções, eles são extremamente uteis para modificar varias funções de forma igual, assim modificando o retorno delas.
+
+Por definição os decorators devem herdar a classe object e devem ter uma função init e uma função call, a init pode servir para diversas coisas, mas a principal é para pedir a função e criar um self dela, enquanto a call é quem realmente modifica o valor de retorno dela.
+
+# Classe que irá ser o decorator, herda object
+class toUpper(object):
+    # init que recebe self e a função
+    def __init__(self, func):
+        # Criação do self.func
+        self.func = func
+    
+    # call que irá modificar a função
+    def __call__(self, *args, **kwargs):
+        # Retorna a função e os seus paramentros de forma modificada, isso é modifica o retorno da função, nesse caso o retorno será colocado em letras maiusculas.
+        return self.func(*args, **kwargs).upper()
+        
+Para colocar o decorator na sua função é bem simples, acima da função coloque um @nomeDecorator
+
+@toUpper
+def helloWorld():
+    return "Hello World!"  

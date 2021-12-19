@@ -120,9 +120,22 @@ import urllib.request
 
 try:
     site = urllib.request.urlopen('http://pudim.com.br')
-except urllib.erro.URLError:
+except urllib.error.URLError:
     print('O site Pudim não está acessivel no momento')
 else:
     print('Consegui acessar o site Pudim com sucesso')
 
 ==================================
+
+Exibindo o erro após o Except :
+
+    try :
+        [. . .]
+    except Exception as erro:
+        print(erro.__class__) # Exception é uma classe que detem os erros, criamos um objeto usando ela esse objeto é chamado de erro e mandamos printar o a classe do erro dessa forma ele irá executar sem maiores problemas.
+        
+    else:
+        [. . .]
+    
+    finally:
+        [. . .]

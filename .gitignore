@@ -243,4 +243,7 @@ lib/
 lib64
 pyvenv.cfg
 share/
+
+##Django
+
 key.txt

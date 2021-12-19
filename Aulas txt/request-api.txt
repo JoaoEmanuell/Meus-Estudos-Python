@@ -1,0 +1,17 @@
+import requests # modulo que serve para fazer requestes para uma api
+
+Irei usar de exemplo a api wifu.pics
+
+Os paramentros que ela pede é o tipo e a categoria
+
+requests.get(f'https://api.waifu.pics/{type}/{category}').json()
+
+Ele irá requisitar a api os dados, convertendo eles em um formato json
+
+Caso você não converta ele irá retornar:
+
+200 = sucesso
+
+404 = fracasso
+
+o basico do request é isso.

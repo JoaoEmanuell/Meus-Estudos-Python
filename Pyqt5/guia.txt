@@ -1,0 +1,372 @@
+# Criando a janela
+
+# Imports
+
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
+# Class window que herda de QMainWindow
+
+class window(QMainWindow):
+
+    # Init da janela e o super da classe QMainWindow
+
+    def __init__(self):
+
+        super().__init__()
+
+        self.loadWindow()
+    
+    # Função que carrega a janela e inicia ela
+    def loadWindow(self):
+        # Seta as distancias e o tamanho da janela
+
+        self.setGeometry(distancia_do_top, distancia_da_esquerda, largura, altura)
+
+        # Seta o titulo da janela
+
+        self.setWindowTitle('Titulo')
+
+        # Exibe a janela
+
+        self.show()
+
+
+# Executando
+
+if __name__=="__main__":
+
+    # Cria a varivel app que é uma instancia de QApplication passando o sys.argv que vai servir inicializar a aplicação.
+
+    app = QApplication(sys.argv)
+
+    # Cria a variavel window que é uma instancia da classe window, sendo nossa janela.
+
+    window = window()
+
+    # Executa a aplicação e garante que quando fecharmos ela irá ser fechada.
+
+    sys.exit(app.exec_())
+
+# Criando botões : 
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QPushButton.html # Link da documentação do QPushButton
+
+    # Imports
+
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
+
+    # Função para criar o botão
+
+    def createButton(self, name, x, y):
+
+        # Cria o botão
+
+        button = QPushButton(name, self)
+
+        # Move o botão para a posição x e y
+
+        button.move(x, y)
+
+        # Redimensiona o botão
+
+        button.resize(width, height)
+
+        # Seta o css do botão
+
+        button.setStyleSheet("css")
+
+        # Retorna o botão
+
+        return button
+
+    button.clicked.connect(função) # Quando o botão for clicado, chama a função
+
+# Label : 
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QLabel.html # Link da documentação do QLabel
+
+    # Imports
+
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+
+    # Função para criar o label
+
+    def createLabel(self, text, move=(100, 100)):
+
+        # Cria o label
+
+        label = QLabel(self)
+
+        # Seta o texto do label
+
+        label.setText(text)
+
+        # Move o label para a posição x e y
+
+        label.move(move[0], move[1])
+
+        # Seta o css do label
+
+        label.setStyleSheet("css") 
+
+        # Retorna o label
+
+        return label
+
+    No caso do label é importante notar que se o texto for trocado ele não será atualizado, para isso é necessário usar o adjustSize() que irá ajustar o tamanho do label para o texto.
+
+    # label.adjustSize()
+
+# Imagens
+
+    # Imports
+
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+
+    from PyQt5 import QtGui
+
+    As imagens são criadas dentro dos labels, além disso para colocar elas é necessário importar a biblioteca QtGui.
+
+    Crie o label normalmente
+
+    self.image = self.createLabel("", move=(100, 300))
+
+    Após isso use a função "setPixmap" e passe o QtGui.QPixmap, dentro deles coloque o caminho para a imagem.
+
+    self.image.setPixmap(QtGui.QPixmap("car.webp"))
+
+    Não esqueça de ajustar o tamanho automaticamente para a imagem.
+
+    self.image.adjustSize()
+
+# Caixa de texto
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QLineEdit.html # Link da documentação do QLineEdit
+
+    # Imports
+
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit
+
+    # Função para criar a caixa de texto
+
+    def createTextBox(self, text='', move=(100, 100), resize=(100, 100), **kw):
+    
+        # Css da caixa
+        css = kw.get('css', '')
+
+        # Cria a caixa de texto
+        textbox = QLineEdit(self)
+
+        # Seta o texto da caixa de texto
+        textbox.setText(text)
+
+        # Move a caixa de texto para a posição x e y
+        textbox.move(move[0], move[1])
+    
+        # Determina o tamanho da caixa de texto
+        textbox.resize(resize[0], resize[1])
+
+        # Seta o css da caixa de texto
+        textbox.setStyleSheet(css)
+
+        # Retorna a caixa de texto
+        return textbox
+
+    Para pegar o texto da caixa de texto use o método text()
+
+    # textBox.text()
+
+# Para acessar o qt desing instale o pyqt5-tools, va para o site-packages e procure a pasta qt5_applications va para a pasta Qt, bin, o app chamado de "designer" é o que você vai usar.
+
+Para gerar o seu .py a partir do .ui basta usar o comando:
+
+    pyuic5 -x nome_arquivo_interface.ui -o nome_arquivo_interface.py
+
+Dessa forma você vai gerar um arquivo .py que contem a interface.
+
+# Usando a interface na forma de um arquivo .ui
+
+    # Imports
+
+    from PyQt5 import uic, QtWidgets
+
+    # App, passe uma lista vazia como paramentro.
+
+    app = QtWidgets.QApplication([])
+
+    # Carrega a interface.
+
+    form = uic.loadUi("interface.ui")
+
+    # Chamando uma função quando o botão for clicado.
+
+    form.pushButton.clicked.connect(main_function)
+
+    # Exibe a interface.
+
+    form.show()
+
+    # Executando o app.
+    
+    app.exec()
+
+    Nota para acesar os elementos da interface é so utilizar form e depois o nome do elemento. # No caso form se refere a variavel que está contendo a interface.
+    Dessa forma você pode acessar todos os métodos daquele elemento.
+
+# Lista
+
+    A lista é um widget que serve como lista, os itens não podem ser editados de forma direta.
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QListWidget.html # Link da documentação da lista.
+
+    list.addItem('text') # Adiciona um item a lista.
+
+    list.takeItem(row) # Remove o item que corresponde aquela row da lista.
+
+    list.clear() # Limpa a lista.
+
+    list.count() # Retorna o número de rows da lista.
+
+# Caixa de alerta
+
+    Caixa de alerta é uma caixa que aparece no meio da tela com o titulo e a mensagem, util para informar que o usuario está cometendo erros.
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QMessageBox.html # Link da documentação da caixa de alerta.
+
+    # Como implementar :
+
+        QtWidgets.QMessageBox.about(variavel_interface, "Titulo da caixa", mensagem_da_caixa) # Exibe a caixa de alerta.
+
+# Multiplas telas
+
+    Para usar multiplas telas primeiramente crie a ui de cada uma e carregue elas :
+
+        form = uic.loadUi("interface.ui")
+        form_2 = uic.loadUi("interface_2.ui")
+
+    Faça a primeira tela ser exibida.
+
+        form.show()
+
+    Para exibir a segunda tela você pode criar uma função que irá exibir ela.
+
+        def call_second_screen():
+            form_2.show()
+            form.close() # Esse form.close() é opcional mas ele serve para fechar a primeira tela e evitar do usuario ter varias telas sendo exibida, se uma tela já está sendo exibida ela não irá ser exibida novamente, com isso fechamos a segunda tela e deixamos a interface mais bonita.
+
+    Dessa forma você estara utilizando duas telas, lembre-se que um objeto que pertence a uma tela não pertence a outra mesmo que eles tenham o mesmo nome.
+
+# Barra de progresso
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QProgressBar.html # Link documentação da ProgressBar
+
+    progressBar.setValue(valor) # Seta o valor da barra de progresso.
+
+# Calendario
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QCalendarWidget.html # Link da documentação do QCalendarWidget
+
+    Para verificar se a data do calendario foi alterada você pode utilizar :
+
+        calendar.selectionChanged.connect(função)
+
+    calendar.selectedDate() # Retorna a data selecionada.
+
+    # Formata a data deixando só os números e trocando a virugula por uma barra
+
+    date = str(form.calendar.selectedDate()).replace(',', '/').replace(' ', '').strip()
+    date = date[19:len(date)-1]
+
+# Menu
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QMenuBar.html # Link da documentação do QMenuBar
+
+    Para verificar se um dos itens do menu foi clickado você pode utilizar :
+
+        menuAction.triggered.connect(função)
+
+# Checkbox
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QCheckBox.html # Link da documentação do QCheckBox
+
+    Para verificar se a checkbox foi marcada você pode utilizar :
+
+        checkbox.isChecked()
+
+    Para setar o estado de uma checkbox [True ou False] você pode utilizar :
+
+        checkbox.setChecked(True || False)
+
+# Frames
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFrame.html # Link da documentação do QFrame
+
+    Para fechar o frame use :
+
+        frame.close()
+
+    Para mostrar o frame use :
+
+        frame.show()
+
+# Combo textBox
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QComboBox.html # Link da documentação do QComboBox
+
+    Para adicionar itens a QComboBox use :
+
+        QComboBox.addItems(["Item", "Item_1"])
+
+    Para verificar o item selecionado use :
+
+        QComboBox.currentText()
+
+    Ela é igual ao select do html. # https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/select
+
+# Save file
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFileDialog.html # Link da documentação da classe QFileDialog
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFileDialog.html?highlight=qfiledialog#PySide6.QtWidgets.PySide6.QtWidgets.QFileDialog.getSaveFileName # Link da documentação da classe QFileDialog na função de saveFileName que é usada para salvar.
+
+    Para salvar um arquivo é necessario utilizar um método de uma classe do QtWidgets :
+
+        QtWidgets.QFileDialog.getSaveFileName()[0] # Retorna o nome do arquivo e o caminho no qual ele será salvo.
+
+        with open(f'{file}.extension', 'w') as f:
+            f.write(data) # Salva o arquivo.
+
+    Exemplo :
+
+        file = QtWidgets.QFileDialog.getSaveFileName(filter="Json (*.json)")[0].replace('.json', '')
+
+        No caso acima eu coloquei um filtro que forçara o usuario a salvar como um json e retirei o .json do nome do arquivo, porque caso ele coloque .json o arquivo será salvo como file.json.json.
+
+        Essa variavel file será o caminho + nome do arquivo até o ponto de salvamento, para salvar é só usar :
+
+        with open(f'{file}.json', 'w') as f:
+            f.write("text") # Salva o arquivo com o nome especificado no caminho especificado e com a extensão .json.
+
+# Open file
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFileDialog.html # Link da documentação da classe QFileDialog
+
+    https://doc.qt.io/qtforpython/PySide6/QtWidgets/QFileDialog.html#PySide6.QtWidgets.PySide6.QtWidgets.QFileDialog.getOpenFileName # Link da documentação da classe QFileDialog na função de getOpenFileName que é usada para abrir um arquivo.
+
+    Para abrir um arquivo é necessario utilizar um método de uma classe do QtWidgets :
+
+        QtWidgets.QFileDialog.getOpenFileName()[0] # Retorna o nome do arquivo e o caminho no qual ele será salvo.
+
+        with open(f'{file}.extension', 'r') as f:
+            data = f.read() # Lê o arquivo.
+
+    Exemplo :
+
+        def open_register():
+            try :
+            # Abre um arquivo do tipo json e já converte ele para um dicionário.
+                data = JD().decode(open(QtWidgets.QFileDialog.getOpenFileName(filter="Json (*.json)")[0]).read())
+            # Caso o arquivo não seja encontrado ou caso o usuario cancele a abertura do arquivo.
+            except FileNotFoundError:
+                QtWidgets.QMessageBox.warning(form, "Error", "Arquivo não encontrado, insira um arquivo válido!")

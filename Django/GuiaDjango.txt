@@ -1,0 +1,367 @@
+django-admin startproject nome_projeto # Cria o inicial do projeto do django, nesse caso ele cria o projeto como uma subpasta dentro de outra, para evitar isso coloque um . após o nome do projeto " django-admin startproject main ."
+
+python manage.py startapp nome_app # Cria o app, adicione esse app a constante INSTALLED_APPS que está no settings.py do seu projeto, coloque uma , no final.
+
+'''
+INSTALLED_APPS = [
+    [. . .]
+    'django.contrib.staticfiles',
+    'contas',
+    [. . .]
+]
+'''
+
+python manage.py migrate # Cria o banco de dados.
+
+python manage.py runserver # Inicia o servidor e disponibiliza a url para você pode usar ele.
+
+pythomanage.py createsuperuser # Permite a você criar o superusuario, ele irá pedir o nome, o email [deixe em branco caso não queira] e a senha, acesse a url " http://127.0.0.1:8000/admin/ " e logue com a senha de administrador do sistema.
+
+# CRIAÇÃO DE URLS
+
+Dentro do arquivo do app você tem o arquivo views.py, esse arquivo é responsavel por reter as paginas web, isso funciona da seguinte maneira :
+
+    Abra o arquivo.
+    
+    from django.http import HttpResponse # Básicamente importa um HttpResponse que irá retornar o html da página já construido.
+    
+    Crie uma função que irá se chamar o que você deseja, essa função é a página html, ela deve receber request como paramentro.
+    
+    # Vou usar o exemplo da documentação do django modificando a string.
+    
+    def home(request):
+        now = datetime.datetime.now()
+        html = f"<html><body>Agora é {now}.</body></html>"
+        return HttpResponse(html)
+        
+    E ao final ela irá retornar o HttpResponse passando o html da página como paramentro.
+    
+    from django.http import HttpResponse
+    
+    def name(request):
+        html = f"html"
+        return HttpResponse(html)
+        
+    Após isso vá ao arquivo urls.py que está na pasta do projeto, importe do app a função que é a página que acabou de criada.
+    
+    from contas.views import home
+    
+    E dentro da urlpatterns adicione o seguinte :
+    
+    path('nome_da_pagina_do_site/', função),
+    
+    Quando o usuario for acessar ele irá acessar por esse nome, isso é " url_site/nome_pagina/ "
+    
+    path('home/', home),
+    
+    Dentro desse path você pode passar um name, que irá servir para referenciar aquela url dentro do código python.
+    
+    # path('new/', new_transation, name='new'),
+    
+    Dentro desse path no caminho da url você pode colocar para ela receber paramentros, esse paramentos irão servir para utilizar operações de update :
+    
+    # path('update/<int:pk>/', update, name='update_url')
+    
+    Nesse caso passaremos um paramentro do tipo inteiro.
+    
+    # Caso tenha duvida veja a documentação sobre views " https://docs.djangoproject.com/en/3.2/topics/http/views/ "
+    
+# Templates
+
+    Por padrão dentro do arquivo views.py o django importa o render, ela é uma função que renderiza templates, templates são arquivos html, ou seja o template do site, portanto a view deve retornar o request e o template.
+    
+    return render(request, "nome_app/template.html")
+    
+    Por padrão dentro da pasta do app o django espera que exista uma pasta chamada de "templates" e que dentro dessa pasta exista uma pasta com o mesmo nome do seu app, lá irá ficar armazenado os templates.
+    
+    Dessa forma na hora de chamar o render, você irá passar o request, nome do app e o template.html
+    
+    # return render(request, "contas/home.html")
+    
+    Isso tudo dentro da view.
+    
+# Models
+
+    Models são basicamente os modelos das tabelas do banco de dados.
+    
+    Parar criar uma tabela vá para o seu app, models.py
+    
+    Lá você tem que criar uma classe com o nome da tabela, o importante é que essa classe herde a classe models.Model.
+    
+    class name(models.Model):
+        [ . . . ]
+    Dentro dessa classe serão criado os dados da tabela, assim você coloca como variaveis que irão herdar tipos de dados, exemplo :
+    
+    name = model.CharField(max_length=100)
+    
+    Nesse caso acabamos de dizer que a coluna names irá receber um campo de texto com o tamanho maximo de 100 caracteres.
+    
+    # Aqui temos todos os campos que o django disponibiliza
+    
+    https://docs.djangoproject.com/pt-br/3.2/ref/models/fields/
+    
+    Por padrão da tabela já recebe um campo de id automaticamente configurado.
+    
+    '''
+    class Category(models.Model):
+        name = models.CharField(max_length=100)
+        dt_created = models.DateTimeField(auto_now_add=True)
+    '''
+
+    Após fazer isso rode o comando
+    
+    python manage.py makemigrations
+    
+    Isso irá fazer as migrações da tabela
+    
+    Após isso rode o comando
+    
+    python manage.py migrate
+    
+    Para migrar a nova tabela para o banco de dados.
+    
+    Você pode registrar a sua tabela no campo de admin fazendo o seguinte :
+    
+    Vá para o seu admin.py dentro do app
+    
+    from .models import NomeModel
+    
+    admin.site.register(NomeModel)
+    
+    Dessa forma dentro da area de admin já está o seu model
+    
+    '''
+    from .models import Category
+    # Register your models here.
+
+    admin.site.register(Category)
+    '''
+   
+   Os models podem ter subclasses que irão determinar algumas coisas sobre eles :
+   
+   class Meta
+   
+   Determina informações sobre a classe, nesse caso você pode passar o nome que ela deve conter ao ser utilizada em plural, nome padrão ect.
+   
+   https://docs.djangoproject.com/en/3.2/topics/db/models/#meta-options
+   
+   '''
+    class Meta:
+        verbose_name_plural = 'Transations'
+   '''
+   
+   E um nome que irá ser o retornado da linha no admin do model
+   
+   def __str__(self):
+        return self.item
+        
+    '''
+    def __str__(self):
+        return self.describe
+    '''
+    
+# Utilizações de variaveis dentro do html
+
+    Para fazer isso você deve criar um dicionario dentro da view referente a página.
+    
+    As keys desse dicionario serão passadas para o render, no paramentro chamado de Sequence.
+    
+    '''
+    def home(request):
+        data = {}
+
+        data['days'] = [5, 6, 7, 8, 9, 10]
+
+        data['now'] = datetime.datetime.now()
+        # html = f"<html><body>Agora é {now}.</body></html>"
+        return render(request, "contas/home.html", data)
+    '''
+    
+    Para utilizar as variavies dentro do seu template html, digite o seguinte :
+    
+    {{ var_name }}
+    
+    no caso o nome das variaveis será as keys do dicionario que foi passado 
+    
+    # {{ now }}
+    
+    Dessa forma a variavel será incorporada ao código html.
+    
+   As estruturas são básicamente identicas as do python, com exeção que precisa ser indicada o fechamento delas e elas tem que ser colocadas entre {% %}
+   
+    {% if condiction %}
+   
+        bloco
+        
+    {% elif condiction %}
+    
+        bloco
+        
+    {% else %}
+    
+        bloco
+    
+    {% endif %}
+    
+    {% for day in days %}
+    
+        bloco
+        
+    {% endfor %}
+    
+    {% url 'nome_url' %} # Isso retorna a url completa até uma url referenciada com o paramentro name, util para fazer redirecionamentos.
+    
+    Link da documentação do jinja, essa linguagem que permite a incorporação do python no html.
+    
+    https://jinja.palletsprojects.com/en/3.0.x/
+    
+# Listagem de dados.
+
+    Dentro da sua view você irá importar o model que você deseja listar.
+    
+    '''
+        from.models import Model
+        
+    '''
+    
+    Dentro da sua data você irá criar uma key com o nome que você deseja, ela irá receber o nome do model.objects e ai o que você deseja que seja realizado, esse .objects faz parte da herança de models.Model
+    
+    '''
+    data['key'] = Model.objects.all()
+    '''
+    
+    No nosso caso será um all que básicamente pega todos os objetos inseridos dentro do model.
+    
+    https://docs.djangoproject.com/en/3.2/topics/db/models/#model-attributes # Link da documentação dos atributos de model, logo abaixo temos os metodos.
+    
+    Passe a data como paramentro do render
+    
+    Para acessar os dados do model dentro do código html, você pode fazer um for e simplismente passar o que você deseja, esses objetos são identicos a objetos js portanto você pode acessar propriedades deles.
+    
+    '''
+        {% for transation in Transations %}
+
+            <p>
+                {{ transation }} ─ {{ transation.date }} ─ {{ transation.describe }} ─ {{ transation.value }} ─ {{ transation.category}}
+            </p>
+
+        {% endfor %}
+    
+    '''
+    
+    Nesse caso pedimos a transation que é o nome do objeto, depois a data dele, descrição ect.
+    
+# Formularios
+
+    # Documentação : https://docs.djangoproject.com/en/3.2/topics/forms/modelforms/
+
+    Primeiramente crie um arquivo chamado de forms.py dentro do seu app
+    
+    Esse arquivo deve importa o from django.forms import ModelForm e o model que você irá utilizar :
+    
+    # from django.forms import ModelForm
+    # from .models import Transation
+    
+    Crie uma classe que irá se chamar NomeModelForm ela tem que herdar ModelForm :
+    
+    # class TransationForm(ModelForm):
+    
+    Essa classe tem que ter uma sub classe chamada Meta, que irá definir deter duas variaveis, model que é o modulo a quem aquele formulario irá pertencer :
+    
+    # model = Transation
+    
+    E outra variavel chamada de fields, que é uma lista contendo os campos, cada campo é referente a uma coluna do model, NÃO COLOQUE O NOME DA COLUNA DE FORMA INCORRETA, CASO ISSO SEJA FEITO ELE IRÁ RETORNAR UM ERRO E NÃO IRÁ EXECUTAR NADA.
+    
+    Dentro do views.py você deve importar de .forms o Form recém criado : 
+    
+    # from .forms import TransationForm
+    
+    criar uma nova view que irá ser referente ao formulario :
+    
+    # def new_transation(request):
+    
+    crie a data
+    
+    # data = {}
+    
+    e uma key chamada 'form' que irá receber o form, passe para essa classe o seguinte :
+    
+    # data['form'] = TransationForm(request.POST or None)
+    
+    Isso irá fazer uma verificação de que se o formulario já está preenchido ou não.
+    
+    Após isso valide o formulario por meio da função is_valid
+    
+    # if data['form'].is_valid():
+    
+    Caso esse if seja verdadeiro peça para ele salvar o form
+    
+    # data['form'].save()
+    
+    E após isso retorne um redirect passando o nome da url que você deseja redirecionar, redirect faz parte de django.shortcuts :
+    
+    # return redirect('home')
+    
+    Caso esse if não seja atendido faça um retorno de um render, passando request, template e data.
+    
+    # return render(request, "contas/form.html", data)
+    
+    No template crie uma tag form, com o methodo POST
+    
+    # <form method="POST">
+    
+    Dentro dela coloque um {% csrf_token %} isso irá servir para proteger seu formulario de ataques.
+    
+    Depois coloque {{ form.as_p }} esse .as_p serve para organizar o formulario de forma empilhada.
+    
+    E não esqueça do button com o tipo submit para enviar os dados :
+    
+    # <button type="submit">Salvar</button>
+    
+    Com isso o formulario já está funcional.
+    
+# Views, paraementos :
+
+    Além do request também podemos passar outros paramentros para a view, nesse caso vamos passar o paramentro pk que já está definido na url :
+    
+    # def update(request, pk)
+    
+    Então vamos criar uma variavel chamada de transation que irá usar o método interno get de objects de Transation, esse get serve para retornar todos os dados de um objeto onde a pk [primary key] seja igual a pk passada por paramentro
+    
+    # transation = Transation.objects.get(pk = pk)
+    
+    Após isso vamos criar um form que é básicamente igual aos anteriores, com o detalhe que ele irá recebeber um novo paramentro chamado instance, que básicamente instancia o form com os dados do objeto que possue aquela pk :
+    
+    # form = TransationForm(request.POST or None, instance=transation)
+    
+    Após isso faça uma validação do form e caso o if não seja atendido retorne o template de um render com o form padrão :
+    
+    '''
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    data = {'form' : form}
+    return render(request, 'contas/form.html', data)
+    '''
+    
+# Delete
+
+    Para deletar um objeto é bastante simples, básicamente igual ao update, no seu urls.py um novo path pedindo o int:pk como paramentro :
+    
+    # path('delete/<int:pk>/', delete, name='delete_url'),
+    
+    Dentro da sua view crie uma que necessite do request e do pk que é necessario para o url.
+    
+    # def delete(request, pk):
+    
+    crie uma var transation que irá pegar o objeto que tem aquele pk
+    
+    # transation = Transation.objects.get(pk = pk)
+    
+    Após isso use o metodo delete, esse método deleta todos os dados daquele objeto do banco de dados.
+    
+    # transation.delete()
+    
+    Após isso automaticamente faça um redirect para onde você quiser
+    
+    return redirect('home')

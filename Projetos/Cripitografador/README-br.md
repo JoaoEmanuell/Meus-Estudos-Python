@@ -1,4 +1,7 @@
 # Projeto Encrypt
+
+[English](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Projetos/Cripitografador/README.md) | [Português](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Projetos/Cripitografador/README-br.md)
+
 Esse projeto se trata de um cripitografador de mensagens, nos teclados de telefones antigos, temos que teclar mais de uma vez uma tecla para que a letra desejada apareça, cada tecla possui um número, portanto o criptiografador ira fazer a conversão da string desejada para o número que corresponde a ela.
 
 A formula da conversão é _N * Conjunto_, isso irá determinar o valor que a letra irá receber, ou seja depedendo do número e do conjunto, a letra irá receber um valor, começando a partir da letra A e do Número 2.
