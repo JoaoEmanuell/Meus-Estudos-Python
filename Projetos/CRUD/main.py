@@ -2,7 +2,7 @@
 from PyQt5 import uic, QtWidgets
 from pathlib import Path
 from os.path import join
-from source import login_account, create_account
+from source import login_account, create_account, read_accounts
 
 class window():
     def __init__(self):
@@ -23,6 +23,10 @@ class window():
         # Create
 
         self.create.createAccountButton.clicked.connect(self.create_account)
+
+        # List
+
+        self.read.editUserButton.clicked.connect(self.edit_account)
 
         # Exec
         self.login.show()
@@ -45,8 +49,7 @@ class window():
         if (type(user)) != tuple:
             QtWidgets.QMessageBox.about(self.login, "Alerta!", "Nome de usuario ou senha invalidos!\nInsira um nome de usuario ou senha validos e tente novamente.")
         else:
-            self.read.show()
-            self.login.close()
+            self.list_accounts()
 
     def create_account(self):
         name = str(self.create.nameInput.text()).lower().strip()
@@ -61,6 +64,23 @@ class window():
             self.create.close()
         else :
             QtWidgets.QMessageBox.about(self.create, "Alerta!", "Conta já existente!\nInsira um nome de usuario diferente e tente novamente.")
+
+    def list_accounts(self):
+        self.read.listNames.clear()
+        self.read.listPassword.clear()
+        
+        self.read.show()
+        self.login.close()
+        con = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
+        accounts = con.list_accounts()
+
+        for account in accounts:
+            self.read.listNames.addItem(account[0])
+            self.read.listPassword.addItem(account[1])
+
+    def edit_account(self):
+        self.read.close()
+        self.login.show()
 
 if __name__ == '__main__':
     window()
