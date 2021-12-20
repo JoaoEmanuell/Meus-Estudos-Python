@@ -4,6 +4,7 @@ from mysql.connector import connection
 class Login():
     def __init__(self, host, user, password, database) -> None:
         self.connection = self.create_connection(host, user, password, database)
+        
     def create_connection(self,host, user, password, database):
         return mysql.connector.connect(host=host,user=user,password=password, database=database)
 
