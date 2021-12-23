@@ -1,15 +1,11 @@
 import mysql.connector
 from mysql.connector import connection
+from . import sql_essential
 
-class createAccount():
-    def __init__(self, host, user, password, database) -> None:
-        self.connection = self.create_connection(host, user, password, database)
-        
-    def create_connection(self,host, user, password, database):
-        return mysql.connector.connect(host=host,user=user,password=password, database=database)
-
-    def close_connection(self):
-        return self.connection.close()
+class createAccount(sql_essential.sql_essential):
+    def __init__(self):
+        super().__init__()
+        self.connection = self.create_connection()
 
     def create_account(self, name, password):
         if self.verfiy_if_account_exists(name):

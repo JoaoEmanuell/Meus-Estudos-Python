@@ -1,15 +1,11 @@
 import mysql.connector
 from mysql.connector import connection
+from . import sql_essential
 
-class Login():
-    def __init__(self, host, user, password, database) -> None:
-        self.connection = self.create_connection(host, user, password, database)
-        
-    def create_connection(self,host, user, password, database):
-        return mysql.connector.connect(host=host,user=user,password=password, database=database)
-
-    def close_connection(self):
-        return self.connection.close()
+class Login(sql_essential.sql_essential):
+    def __init__(self):
+        super().__init__()
+        self.connection = self.create_connection()
 
     def login_account(self, name, password):
         cursor = self.connection.cursor()

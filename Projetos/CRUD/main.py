@@ -52,7 +52,7 @@ class window():
     def login_account(self):
         self.name = str(self.login.nameInput.text()).strip()
         self.password = str(self.login.passInput.text()).strip()
-        log = login_account.Login('localhost', 'root', 'root', 'TEST')
+        log = login_account.Login()
         user = log.login_account(self.name, self.password)
 
         if (type(user)) != tuple:
@@ -64,7 +64,7 @@ class window():
         name = str(self.create.nameInput.text()).lower().strip()
         password = self.create.passInput.text()
 
-        con = create_account.createAccount('localhost', 'root', 'root', 'TEST')
+        con = create_account.createAccount()
         user = con.create_account(name, password)
 
         if user:
@@ -80,7 +80,7 @@ class window():
 
         self.read.show()
         self.login.close()
-        con = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
+        con = read_accounts.read_accounts()
         self.original_accounts = con.list_accounts()
 
         for account in self.original_accounts:
@@ -106,7 +106,7 @@ class window():
 
         for itens in range(len(new_names)) :
             if account_names[itens][0] != new_names[itens] :
-                con = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
+                con = read_accounts.read_accounts()
                 user = con.update_user_name(account_names[itens][0], new_names[itens])
                 self.original_accounts = con.list_accounts()
 
@@ -118,7 +118,7 @@ class window():
         for itens in range(len(new_passwords)) :
             if account_names[itens][1] != new_passwords[itens] :
                 username = self.read.listNames.item(itens).text()
-                con = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
+                con = read_accounts.read_accounts()
                 user = con.update_user_password(username, new_passwords[itens])
                 self.original_accounts = con.list_accounts()
                 QtWidgets.QMessageBox.about(self.read, "Alerta!", "Senha alterada com sucesso!")
@@ -130,7 +130,7 @@ class window():
         password = self.read.listPassword.item(row).text()
         self.read.listNames.takeItem(row)
         self.read.listPassword.takeItem(row)
-        acc = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
+        acc = read_accounts.read_accounts()
         acc.delete_user(username, password)
         QtWidgets.QMessageBox.about(self.read, "Alerta!", "Usuario deletado com sucesso!")
         self.original_accounts = acc.list_accounts()
