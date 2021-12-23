@@ -8,6 +8,15 @@ class createAccount(sql_essential.sql_essential):
         self.connection = self.create_connection()
 
     def create_account(self, name, password):
+        """[Create a new account]
+
+        Args:
+            name ([str]): [User name]
+            password ([str]): [Password]
+
+        Returns:
+            [bool]: [True if account was created, False if not]
+        """
         if self.verfiy_if_account_exists(name):
             return False
         else :
@@ -19,6 +28,14 @@ class createAccount(sql_essential.sql_essential):
             return True
             
     def verfiy_if_account_exists(self, name):
+        """[Check if the account already exists]
+
+        Args:
+            name ([str]): [User name]
+
+        Returns:
+            [bool]: [True if account exists, False if not]
+        """
         cursor = self.connection.cursor()
         sql = f"SELECT NAME FROM TEST WHERE NAME = '{name}'"
         cursor.execute(sql)
