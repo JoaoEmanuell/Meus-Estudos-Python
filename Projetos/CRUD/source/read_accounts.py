@@ -35,3 +35,9 @@ class read_accounts():
         sql = f"UPDATE TEST SET PASS = '{new_pass}' WHERE NAME = '{username}'"
         cursor.execute(sql)
         self.connection.commit()
+
+    def delete_user(self, username, password):
+        cursor = self.connection.cursor()
+        sql = f"DELETE FROM TEST WHERE NAME = '{username}' AND PASS = '{password}' LIMIT 1"
+        cursor.execute(sql)
+        self.connection.commit()

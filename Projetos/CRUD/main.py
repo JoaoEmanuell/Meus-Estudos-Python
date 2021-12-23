@@ -27,6 +27,7 @@ class window():
         # List
 
         self.read.saveButton.clicked.connect(self.save_user)
+        self.read.deleteButton.clicked.connect(self.delete_user)
 
         # Exec
         self.login.show()
@@ -86,7 +87,6 @@ class window():
             item = self.read.listPassword.item(index)
             item.setFlags(item.flags() | QtCore.Qt.ItemIsEditable)
 
-
     def save_user(self):
         new_names, new_passwords = [], []
 
@@ -114,6 +114,18 @@ class window():
                 user = con.update_user_password(username, new_passwords[itens])
                 self.original_accounts = con.list_accounts()
                 QtWidgets.QMessageBox.about(self.read, "Alerta!", "Senha alterada com sucesso!")
+
+    def delete_user(self):
+        self.save_user()
+        row = self.read.listNames.currentRow()
+        username = self.read.listNames.item(row).text()
+        password = self.read.listPassword.item(row).text()
+        self.read.listNames.takeItem(row)
+        self.read.listPassword.takeItem(row)
+        acc = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
+        acc.delete_user(username, password)
+        QtWidgets.QMessageBox.about(self.read, "Alerta!", "Usuario deletado com sucesso!")
+        self.original_accounts = acc.list_accounts()
 
 if __name__ == '__main__':
     window()
