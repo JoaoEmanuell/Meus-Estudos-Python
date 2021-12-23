@@ -37,5 +37,5 @@ The root user is primary and should not be deleted, he is essential for the syst
 ## List Accounts
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/81983803/147279815-ed9bb8c5-fbae-406d-8cb4-2d1288e3db05.png" alt="list-screen"/>
+  <img src="https://user-images.githubusercontent.com/81983803/147283143-2841caaa-4b38-4cd8-be20-646ff60d7135.png" alt="list-screen"/>
 </p>
