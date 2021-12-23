@@ -8,6 +8,11 @@ class read_accounts(sql_essential.sql_essential):
         self.connection = self.create_connection()
 
     def list_accounts(self):
+        """[Lists accounts stored in the database, does not return the root account.]
+
+        Returns:
+            [list]: [Accounts stored in the database.]
+        """
         cursor = self.connection.cursor()
         sql = "SELECT NAME, PASS FROM TEST WHERE NAME != 'root'"
         cursor.execute(sql)
@@ -15,6 +20,15 @@ class read_accounts(sql_essential.sql_essential):
         return row
 
     def update_user_name(self, old_name, new_name):
+        """[Change the username in the database]
+
+        Args:
+            old_name ([str]): [Old username, this is the name that is stored in the database]
+            new_name ([str]): [New username, this is the name that will become the new name stored in the database.]
+
+        Returns:
+            [Bool]: [If the username is not being used it will change and return True, otherwise it will return False]
+        """
         cursor = self.connection.cursor()
         for account in self.list_accounts():
             if new_name in account: return False
@@ -23,16 +37,26 @@ class read_accounts(sql_essential.sql_essential):
             cursor.execute(sql)
             self.connection.commit()
             return True
-        else:
-            print("Nome de usuario invalido!")
 
     def update_user_password(self, username, new_pass):
+        """[Change the password stored in the database]
+
+        Args:
+            username ([str]): [User name]
+            new_pass ([str]): [New password]
+        """
         cursor = self.connection.cursor()
         sql = f"UPDATE TEST SET PASS = '{new_pass}' WHERE NAME = '{username}'"
         cursor.execute(sql)
         self.connection.commit()
 
     def delete_user(self, username, password):
+        """[Delete the user from the database]
+
+        Args:
+            username ([str]): [User name]
+            password ([str]): [Password]
+        """
         cursor = self.connection.cursor()
         sql = f"DELETE FROM TEST WHERE NAME = '{username}' AND PASS = '{password}' LIMIT 1"
         cursor.execute(sql)
