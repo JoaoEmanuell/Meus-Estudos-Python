@@ -1,5 +1,5 @@
 # Imports
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic, QtWidgets, QtCore
 from pathlib import Path
 from os.path import join
 from source import login_account, create_account, read_accounts
@@ -26,7 +26,7 @@ class window():
 
         # List
 
-        self.read.editUserButton.clicked.connect(self.edit_account)
+        self.read.saveButton.clicked.connect(self.save_user)
 
         # Exec
         self.login.show()
@@ -41,8 +41,8 @@ class window():
         self.login.close()
 
     def login_account(self):
-        self.name = self.login.nameInput.text()
-        self.password = self.login.passInput.text()
+        self.name = str(self.login.nameInput.text()).strip()
+        self.password = str(self.login.passInput.text()).strip()
         log = login_account.Login('localhost', 'root', 'root', 'TEST')
         user = log.login_account(self.name, self.password)
 
@@ -68,19 +68,44 @@ class window():
     def list_accounts(self):
         self.read.listNames.clear()
         self.read.listPassword.clear()
-        
+
         self.read.show()
         self.login.close()
         con = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
-        accounts = con.list_accounts()
+        self.original_accounts = con.list_accounts()
 
-        for account in accounts:
+        for account in self.original_accounts:
             self.read.listNames.addItem(account[0])
             self.read.listPassword.addItem(account[1])
 
-    def edit_account(self):
-        self.read.close()
-        self.login.show()
+        for index in range(self.read.listNames.count()):
+            item = self.read.listNames.item(index)
+            item.setFlags(item.flags() | QtCore.Qt.ItemIsEditable)
+
+        for index in range(self.read.listPassword.count()):
+            item = self.read.listPassword.item(index)
+            item.setFlags(item.flags() | QtCore.Qt.ItemIsEditable)
+
+
+    def save_user(self):
+        new_names, new_passwords = [], []
+
+        for index in range(self.read.listNames.count()): new_names.append(str(self.read.listNames.item(index).text()).lower().strip())
+
+        for index in range(self.read.listPassword.count()): new_passwords.append(self.read.listPassword.item(index).text())
+
+        account_names = self.original_accounts
+
+        for itens in range(len(new_names)) :
+            if account_names[itens][0] != new_names[itens] :
+                con = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
+                user = con.update_user_name(account_names[itens][0], new_names[itens])
+                self.original_accounts = con.list_accounts()
+
+                if not user:
+                    QtWidgets.QMessageBox.about(self.read, "Alerta!", "Nome de usuario já existente!\nInsira um nome de usuario diferente e tente novamente.")
+                else :
+                    QtWidgets.QMessageBox.about(self.read, "Alerta!", "Nome de usuario alterado com sucesso!")
 
 if __name__ == '__main__':
     window()

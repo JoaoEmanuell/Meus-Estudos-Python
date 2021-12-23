@@ -17,3 +17,15 @@ class read_accounts():
         cursor.execute(sql)
         row = cursor.fetchall()
         return row
+
+    def update_user_name(self, old_name, new_name):
+        cursor = self.connection.cursor()
+        for account in self.list_accounts():
+            if new_name in account: return False
+        if new_name != '' and new_name != 'root':
+            sql = f"UPDATE TEST SET NAME = '{new_name}' WHERE NAME = '{old_name}'"
+            cursor.execute(sql)
+            self.connection.commit()
+            return True
+        else:
+            print("Nome de usuario invalido!")
