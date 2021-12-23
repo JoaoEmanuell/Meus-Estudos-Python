@@ -29,6 +29,12 @@ class window():
         self.read.saveButton.clicked.connect(self.save_user)
         self.read.deleteButton.clicked.connect(self.delete_user)
 
+        # Menu
+
+        self.read.actionLogin.triggered.connect(self.show_login)
+        
+        self.create.actionLogin.triggered.connect(self.show_login)
+
         # Exec
         self.login.show()
         self.app.exec()
@@ -40,6 +46,8 @@ class window():
     def show_create_account(self):
         self.create.show()
         self.login.close()
+
+    def show_login(self):  self.login.show() ,self.create.close(), self.read.close()
 
     def login_account(self):
         self.name = str(self.login.nameInput.text()).strip()

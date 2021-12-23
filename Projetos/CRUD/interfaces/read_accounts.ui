@@ -120,8 +120,30 @@
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuTelas">
+    <property name="title">
+     <string>Telas</string>
+    </property>
+    <addaction name="actionLogin"/>
+   </widget>
+   <addaction name="menuTelas"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLogin">
+   <property name="text">
+    <string>Login</string>
+   </property>
+  </action>
+  <action name="actionCreateAccounts">
+   <property name="text">
+    <string>Criar Conta</string>
+   </property>
+  </action>
+  <action name="actionListar_Contas">
+   <property name="text">
+    <string>Listar Contas</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
