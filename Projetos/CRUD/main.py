@@ -107,5 +107,13 @@ class window():
                 else :
                     QtWidgets.QMessageBox.about(self.read, "Alerta!", "Nome de usuario alterado com sucesso!")
 
+        for itens in range(len(new_passwords)) :
+            if account_names[itens][1] != new_passwords[itens] :
+                username = self.read.listNames.item(itens).text()
+                con = read_accounts.read_accounts('localhost', 'root', 'root', 'TEST')
+                user = con.update_user_password(username, new_passwords[itens])
+                self.original_accounts = con.list_accounts()
+                QtWidgets.QMessageBox.about(self.read, "Alerta!", "Senha alterada com sucesso!")
+
 if __name__ == '__main__':
     window()

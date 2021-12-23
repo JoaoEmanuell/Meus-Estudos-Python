@@ -29,3 +29,9 @@ class read_accounts():
             return True
         else:
             print("Nome de usuario invalido!")
+
+    def update_user_password(self, username, new_pass):
+        cursor = self.connection.cursor()
+        sql = f"UPDATE TEST SET PASS = '{new_pass}' WHERE NAME = '{username}'"
+        cursor.execute(sql)
+        self.connection.commit()
