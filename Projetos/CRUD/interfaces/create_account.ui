@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>586</width>
-    <height>490</height>
+    <height>530</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -90,6 +90,9 @@
         </property>
         <property name="text">
          <string>Criar conta</string>
+        </property>
+        <property name="shortcut">
+         <string>Return</string>
         </property>
        </widget>
       </item>

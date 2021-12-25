@@ -87,6 +87,9 @@ border-radius : 15px;</string>
         <property name="text">
          <string>Salvar alteraçoes</string>
         </property>
+        <property name="shortcut">
+         <string>Ctrl+S</string>
+        </property>
        </widget>
       </item>
       <item>
@@ -112,6 +115,9 @@ border-radius : 15px;</string>
         </property>
         <property name="text">
          <string>Deletar usuario</string>
+        </property>
+        <property name="shortcut">
+         <string>Ctrl+D</string>
         </property>
        </widget>
       </item>
