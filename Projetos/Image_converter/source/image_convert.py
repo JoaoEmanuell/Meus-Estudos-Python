@@ -11,9 +11,13 @@ class ImageConvert():
         self.IMAGE_FORMAT = self.VerifyExtensionFile(self.name.lower())
 
     def convertImage(self):
-        with Image.open(self.name) as im:
-            self.name = self.name.replace(self.IMAGE_FORMAT, self.NEW_IMAGE_FORMAT).split('/')[-1]
-            im.convert('RGB').save(f'{self.IMS}{self.name}')
+        try :
+            with Image.open(self.name) as im:
+                self.name = self.name.replace(self.IMAGE_FORMAT, self.NEW_IMAGE_FORMAT).split('/')[-1]
+                im.convert('RGB').save(f'{self.IMS}{self.name}')
+                return 0
+        except :
+            return 1
 
     def VerifyExtensionFile(self, imageName):
         VALIDEXTENSIONS = ['png' ,'webp','jpeg','gif','bmp','tiff','pdf','eps', 'jpg']

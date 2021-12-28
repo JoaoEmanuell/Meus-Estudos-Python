@@ -1,7 +1,8 @@
 # Imports
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic, QtWidgets, QtGui, QtCore
 from pathlib import Path
 from source import image_convert
+from os import listdir
 
 class window():
     def __init__(self):
@@ -40,13 +41,21 @@ class window():
 
     def convert_images(self):
         new_type_images = self.form.comboBox.currentText()
+        icon_path = listdir(f'{Path().absolute()}/icons/')
+        self.form.status_list.clear()
         for image in self.files:
-            image_convert.ImageConvert(image, new_type_images).convertImage()
+            im = image_convert.ImageConvert(image, new_type_images).convertImage()
+            icon = QtGui.QIcon(f'{Path().absolute()}/icons/{icon_path[im]}')
+            item = QtWidgets.QListWidgetItem(icon, "")
+            item.setSizeHint(QtCore.QSize(25, 25))
+            self.form.status_list.addItem(item)
 
     def set_images_in_list(self):
         for image in self.files:
-            # Remove the path from the image and add it to the list
-            self.form.image_name_list.addItem(image.split('/')[-1])
+            # Remove the path from the image and add it to the list and set size of the item
+            item = QtWidgets.QListWidgetItem(image.split('/')[-1])
+            item.setSizeHint(QtCore.QSize(25, 25))
+            self.form.image_name_list.addItem(item)
 
 if __name__ == '__main__':
     window()
