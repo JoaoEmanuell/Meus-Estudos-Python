@@ -6,6 +6,8 @@ from os import listdir
 
 class window():
     def __init__(self):
+        """[Launches the interface and tells you what each button should do when it's clicked]
+        """        
         self.app = QtWidgets.QApplication([])
 
         # Forms
@@ -34,12 +36,16 @@ class window():
         return uic.loadUi(f'{path}/{ui_file}')
 
     def open_images(self):
+        """[Opens a dialog for the user to choose the images they prefer, the images are filtered by file format to avoid bugs.]
+        """        
         self.form.image_name_list.clear()
         filter = "Images (*.png *.jpg *.jpeg *.bmp *.gif *.webp)"
         self.files = QtWidgets.QFileDialog.getOpenFileNames(filter=filter)[0]
         self.set_images_in_list()
 
     def convert_images(self):
+        """[Convert the images and place an icon in the status list, if the image is successfully converted the icon will be "Successful_Image_Conversion" if not converted the icon will be "Unsuccessful_image_conversion"]
+        """        
         new_type_images = self.form.comboBox.currentText()
         icon_path = listdir(f'{Path().absolute()}/icons/')
         self.form.status_list.clear()
@@ -51,6 +57,8 @@ class window():
             self.form.status_list.addItem(item)
 
     def set_images_in_list(self):
+        """[Set the image names in the image name list, it removes the image name path, making the interface more pleasant.]
+        """        
         for image in self.files:
             # Remove the path from the image and add it to the list and set size of the item
             item = QtWidgets.QListWidgetItem(image.split('/')[-1])
