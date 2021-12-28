@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>586</width>
+    <height>437</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="select_images_button">
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>114</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>UpArrowCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Selecionar Imagens</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QListWidget" name="image_name_list"/>
+      </item>
+      <item>
+       <widget class="QListWidget" name="status_list">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>0</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Formato de saida :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="comboBox">
+            <item>
+             <property name="text">
+              <string>png</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>webp</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>jpeg</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>jpg</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>pdf</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>gif</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>bmp</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>eps</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>tiff</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="convert_images_button_2">
+            <property name="minimumSize">
+             <size>
+              <width>140</width>
+              <height>75</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>114</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>UpArrowCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>Converter Imagens</string>
+            </property>
+            <property name="shortcut">
+             <string>Return</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>586</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
