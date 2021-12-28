@@ -131,7 +131,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QPushButton" name="convert_images_button_2">
+           <widget class="QPushButton" name="convert_images_button">
             <property name="minimumSize">
              <size>
               <width>140</width>
