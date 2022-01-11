@@ -29,12 +29,9 @@ class interface():
                 self.numeros = self.values['Nums']
                 self.especiais = self.values['Esp']
                 self.maisculas = self.values['Max']
-                interface.limpar(self.janela, 'saida') # limpa o output toda vez que um novo é chamado, vem antes da geração para limpar toda vez
+                self.janela['saida'].Update('') # Clear output
                 generate.geração(self) #gera os valores
             elif self.events == "Copiar senha": # Copy password to clipboard
-                copy(str(self.janela.FindElement('saida').Get()).replace('\n', '')) # get password and copy to clipboard
-            elif self.events == sg.WIN_CLOSED: # Close window
-                break
-
-    def limpar(janela, chave):
-        janela.FindElement(chave).Update('')
+                copy(str(self.janela['saida'].Get()).replace('\n', '')) # get password and copy to clipboard
+            elif self.events == sg.WIN_CLOSED : break # Close window
+            
