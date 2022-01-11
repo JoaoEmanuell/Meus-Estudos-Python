@@ -1,5 +1,6 @@
 #Imports
 import PySimpleGUI as sg
+from pyperclip import copy
 from .generate import generate
 
 #Interface
@@ -12,7 +13,7 @@ class interface():
             [sg.Checkbox("Letras minusculas", key = 'Min')],
             [sg.Checkbox("Numeros", key = 'Nums')],
             [sg.Checkbox("Caracteres especiais (#$?!)", key = 'Esp')],
-            [sg.Button("Gerar senha")],
+            [sg.Button("Gerar senha"), sg.Button("Copiar senha", pad="15")],
             [sg.Output(size = (50, 5), key = 'saida')]
         ]
 
@@ -21,14 +22,19 @@ class interface():
     def Iniciar(self):
         generate.listas(self)
         while True:
-            self.button, self.values = self.janela.Read()
-            self.tamanho = self.values['Tam']
-            self.minusculas = self.values['Min']
-            self.numeros = self.values['Nums']
-            self.especiais = self.values['Esp']
-            self.maisculas = self.values['Max']
-            interface.limpar(self.janela, 'saida') # limpa o output toda vez que um novo é chamado, vem antes da geração para limpar toda vez
-            generate.geração(self) #gera os valores
+            self.events, self.values = self.janela.Read()
+            if self.events == "Gerar senha": # Generate new password
+                self.tamanho = self.values['Tam']
+                self.minusculas = self.values['Min']
+                self.numeros = self.values['Nums']
+                self.especiais = self.values['Esp']
+                self.maisculas = self.values['Max']
+                interface.limpar(self.janela, 'saida') # limpa o output toda vez que um novo é chamado, vem antes da geração para limpar toda vez
+                generate.geração(self) #gera os valores
+            elif self.events == "Copiar senha": # Copy password to clipboard
+                copy(str(self.janela.FindElement('saida').Get()).replace('\n', '')) # get password and copy to clipboard
+            elif self.events == sg.WIN_CLOSED: # Close window
+                break
 
     def limpar(janela, chave):
         janela.FindElement(chave).Update('')
