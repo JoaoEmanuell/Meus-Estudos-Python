@@ -18,6 +18,13 @@ class Window():
 
         self.form_init.pushButton.clicked.connect(self.get_user_information)
 
+        # Menu
+
+        # Form user information
+
+        self.user_informations.menuMenu.setStyleSheet("color : white;")
+        self.user_informations.actionVoltar.triggered.connect(self.user_informations_menu_back)
+
         # Exec
 
         self.form_init.show()
@@ -51,5 +58,12 @@ class Window():
         """
         user_information_control.user_information_control.show_user_information(self)
 
+    def user_informations_menu_back(self) -> None:
+        """Closes the user information menu
+
+        Returns:
+            None
+        """
+        user_information_control.user_information_control.menu_back(self)
 if __name__ == '__main__':
     Window()

@@ -7,6 +7,7 @@ from PyQt5.QtGui import QIcon, QImage, QPixmap
 class user_information_control():
     def show_user_information(self) -> None:
         self.user_informations.show()
+        self.user_informations.user_list_informations.clear()
         self.user_informations.username.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user["login"]}</span></p></body></html>')
         self.user_informations.user_name.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["name"]}</span></p></body></html>')
         self.user_informations.user_bio.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["bio"]}</span></p></body></html>')
@@ -16,9 +17,13 @@ class user_information_control():
         location_item = QListWidgetItem(location_icon, self.user["location"])
         self.user_informations.user_list_informations.addItem(followers_item)
         self.user_informations.user_list_informations.addItem(location_item)
-        self.image_set()
+        user_information_control.image_set(self)
 
     def image_set(self):
         image = QImage()
         image.loadFromData(get(self.user['avatar_url']).content)
         self.user_informations.user_profile_photo.setPixmap(QPixmap(image).scaled(250, 250))
+
+    def menu_back(self):
+        self.user_informations.close()
+        self.form_init.show()
