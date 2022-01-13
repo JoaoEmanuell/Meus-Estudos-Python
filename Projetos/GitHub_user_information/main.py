@@ -1,8 +1,7 @@
-from PyQt5 import QtCore, uic, QtWidgets, QtGui
+from PyQt5 import uic, QtWidgets
 from pathlib import Path
 from os.path import join
-from requests import get
-from source.api import user
+from source.layouts_controls import user_name_informations_control, user_information_control
 
 class Window():
     def __init__(self) -> None:
@@ -42,32 +41,15 @@ class Window():
         Returns:
             None
         """
-        self.username = self.form_init.lineEdit.text().strip()
-        self.user = user.RequestUser(self.username).get_user()
-        if self.user.get('message') == 'Not Found':
-            QtWidgets.QMessageBox.about(self.form_init, 'Error', 'User not found')
-        else:
-            self.form_init.close()
-            self.show_user_informations()
+        user_name_informations_control.user_name_informations_control.get_user_information(self)
 
     def show_user_informations(self) -> None:
-        self.user_informations.show()
-        self.user_informations.username.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user["login"]}</span></p></body></html>')
-        self.user_informations.user_name.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["name"]}</span></p></body></html>')
-        self.user_informations.user_bio.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["bio"]}</span></p></body></html>')
-        location_icon = QtGui.QIcon(join(Path().absolute(), 'icons/location_icon.png'))
-        followers_icon = QtGui.QIcon(join(Path().absolute(), 'icons/followers_icon.png'))
-        followers_item = QtWidgets.QListWidgetItem(followers_icon, f"{self.user['followers']} Seguidores | Seguindo {self.user['following']}")
-        location_item = QtWidgets.QListWidgetItem(location_icon, self.user["location"])
-        self.user_informations.user_list_informations.addItem(followers_item)
-        self.user_informations.user_list_informations.addItem(location_item)
-        self.image_set()
+        """Shows the user information
 
-    def image_set(self):
-        image = QtGui.QImage()
-        image.loadFromData(get(self.user['avatar_url']).content)
-        self.user_informations.user_profile_photo.setPixmap(QtGui.QPixmap(image).scaled(250, 250))
-
+        Returns:
+            None
+        """
+        user_information_control.user_information_control.show_user_information(self)
 
 if __name__ == '__main__':
     Window()
