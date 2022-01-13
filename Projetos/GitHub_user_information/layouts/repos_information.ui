@@ -83,6 +83,111 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QLabel" name="repo_created_at">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color : white;</string>
+            </property>
+            <property name="text">
+             <string>Created at</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="repo_updated_at">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color : white;</string>
+            </property>
+            <property name="text">
+             <string>Updated at</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="repo_pushed_at">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color : white;</string>
+            </property>
+            <property name="text">
+             <string>Pushed at</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="repo_clone_url">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color : white;</string>
+            </property>
+            <property name="text">
+             <string>Clone url</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="repo_size">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color : white;</string>
+            </property>
+            <property name="text">
+             <string>Size</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="repo_language">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color : white;</string>
+            </property>
+            <property name="text">
+             <string>Language</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="repo_license_name">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color : white;</string>
+            </property>
+            <property name="text">
+             <string>License name</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>

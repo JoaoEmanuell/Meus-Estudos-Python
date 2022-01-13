@@ -3,7 +3,6 @@ from pathlib import Path
 from requests import get
 from PyQt5.QtWidgets import QListWidgetItem
 from PyQt5.QtGui import QIcon, QImage, QPixmap
-from functools import lru_cache
 
 class user_information_control():
     def show_user_information(self) -> None:
