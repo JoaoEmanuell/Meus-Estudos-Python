@@ -3,6 +3,7 @@ from pathlib import Path
 from requests import get
 from PyQt5.QtWidgets import QListWidgetItem
 from PyQt5.QtGui import QIcon, QImage, QPixmap
+from functools import lru_cache
 
 class user_information_control():
     def show_user_information(self) -> None:
@@ -23,6 +24,9 @@ class user_information_control():
         image = QImage()
         image.loadFromData(get(self.user['avatar_url']).content)
         self.user_informations.user_profile_photo.setPixmap(QPixmap(image).scaled(250, 250))
+
+    @lru_cache
+    def get_user_repos(self): return get(self.user['repos_url']).json()
 
     def menu_back(self):
         self.user_informations.close()

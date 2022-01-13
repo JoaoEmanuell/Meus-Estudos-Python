@@ -1,7 +1,7 @@
 from PyQt5 import uic, QtWidgets
 from pathlib import Path
 from os.path import join
-from source.layouts_controls import user_name_informations_control, user_information_control
+from source.layouts_controls import user_name_informations_control, user_information_control, repos_name_control
 
 class Window():
     def __init__(self) -> None:
@@ -11,6 +11,7 @@ class Window():
 
         self.form_init = self.load_ui('user_name_information')
         self.user_informations = self.load_ui('user_informations')
+        self.repos_name = self.load_ui('repos_name')
 
         # Buttons
 
@@ -18,12 +19,21 @@ class Window():
 
         self.form_init.pushButton.clicked.connect(self.get_user_information)
 
+        # User informations
+
+        self.user_informations.button_repos.clicked.connect(self.get_user_repos)
+
         # Menu
 
         # Form user information
 
         self.user_informations.menuMenu.setStyleSheet("color : white;")
-        self.user_informations.actionVoltar.triggered.connect(self.user_informations_menu_back)
+        self.user_informations.action_return.triggered.connect(self.user_informations_menu_back)
+
+        # Repos name
+
+        self.repos_name.menuMenu.setStyleSheet("color : white;")
+        self.repos_name.action_return.triggered.connect(self.repos_name_menu_back)
 
         # Exec
 
@@ -65,5 +75,28 @@ class Window():
             None
         """
         user_information_control.user_information_control.menu_back(self)
+
+    def get_user_repos(self) -> None:
+        """Gets the user repositories
+
+        Returns:
+            None
+        """
+        self.repos = user_information_control.user_information_control.get_user_repos(self)
+
+        self.user_informations.close()
+
+        self.repos_name.show()
+
+        repos_name_control.repos_name_control.set_repos_in_list(self)
+
+    def repos_name_menu_back(self) -> None:
+        """Closes the repos name menu
+
+        Returns:
+            None
+        """
+        repos_name_control.repos_name_control.menu_back(self)
+
 if __name__ == '__main__':
     Window()
