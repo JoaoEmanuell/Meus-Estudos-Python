@@ -12,8 +12,3 @@ class RequestUser():
 
         if response.get('message') == 'Not Found': return {'message': 'Not Found'}
         return response
-
-if __name__ == '__main__':
-    user = RequestUser('JoaoEmanuell')
-    #user = RequestUser('weiqwe32qie3213')
-    print(user.get_user())

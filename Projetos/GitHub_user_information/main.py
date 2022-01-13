@@ -1,6 +1,7 @@
-from PyQt5 import uic, QtWidgets
+from PyQt5 import uic, QtWidgets, QtGui
 from pathlib import Path
 from os.path import join
+from requests import get
 from source.api import user
 
 class Window():
@@ -10,6 +11,7 @@ class Window():
         # Forms
 
         self.form_init = self.load_ui('user_name_information')
+        self.user_informations = self.load_ui('user_informations')
 
         # Buttons
 
@@ -40,12 +42,26 @@ class Window():
         Returns:
             None
         """
-        username = self.form_init.lineEdit.text().strip()
-        self.user = user.RequestUser(username).get_user()
+        self.username = self.form_init.lineEdit.text().strip()
+        self.user = user.RequestUser(self.username).get_user()
         if self.user.get('message') == 'Not Found':
             QtWidgets.QMessageBox.about(self.form_init, 'Error', 'User not found')
         else:
-            print(self.user)
+            self.form_init.close()
+            self.show_user_informations()
+
+    def show_user_informations(self) -> None:
+        self.user_informations.show()
+        self.user_informations.username.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user.get("login")}</span></p></body></html>')
+        self.user_informations.user_name.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user.get("name")}</span></p></body></html>')
+        self.image_set()
+
+    def image_set(self):
+        image = QtGui.QImage()
+        image.loadFromData(get(self.user.get('avatar_url')).content)
+        self.user_informations.user_profile_photo.setPixmap(QtGui.QPixmap(image))
+        self.user_informations.user_profile_photo.adjustSize()
+
 
 if __name__ == '__main__':
     Window()
