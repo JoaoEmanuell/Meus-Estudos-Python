@@ -1,7 +1,7 @@
 from PyQt5 import uic, QtWidgets
 from pathlib import Path
 from os.path import join
-from source.layouts_controls import user_name_informations_control, user_information_control, repos_name_control
+from source.layouts_controls import user_name_informations_control, user_information_control, repos_name_control, repos_information_control
 
 class Window():
     def __init__(self) -> None:
@@ -12,6 +12,7 @@ class Window():
         self.form_init = self.load_ui('user_name_information')
         self.user_informations = self.load_ui('user_informations')
         self.repos_name = self.load_ui('repos_name')
+        self.repos_information = self.load_ui('repos_information')
 
         # Buttons
 
@@ -22,6 +23,10 @@ class Window():
         # User informations
 
         self.user_informations.button_repos.clicked.connect(self.get_user_repos)
+
+        # Repos name
+
+        self.repos_name.button_repo_select.clicked.connect(self.show_repo_info)
 
         # Menu
 
@@ -34,6 +39,11 @@ class Window():
 
         self.repos_name.menuMenu.setStyleSheet("color : white;")
         self.repos_name.action_return.triggered.connect(self.repos_name_menu_back)
+
+        # Repos information
+
+        self.repos_information.menuMenu.setStyleSheet("color : white;")
+        self.repos_information.action_return.triggered.connect(self.repos_information_menu_back)
 
         # Exec
 
@@ -97,6 +107,23 @@ class Window():
             None
         """
         repos_name_control.repos_name_control.menu_back(self)
+
+    def show_repo_info(self) -> None:
+        """Shows the repo
+
+        Returns:
+            None
+        """
+        repos_name_control.repos_name_control.show_repo_info(self)
+        repos_information_control.repos_information_control.set_items(self)
+
+    def repos_information_menu_back(self) -> None:
+        """Closes the repo information menu
+
+        Returns:
+            None
+        """
+        repos_information_control.repos_information_control.menu_back(self)
 
 if __name__ == '__main__':
     Window()
