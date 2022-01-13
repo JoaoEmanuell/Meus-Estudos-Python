@@ -22,6 +22,9 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QLabel" name="user_profile_photo">
+        <property name="styleSheet">
+         <string notr="true">border-radius : 50%;</string>
+        </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;User photo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>

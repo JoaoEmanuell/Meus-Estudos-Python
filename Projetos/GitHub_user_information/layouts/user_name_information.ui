@@ -92,7 +92,7 @@
            <string>Consultar</string>
           </property>
           <property name="shortcut">
-           <string/>
+           <string>Return</string>
           </property>
          </widget>
         </item>

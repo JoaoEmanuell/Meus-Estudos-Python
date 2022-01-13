@@ -1,4 +1,4 @@
-from PyQt5 import uic, QtWidgets, QtGui
+from PyQt5 import QtCore, uic, QtWidgets, QtGui
 from pathlib import Path
 from os.path import join
 from requests import get
@@ -59,8 +59,7 @@ class Window():
     def image_set(self):
         image = QtGui.QImage()
         image.loadFromData(get(self.user['avatar_url']).content)
-        self.user_informations.user_profile_photo.setPixmap(QtGui.QPixmap(image))
-        self.user_informations.user_profile_photo.adjustSize()
+        self.user_informations.user_profile_photo.setPixmap(QtGui.QPixmap(image).scaled(250, 250))
 
 
 if __name__ == '__main__':
