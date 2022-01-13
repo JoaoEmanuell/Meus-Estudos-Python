@@ -52,13 +52,13 @@ class Window():
 
     def show_user_informations(self) -> None:
         self.user_informations.show()
-        self.user_informations.username.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user.get("login")}</span></p></body></html>')
-        self.user_informations.user_name.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user.get("name")}</span></p></body></html>')
+        self.user_informations.username.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user["login"]}</span></p></body></html>')
+        self.user_informations.user_name.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["name"]}</span></p></body></html>')
         self.image_set()
 
     def image_set(self):
         image = QtGui.QImage()
-        image.loadFromData(get(self.user.get('avatar_url')).content)
+        image.loadFromData(get(self.user['avatar_url']).content)
         self.user_informations.user_profile_photo.setPixmap(QtGui.QPixmap(image))
         self.user_informations.user_profile_photo.adjustSize()
 

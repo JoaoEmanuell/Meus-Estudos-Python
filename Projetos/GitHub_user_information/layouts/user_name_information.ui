@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: rgb(13, 17, 23);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -23,7 +23,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Insira o username do perfil desejado!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;color : #C9D1D9;&quot;&gt;Insira o username do perfil desejado!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
@@ -55,6 +55,9 @@
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(218, 218, 218);</string>
+        </property>
         <property name="dragEnabled">
          <bool>false</bool>
         </property>
@@ -83,13 +86,13 @@
            <cursorShape>UpArrowCursor</cursorShape>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(236, 236, 236);</string>
+           <string notr="true">background-color: rgb(216, 216, 216);</string>
           </property>
           <property name="text">
            <string>Consultar</string>
           </property>
           <property name="shortcut">
-           <string>Return</string>
+           <string/>
           </property>
          </widget>
         </item>
