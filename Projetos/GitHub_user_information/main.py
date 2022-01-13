@@ -55,9 +55,12 @@ class Window():
         self.user_informations.username.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user["login"]}</span></p></body></html>')
         self.user_informations.user_name.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["name"]}</span></p></body></html>')
         self.user_informations.user_bio.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["bio"]}</span></p></body></html>')
-        self.user_informations.user_followers.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user["followers"]} Seguidores</span></p></body></html>')
-        self.user_informations.user_following.setText(f'<html><head/><body><p><span style = "color : #8b949e"> Seguindo {self.user["following"]}</span></p></body></html>')
-        self.user_informations.user_location.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["location"]}</span></p></body></html>')
+        location_icon = QtGui.QIcon(join(Path().absolute(), 'icons/location_icon.png'))
+        followers_icon = QtGui.QIcon(join(Path().absolute(), 'icons/followers_icon.png'))
+        followers_item = QtWidgets.QListWidgetItem(followers_icon, f"{self.user['followers']} Seguidores | Seguindo {self.user['following']}")
+        location_item = QtWidgets.QListWidgetItem(location_icon, self.user["location"])
+        self.user_informations.user_list_informations.addItem(followers_item)
+        self.user_informations.user_list_informations.addItem(location_item)
         self.image_set()
 
     def image_set(self):

@@ -58,8 +58,14 @@
         <property name="styleSheet">
          <string notr="true">background-color: rgb(218, 218, 218);</string>
         </property>
+        <property name="text">
+         <string>JoaoEmanuell</string>
+        </property>
         <property name="dragEnabled">
          <bool>false</bool>
+        </property>
+        <property name="placeholderText">
+         <string/>
         </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
