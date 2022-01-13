@@ -25,7 +25,6 @@ class user_information_control():
         image.loadFromData(get(self.user['avatar_url']).content)
         self.user_informations.user_profile_photo.setPixmap(QPixmap(image).scaled(250, 250))
 
-    @lru_cache
     def get_user_repos(self): return get(self.user['repos_url']).json()
 
     def menu_back(self):
