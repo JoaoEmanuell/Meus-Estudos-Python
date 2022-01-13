@@ -54,6 +54,10 @@ class Window():
         self.user_informations.show()
         self.user_informations.username.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user["login"]}</span></p></body></html>')
         self.user_informations.user_name.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["name"]}</span></p></body></html>')
+        self.user_informations.user_bio.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["bio"]}</span></p></body></html>')
+        self.user_informations.user_followers.setText(f'<html><head/><body><p><span style = "color : #8b949e">{self.user["followers"]} Seguidores</span></p></body></html>')
+        self.user_informations.user_following.setText(f'<html><head/><body><p><span style = "color : #8b949e"> Seguindo {self.user["following"]}</span></p></body></html>')
+        self.user_informations.user_location.setText(f'<html><head/><body><p><span style = "color : #C9D1D9">{self.user["location"]}</span></p></body></html>')
         self.image_set()
 
     def image_set(self):
