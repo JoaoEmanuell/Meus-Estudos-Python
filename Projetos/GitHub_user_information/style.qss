@@ -1,3 +1,7 @@
 QMenu {
     color : white;
 }
+
+QPushButton {
+    border-radius : 10px;
+}

@@ -247,3 +247,6 @@ share/
 ##Django
 
 key.txt
+
+#Qt
+.qt_for_python/

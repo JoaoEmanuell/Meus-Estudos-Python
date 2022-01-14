@@ -41,7 +41,7 @@
           <item>
            <widget class="QLabel" name="user_profile_photo">
             <property name="styleSheet">
-             <string notr="true">border-radius : 50%;</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;User photo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -99,7 +99,17 @@
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(41, 53, 72);</string>
+             <string notr="true">QListWidget{
+	background-color: rgb(41, 53, 72);
+}
+
+QListWidget::item{
+	color : black;
+}
+
+QListWidget::item:selected {
+	background-color : rgb(41, 53, 72);
+}</string>
             </property>
             <property name="movement">
              <enum>QListView::Static</enum>
