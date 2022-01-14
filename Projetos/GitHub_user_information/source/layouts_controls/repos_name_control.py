@@ -7,7 +7,4 @@ class repos_name_control():
     def show_repo_info(self):
         self.repos_name.close()
         self.repos_information.show()
-            
-    def menu_back(self):
-        self.repos_name.close()
-        self.user_informations.show()
+        

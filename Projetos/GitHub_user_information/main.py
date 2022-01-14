@@ -79,12 +79,12 @@ class Window():
         user_information_control.user_information_control.show_user_information(self)
 
     def user_informations_menu_back(self) -> None:
-        """Closes the user information menu
+        """Clear cache and closes the user information menu
 
         Returns:
             None
         """
-        user_information_control.user_information_control.menu_back(self)
+        user_information_control.user_information_control.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
 
     def get_user_repos(self) -> None:
         """Gets the user repositories
@@ -106,7 +106,7 @@ class Window():
         Returns:
             None
         """
-        repos_name_control.repos_name_control.menu_back(self)
+        self.app.closeAllWindows(), self.user_informations.show()
 
     def show_repo_info(self) -> None:
         """Shows the repo
@@ -123,7 +123,7 @@ class Window():
         Returns:
             None
         """
-        repos_information_control.repos_information_control.menu_back(self)
+        self.app.closeAllWindows(), self.repos_name.show()
 
 if __name__ == '__main__':
     Window()
