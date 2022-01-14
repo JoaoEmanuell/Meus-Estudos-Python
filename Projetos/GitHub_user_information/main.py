@@ -32,22 +32,20 @@ class Window():
 
         # Form user information
 
-        self.user_informations.menuMenu.setStyleSheet("color : white;")
         self.user_informations.action_return.triggered.connect(self.user_informations_menu_back)
 
         # Repos name
 
-        self.repos_name.menuMenu.setStyleSheet("color : white;")
         self.repos_name.action_return.triggered.connect(self.repos_name_menu_back)
 
         # Repos information
 
-        self.repos_information.menuMenu.setStyleSheet("color : white;")
         self.repos_information.action_return.triggered.connect(self.repos_information_menu_back)
 
         # Exec
 
         self.form_init.show()
+        self.app.setStyleSheet(self.getStyleSheet())
         self.app.exec()
 
     def load_ui(self, ui_file):
@@ -124,6 +122,11 @@ class Window():
             None
         """
         self.app.closeAllWindows(), self.repos_name.show()
+
+    def getStyleSheet(self) -> str:
+        """Gets the style sheet"""
+
+        return open(join(Path().absolute(), 'style.qss'), 'r').read()
 
 if __name__ == '__main__':
     Window()
