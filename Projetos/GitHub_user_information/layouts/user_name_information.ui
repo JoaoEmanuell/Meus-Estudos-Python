@@ -59,7 +59,7 @@
          <string notr="true">background-color: rgb(218, 218, 218);</string>
         </property>
         <property name="text">
-         <string>JoaoEmanuell</string>
+         <string/>
         </property>
         <property name="dragEnabled">
          <bool>false</bool>
