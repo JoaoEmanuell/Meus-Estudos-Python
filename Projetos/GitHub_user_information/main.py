@@ -41,6 +41,7 @@ class Window():
         # Repos information
 
         self.repos_information.action_return.triggered.connect(self.repos_information_menu_back)
+        self.repos_information.action_start_screen.triggered.connect(self.repos_information_menu_start_screen)
 
         # Exec
 
@@ -122,6 +123,14 @@ class Window():
             None
         """
         self.app.closeAllWindows(), self.repos_name.show()
+
+    def repos_information_menu_start_screen(self) -> None:
+        """Closes the repo information menu
+
+        Returns:
+            None
+        """
+        user_information_control.user_information_control.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
 
     def getStyleSheet(self) -> str:
         """Gets the style sheet"""

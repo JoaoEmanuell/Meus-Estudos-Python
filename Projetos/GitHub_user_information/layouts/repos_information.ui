@@ -212,6 +212,7 @@
     <property name="title">
      <string>Menu</string>
     </property>
+    <addaction name="action_start_screen"/>
     <addaction name="action_return"/>
    </widget>
    <addaction name="menuMenu"/>
@@ -220,6 +221,11 @@
   <action name="action_return">
    <property name="text">
     <string>Voltar</string>
+   </property>
+  </action>
+  <action name="action_start_screen">
+   <property name="text">
+    <string>Tela Inicial</string>
    </property>
   </action>
  </widget>
