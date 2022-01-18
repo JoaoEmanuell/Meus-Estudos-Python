@@ -37,6 +37,7 @@ class window():
 
         # Exec
         self.login.show()
+        self.app.setStyleSheet(self.getStyleSheet())
         self.app.exec()
 
     def load_ui(self, ui_file):
@@ -169,6 +170,11 @@ class window():
         QtWidgets.QMessageBox.about(self.read, "Alerta!", "Usuario deletado com sucesso!")
         # Save the new information in the variable original_accounts
         self.original_accounts = acc.list_accounts()
+
+    def getStyleSheet(self) -> str:
+        """Gets the style sheet"""
+
+        return open(join(Path().absolute(), 'style.qss'), 'r').read()
 
 if __name__ == '__main__':
     window()

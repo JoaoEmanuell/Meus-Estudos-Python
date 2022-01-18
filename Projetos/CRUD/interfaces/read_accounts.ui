@@ -14,7 +14,26 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">QMainWindow {
+	background-color: rgb(255, 255, 255);
+}
+
+QPushButton {
+	border-radius : 15px;
+	color : black;
+}
+
+QPushButton:hover {
+	border: 1px solid black;
+}
+
+QPushButton#saveButton {
+	background-color: rgb(0, 255, 0);
+}
+
+QPushButton#deleteButton {
+	background-color: rgb(255, 0, 0);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -81,11 +100,10 @@
          <cursorShape>UpArrowCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 239, 0);
-border-radius : 15px;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
-         <string>Salvar alteraçoes</string>
+         <string>Salvar alterações</string>
         </property>
         <property name="shortcut">
          <string>Ctrl+S</string>
@@ -110,8 +128,7 @@ border-radius : 15px;</string>
          <cursorShape>UpArrowCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 0, 0);
-border-radius : 15px;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Deletar usuario</string>
