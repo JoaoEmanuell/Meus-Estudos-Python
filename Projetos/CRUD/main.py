@@ -147,9 +147,12 @@ class window():
                 username = self.read.listNames.item(itens).text()
                 con = read_accounts.read_accounts()
                 user = con.update_user_password(username, new_passwords[itens])
-                # Save the new information in the variable original_accounts
-                self.original_accounts = con.list_accounts()
-                QtWidgets.QMessageBox.about(self.read, "Alerta!", "Senha alterada com sucesso!")
+                if user:
+                    # Save the new information in the variable original_accounts
+                    self.original_accounts = con.list_accounts()
+                    QtWidgets.QMessageBox.about(self.read, "Alerta!", "Senha alterada com sucesso!")
+                else :
+                    QtWidgets.QMessageBox.about(self.read, "Alerta!", "Alguma senha informada é muito grande, diminua o tamanho da senha e tente novamente!")
 
     def delete_user(self):
         """Deletes an account."""

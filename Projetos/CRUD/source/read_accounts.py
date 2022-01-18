@@ -29,11 +29,11 @@ class read_accounts(sql_essential.sql_essential):
         Returns:
             [Bool]: [If the username is not being used it will change and return True, otherwise it will return False]
         """
-        cursor = self.connection.cursor()
         for account in self.list_accounts():
-            if new_name in account: return False
+            if new_name in account or len(new_name) > 50: return False
         if new_name != '' and new_name != 'root':
             sql = f"UPDATE TEST SET NAME = '{new_name}' WHERE NAME = '{old_name}'"
+            cursor = self.connection.cursor()
             cursor.execute(sql)
             self.connection.commit()
             return True
@@ -45,10 +45,12 @@ class read_accounts(sql_essential.sql_essential):
             username ([str]): [User name]
             new_pass ([str]): [New password]
         """
+        if len(new_pass) > 20 : return False
         cursor = self.connection.cursor()
         sql = f"UPDATE TEST SET PASS = '{new_pass}' WHERE NAME = '{username}'"
         cursor.execute(sql)
         self.connection.commit()
+        return True
 
     def delete_user(self, username, password):
         """[Delete the user from the database]
