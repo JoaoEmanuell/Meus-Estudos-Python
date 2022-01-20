@@ -1,7 +1,7 @@
 # Imports
 from PyQt5 import uic, QtWidgets, QtGui, QtCore
 from pathlib import Path
-from source import image_convert
+from source.image_convert_thread import Image_convert_thread
 from os import listdir
 
 class window():
@@ -46,16 +46,21 @@ class window():
     def convert_images(self):
         """[Convert the images and place an icon in the status list, if the image is successfully converted the icon will be "Successful_Image_Conversion" if not converted the icon will be "Unsuccessful_image_conversion"]
         """        
-        new_type_images = self.form.comboBox.currentText()
-        icon_path = listdir(f'{Path().absolute()}/icons/')
         self.form.status_list.clear()
-        for image in self.files:
-            im = image_convert.ImageConvert(image, new_type_images).convertImage()
-            icon = QtGui.QIcon(f'{Path().absolute()}/icons/{icon_path[im]}')
-            item = QtWidgets.QListWidgetItem(icon, "")
-            item.setSizeHint(QtCore.QSize(25, 25))
-            self.form.status_list.addItem(item)
+        self.work = Image_convert_thread()
+        self.work.set_files(self.files)
+        self.work.set_new_type_images(self.form.comboBox.currentText())
+        self.work.start()
+        self.work.item_status.connect(self.set_convert_item_status_list)
 
+    def set_convert_item_status_list(self, val):
+        """[Set the icon in the status list, if the image is successfully converted the icon will be "Successful_Image_Conversion" if not converted the icon will be "Unsuccessful_image_conversion"]""" 
+        icon_path = listdir(f'{Path().absolute()}/icons/')
+        icon = QtGui.QIcon(f'{Path().absolute()}/icons/{icon_path[val]}')               
+        item = QtWidgets.QListWidgetItem(icon, "")
+        item.setSizeHint(QtCore.QSize(25, 25))
+        self.form.status_list.addItem(item)   
+        
     def set_images_in_list(self):
         """[Set the image names in the image name list, it removes the image name path, making the interface more pleasant.]
         """        
