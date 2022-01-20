@@ -250,3 +250,6 @@ key.txt
 
 #Qt
 .qt_for_python/
+
+#Project
+converted_images/
