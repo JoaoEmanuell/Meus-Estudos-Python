@@ -10,13 +10,13 @@ class ImageConvert():
             NEWIMAGEFORMAT ([str]): [Format the image will be saved]
         """        
         self.PATH = Path().absolute()
-        self.verfiy_if_converted_image_exists()
+        self.verfiy_if_converted_image_directory_exists()
         self.IMS = f'{self.PATH}/converted_images/'
         self.name = str(IMAGENAME)
         self.NEW_IMAGE_FORMAT = str(NEWIMAGEFORMAT)
-        self.IMAGE_FORMAT = self.VerifyExtensionFile(self.name.lower())
+        self.IMAGE_FORMAT = self.verify_extension_file(self.name.lower())
 
-    def convertImage(self):
+    def convert_image(self):
         """[Convert the desired image.]
 
         Returns:
@@ -30,7 +30,7 @@ class ImageConvert():
         except :
             return 1
 
-    def VerifyExtensionFile(self, imageName):
+    def verify_extension_file(self, imageName):
         """[Check the image extension and return it.]
 
         Args:
@@ -44,7 +44,7 @@ class ImageConvert():
             if imageName.find(f'.{ex}') != -1:
                 return ex
 
-    def verfiy_if_converted_image_exists(self):
+    def verfiy_if_converted_image_directory_exists(self):
         """[Checks if the folder where the converted images will be saved exists, if not, this function will create the folder.]
         """        
         if not (Path('converted_images').exists()): Path('converted_images').mkdir()

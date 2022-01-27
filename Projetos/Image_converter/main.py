@@ -1,14 +1,17 @@
 # Imports
-from PyQt5 import uic, QtWidgets, QtGui, QtCore
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication, QFileDialog, QListWidgetItem
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import QSize
 from pathlib import Path
-from source.image_convert_thread import Image_convert_thread
+from source.image_convert_thread import ImageConvertThread
 from os import listdir
 
-class window():
+class Window():
     def __init__(self):
         """[Launches the interface and tells you what each button should do when it's clicked]
         """        
-        self.app = QtWidgets.QApplication([])
+        self.app = QApplication([])
 
         # Forms
 
@@ -40,15 +43,15 @@ class window():
         """        
         self.form.image_name_list.clear()
         filter = "Images (*.png *.jpg *.jpeg *.bmp *.gif *.webp)"
-        self.files = QtWidgets.QFileDialog.getOpenFileNames(filter=filter)[0]
+        self.files = QFileDialog.getOpenFileNames(filter=filter)[0]
         self.set_images_in_list()
 
     def convert_images(self):
         """[Convert the images and place an icon in the status list, if the image is successfully converted the icon will be "Successful_Image_Conversion" if not converted the icon will be "Unsuccessful_image_conversion"]
         """        
         self.form.status_list.clear()
-        self.work = Image_convert_thread()
-        self.work.set_files(self.files)
+        self.work = ImageConvertThread()
+        self.work.set_images(self.files)
         self.work.set_new_type_images(self.form.comboBox.currentText())
         self.work.start()
         self.work.item_status.connect(self.set_convert_item_status_list)
@@ -56,9 +59,9 @@ class window():
     def set_convert_item_status_list(self, val):
         """[Set the icon in the status list, if the image is successfully converted the icon will be "Successful_Image_Conversion" if not converted the icon will be "Unsuccessful_image_conversion"]""" 
         icon_path = listdir(f'{Path().absolute()}/icons/')
-        icon = QtGui.QIcon(f'{Path().absolute()}/icons/{icon_path[val]}')               
-        item = QtWidgets.QListWidgetItem(icon, "")
-        item.setSizeHint(QtCore.QSize(25, 25))
+        icon = QIcon(f'{Path().absolute()}/icons/{icon_path[val]}')               
+        item = QListWidgetItem(icon, "")
+        item.setSizeHint(QSize(25, 25))
         self.form.status_list.addItem(item)   
         
     def set_images_in_list(self):
@@ -66,9 +69,9 @@ class window():
         """        
         for image in self.files:
             # Remove the path from the image and add it to the list and set size of the item
-            item = QtWidgets.QListWidgetItem(image.split('/')[-1])
-            item.setSizeHint(QtCore.QSize(25, 25))
+            item = QListWidgetItem(image.split('/')[-1])
+            item.setSizeHint(QSize(25, 25))
             self.form.image_name_list.addItem(item)
 
 if __name__ == '__main__':
-    window()
+    Window()
