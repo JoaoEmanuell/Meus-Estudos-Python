@@ -370,3 +370,104 @@ Dessa forma você vai gerar um arquivo .py que contem a interface.
             # Caso o arquivo não seja encontrado ou caso o usuario cancele a abertura do arquivo.
             except FileNotFoundError:
                 QtWidgets.QMessageBox.warning(form, "Error", "Arquivo não encontrado, insira um arquivo válido!")
+                
+# Trabalhando com Threads
+
+    Primeiramente toda Thread do pyqt5 deve ser uma classe que herda a class QThread de QtCore
+    
+    from PyQt5.QtCore import QThread
+    
+    class Foo_Thread(QThread):
+        . . .
+        
+    Por padrão essa classe tem um método interno chamado de "run" esse método é utilizado quando a Thread é iniciada pelo metodo start
+    
+    Nesse método run que devemos colocar os dados que vão ser executados na Thread
+    
+    class Foo_Thread(QThread):
+        
+        def run(self):
+            . . .
+            
+    Dessa forma a Thread irá funcionar, mas não podemos simplismente colocar um "return value" dentro dela, se fizermos isso o app irá crashar e nem podemos passar os dados da interface via self para manipularmos nela e ela não deve ter um init, então usaremos sets para setar os valores necessarios para manipulação na função run.
+    
+    class Foo_Thread(QThread):
+        
+        def run(self):
+            . . .
+            
+        def set_bar(self, bar):
+            self.bar = bar
+           
+    Para retornar valores na thread devemos criar uma variavel que irá herdar de pyqtSiginal e passar o tipo de valor, essa variavel deve ser criada logo após a declaração da classe e podemos ter multiplas variavels dela.
+    
+    from PyQt5.QtCore import QThread, pyqtSignal
+    
+    class Foo_Thread(QThread):
+        foo_siginal = pyqtSignal(tipo)
+        
+    O status que será emitido será o nosso valor de retorno, para emitir ele devemos utilizar dentro da run, o valor a ser emitido deve ser do mesmo tipo especificado.
+    
+    class Foo_Thread(QThread):
+        foo_siginal = pyqtSignal(tipo)
+        
+        def run(self):
+            . . .
+            self.foo_siginal.emit(valor)
+            
+    Dessa forma estaremos retornando valores.
+    
+    Agora dentro do nosso arquivo principal devemos criar uma variavel que irá herdar a nossa classe Thread
+    
+    self.work = Foo_Thread()
+    
+    Setar os itens : 
+    
+        self.work.set_bar(bar)
+        
+    E iniciar a Thread
+    
+    self.work.start()
+    
+    Agora para verificar se algo foi emitido devemos utilizar a self.work.foo_siginal.connect(função), toda vez que o foo_siginal emitir um sinal o connect será chamado e a função será executada, essa função deve estar no arquivo principal e receber um self e um val, esse val será passado automaticamente pelo connect
+    
+    self.work.foo_siginal.connect(foo_set_in_list)
+    
+    def foo_set_in_list(self, val):
+        print(val)
+        
+    Dessa forma toda vez que foo_siginal for atualizado [emitir um sinal] a função será chamada e o valor emitido será passado, dessa forma podemos manipula-lo da forma que desejemos.
+    
+    Exemplo : 
+    
+    # Thread
+    
+    class Image_convert_thread(QThread):
+    item_status = pyqtSignal(int)
+    
+    def run(self):
+        for image in self.files:
+            im = ImageConvert(image, self.new_type_images).convertImage()
+            self.item_status.emit(im)
+            
+    def set_files(self, files):
+        self.files = files
+
+    def set_new_type_images(self, new_type_images):
+        self.new_type_images = new_type_images
+        
+    # Arquivo principal
+    
+    def convert_images(self):     
+        self.work = Image_convert_thread()
+        self.work.set_files(self.files)
+        self.work.set_new_type_images(self.form.comboBox.currentText())
+        self.work.start()
+        self.work.item_status.connect(self.set_convert_item_status_list)
+
+    def set_convert_item_status_list(self, val):
+        icon_path = listdir(f'{Path().absolute()}/icons/')
+        icon = QtGui.QIcon(f'{Path().absolute()}/icons/{icon_path[val]}')               
+        item = QtWidgets.QListWidgetItem(icon, "")
+        item.setSizeHint(QtCore.QSize(25, 25))
+        self.form.status_list.addItem(item)   
