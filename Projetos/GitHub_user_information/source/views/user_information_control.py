@@ -32,6 +32,3 @@ class user_information_control():
         location_item = QListWidgetItem(location_icon, self.user["location"])
         self.layout.user_list_informations.addItem(followers_item)
         self.layout.user_list_informations.addItem(location_item)
-    
-    @lru_cache
-    def get_user_repos(self) : return get(self.user['repos_url']).json()

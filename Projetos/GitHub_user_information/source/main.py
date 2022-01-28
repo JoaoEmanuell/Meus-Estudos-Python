@@ -5,6 +5,7 @@ from views.user_name_informations_control import user_name_informations_control
 from views.repos_name_control import repos_name_control
 from views.repos_information_control import repos_information_control
 from essential import Essential
+from api.repos import GetRepositorys
 
 class Window(Essential):
     def __init__(self) -> None:
@@ -79,7 +80,7 @@ class Window(Essential):
         Returns:
             None
         """
-        user_information_control.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
+        GetRepositorys.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
 
     def get_user_repos(self) -> None:
         """Gets the user repositories
@@ -87,7 +88,7 @@ class Window(Essential):
         Returns:
             None
         """
-        self.repos = user_information_control.get_user_repos(self)
+        self.repos = GetRepositorys(self.user).get_user_repos()
 
         self.user_informations.close()
 
