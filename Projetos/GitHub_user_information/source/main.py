@@ -1,9 +1,12 @@
-from PyQt5 import uic, QtWidgets
-from pathlib import Path
-from os.path import join
-from source.layouts_controls import user_name_informations_control, user_information_control, repos_name_control, repos_information_control
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+from views.user_information_control import user_information_control
+from views.user_name_informations_control import user_name_informations_control
+from views.repos_name_control import repos_name_control
+from views.repos_information_control import repos_information_control
+from essential import Essential
 
-class Window():
+class Window(Essential):
     def __init__(self) -> None:
         self.app = QtWidgets.QApplication([])
 
@@ -46,20 +49,8 @@ class Window():
         # Exec
 
         self.form_init.show()
-        self.app.setStyleSheet(self.getStyleSheet())
+        self.app.setStyleSheet(self.get_style_sheet())
         self.app.exec()
-
-    def load_ui(self, ui_file):
-        """Loads the desired interface, every interface is a .ui file
-
-        Args:
-            ui_file ([ui]): [.ui file name]
-
-        Returns:
-            [ui]: [Interface loaded]
-        """
-        path = join(Path().absolute(), 'layouts/')
-        return uic.loadUi(f'{path}{ui_file}.ui')
 
     def get_user_information(self) -> None:
         """Gets the user information from GitHub API
@@ -67,7 +58,12 @@ class Window():
         Returns:
             None
         """
-        user_name_informations_control.user_name_informations_control.get_user_information(self)
+        self.user = user_name_informations_control(self.form_init.lineEdit.text()).get_user_information()
+        if type(self.user) == str:
+            QMessageBox.about(self.form_init, 'Error', self.user)
+        else :
+            self.show_user_informations()
+            self.form_init.close()
 
     def show_user_informations(self) -> None:
         """Shows the user information
@@ -75,7 +71,7 @@ class Window():
         Returns:
             None
         """
-        user_information_control.user_information_control.show_user_information(self)
+        user_information_control.show_user_information(self)
 
     def user_informations_menu_back(self) -> None:
         """Clear cache and closes the user information menu
@@ -83,7 +79,7 @@ class Window():
         Returns:
             None
         """
-        user_information_control.user_information_control.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
+        user_information_control.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
 
     def get_user_repos(self) -> None:
         """Gets the user repositories
@@ -91,13 +87,13 @@ class Window():
         Returns:
             None
         """
-        self.repos = user_information_control.user_information_control.get_user_repos(self)
+        self.repos = user_information_control.get_user_repos(self)
 
         self.user_informations.close()
 
         self.repos_name.show()
 
-        repos_name_control.repos_name_control.set_repos_in_list(self)
+        repos_name_control.set_repos_in_list(self)
 
     def repos_name_menu_back(self) -> None:
         """Closes the repos name menu
@@ -113,8 +109,8 @@ class Window():
         Returns:
             None
         """
-        repos_name_control.repos_name_control.show_repo_info(self)
-        repos_information_control.repos_information_control.set_items(self)
+        repos_name_control.show_repo_info(self)
+        repos_information_control.set_items(self)
 
     def repos_information_menu_back(self) -> None:
         """Closes the repo information menu
@@ -130,12 +126,7 @@ class Window():
         Returns:
             None
         """
-        user_information_control.user_information_control.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
-
-    def getStyleSheet(self) -> str:
-        """Gets the style sheet"""
-
-        return open(join(Path().absolute(), 'style.qss'), 'r').read()
+        user_information_control.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
 
 if __name__ == '__main__':
     Window()

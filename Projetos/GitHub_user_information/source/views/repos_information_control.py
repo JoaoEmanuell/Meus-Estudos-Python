@@ -1,4 +1,4 @@
-from ..api import license
+from api.license import RequestLicense
 
 class repos_information_control():
     def set_items(self):
@@ -17,7 +17,7 @@ class repos_information_control():
         self.repos_information.repo_size.setText(f'Tamanho : {self.repos[self.row]["size"]}')
         self.repos_information.repo_language.setText(f'Linguagem principal : {self.repos[self.row]["language"]}')
         try : 
-            license_url = license.RequestLicense(self.repos[self.row]).get_license()
+            license_url = RequestLicense(self.repos[self.row]).get_license()
             self.repos_information.repo_license_name.setText(link_template % (license_url, f'Licença : {self.repos[self.row]["license"]["name"]}'))
         except :
             self.repos_information.repo_license_name.setText(f'Licença : Não encontrada!')
