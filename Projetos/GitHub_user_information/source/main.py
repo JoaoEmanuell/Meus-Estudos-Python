@@ -5,7 +5,7 @@ from views.user_name_informations_control import user_name_informations_control
 from views.repos_name_control import repos_name_control
 from views.repos_information_control import repos_information_control
 from essential import Essential
-from api.repos import GetRepositorys
+from api.repos import RequestRepositories
 
 class Window(Essential):
     def __init__(self) -> None:
@@ -80,7 +80,7 @@ class Window(Essential):
         Returns:
             None
         """
-        GetRepositorys.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
+        RequestRepositories.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
 
     def get_user_repos(self) -> None:
         """Gets the user repositories
@@ -88,13 +88,19 @@ class Window(Essential):
         Returns:
             None
         """
-        self.repos = GetRepositorys(self.user).get_user_repos()
+        self.repos = RequestRepositories(self.user).get_user_repos()
 
-        self.user_informations.close()
+        if type(self.repos) == str:
 
-        self.repos_name.show()
+            QMessageBox.about(self.user_informations, 'Error', self.repos)
 
-        repos_name_control.set_repos_in_list(self)
+        else :
+
+            self.repos_name.show()
+
+            self.user_informations.close()
+
+            repos_name_control(self.repos_name, self.repos).set_repos_in_list()
 
     def repos_name_menu_back(self) -> None:
         """Closes the repos name menu
@@ -110,8 +116,13 @@ class Window(Essential):
         Returns:
             None
         """
-        repos_name_control.show_repo_info(self)
-        repos_information_control.set_items(self)
+        self.repos_name.close()
+
+        self.repos_information.show()
+        
+        row = self.repos_name.list_repos_names.currentRow()
+
+        repos_information_control(self.repos_information, self.repos, row).set_items()
 
     def repos_information_menu_back(self) -> None:
         """Closes the repo information menu
@@ -127,7 +138,7 @@ class Window(Essential):
         Returns:
             None
         """
-        user_information_control.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
+        RequestRepositories.get_user_repos.cache_clear(), self.app.closeAllWindows(), self.form_init.show()
 
 if __name__ == '__main__':
     Window()
