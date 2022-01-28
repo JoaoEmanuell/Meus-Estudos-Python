@@ -71,7 +71,7 @@ class Window(Essential):
         Returns:
             None
         """
-        user_information_control.show_user_information(self)
+        user_information_control(self.user_informations, self.user).show_user_information()
 
     def user_informations_menu_back(self) -> None:
         """Clear cache and closes the user information menu

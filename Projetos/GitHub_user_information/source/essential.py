@@ -1,9 +1,10 @@
 from PyQt5 import uic
 from pathlib import Path
 from os.path import join
+from PyQt5.QtWidgets import QMainWindow
 
 class Essential():
-    def load_ui(self, ui_file):
+    def load_ui(self, ui_file) -> QMainWindow :
         """Loads the desired interface, every interface is a .ui file
 
         Args:
