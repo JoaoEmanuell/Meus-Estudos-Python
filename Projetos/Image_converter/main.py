@@ -62,7 +62,9 @@ class Window():
         icon = QIcon(f'{Path().absolute()}/icons/{icon_path[val]}')               
         item = QListWidgetItem(icon, "")
         item.setSizeHint(QSize(25, 25))
-        self.form.status_list.addItem(item)   
+        self.form.status_list.addItem(item)
+        self.form.status_list.setCurrentRow(self.form.status_list.count() - 1)
+        self.form.image_name_list.setCurrentRow(self.form.status_list.count() - 1) 
         
     def set_images_in_list(self):
         """[Set the image names in the image name list, it removes the image name path, making the interface more pleasant.]
