@@ -100,6 +100,8 @@ class Window(Essential):
 
             self.user_informations.close()
 
+            self.repos_name.list_repos_names.itemDoubleClicked.connect(self.show_repo_info)
+
             repos_name_control(self.repos_name, self.repos).set_repos_in_list()
 
     def repos_name_menu_back(self) -> None:
