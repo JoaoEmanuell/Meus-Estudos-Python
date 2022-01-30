@@ -1,9 +1,9 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
-from views.user_information_control import user_information_control
-from views.user_name_informations_control import user_name_informations_control
-from views.repos_name_control import repos_name_control
-from views.repos_information_control import repos_information_control
+from views.user_information_control import UserInformationContro
+from views.user_name_informations_control import UserNameInformationsControl
+from views.repos_name_control import ReposNameControl
+from views.repos_information_control import ReposInformationControl
 from essential import Essential
 from api.repos import RequestRepositories
 
@@ -59,7 +59,7 @@ class Window(Essential):
         Returns:
             None
         """
-        self.user = user_name_informations_control(self.form_init.lineEdit.text()).get_user_information()
+        self.user = UserNameInformationsControl(self.form_init.lineEdit.text()).get_user_information()
         if type(self.user) == str:
             QMessageBox.about(self.form_init, 'Error', self.user)
         else :
@@ -72,7 +72,7 @@ class Window(Essential):
         Returns:
             None
         """
-        user_information_control(self.user_informations, self.user).show_user_information()
+        UserInformationContro(self.user_informations, self.user).show_user_information()
 
     def user_informations_menu_back(self) -> None:
         """Clear cache and closes the user information menu
@@ -102,7 +102,7 @@ class Window(Essential):
 
             self.repos_name.list_repos_names.itemDoubleClicked.connect(self.show_repo_info)
 
-            repos_name_control(self.repos_name, self.repos).set_repos_in_list()
+            ReposNameControl(self.repos_name, self.repos).set_repos_in_list()
 
     def repos_name_menu_back(self) -> None:
         """Closes the repos name menu
@@ -124,7 +124,7 @@ class Window(Essential):
         
         row = self.repos_name.list_repos_names.currentRow()
 
-        repos_information_control(self.repos_information, self.repos, row).set_items()
+        ReposInformationControl(self.repos_information, self.repos, row).set_items()
 
     def repos_information_menu_back(self) -> None:
         """Closes the repo information menu

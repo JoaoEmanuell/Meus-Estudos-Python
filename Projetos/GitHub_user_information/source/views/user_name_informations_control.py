@@ -1,7 +1,6 @@
 from api.user import RequestUser
-from essential import Essential
 
-class user_name_informations_control(Essential):
+class UserNameInformationsControl():
     def __init__(self, username : str) -> None:
         self.username = username.lower().strip()
 

@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow
 
-class repos_name_control():
+class ReposNameControl():
     def __init__(self, layout : QMainWindow, repositories : dict) -> None:
         self.layout = layout
         self.repositories = repositories

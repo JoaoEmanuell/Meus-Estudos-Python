@@ -1,7 +1,7 @@
 from api.license import RequestLicense
 from PyQt5.QtWidgets import QMainWindow
 
-class repos_information_control():
+class ReposInformationControl():
     def __init__(self, layout : QMainWindow, repository_info : dict, row : int) -> None:
         self.layout = layout
         self.repo = repository_info[row]

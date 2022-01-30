@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QListWidgetItem, QMainWindow
 from PyQt5.QtGui import QIcon, QImage, QPixmap
 from functools import lru_cache
 
-class user_information_control():
+class UserInformationContro():
     def __init__(self, layout : QMainWindow, user : dict) -> None:
         self.layout = layout
         self.user = user
@@ -17,8 +17,8 @@ class user_information_control():
         self.layout.username.setText(template_color_center % ('#8b949e', self.user['login']))
         self.layout.user_name.setText(template_color_center % ('#C9D1D9', self.user['name']))
         self.layout.user_bio.setText(template_color_center % ('#C9D1D9', self.user['bio']))
-        user_information_control.set_informations_in_list(self)
-        user_information_control.set_profile_pic(self)
+        UserInformationContro.set_informations_in_list(self)
+        UserInformationContro.set_profile_pic(self)
 
     def set_profile_pic(self):
         image = QImage()
