@@ -26,8 +26,8 @@ class UserInformationContro():
         self.layout.user_profile_photo.setPixmap(QPixmap(image).scaled(250, 250))
 
     def set_informations_in_list(self):
-        location_icon = QIcon(join(Path().absolute(), '../icons/location_icon.png'))
-        followers_icon = QIcon(join(Path().absolute(), '../icons/followers_icon.png'))
+        location_icon = QIcon(join(Path().absolute(), './icons/location_icon.png'))
+        followers_icon = QIcon(join(Path().absolute(), './icons/followers_icon.png'))
         followers_item = QListWidgetItem(followers_icon, f"{self.user['followers']} Seguidores | Seguindo {self.user['following']}")
         location_item = QListWidgetItem(location_icon, self.user["location"])
         self.layout.user_list_informations.addItem(followers_item)

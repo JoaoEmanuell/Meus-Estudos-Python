@@ -1,15 +1,14 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMessageBox
-from views.user_information_control import UserInformationContro
-from views.user_name_informations_control import UserNameInformationsControl
-from views.repos_name_control import ReposNameControl
-from views.repos_information_control import ReposInformationControl
+from PyQt5.QtWidgets import QMessageBox, QApplication
+from source.views.user_information_control import UserInformationContro
+from source.views.user_name_informations_control import UserNameInformationsControl
+from source.views.repos_name_control import ReposNameControl
+from source.views.repos_information_control import ReposInformationControl
 from essential import Essential
-from api.repos import RequestRepositories
+from source.api.repos import RequestRepositories
 
 class Window(Essential):
     def __init__(self) -> None:
-        self.app = QtWidgets.QApplication([])
+        self.app = QApplication([])
 
         # Forms
 

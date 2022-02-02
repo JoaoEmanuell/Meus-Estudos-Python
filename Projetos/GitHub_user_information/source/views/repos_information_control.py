@@ -1,4 +1,4 @@
-from api.license import RequestLicense
+from source.api.license import RequestLicense
 from PyQt5.QtWidgets import QMainWindow
 
 class ReposInformationControl():

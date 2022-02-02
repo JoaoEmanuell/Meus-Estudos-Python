@@ -13,10 +13,10 @@ class Essential():
         Returns:
             [ui]: [Interface loaded]
         """
-        path = join(Path().absolute(), '../layouts/')
+        path = join(Path().absolute(), './layouts/')
         return uic.loadUi(f'{path}{ui_file}.ui')
 
     def get_style_sheet(self) -> str:
         """Gets the style sheet"""
 
-        return open(join(Path().absolute(), '../style.qss'), 'r').read()
+        return open(join(Path().absolute(), './style.qss'), 'r').read()
