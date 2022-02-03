@@ -253,3 +253,6 @@ key.txt
 
 #Project
 converted_images/
+
+#Tests
+.pytest_cache/
