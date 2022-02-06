@@ -1,6 +1,9 @@
 from PIL import Image
 from pathlib import Path
-from os.path import join
+from os.path import join, getmtime
+from os import utime
+from datetime import datetime
+from time import mktime
 
 class ImageConvert():
     def __init__(self, IMAGENAME : str, NEWIMAGEFORMAT : str) -> None:
@@ -25,8 +28,10 @@ class ImageConvert():
         """
         try :
             with Image.open(self.name) as im:
+                self.mod_time = self.get_image_modify_date()
                 self.name = self.name.replace(self.IMAGE_FORMAT, self.NEW_IMAGE_FORMAT).split('/')[-1]
                 im.convert('RGB').save(f'{self.IMAGE_SAVE_DIRECTORY}/{self.name}') # Convert to RGB and save image
+                self.set_image_modify_date()
                 return 0
         except :
             return 1
@@ -46,3 +51,18 @@ class ImageConvert():
         """[Checks if the folder where the converted images will be saved exists, if not, this function will create the folder.]
         """        
         if not (Path('converted_images').exists()): Path('converted_images').mkdir()
+
+    def get_image_modify_date(self) -> float:
+        """[Get the image modify date]
+
+        Returns:
+            float: [mktime date of the image]
+        """        
+        date = getmtime(self.name)
+        date = datetime.fromtimestamp(date)
+        return mktime(date.timetuple())
+
+    def set_image_modify_date(self) -> None:
+        """[Set the image modify date]
+        """        
+        utime(f'{self.IMAGE_SAVE_DIRECTORY}/{self.name}', (self.mod_time, self.mod_time))
