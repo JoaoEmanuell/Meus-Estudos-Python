@@ -1,0 +1,47 @@
+#:kivy 2.0
+
+<Tela>:
+    BoxLayout:
+        orientation:'vertical'
+        id : box
+        BlueLabel:
+            id: start
+            text : 'Insira a url no campo abaixo'
+            font_size : 20
+            size_hint_y : None
+            width : 20
+        TextInput:
+            id : link
+            font_size : 20
+        BoxLayout:
+            orientation: 'horizontal'
+            id : format
+            size_hint_y : None
+            width : 40
+            ToggleButton :
+                id : mp3
+                text : 'MP3'
+                group:'format'
+            ToggleButton :
+                id : mp4
+                text : 'MP4'
+                group : 'format'
+        Button:
+            text:'Baixar Música ou playlist'
+            on_release : root.main()
+        BlueLabel:
+            id : output
+            text : ''
+            font_size : 15
+        ProgressBar:
+            id : progressbar
+            max : 100
+            value : 0
+
+<BlueLabel@Label>:
+    canvas.before :
+        Color :
+            rgba: 0.27, 0.79, 0.93, 0.9
+        Rectangle :
+            size : self.size
+            pos: self.pos
