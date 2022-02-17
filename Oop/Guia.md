@@ -8,6 +8,7 @@
     - [Construtor](#construtor)
   - [Instanciando uma classe](#instanciando-uma-classe)
   - [Métodos e atributos privados](#métodos-e-atributos-privados)
+  - [Getters e Setters](#getters-e-setters)
   
 # Classe
 
@@ -90,3 +91,13 @@ Para acessar é da mesma forma:
     print(self.__cpf)
 
 Valendo a regra de que só pode ser acessado dentro da classe
+
+## Getters e Setters
+
+Getters e Setters são funções que facilitam a leitura do código na parte de manipulação dos atributos, eles são definidos como  get_nome_atributo e set_nome_atributo.
+
+    def get_state(self) -> bool:
+        return self.__state
+
+    def set_state(self, state : bool) -> None:
+        self.__state = state

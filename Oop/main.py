@@ -1,20 +1,15 @@
-class Calculator:
-    def calculate(self, operation : str, num_1 : float, num_2 : float) -> None:
-        if operation == '+':
-            print(self.__add(num_1, num_2))
-        elif operation == '-':
-            print(self.__sub(num_1, num_2))
-        else :
-            print('Invalid operation')
+class Alarm:
+    def __init__(self, state : bool = False) -> None:
+        self.__state = state
 
-    def __add(self, num_1 : float, num_2 : float) -> float:
-        return (num_1 + num_2)
+    def get_state(self) -> bool:
+        return self.__state
 
-    def __sub(self,  num_1 : float, num_2 : float) -> float:
-        return (num_1 - num_2)
+    def set_state(self, state : bool) -> None:
+        self.__state = state
 
 if __name__ == '__main__':
-    calculator = Calculator()
-    calculator.calculate('+', 5, 7)
-    calculator.calculate('-', 5, 7)
-    calculator.calculate('+-', 5, 7)
+    alarm_one = Alarm()
+    print(alarm_one.get_state())
+    alarm_one.set_state(True)
+    print(alarm_one.get_state())
