@@ -7,6 +7,7 @@
   - [Métodos especiais](#métodos-especiais)
     - [Construtor](#construtor)
   - [Instanciando uma classe](#instanciando-uma-classe)
+  - [Métodos e atributos privados](#métodos-e-atributos-privados)
   
 # Classe
 
@@ -68,3 +69,24 @@ Assim sendo para acessar os métodos é só passar o objeto.nome_metodo(parametr
 
     controll.chose_channel(1)
     controll.room
+
+## Métodos e atributos privados
+
+Um método privado é um método que não pode ser acessado fora da classe, ele é definido como __ nome_metodo.
+
+    def __add(self, num_1 : float, num_2 : float) -> float:
+        return (num_1 + num_2)
+
+Para acessar ele é só colocar self.__nome_metodo(parametros), no caso ele só pode ser acessado dentro da classe.
+
+    self.__add(num_1, num_2)
+
+No caso do atributo é a mesma regra :
+
+    self.__atributo = valor
+
+Para acessar é da mesma forma:
+
+    print(self.__cpf)
+
+Valendo a regra de que só pode ser acessado dentro da classe

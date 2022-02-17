@@ -1,19 +1,20 @@
-class RemoteControll:
-    def __init__(self, television : str, room : str) -> None:
-        self.television = television
-        self.room = room
+class Calculator:
+    def calculate(self, operation : str, num_1 : float, num_2 : float) -> None:
+        if operation == '+':
+            print(self.__add(num_1, num_2))
+        elif operation == '-':
+            print(self.__sub(num_1, num_2))
+        else :
+            print('Invalid operation')
 
-    def forward_channel(self) -> None:
-        print(f"{self.television} in {self.room} is forwarding channel")
-    
-    def back_channel(self) -> None:
-        print(f"{self.television} in {self.room} is back channel")
+    def __add(self, num_1 : float, num_2 : float) -> float:
+        return (num_1 + num_2)
 
-    def choose_channel(self, channel : int) -> None:
-        print(f"{self.television} in {self.room} is chose channel {channel}")
+    def __sub(self,  num_1 : float, num_2 : float) -> float:
+        return (num_1 - num_2)
 
 if __name__ == '__main__':
-    controll = RemoteControll("Samsung", "Living Room")
-    controll.forward_channel()
-    controll.back_channel()
-    controll.choose_channel(10)
+    calculator = Calculator()
+    calculator.calculate('+', 5, 7)
+    calculator.calculate('-', 5, 7)
+    calculator.calculate('+-', 5, 7)
