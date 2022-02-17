@@ -9,6 +9,8 @@
   - [Instanciando uma classe](#instanciando-uma-classe)
   - [Métodos e atributos privados](#métodos-e-atributos-privados)
   - [Getters e Setters](#getters-e-setters)
+- [Solid](#solid)
+  - [SRP](#srp)
   
 # Classe
 
@@ -101,3 +103,29 @@ Getters e Setters são funções que facilitam a leitura do código na parte de 
 
     def set_state(self, state : bool) -> None:
         self.__state = state
+
+# Solid
+
+Solid é um acrônimo dos cinco primeiros princípios da programção orientada a objetos, eles são :
+
+    Single Responsibility Principle (SRP)
+    Open/Closed Principle (OCP)
+    Liskov Substitution Principle (LSP)
+    Interface Segregation Principle (ISP)
+    Dependency Inversion Principle (DIP)
+
+## SRP
+
+O SRP (Principio de responsabilidade unica) definie que um método deve ter uma unica responsabilidade, isso é, ele deve realizar apenas um trabalho *um exemplo que pode ser aplicado é o de uma função gigantesca que pode ser quebrada em varias outras funções cada uma com uma responsabilidade única*
+
+    class CadastralSystem:
+    def register(self, name : str, age : int) -> None:
+        if self.__verify_data(name, age):
+            self.__save_user(name, age)
+        else :
+            self.__indicate_error()
+
+    def __verify_data(self, name : str, age : int) -> bool:
+        if isinstance(name, str) and isinstance(age, int) : return True # Isinstance é uma função que retornar True caso o tipo do valor seja igual ao tipo passado como parametro, senão ela retorna False.
+
+No caso acima a função de registro está cuidando apenas do registro, quem faz a validação são outras funções.
