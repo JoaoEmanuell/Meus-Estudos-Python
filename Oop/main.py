@@ -1,27 +1,29 @@
-class Circus:
-    def introduce(self, presenter : any) -> None:
-        presenter.introduce_show()
+from typing import Type
+class House:
+    def __init__(self) -> None:
+        self.__address = 'Aurora Avenue 1'
 
-class Juggler:
+    def turn_on_lights(self) -> None:
+        print('Turning on lights in the house')
 
-    def introduce_show(self) -> None:
-        print("Juggler introduce your show")
+    def get_address(self) -> str:
+        return self.__address
 
-class Clown:
+class Person:
+    def __init__(self, name : str, place : Type[House]) -> None:
+        self.__name = name
+        self.__place = place
 
-    def introduce_show(self) -> None:
-        print("Clown introduce your show")
+    def enter_the_place(self) -> None:
+        self.__place.turn_on_lights()
 
-class Tamer:
-    
-        def introduce_show(self) -> None:
-            print("Tamer introduce your show")
+    def introduce_place(self) -> None:
+        address = self.__place.get_address()
+        print(f'Hi, my name is {self.__name} and I live in {address}')
         
 if __name__ == '__main__':
-    circus = Circus()
-    juggler = Juggler()
-    clown = Clown()
-    tamer = Tamer()
-    circus.introduce(juggler)
-    circus.introduce(clown)
-    circus.introduce(tamer)
+    house = House()
+    ana = Person('Ana', house)
+    
+    ana.introduce_place()
+    ana.enter_the_place()

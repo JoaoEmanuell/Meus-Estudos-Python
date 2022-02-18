@@ -15,6 +15,7 @@
   - [Associações de classes](#associações-de-classes)
     - [Definindo o tipo do paramentro](#definindo-o-tipo-do-paramentro)
     - [Exemplo :](#exemplo-)
+  - [Injeção de dependência](#injeção-de-dependência)
 - [Solid](#solid)
   - [SRP](#srp)
   - [OCP](#ocp)
@@ -205,6 +206,27 @@ A variavel *light_switch_room* é uma um objeto da classe *LightSwitch*, ou seja
     Jhon.turn_on_light(light_switch_room)
         
 A pessoa liga a luz pela função dela [da classe pessoa], ao passamos a variavel *light_switch_room* como paramentro, ela será automaticamente associada a classe Person, dessa forma poderemos utilzar todos os métodos da classe *LightSwitch* chamando : *nome_paramentro.função()*.
+
+## Injeção de dependência
+
+Injeção de dependência é quando uma *classe* depende de outra *classe* para funcionar, sendo assim se algo da *classe a* for mudado a *classe b* que depende dela irá parar de funcionar.
+
+Exemplo : 
+
+    from typing import Type
+
+    class House:
+        def __init__(self) -> None:
+            self.__address = 'Aurora Avenue 1'
+
+Primeiramamente criamos a *classe House* que por sua vez não depende de ninguem.
+
+    class Person:
+        def __init__(self, name : str, place : Type[House]) -> None:
+            self.__name = name
+            self.__place = place
+
+Após isso criamos a *classe Person*, o *init* de Person é 100% depedente de *House*, ou seja, se a *classe House* sofrer uma alteração a *classe Person* pode não funcionar mais e todo o código deve ser reescrito para se adequar as mudanças.
 
 ****
 # Solid
