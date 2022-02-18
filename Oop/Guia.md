@@ -17,6 +17,7 @@
     - [Exemplo :](#exemplo-)
 - [Solid](#solid)
   - [SRP](#srp)
+  - [OCP](#ocp)
   
 # Classe
 
@@ -218,7 +219,7 @@ Solid é um acrônimo dos cinco primeiros princípios da programção orientada 
 
 ## SRP
 
-O SRP (Principio de responsabilidade unica) definie que um método deve ter uma unica responsabilidade, isso é, ele deve realizar apenas um trabalho *um exemplo que pode ser aplicado é o de uma função gigantesca que pode ser quebrada em varias outras funções cada uma com uma responsabilidade única*
+O SRP (Principio de responsabilidade unica) define que um método deve ter uma unica responsabilidade, isso é, ele deve realizar apenas um trabalho *um exemplo que pode ser aplicado é o de uma função gigantesca que pode ser quebrada em varias outras funções cada uma com uma responsabilidade única*
 
     class CadastralSystem:
     def register(self, name : str, age : int) -> None:
@@ -231,3 +232,53 @@ O SRP (Principio de responsabilidade unica) definie que um método deve ter uma 
         if isinstance(name, str) and isinstance(age, int) : return True # Isinstance é uma função que retornar True caso o tipo do valor seja igual ao tipo passado como parametro, senão ela retorna False.
 
 No caso acima a função de registro está cuidando apenas do registro, quem faz a validação são outras funções.
+
+## OCP
+
+O OCP (Principio de abertura/fechamento) define que uma classe deve ser aberta para extensão e fechada para modificação, isso é, uma classe deve ser reutilizada e não modificada.
+
+Um exemplo que pode ser dado é de um circo.
+
+    class Circus:
+        def introduce(self, presenter : int) -> None:
+            if presenter == 1 :
+                Clow().introduce_show()
+
+            elif presenter == 2 :
+        . . .
+
+A forma demonstrada acima é inficiente, pois para cada um dos apresentadores, um novo *if* deve ser realizado, fazendo assim o código ficar grande, e não é uma boa prática, uma forma de reduzir isso seria se *presenter* fosse sempre uma instancia de uma classe qualquer que tivesse o metodo de *introduce_show*.
+
+Dessa forma seria só criar uma classe qualquer que possua o método *introduce_show* e passar a mesma como paramentro.
+
+    class Circus:
+        def introduce(self, presenter : any) -> None:
+            presenter.introduce_show()
+
+Dessa forma se uma classe tiver esse método e for passada como paramentro automaticamente ele será chamado, dessa forma a *classe* será uma extensão da classe *Circus*.
+
+    class Juggler:
+
+        def introduce_show(self) -> None:
+            print("Juggler introduce your show")
+
+    if __name__ == '__main__':
+        circus = Circus()
+        juggler = Juggler()
+        circus.introduce(juggler)
+
+Observe agora que não estamos precisando de milhares de *ifs* para verificar cada estado, precisamos apensar de uma classe que possua o método *introduce_show* e passar como paramentro a classe propia classe.
+
+Dessa forma milhares de classes podem ser criadas, desde que contenham o método desejado, assim quando ela for passada como paramentro esse método será chamado.
+
+    class Clown:
+
+        def introduce_show(self) -> None:
+            print("Clown introduce your show")
+
+    class Tamer:
+    
+        def introduce_show(self) -> None:
+            print("Tamer introduce your show")
+
+Dessa forma as classes criadas seriam uma extensão de *Circus*, sendo assim *Circus* está fechada para modificação mais aberta para extensão [desde que as classes extensoras possuam o método desejado].
