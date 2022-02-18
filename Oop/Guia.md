@@ -12,6 +12,9 @@
   - [Variaveis de classe](#variaveis-de-classe)
   - [Métodos de classe](#métodos-de-classe)
   - [Métodos estáticos](#métodos-estáticos)
+  - [Associações de classes](#associações-de-classes)
+    - [Definindo o tipo do paramentro](#definindo-o-tipo-do-paramentro)
+    - [Exemplo :](#exemplo-)
 - [Solid](#solid)
   - [SRP](#srp)
   
@@ -159,9 +162,50 @@ Ele pode tanto ser acessado por um *objeto* que instancia a *classe*, quanto por
 
     MyClass.error_500()
     MyClass().error_500()
-    
+
     # Ambos retornam o mesmo resultado.
 
+## Associações de classes
+
+Associações de *classes* são quando as *classes* interagem entre si por uso de métodos de outras ou tipos, assim sendo se o tipo de um *paramentro* de uma função de uma *classe* for uma outra *classe* ele será automaticamente associado a essa *classe*, podendo chamar os métodos da mesma.
+
+### Definindo o tipo do paramentro
+
+Para definir o tipo do paramentro como sendo de uma classe importamos de typing o *Type* e utilizamos o *Type[classe]* para definir o tipo do paramentro.
+
+    from typing import Type
+
+    def turn_on_light(self, light_switch : Type[LightSwitch]) -> None:
+        . . .
+
+### Exemplo : 
+
+    from typing import Type
+
+    class LightSwitch:
+        def __init__(self, room : str) -> None:
+            self.__room = room
+
+        def light_up(self) -> None:
+            print(f"The light in the {self.__room} is on")
+
+    class Person:
+        def turn_on_light(self, light_switch : Type[LightSwitch]) -> None:
+            light_switch.light_up()
+
+Nesse método temos a função de ligar a luz, note que o paramentro *light_switch* é uma *classe* no caso o tipo de *classe* é do tipo *LightSwitch*, dessa forma ao passar o interruptor de luz como paramentro ele será automaticamente associado a *classe Person*, dessa forma esse paramentro poderá utilzar todos os métodos de *LightSwitch*.
+
+    if __name__ == '__main__':
+        Jhon = Person()
+        light_switch_room = LightSwitch("room")
+        
+A variavel *light_switch_room* é uma um objeto da classe *LightSwitch*, ou seja, ela contem todos os métodos da classe *LightSwitch*.
+
+    Jhon.turn_on_light(light_switch_room)
+        
+A pessoa liga a luz pela função dela [da classe pessoa], ao passamos a variavel *light_switch_room* como paramentro, ela será automaticamente associada a classe Person, dessa forma poderemos utilzar todos os métodos da classe *LightSwitch* chamando : *nome_paramentro.função()*.
+
+****
 # Solid
 
 Solid é um acrônimo dos cinco primeiros princípios da programção orientada a objetos, eles são :
