@@ -9,6 +9,8 @@
   - [Instanciando uma classe](#instanciando-uma-classe)
   - [Métodos e atributos privados](#métodos-e-atributos-privados)
   - [Getters e Setters](#getters-e-setters)
+  - [Variaveis de classe](#variaveis-de-classe)
+  - [Métodos de classe](#métodos-de-classe)
 - [Solid](#solid)
   - [SRP](#srp)
   
@@ -103,6 +105,39 @@ Getters e Setters são funções que facilitam a leitura do código na parte de 
 
     def set_state(self, state : bool) -> None:
         self.__state = state
+
+## Variaveis de classe
+
+Variaveis de classe são variaveis globais dentro da classe, ou seja todo objeto irá herdar elas, mas ao mesmo tempo se a variavel for reatribuida todos os objetos irão receber o novo valor dela, mesmo se eles já tiverem sido declarados, para acessar ou alterar a variavel dentro do contexto da classe coloque o self *nesse caso ela só será alterada para o objeto*, fora dela é só colocar o nome da classe e o nome da variavel.
+
+    class MyClass:
+
+        variavel = 'valor'
+
+    # Alterando
+
+    # Esse altera de forma global, todos os objetos irão receber esse valor.
+    MyClass.variavel = 'novo valor'
+
+    obj = MyClass()
+
+    # Esse altera de forma local, no contexto do objeto, somente esse objeto irá receber a alteração de valor
+
+    obj.variavel = 'novo valor'
+
+## Métodos de classe
+
+Métodos de classe são métodos decorados com o *classmethod* basicamente uma alteração feita em uma variavel de classe irá alterar todos os objetos, isso pois decoramos com o classmethod, quando utilizamos ele não podemos utilzar o self mas sim o *cls* pois o *cls* se refere diretamente a nossa classe.
+
+    @classmethod
+    def change_static(cls, static : str) -> None:
+        cls.static = static 
+
+Utilzar o *cls* seria a mesma coisa de fazer : 
+
+    @classmethod
+    def change_static(cls, static : str) -> None:
+        MyClass.static = static
 
 # Solid
 

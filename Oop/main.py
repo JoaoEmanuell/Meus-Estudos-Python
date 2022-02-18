@@ -1,20 +1,22 @@
-class CadastralSystem:
-    def register(self, name : str, age : int) -> None:
-        if self.__verify_data(name, age):
-            self.__save_user(name, age)
-        else :
-            self.__indicate_error()
+class Store:
+    tariff = 2
+    def __init__(self, address : str) -> None:
+        self.__address = address
 
-    def __verify_data(self, name : str, age : int) -> bool:
-        if isinstance(name, str) and isinstance(age, int) : return True # Isinstance is a function that returns True if the object is of the specified type
-        return False
+    def show_address(self) -> None:
+        print(self.__address)
 
-    def __save_user(self, name : str, age : int) -> None:
-        print(f"Save, Name : {name}, Age : {age}")
+    @classmethod
+    def sell(cls, product : str, amount : int) -> int:
+        return cls.tariff * amount
 
-    def __indicate_error(self) -> None:
-        print("Error, Invalid Input")
+    @classmethod
+    def set_tariff(cls, tariff : int) -> None:
+        cls.tariff = tariff
 
 if __name__ == '__main__':
-    user = CadastralSystem()
-    user.register("John", 20)
+    my_store_1 = Store('Rua 1')
+    my_store_2 = Store('Rua 2')
+    print(my_store_1.sell('Coca-Cola', 2))
+    my_store_2.set_tariff(3)
+    print(my_store_1.sell('Coca-Cola', 2))
