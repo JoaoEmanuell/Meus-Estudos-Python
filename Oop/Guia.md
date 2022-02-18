@@ -16,6 +16,7 @@
     - [Definindo o tipo do paramentro](#definindo-o-tipo-do-paramentro)
     - [Exemplo :](#exemplo-)
   - [Injeção de dependência](#injeção-de-dependência)
+  - [Associação bilateral](#associação-bilateral)
 - [Solid](#solid)
   - [SRP](#srp)
   - [OCP](#ocp)
@@ -227,6 +228,64 @@ Primeiramamente criamos a *classe House* que por sua vez não depende de ninguem
             self.__place = place
 
 Após isso criamos a *classe Person*, o *init* de Person é 100% depedente de *House*, ou seja, se a *classe House* sofrer uma alteração a *classe Person* pode não funcionar mais e todo o código deve ser reescrito para se adequar as mudanças.
+
+## Associação bilateral
+
+Associação bilateral é quando duas classes dependem uma da outra para existir.
+
+Exemplo : 
+
+    class House:
+        def __init__(self) -> None:
+            self.__address = '123 Fake Street'
+            self.__owner = None
+
+        def turn_on_lights(self) -> None:
+            print('Turning on lights in the house')
+
+        def get_address(self) -> str:
+            return self.__address
+
+        def get_owner(self) -> any:
+            return self.__owner
+
+        def set_owner(self, owner : any) -> None:
+            self.__owner = owner
+
+A classe house está associada a um objeto chamado *owner*.
+
+    class Person:
+        def __init__(self, name : str) -> None:
+            self.__name = name
+            self.__place = None
+
+        def enter_the_place(self) -> None:
+            self.__place.turn_on_lights()
+
+        def introduce_place(self) -> None:
+            address = self.__place.get_address()
+            print(f'Hi, my name is {self.__name} and I live in {address}')
+
+        def set_place(self, place : any) -> None:
+            self.__place = place
+
+Já a classe *Person* está associada a um objeto chamado de place, assim sendo quando a função *enter_the_place* for chamada ela irá executar o método *turn_on_lights* de *house*.
+
+    house = House()
+    person = Person('Jhon')
+    house.set_owner(person)
+    person.set_place(house)
+
+Acima dizemos que a casa pertence a pessoa e que a pessoa vive na casa.
+
+    person.enter_the_place()
+    person.introduce_place()
+
+Quando chamamos o método get_owner da classe *House* ele retorna o objeto *person* que é o dono da casa.
+
+    owner = house.get_owner()
+
+Sendo assim podemos acessar métodos dele como : *owner.introduce_place()* e *owner.enter_the_place()*, assim gerando uma associação bilateral.
 
 ****
 # Solid
