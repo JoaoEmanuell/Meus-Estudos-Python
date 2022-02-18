@@ -11,6 +11,7 @@
   - [Getters e Setters](#getters-e-setters)
   - [Variaveis de classe](#variaveis-de-classe)
   - [Métodos de classe](#métodos-de-classe)
+  - [Métodos estáticos](#métodos-estáticos)
 - [Solid](#solid)
   - [SRP](#srp)
   
@@ -138,6 +139,28 @@ Utilzar o *cls* seria a mesma coisa de fazer :
     @classmethod
     def change_static(cls, static : str) -> None:
         MyClass.static = static
+
+## Métodos estáticos
+
+O método estatico é utilzado principalmente quando você não quer declarar a classe, uma vez que ele não depende das dependencias dela, dessa forma, ele pode ser utilizado em qualquer lugar mesmo sendo um método da classe.
+
+O método estático não recebe *self* ou *cls*
+
+Para criar um método estatico é só decorar uma função com o decorador *staticmethod*
+
+    @staticmethod
+    def error_500() -> None:
+        print("Internal server error")
+
+Ele pode tanto ser acessado por um *objeto* que instancia a *classe*, quanto por ele por si só [sem instanicar a *classe*] :
+
+    obj = MyClass()
+    obj.error_500()
+
+    MyClass.error_500()
+    MyClass().error_500()
+    
+    # Ambos retornam o mesmo resultado.
 
 # Solid
 
