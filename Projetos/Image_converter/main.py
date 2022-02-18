@@ -1,11 +1,17 @@
 # Imports
+
+# Global Imports
+
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QFileDialog, QListWidgetItem
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize
 from pathlib import Path
-from source.image_convert_thread import ImageConvertThread
 from os import listdir
+
+# Local Imports
+
+from source import ImageConvertThread
 
 class Window():
     def __init__(self):
