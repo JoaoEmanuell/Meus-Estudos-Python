@@ -20,6 +20,7 @@
 - [Solid](#solid)
   - [SRP](#srp)
   - [OCP](#ocp)
+  - [LSP](#lsp)
 - [Herança](#herança)
   - [init](#init)
   - [Encapsulamento](#encapsulamento)
@@ -368,6 +369,32 @@ Dessa forma milhares de classes podem ser criadas, desde que contenham o método
             print("Tamer introduce your show")
 
 Dessa forma as classes criadas seriam uma extensão de *Circus*, sendo assim *Circus* está fechada para modificação mais aberta para extensão [desde que as classes extensoras possuam o método desejado].
+
+## LSP
+
+O princípio LSP (Principio de substituição de Liskov) define que uma classe deve ser substituída por outra que se comporta de forma igual, isso é a classe mãe deve ser a mais generica possivel e as classes filhas não devem subsitituir métodos das classes mãe mas sim ter os seus propios métodos.
+
+    class Animal:
+        def __init__(self, specie : str) -> None:
+            self.__specie = specie
+
+        def eat(self) -> None:
+            print(f"{self.__specie} is eating")
+
+A classe Animal é a mais generica de todas.
+
+    class Penguin(Animal):
+        def __init__(self) -> None:
+            super().__init__("Penguin")
+
+A classe Pinguim herda de Animal, perceba que ela não subistitui o método *eat* da classe mãe.
+
+Agora se eu tiver uma função que receba como paramentro algo do tipo Animal e chame um método de animal, automaticamete quando eu passar o animal de herança ela irá executar o método de forma tranquila e sem bugs.
+
+    def observer(self, animal : Type[Animal]) -> None:
+        animal.eat()
+
+    observer(Penguin()) # Como Penguim herda de animal ele tem o método eat, portanto o programa irá executar o método de forma tranquila.
 
 # Herança
 

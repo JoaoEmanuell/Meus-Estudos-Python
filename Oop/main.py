@@ -1,20 +1,30 @@
-class DatabaseConnection:
+from typing import Type
+class Animal:
+    def __init__(self, specie : str) -> None:
+        self.__specie = specie
+
+    def eat(self) -> None:
+        print(f"{self.__specie} is eating")
+    
+    def sleep(self) -> None:
+        print(f"{self.__specie} is sleeping")
+    
+    def walk(self) -> None:
+        print(f"{self.__specie} is walking")
+
+class Penguin(Animal):
     def __init__(self) -> None:
-        self.__database = 'MongoDB'
-        self._con = '//localhost:27017'
-        self.user = 'root'
+        super().__init__("Penguin")
 
-    def get_database(self) -> None:
-        print(self.__database)
-
-    def _testing_connection(self) -> None:
-        print(self._con)
-
-class Repository(DatabaseConnection):
+class Cat(Animal):
     def __init__(self) -> None:
-        super().__init__()
+        super().__init__("Cat")
+
+class Person():
+    def observer(self, animal : Type[Animal]) -> None:
+        animal.walk()
 
 if __name__ == '__main__':
-    python = Repository()
-    python.get_database()
-    python._testing_connection()
+    jhon = Person()
+    jhon.observer(Penguin())
+    jhon.observer(Cat())
