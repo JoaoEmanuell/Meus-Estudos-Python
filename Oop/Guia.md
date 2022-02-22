@@ -20,6 +20,8 @@
 - [Solid](#solid)
   - [SRP](#srp)
   - [OCP](#ocp)
+- [Herança](#herança)
+  - [init](#init)
   
 # Classe
 
@@ -363,3 +365,28 @@ Dessa forma milhares de classes podem ser criadas, desde que contenham o método
             print("Tamer introduce your show")
 
 Dessa forma as classes criadas seriam uma extensão de *Circus*, sendo assim *Circus* está fechada para modificação mais aberta para extensão [desde que as classes extensoras possuam o método desejado].
+
+# Herança
+
+Herança é quando uma classe herda da outra, a classe que herdou irá ter acesso a todos os métodos e atributos da classe mãe.
+
+    class Mon:
+        def __init__(self) -> None:
+            self.address = 'Fake street'
+            self.last_name = 'Silva'
+
+        def eat(self) -> None:
+            print('I am eating')
+
+    class Daughter (Mon) : # Classe filha herda da classe mãe
+        . . .
+
+## init
+
+O *init* da classe filha deve ser diferente do *init* de uma classe normal :
+
+    class Daughter (Mon) :
+        def __init__(self) -> None:
+            super().__init__()
+
+A classe herdeira pode ter outros métodos que são propios dela, e pode acessar métodos da classe mãe.

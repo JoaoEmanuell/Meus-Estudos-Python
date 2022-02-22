@@ -1,12 +1,20 @@
-from source import House, Person
-        
-if __name__ == '__main__':
-    ana_house = House()
-    ana = Person('Ana')
-    
-    ana.set_place(ana_house)
-    ana_house.set_owner(ana)
+from source import Mon
 
-    owner = ana_house.get_owner()
-    owner.introduce_yourself()
-    ana.introduce_place()
+class Daughter(Mon):
+    def __init__(self) -> None:
+        super().__init__()
+
+    def play(self, game : str) -> None :
+        print(f'I am playing {game}')
+        
+class GrandDaughter(Daughter):
+    def __init__(self) -> None:
+        super().__init__()
+
+
+if __name__ == '__main__':
+    daughter = Daughter()
+    daughter.play('Chess')
+    grand_daughter = GrandDaughter()
+    grand_daughter.play('Chess')
+    print(daughter.address)
