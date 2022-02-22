@@ -1,20 +1,20 @@
-from source import Mon
+class DatabaseConnection:
+    def __init__(self) -> None:
+        self.__database = 'MongoDB'
+        self._con = '//localhost:27017'
+        self.user = 'root'
 
-class Daughter(Mon):
+    def get_database(self) -> None:
+        print(self.__database)
+
+    def _testing_connection(self) -> None:
+        print(self._con)
+
+class Repository(DatabaseConnection):
     def __init__(self) -> None:
         super().__init__()
-
-    def play(self, game : str) -> None :
-        print(f'I am playing {game}')
-        
-class GrandDaughter(Daughter):
-    def __init__(self) -> None:
-        super().__init__()
-
 
 if __name__ == '__main__':
-    daughter = Daughter()
-    daughter.play('Chess')
-    grand_daughter = GrandDaughter()
-    grand_daughter.play('Chess')
-    print(daughter.address)
+    python = Repository()
+    python.get_database()
+    python._testing_connection()

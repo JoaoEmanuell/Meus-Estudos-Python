@@ -22,6 +22,9 @@
   - [OCP](#ocp)
 - [Herança](#herança)
   - [init](#init)
+  - [Encapsulamento](#encapsulamento)
+    - [Privado](#privado)
+    - [Protegido](#protegido)
   
 # Classe
 
@@ -390,3 +393,39 @@ O *init* da classe filha deve ser diferente do *init* de uma classe normal :
             super().__init__()
 
 A classe herdeira pode ter outros métodos que são propios dela, e pode acessar métodos da classe mãe.
+
+## Encapsulamento
+
+### Privado
+
+No caso da herança o encapsulamento funciona de forma quase igual ao sistema de classes normais, com exeção que elementos privados não podem ser acessados pela classe filha.
+
+    class DatabaseConnection:
+        def __init__(self) -> None:
+            self.__database = 'MongoDB' # Esse elemento pode ser pela classe DatabaseConnection mas não pode ser acessado pela classe filha.
+
+Mas caso tenhamos um método público (ou protegido) que pertence a classe mãe, esse método poderá acessar os elementos privados
+
+    def get_database(self) -> None:
+        print(self.__database)
+
+### Protegido
+
+Elementos com um *_* na frente do nome são elementos protegidos, diferentes de outras linguagens que elementos protegidos só podem ser acessados pela classe mãe e pelas suas heranças, no python o elemento pode também ser acessado pelo objeto.
+
+    class DatabaseConnection:
+        def __init__(self) -> None:
+            self._con = '//localhost:27017'
+
+        def _testing_connection(self) -> None:
+            print(self._con)
+
+    class Repository(DatabaseConnection):
+        def __init__(self) -> None:
+            super().__init__()
+
+    python = Repository()
+
+    python._testing_connection()
+
+No geral eles são usados como convenção para os programadores, indicando que o elemento não deve ser acessado de forá da classe.
