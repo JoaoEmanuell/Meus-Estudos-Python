@@ -1,30 +1,17 @@
-from typing import Type
-class Animal:
-    def __init__(self, specie : str) -> None:
-        self.__specie = specie
+class PersonA:
+    def introduce(self) -> None:
+        print("I am a PersonA")
 
-    def eat(self) -> None:
-        print(f"{self.__specie} is eating")
-    
-    def sleep(self) -> None:
-        print(f"{self.__specie} is sleeping")
-    
-    def walk(self) -> None:
-        print(f"{self.__specie} is walking")
+class PersonB(PersonA):
+    def introduce(self) -> None:
+        print("I am a PersonB")
 
-class Penguin(Animal):
+class PersonC(PersonB):
     def __init__(self) -> None:
-        super().__init__("Penguin")
+        super().__init__()
 
-class Cat(Animal):
-    def __init__(self) -> None:
-        super().__init__("Cat")
-
-class Person():
-    def observer(self, animal : Type[Animal]) -> None:
-        animal.walk()
 
 if __name__ == '__main__':
-    jhon = Person()
-    jhon.observer(Penguin())
-    jhon.observer(Cat())
+    PersonA().introduce()
+    PersonB().introduce()
+    PersonC().introduce()

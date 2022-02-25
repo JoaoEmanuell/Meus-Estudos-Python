@@ -26,6 +26,7 @@
   - [Encapsulamento](#encapsulamento)
     - [Privado](#privado)
     - [Protegido](#protegido)
+- [Polimorfismo](#polimorfismo)
   
 # Classe
 
@@ -456,3 +457,23 @@ Elementos com um *_* na frente do nome são elementos protegidos, diferentes de 
     python._testing_connection()
 
 No geral eles são usados como convenção para os programadores, indicando que o elemento não deve ser acessado de forá da classe.
+
+# Polimorfismo
+
+Polimorfismo é quando uma classe que é uma herança subistitui métodos da classe mãe por métodos dela.
+
+    # Classe mãe
+
+    class PersonA:
+
+        def introduce(self) -> None:
+            print("I am a PersonA")
+
+    # Classe filha
+
+    class PersonB(PersonA):
+
+        def introduce(self) -> None:
+            print("I am a PersonB")
+
+Observe que a *classe filha* subsitui o método da *classe mãe*, dessa forma ao chamar o *introduce* da *classe filha* ele irá executar o método da *classe filha*, sendo assim o resultado final vai ser diferente do esperado, podendo em alguns casos quebrar o código.
