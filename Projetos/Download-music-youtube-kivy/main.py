@@ -2,11 +2,11 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.clock import mainthread
+from kivy.utils import platform
 import download
 from threading import Thread
 import urllib
 import urllib.request
-from time import sleep
 
 # Android
 
@@ -19,6 +19,7 @@ except:
 finally:
     class Tela(Screen):
         def __init__(self, **kwargs):
+            self.get_intent()
             super().__init__(**kwargs)
         def main(self):
             try :
@@ -55,6 +56,22 @@ finally:
         def progressbar(max,percent):
             App.get_running_app().root.ids.progressbar.max = int(max)
             App.get_running_app().root.ids.progressbar.value = int(percent)
+
+        def get_intent(self):
+            if platform == 'android':
+                from jnius import autoclass
+                Intent = autoclass('android.content.Intent')
+                String = autoclass('java.lang.String')
+                # Uri = autoclass('android.net.Uri')
+                print(f'Intent : {Intent}')
+                intent = Intent()
+                print(f'intent : {intent}')
+                url = intent.getType()
+                print(f'URL PYTHON : {url}')
+                print(f'ACTION : {intent.getAction()}')
+
+        def print_intent(self):
+            pass
 
     class Main(App):
         def build(self):
