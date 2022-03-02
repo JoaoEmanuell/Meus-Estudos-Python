@@ -1,12 +1,16 @@
+# Global imports
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.clock import mainthread
 from kivy.utils import platform
-import download
 from threading import Thread
 import urllib
 import urllib.request
+
+# Local imports
+import download
+from intent import Intent
 
 # Android
 
@@ -20,7 +24,8 @@ finally:
     class Tela(Screen):
         def __init__(self, **kwargs):
             super().__init__(**kwargs)
-            self.verify_message_at_startup()
+            # self.verify_message_at_startup()
+            self.ids.link.text = Intent(platform).get_intent_text()
         def main(self):
             try :
                 urllib.request.urlopen('https://www.youtube.com')
@@ -56,16 +61,6 @@ finally:
         def progressbar(max,percent):
             App.get_running_app().root.ids.progressbar.max = int(max)
             App.get_running_app().root.ids.progressbar.value = int(percent)
-
-        def verify_message_at_startup(self):
-            # https://github.com/olivier-boesch/intent-demo-for-kivy/tree/c2c36a70d3ca15c792d7b8a1811a3482ba6fe6b1
-            if platform == 'android' :
-                from jnius import autoclass
-                PythonActivity = autoclass('org.kivy.android.PythonActivity')
-                Intent = autoclass('android.content.Intent')
-                activity = PythonActivity.mActivity
-                intent = activity.getIntent()
-                self.ids.link.text = str(intent.getStringExtra(Intent.EXTRA_TEXT)) # Get the text
 
     class Main(App):
         def build(self):
