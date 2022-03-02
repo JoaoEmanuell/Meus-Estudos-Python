@@ -19,8 +19,8 @@ except:
 finally:
     class Tela(Screen):
         def __init__(self, **kwargs):
-            self.get_intent()
             super().__init__(**kwargs)
+            self.verify_message_at_startup()
         def main(self):
             try :
                 urllib.request.urlopen('https://www.youtube.com')
@@ -57,21 +57,15 @@ finally:
             App.get_running_app().root.ids.progressbar.max = int(max)
             App.get_running_app().root.ids.progressbar.value = int(percent)
 
-        def get_intent(self):
-            if platform == 'android':
+        def verify_message_at_startup(self):
+            # https://github.com/olivier-boesch/intent-demo-for-kivy/tree/c2c36a70d3ca15c792d7b8a1811a3482ba6fe6b1
+            if platform == 'android' :
                 from jnius import autoclass
+                PythonActivity = autoclass('org.kivy.android.PythonActivity')
                 Intent = autoclass('android.content.Intent')
-                String = autoclass('java.lang.String')
-                # Uri = autoclass('android.net.Uri')
-                print(f'Intent : {Intent}')
-                intent = Intent()
-                print(f'intent : {intent}')
-                url = intent.getType()
-                print(f'URL PYTHON : {url}')
-                print(f'ACTION : {intent.getAction()}')
-
-        def print_intent(self):
-            pass
+                activity = PythonActivity.mActivity
+                intent = activity.getIntent()
+                self.ids.link.text = str(intent.getStringExtra(Intent.EXTRA_TEXT)) # Get the text
 
     class Main(App):
         def build(self):
