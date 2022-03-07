@@ -1,1 +1,1 @@
-from .abs_class import AbstractClass
+from .shapes import ShapesInterface

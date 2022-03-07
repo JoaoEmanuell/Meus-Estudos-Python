@@ -29,6 +29,9 @@
 - [Polimorfismo](#polimorfismo)
 - [Classe Abstrata](#classe-abstrata)
   - [Métodos Abstratos](#métodos-abstratos)
+- [Interfaces](#interfaces)
+  - [Implementado uma interface](#implementado-uma-interface)
+  - [Demonstrando na pratica](#demonstrando-na-pratica)
   
 # Classe
 
@@ -510,3 +513,68 @@ Agora a classe filha deve obrigatoriamente implementar o abstract_method.
 
     def abstract_method(self) -> None:
         print("Implementing abstract method")
+
+# Interfaces
+
+Interfaces são classes que servem como moldes para outras classes, semelhantes as classes abstratas.
+
+No python não temos uma estrutura que é realmente interface, mas quando uma classe abstrata possui somentes métodos abstratos e herda de *ABC*, ela se torna uma interface 
+
+    from abc import ABC, abstractmethod
+
+    class Interface(ABC) : 
+        @abstractmethod
+        def name_method(self) -> type :
+            raise NotImplementedError # Coloque isso para causar um erro caso o método não seja implementado.
+
+Exemplo :
+
+    from abc import ABC, abstractmethod
+
+    class ShapesInterface(ABC) : 
+        @abstractmethod
+        def get_perimeter(self) -> float :
+            raise NotImplementedError
+
+        def get_area(self) -> float :
+            raise NotImplementedError
+
+A interface garante que as classes filhas terão os métodos da classe mãe, assim deixando o código muito mais simplificado.
+
+## Implementado uma interface
+
+Quando uma classe herda uma interface dizemos que ela está implementado a interface e não herdando ela.
+
+    class GroundSquare(ShapesInterface) : 
+        def __init__(self, shape : int = 10) -> None:
+            self.shape = shape
+            super().__init__()
+
+        def get_area(self) -> int:
+            return self.shape ** 2
+
+        def get_perimeter(self) -> int:
+            return 4 * self.shape
+
+## Demonstrando na pratica
+
+    from typing import Type
+    
+    class Enginer:
+
+        def measure_perimeter(self, ground : Type[ShapesInterface]) -> float:
+        return ground.get_perimeter()
+
+        def measure_area(self, ground : Type[ShapesInterface]) -> float:
+            return ground.get_area()
+
+Ao utilzamos o Type e passamos uma classe, normalmente isso é considerado uma injeção de dependencia, porém como o tipo que estamos passando é uma interface, isso deixa de ser uma injeção de dependencia, pois a interface garante que aquele método existe.
+
+Sendo assim o engenheiro pode utilizar o método da interface independente da classe que for passada [desde claro que ela implemente a interface].
+
+    square = GroundSquare()
+    rectangle = GroundRectangle()
+    enginer = Enginer()
+
+    print(enginer.measure_perimeter(square))
+    print(enginer.measure_area(rectangle))
