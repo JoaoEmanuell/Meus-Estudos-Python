@@ -1,1 +1,1 @@
-from .Mon import Mon
+from .abs_class import AbstractClass

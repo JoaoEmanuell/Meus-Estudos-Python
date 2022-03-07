@@ -27,6 +27,8 @@
     - [Privado](#privado)
     - [Protegido](#protegido)
 - [Polimorfismo](#polimorfismo)
+- [Classe Abstrata](#classe-abstrata)
+  - [Métodos Abstratos](#métodos-abstratos)
   
 # Classe
 
@@ -477,3 +479,34 @@ Polimorfismo é quando uma classe que é uma herança subistitui métodos da cla
             print("I am a PersonB")
 
 Observe que a *classe filha* subsitui o método da *classe mãe*, dessa forma ao chamar o *introduce* da *classe filha* ele irá executar o método da *classe filha*, sendo assim o resultado final vai ser diferente do esperado, podendo em alguns casos quebrar o código.
+
+# Classe Abstrata
+
+Uma classe abstrata é uma classe que não pode ser implementada diretamente, ela é usada para definir um padrão de como deve ser implementada uma classe filha, toda classe abstrata deve herdar da classe ABC
+
+    from abc import ABC
+
+    class AbstractClass(ABC) :
+        . . .
+
+## Métodos Abstratos
+
+Métodos abstratos são métodos que devem ser implementados na classe filha, caso contrario um erro será disparado, todo método abstrato deve ser decorado com o decorador @abstractmethod.
+
+    from abc import ABC, abstractmethod
+
+    class AbstractClass(ABC) :
+        . . .
+
+    @abstractmethod
+    def abstract_method(self) -> None:
+        pass
+
+Agora a classe filha deve obrigatoriamente implementar o abstract_method.
+
+    from source import AbstractClass
+
+    class Daughter(AbstractClass) :
+
+    def abstract_method(self) -> None:
+        print("Implementing abstract method")
