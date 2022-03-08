@@ -1,1 +1,1 @@
-from .interface import BirdFlyInterface, BirdNotFlyInterface
+from .interface import RepositoryInterface

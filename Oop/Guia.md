@@ -22,6 +22,7 @@
   - [OCP](#ocp)
   - [LSP](#lsp)
   - [ISP](#isp)
+  - [DIP](#dip)
 - [Herança](#herança)
   - [init](#init)
   - [Encapsulamento](#encapsulamento)
@@ -445,6 +446,48 @@ Perceba que na classe BirdNotFlyInterface não tem o método *fly* e por isso a 
         parrot.fly()
 
 Dessa forma criamos duas interfaces e organizamos melhor o código.
+
+## DIP
+
+O DIP (Principio de Inversão de Dependência) diz que uma classe nunca deve depender de outra classe, mas sim de uma interface que represente a classe desejada, assim sendo caso seja necessario realizar uma mudança na classe que instancia a interface, essa mudança será feita sem quebrar a classe que está dependendo dessa outra classe.
+
+    # Interface 
+
+    from abc import ABC, abstractmethod
+
+    class RepositoryInterface(ABC) :
+        @abstractmethod 
+        def insert(self, data : any) -> None:
+            raise NotImplementedError
+
+    # Classe que necessita utilizar uma classe do tipo da interface
+
+    class User:
+        def __init__(self, repository : Type[RepositoryInterface]) -> None:
+            self.__repository = repository
+
+        def save_data(self, data : any) -> None:
+            self.__repository.insert(data)
+
+    # Classes que instanciam a interface
+
+    class MysqlRepository(RepositoryInterface):
+        def insert(self, data : any) -> None:
+            print(f"Insert '{data}' into mysql")
+
+    class MongoRepository(RepositoryInterface):
+        def insert(self, data : any) -> None:
+            print(f"Insert '{data}' into mongo")
+
+    # Utilizando na pratica :
+
+    if __name__ == '__main__' :
+
+        User(MysqlRepository())
+        user.save_data(15)
+
+        User(MongoRepository())
+        user.save_data(15)
 
 # Herança
 

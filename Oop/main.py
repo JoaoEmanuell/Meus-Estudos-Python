@@ -1,31 +1,38 @@
-from source import BirdFlyInterface, BirdNotFlyInterface
+from source import RepositoryInterface
+from typing import Type
 
-class Canary(BirdFlyInterface) :
+class User:
+    def __init__(self, repository : Type[RepositoryInterface]) -> None:
+        self.__repository = repository
+        
+    def save_data(self, data : any) -> None:
+        self.__repository.insert(data)
 
-    def eat(self) -> None:
-        print("Canary is eating")
+    def remove(self, data : any) -> None:
+        self.__repository.remove(data)
+
+class MysqlRepository(RepositoryInterface):
+    def insert(self, data : any) -> None:
+        print(f"Insert '{data}' into mysql")
     
-    def fly(self) -> None:
-        print("Canary is flying")
+    def remove(self, data : any) -> None:
+        print(f"Remove '{data}' from mysql")
+
+class MongoRepository(RepositoryInterface):
+    def insert(self, data : any) -> None:
+        print(f"Insert '{data}' into mongo")
     
-    def sing(self) -> None:
-        print("Canary is singing")
-        self.__copulate()
-
-    def __copulate(self) -> None:
-        print("Canary is copulating")
-
-class Penguim(BirdNotFlyInterface) :
-    def eat(self) -> None:
-        print("Penguim is eating")
-
-    def sing(self) -> None:
-        print("Penguim is singing")
+    def remove(self, data : any) -> None:
+        print(f"Remove '{data}' from mongo")
 
 if __name__ == '__main__':
-    canary = Canary()
-    canary.fly()
-    canary.sing()
+    mysql = MysqlRepository()
+    mongo = MongoRepository()
 
-    penguim = Penguim()
-    penguim.sing()
+    user = User(mysql)
+    user.save_data(15)
+    user.remove(15)
+
+    user_2 = User(mongo)
+    user_2.save_data(15)
+    user_2.remove(15)

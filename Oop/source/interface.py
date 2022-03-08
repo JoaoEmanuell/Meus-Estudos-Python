@@ -1,23 +1,10 @@
 from abc import ABC, abstractmethod
 
-class BirdFlyInterface(ABC) : 
-    @abstractmethod
-    def eat(self) -> None:
+class RepositoryInterface(ABC) :
+    @abstractmethod 
+    def insert(self, data : any) -> None:
         raise NotImplementedError
 
     @abstractmethod
-    def fly(self) -> None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def sing(self) -> None:
-        raise NotImplementedError
-
-class BirdNotFlyInterface(ABC) : 
-    @abstractmethod
-    def eat(self) -> None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def sing(self) -> None:
+    def remove(self, data : any) -> None:
         raise NotImplementedError
