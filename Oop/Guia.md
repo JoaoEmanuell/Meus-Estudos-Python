@@ -34,6 +34,8 @@
 - [Interfaces](#interfaces)
   - [Implementado uma interface](#implementado-uma-interface)
   - [Demonstrando na pratica](#demonstrando-na-pratica)
+- [Agregação de Classes](#agregação-de-classes)
+  - [Exemplo](#exemplo)
   
 # Classe
 
@@ -665,3 +667,42 @@ Sendo assim o engenheiro pode utilizar o método da interface independente da cl
 
     print(enginer.measure_perimeter(square))
     print(enginer.measure_area(rectangle))
+
+# Agregação de Classes
+
+Agregação de classes é quando uma classe depende de uma lista de elementos de outra classe.
+
+## Exemplo
+
+    # Interface de produto
+
+    from abc import ABC, abstractmethod
+
+    class ProductInterface(ABC) :
+        @abstractmethod
+        def get_product_infos(self) -> str:
+            raise NotImplementedError()
+
+    # Produto, classe que irá ser agregada
+
+    from .interface import ProductInterface
+
+    class Product (ProductInterface) :
+        def __init__(self, name : str, value : float) -> None:
+            self.__name = name
+            self.__value = value
+
+        def get_product_infos(self) -> str:
+            return f"Product : {self.__name} || Value : R$ {self.__value:.2f}"
+
+    # Carrinho de compras, classe que irá agregar a classe Produto [no caso ela está agregando a interface para que possamos abstrair mais]
+
+    from .interface import ProductInterface
+    from typing import Type
+
+    class ShoppingCart :
+        def __init__(self) -> None :
+            self.__product = []
+
+        def add_product(self, product : Type[ProductInterface]) -> None :
+            self.__product.append(product)

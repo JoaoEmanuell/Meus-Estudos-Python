@@ -1,10 +1,6 @@
 from abc import ABC, abstractmethod
 
-class RepositoryInterface(ABC) :
-    @abstractmethod 
-    def insert(self, data : any) -> None:
-        raise NotImplementedError
-
+class ProductInterface(ABC) :
     @abstractmethod
-    def remove(self, data : any) -> None:
-        raise NotImplementedError
+    def get_product_infos(self) -> str:
+        raise NotImplementedError()
