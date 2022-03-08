@@ -21,6 +21,7 @@
   - [SRP](#srp)
   - [OCP](#ocp)
   - [LSP](#lsp)
+  - [ISP](#isp)
 - [Herança](#herança)
   - [init](#init)
   - [Encapsulamento](#encapsulamento)
@@ -401,6 +402,49 @@ Agora se eu tiver uma função que receba como paramentro algo do tipo Animal e 
         animal.eat()
 
     observer(Penguin()) # Como Penguim herda de animal ele tem o método eat, portanto o programa irá executar o método de forma tranquila.
+
+## ISP
+
+O ISP (Principio da Segregação de Interface) diz que intefaces especificas são melhores do que uma unica interface de proposito geral, na pratica isso quer dizer que ao inves de ter uma interface que atende a tudo, você pode ter várias interfaces semelhantes mas com pequenas diferenças [por exemplo um método a menos], dessa forma organizando o código.
+
+    from abc import ABC, abstractmethod
+
+    class BirdFlyInterface(ABC) : 
+    # Essa class é mais generica e abrange todas as aves voadoras
+        @abstractmethod
+        def eat(self) -> None:
+            raise NotImplementedError
+
+        @abstractmethod
+        def fly(self) -> None:
+            raise NotImplementedError
+
+    class BirdNotFlyInterface(ABC) : 
+    # Essa classe é menos generica e abrange apenas as aves que não voam
+        @abstractmethod
+        def eat(self) -> None:
+            raise NotImplementedError
+
+Perceba que na classe BirdNotFlyInterface não tem o método *fly* e por isso a classe que instanciar não deve ser obrigada a implementar o método *fly* [na verdade ela nem deve ter esse método].
+
+    class Penguin(BirdNotFlyInterface) :
+        def eat(self) -> None:
+            print("Penguin is eating")
+
+    class Parrot(BirdFlyInterface) :
+        def eat(self) -> None:
+            print("Parrot is eating")
+
+        def fly(self) -> None:
+            print("Parrot is flying")
+
+    if __name__ == '__main__':
+        penguin = Penguin()
+        parrot = Parrot()
+        penguin.eat()
+        parrot.fly()
+
+Dessa forma criamos duas interfaces e organizamos melhor o código.
 
 # Herança
 

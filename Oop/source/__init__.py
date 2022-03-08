@@ -1,1 +1,1 @@
-from .shapes import ShapesInterface
+from .interface import BirdFlyInterface, BirdNotFlyInterface
