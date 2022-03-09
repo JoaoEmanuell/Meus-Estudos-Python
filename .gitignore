@@ -1,6 +1,6 @@
 ..gitiginore.swp
 tree_musica.py~
-tmp.py
+tmp.*
 __pycache__/
 README.md~
 modelo-interface.png
