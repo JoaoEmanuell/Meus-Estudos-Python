@@ -36,6 +36,8 @@
   - [Demonstrando na pratica](#demonstrando-na-pratica)
 - [Agregação de Classes](#agregação-de-classes)
   - [Exemplo](#exemplo)
+- [Composição de classes](#composição-de-classes)
+  - [Exemplo](#exemplo-1)
   
 # Classe
 
@@ -706,3 +708,35 @@ Agregação de classes é quando uma classe depende de uma lista de elementos de
 
         def add_product(self, product : Type[ProductInterface]) -> None :
             self.__product.append(product)
+
+# Composição de classes
+
+Composição de classes é quando classes menores estão compondo uma classe maior, isso foge do conceito de herança.
+
+## Exemplo
+
+Classe que irá compor uma classe maior
+
+    class Select :
+        def select_many(self) -> None :
+            print("Select Many")
+
+        def select_one(self) -> None :
+            print("Select One")
+
+    from .select import Select
+
+    class Repository :
+
+Classe maior que utiliza as classes de composição
+
+    def __init__(self) -> None :
+        self.__select = Select()
+        
+Observe aqui, estamos instanciando a classe Select para termos acesso a tudo que ela oferece sem herdar ela.
+
+    def select_by_id(self) -> None:
+
+*select_by_id* é uma fachada, pois só serve para representar o método da classe está compondo *Repository*
+
+    self.__select.select_one()
