@@ -1,8 +1,11 @@
-class Adapter:
-    def __init__(self, process) -> None:
+from .interfaces import AdapterCodeInterface
+from typing import Type
+
+class Adapter (AdapterCodeInterface):
+    def __init__(self, process : Type[AdapterCodeInterface]) -> None :
         self.__process  = process
 
-    def handle(self, request : dict) -> None:
+    def handle(self, request : dict) -> None :
         message = {
             "method" : request["HTTP_method"],
             "header" : {
@@ -14,5 +17,4 @@ class Adapter:
                 "message" : request["HTTP_body"][1][1]
             }
         }
-        response = self.__process.handle(message)
-        return response
+        self.__process.handle(message)
