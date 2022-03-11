@@ -1,2 +1,2 @@
-from .routes import route1
-from .adapter import Adapter
+from .warrior import Warrior
+from .skils import UseBow, UseSword, UseHeal
