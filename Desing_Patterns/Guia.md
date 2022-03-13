@@ -7,6 +7,11 @@
     - [Interface](#interface)
     - [Adapter](#adapter-1)
     - [Exemplo](#exemplo)
+- [Strategy](#strategy)
+  - [Como implementar](#como-implementar-1)
+    - [Interface](#interface-1)
+    - [Implementação](#implementação)
+    - [Strategy](#strategy-1)
 
 # Inicio
 
@@ -76,3 +81,65 @@ Por fim ele irá chamar o método *handle* da classe que implementa a interface 
             if token:
                 print("Authenticated")
                 write_in_database(message['body']['name'], message['body']['message'])
+
+# Strategy
+
+O Strategy básicamente trabalha no conceito de inversão de dependência, ou seja, quando uma classe requerir um método de outra classe, ela deve trabalhar utilizando *interfaces* ao inves de utilizar a classe de forma direta.
+
+## Como implementar
+
+Analise o seu caso especifico e crie as *interfaces* que irão trabalhar, dessa forma a *injeção de dependencia* pode ser evitada.
+
+### Interface
+
+    from abc import ABC, abstractmethod
+
+    class SkillInterface(ABC):
+        @abstractmethod
+        def behavior(self) -> None:
+            raise NotImplementedError
+
+        @abstractmethod
+        def level_atribute(self) -> None:
+            raise NotImplementedError
+
+### Implementação 
+
+    from .interfaces import SkillInterface
+
+    class UseBow(SkillInterface):
+        def __init__(self, level : int = 1) -> None:
+            self.__level = level
+
+        def behavior(self) -> None:
+            print("Shoot Arrows")
+
+        def level_atribute(self) -> None:
+            print(f"Bow usage level : {self.__level}")
+
+### Strategy
+
+    from .skils import SkillInterface
+    from typing import Type
+
+Classe que irá depender das interfaces.
+
+    class Warrior:
+        def __init__(self, skill : Type[SkillInterface]) -> None:
+            self.__skill = skill
+
+Observe que o tipo de skil é uma interface, dessa forma o warrior não precisa saber qual é a class que será passada, ele só precisa saber que essa classe implemente a interface.
+
+        def action(self) -> None:
+            self.__skill.behavior()
+
+        def atributes(self) -> None:
+            self.__skill.level_atribute()
+
+Arquivo principal
+
+    from source import Warrior, UseBow
+
+    archer = Warrior(UseBow(6))
+    archer.action()
+    archer.atributes()
