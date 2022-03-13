@@ -1,0 +1,4 @@
+{
+    "win" : "C:/Users/%s/Desktop",
+    "linux" : "/home/%s"
+}

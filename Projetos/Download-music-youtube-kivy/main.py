@@ -1,12 +1,11 @@
 # Global imports
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.clock import mainthread
 from kivy.utils import platform
 from threading import Thread
-import urllib
-import urllib.request
+from urllib.error import URLError
+from urllib.request import urlopen
 
 # Local imports
 import download
@@ -21,8 +20,8 @@ class Tela(Screen):
         self.ids.link.text = Intent(platform).get_intent_text()
     def main(self):
         try :
-            urllib.request.urlopen('https://www.youtube.com')
-        except urllib.error.URLError:
+            urlopen('https://www.youtube.com')
+        except URLError:
             self.ids.output.text = 'Sua conexão de internet está indiponivel, por favor tente novamente'
         else:
             self.startDownload()

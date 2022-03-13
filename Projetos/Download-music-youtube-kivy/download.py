@@ -3,6 +3,7 @@ from re import findall
 from threading import Thread
 from source_download import downloadVideo, downloadPlaylist
 from shutil import move
+from source_download.downloadEssential import DownloadEssential
 
 class DownloadVerfiy():
 
@@ -24,7 +25,7 @@ class DownloadVerfiy():
             return False
     
     def createDirectory(name):
-        path = '/storage/emulated/0/'
+        path = DownloadEssential()._get_download_path()
         if not(os.path.isdir(f'{path}/{name}')):
             path = os.path.join(path, name)
             os.mkdir(path)
@@ -33,7 +34,7 @@ class DownloadVerfiy():
         link = str(link)
         print("Iniciando o download")
         if DownloadVerfiy.VerifyUrl(link):
-            DownloadVerfiy.createDirectory('Musicas')
+            DownloadVerfiy.createDirectory('Músicas')
             if DownloadVerfiy.VerifyPlaylist(link):
                 print("Verificado vídeo, iniciando o download do vídeo")
                 downloadPlaylist.DownloadPlaylist(link, mp3)
