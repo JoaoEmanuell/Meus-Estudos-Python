@@ -31,6 +31,7 @@ class DownloadVerfiy():
     
     def createDirectory(name):
         path = DownloadEssential()._get_download_path()
+        print(f'Path : {path}')
         if not(os.path.isdir(f'{path}/{name}')):
             path = os.path.join(path, name)
             os.mkdir(path)
@@ -41,10 +42,10 @@ class DownloadVerfiy():
         if DownloadVerfiy.VerifyUrl(link):
             DownloadVerfiy.createDirectory('Músicas')
             if DownloadVerfiy.VerifyPlaylist(link):
-                print("Verificado vídeo, iniciando o download do vídeo")
+                print("Verificado playlist, iniciando o download da playlist")
                 DownloadPlaylist(link, mp3)
             else :
-                print("Verificado playlist, iniciando o download da playlist")
+                print("Verificado vídeo, iniciando o download do vídeo")
                 DownloadVideo(link, mp3)
         else:
             Message.set_output("Erro, url invalida!")

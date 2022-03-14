@@ -3,6 +3,7 @@ import os
 from kivy.utils import platform
 from json import loads
 from getpass import getuser
+from pathlib import Path
 
 class DownloadEssential():
     def VerifyIfFileNotExists(self):
@@ -19,11 +20,13 @@ class DownloadEssential():
         print(f"'{self.video.title}' convertido para mp3")
 
     def _get_download_path(self) -> str:
-        with open('./source_download/paths.json', 'r') as file:
-            if platform != 'android' :
-                paths = loads(file.read())
-                try :
-                    return paths[platform] % getuser()
-                except KeyError:
-                    raise "Plataforma invalida"
-            return '/storage/emulated/0/'
+        if platform != 'android' :
+            paths = {
+                        "win" : r"C:\Users\%s\Desktop\Música\\",
+                        "linux" : "/home/%s/Música/"
+                    }
+            try :
+                return paths[platform] % getuser()
+            except KeyError:
+                raise "Plataforma invalida"
+        return '/storage/emulated/0/Musicas/'
