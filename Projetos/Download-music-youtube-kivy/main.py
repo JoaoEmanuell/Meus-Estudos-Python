@@ -16,7 +16,6 @@ from source_android import Android
 class Tela(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # self.verify_message_at_startup()
         self.ids.link.text = Intent(platform).get_intent_text()
     def main(self):
         try :
@@ -44,10 +43,6 @@ class Tela(Screen):
             return False
         else :
             return True
-
-    @mainthread
-    def output(texto):
-        App.get_running_app().root.ids.output.text = str(texto)
 
     @mainthread
     def progressbar(max,percent):

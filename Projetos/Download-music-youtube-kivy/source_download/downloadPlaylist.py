@@ -1,7 +1,13 @@
+# Global imports
+
 from pytube import Playlist
-from . import downloadVideo
-import ssl, main
+import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
+
+# Local imports
+
+from .downloadVideo import DownloadVideo
+from .message import Message
 
 class DownloadPlaylist():
     def __init__(self, playlistLink : list, convertToMp3  : bool = True) -> None:
@@ -10,7 +16,7 @@ class DownloadPlaylist():
         DownloadPlaylist.downloadVideos(self)
 
     def downloadVideos(self):
-        main.Tela.output(f"Download da playlist iniciado!")
+        Message.set_output(f"Download da playlist iniciado!")
         for v in self.playlist:
-            downloadVideo.DownloadVideo(v, self.CONVERT)
-        main.Tela.output("Download da Playlist concluido!")
+            DownloadVideo(v, self.CONVERT)
+        Message.set_output("Download da Playlist concluido!")

@@ -1,9 +1,14 @@
-import os, main
+# Global imports
+
+import os
 from re import findall
-from threading import Thread
-from source_download import downloadVideo, downloadPlaylist
-from shutil import move
+
+# Local imports
+
+from source_download.downloadPlaylist import DownloadPlaylist
+from source_download.downloadVideo import DownloadVideo
 from source_download.downloadEssential import DownloadEssential
+from source_download.message import Message
 
 class DownloadVerfiy():
 
@@ -37,9 +42,9 @@ class DownloadVerfiy():
             DownloadVerfiy.createDirectory('Músicas')
             if DownloadVerfiy.VerifyPlaylist(link):
                 print("Verificado vídeo, iniciando o download do vídeo")
-                downloadPlaylist.DownloadPlaylist(link, mp3)
+                DownloadPlaylist(link, mp3)
             else :
                 print("Verificado playlist, iniciando o download da playlist")
-                downloadVideo.DownloadVideo(link, mp3)
+                DownloadVideo(link, mp3)
         else:
-            main.Tela.output("Erro, url invalida!")
+            Message.set_output("Erro, url invalida!")

@@ -1,4 +1,4 @@
 {
-    "win" : "C:/Users/%s/Desktop",
-    "linux" : "/home/%s"
+    "win" : "C:/Users/%s/Desktop/Música/",
+    "linux" : "/home/%s/Música/"
 }
