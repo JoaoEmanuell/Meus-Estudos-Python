@@ -13,9 +13,10 @@ from .message import Message
 
 class DownloadVideo(DownloadInterface):
     def __init__(self, link : str, mp3 : bool) -> None:
-        self.video = YouTube(link, on_progress_callback=on_progress)
-        self.convert = mp3
+        self.__video = YouTube(link, on_progress_callback=on_progress)
+        self.__convert = mp3
         Message.set_progressbar(100, 0)
+
         self.__templates_strings = {
             'start' : 'Iniciando o download %s \n%s\nAguarde um pouco!',
             'download' : 'Download %s\n%s\nIniciado',
@@ -23,30 +24,41 @@ class DownloadVideo(DownloadInterface):
             'end' : 'Vídeo %s baixado',
             'exists' : '%s "%s" já foi baixado!'
         }
-        self.download()
 
-    def download(self):
-        if self.convert:
-            Message.set_output(self.__templates_strings['start'] % ('da música', self.video.title))
-            self.stream = self.video.streams.get_audio_only()
-        else:
-            Message.set_output(self.__templates_strings['start'] % ('do vídeo', self.video.title))
-            self.stream = self.video.streams.get_highest_resolution()
-        self.path = DownloadEssential()._get_download_path()
-        if DownloadEssential().VerifyIfFileNotExists(self.convert, self.stream, self.path):
-            if self.convert:
-                Message.set_output(self.__templates_strings['download'] % ('da música', self.video.title))
-            else:
-                Message.set_output(self.__templates_strings['download'] % ('do vídeo', self.video.title))
-            self.stream.download(output_path=f'{self.path}/Música/')
-            if self.convert:
-                DownloadEssential().ConvertToMp3(self.stream, self.video, self.path)
-                Message.set_output(self.__templates_strings['convert'] % (self.video.title))
-            else:
-                Message.set_output(self.__templates_strings['end'] % (self.video.title))
+        self.__path = DownloadEssential()._get_download_path()
+
+    def downloadVideo(self) -> None:
+        Message.set_output(self.__templates_strings['start'] % ('do vídeo', self.__video.title))
+
+        self.__stream = self.__video.streams.get_highest_resolution()
+
+        if DownloadEssential().VerifyIfFileNotExists(self.__convert, self.__stream, self.__path):
+
+            Message.set_output(self.__templates_strings['download'] % ('do vídeo', self.__video.title))
+
+            self.__stream.download(output_path=f'{self.__path}/Música/')
+
+            Message.set_output(self.__templates_strings['end'] % (self.__video.title))
             Message.set_progressbar(100, 100)
         else :
-            if self.convert:
-                Message.set_output(self.__templates_strings['exists'] % ('Música', self.video.title))
-            else:
-                Message.set_output(self.__templates_strings['exists'] % ('Vídeo', self.video.title))
+            Message.set_output(self.__templates_strings['exists'] % ('Vídeo', self.__video.title))
+
+    def downloadAudio(self) -> None:
+        Message.set_output(self.__templates_strings['start'] % ('da música', self.__video.title))
+
+        self.__stream = self.__video.streams.get_audio_only()
+
+        if DownloadEssential().VerifyIfFileNotExists(self.__convert, self.__stream, self.__path):
+
+            Message.set_output(self.__templates_strings['download'] % ('da música', self.__video.title))
+
+            self.__stream.download(output_path=f'{self.__path}/Música/')
+
+            DownloadEssential().ConvertToMp3(self.__stream, self.__video, self.__path)
+
+            Message.set_output(self.__templates_strings['convert'] % (self.__video.title))
+            Message.set_progressbar(100, 100)
+
+        else :
+
+            Message.set_output(self.__templates_strings['exists'] % ('Música', self.__video.title))
