@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 
-class DownloadInterface(ABC):
+class DownloadVideoInterface(ABC):
     @abstractmethod
     def __init__(self, link : str, mp3 : bool) -> None:
         raise NotImplementedError
 
     @abstractmethod
-    def download(self) -> None:
+    def downloadVideo(self) -> None:
         raise NotImplementedError
