@@ -31,7 +31,7 @@ class DownloadVideo(DownloadInterface):
                 Message.set_output(f'Download da música:\n{self.video.title}\nIniciado')
             else:
                 Message.set_output(f'Download do vídeo:\n{self.video.title}\nIniciado')
-            self.stream.download(output_path=f'{self.path}')
+            self.stream.download(output_path=f'{self.path}/Música/')
             if self.convert:
                 DownloadEssential.ConvertToMp3(self)
                 Message.set_output(f"Música:\n{self.video.title} baixado e convertido para MP3")

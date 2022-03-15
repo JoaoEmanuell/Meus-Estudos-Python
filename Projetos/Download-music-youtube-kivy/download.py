@@ -1,6 +1,5 @@
 # Global imports
 
-import os
 from re import findall
 
 # Local imports
@@ -29,18 +28,11 @@ class DownloadVerfiy():
         else :
             return False
     
-    def createDirectory(name):
-        path = DownloadEssential()._get_download_path()
-        print(f'Path : {path}')
-        if not(os.path.isdir(f'{path}/{name}')):
-            path = os.path.join(path, name)
-            os.mkdir(path)
-    
     def main(link, mp3):
         link = str(link)
         print("Iniciando o download")
         if DownloadVerfiy.VerifyUrl(link):
-            DownloadVerfiy.createDirectory('Músicas')
+            DownloadEssential().createDirectory('Música')
             if DownloadVerfiy.VerifyPlaylist(link):
                 print("Verificado playlist, iniciando o download da playlist")
                 DownloadPlaylist(link, mp3)
