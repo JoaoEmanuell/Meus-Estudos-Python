@@ -2,7 +2,7 @@
 
 from pytube import YouTube
 from pytube.cli import on_progress
-import ssl, main
+import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # Local imports
@@ -21,7 +21,7 @@ class DownloadVideo(DownloadInterface):
             'download' : 'Download %s\n%s\nIniciado',
             'convert' : 'Música \n%s\nbaixada e convertida para MP3',
             'end' : 'Vídeo %s baixado',
-            'exists' : '%s %s já foi baixado!'
+            'exists' : '%s "%s" já foi baixado!'
         }
         self.download()
 
@@ -33,19 +33,18 @@ class DownloadVideo(DownloadInterface):
             Message.set_output(self.__templates_strings['start'] % ('do vídeo', self.video.title))
             self.stream = self.video.streams.get_highest_resolution()
         self.path = DownloadEssential()._get_download_path()
-        if DownloadEssential.VerifyIfFileNotExists(self):
+        if DownloadEssential().VerifyIfFileNotExists(self.convert, self.stream, self.path):
             if self.convert:
                 Message.set_output(self.__templates_strings['download'] % ('da música', self.video.title))
             else:
                 Message.set_output(self.__templates_strings['download'] % ('do vídeo', self.video.title))
             self.stream.download(output_path=f'{self.path}/Música/')
             if self.convert:
-                DownloadEssential.ConvertToMp3(self)
+                DownloadEssential().ConvertToMp3(self.stream, self.video, self.path)
                 Message.set_output(self.__templates_strings['convert'] % (self.video.title))
-                Message.set_progressbar(100, 100)
             else:
                 Message.set_output(self.__templates_strings['end'] % (self.video.title))
-                Message.set_progressbar(100, 100)
+            Message.set_progressbar(100, 100)
         else :
             if self.convert:
                 Message.set_output(self.__templates_strings['exists'] % ('Música', self.video.title))
