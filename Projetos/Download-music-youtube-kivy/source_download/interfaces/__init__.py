@@ -1,3 +1,2 @@
-from .downloadVideoInterface import DownloadVideoInterface
-from .downloadAudioInterface import DownloadAudioInterface
+from .downloadInterface import DownloadInterface
 from .downloadPlaylistInterface import DownloadPlaylistInterface

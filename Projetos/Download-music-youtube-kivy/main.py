@@ -11,6 +11,8 @@ from urllib.request import urlopen
 import download
 from intent import Intent
 from source_android import Android
+import source_download.downloadPlaylist as playlist
+import source_download.downloadVideo as video
 
 # Android
 class Tela(Screen):
@@ -29,7 +31,7 @@ class Tela(Screen):
         self.ids.progressbar.value = 0
         try:
             url = str(self.ids.link.text)
-            Thread(target=download.DownloadVerfiy.main, args=(url, self.verify_mp3())).start()
+            Thread(target=download.DownloadVerfiy.main, args=(url, self.verify_mp3(), video.DownloadVideo, playlist.DownloadPlaylist)).start()
             #download.DownloadVerfiy.main(url, self.verify_mp3())
         except Exception as erro:
             self.ids.output.text = f'Alguma coisa deu errado!\nPor favor insira uma nova url\nTente novamente!\n {erro}'
