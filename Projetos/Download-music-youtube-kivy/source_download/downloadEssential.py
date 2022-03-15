@@ -7,10 +7,10 @@ class DownloadEssential():
     def VerifyIfFileNotExists(self):
         if self.convert:
             filename = self.stream.default_filename.replace('.mp4', '')
-            return not(exists(f"{self.path}{filename}.mp3"))
+            return not(exists(f"{self.path}Música/{filename}.mp3"))
         else:
             filename = self.stream.default_filename
-            return not(exists(f"{self.path}{filename}"))
+            return not(exists(f"{self.path}Música/{filename}"))
 
     def ConvertToMp3(self):
         filename = self.stream.default_filename.replace('.mp4', '')

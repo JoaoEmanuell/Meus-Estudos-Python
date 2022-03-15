@@ -16,31 +16,38 @@ class DownloadVideo(DownloadInterface):
         self.video = YouTube(link, on_progress_callback=on_progress)
         self.convert = mp3
         Message.set_progressbar(100, 0)
+        self.__templates_strings = {
+            'start' : 'Iniciando o download %s \n%s\nAguarde um pouco!',
+            'download' : 'Download %s\n%s\nIniciado',
+            'convert' : 'Música \n%s\nbaixada e convertida para MP3',
+            'end' : 'Vídeo %s baixado',
+            'exists' : '%s %s já foi baixado!'
+        }
         self.download()
 
     def download(self):
         if self.convert:
-            Message.set_output(f'Iniciando o download da música :\n{self.video.title}\nAguarde um pouco!')
+            Message.set_output(self.__templates_strings['start'] % ('da música', self.video.title))
             self.stream = self.video.streams.get_audio_only()
         else:
-            Message.set_output(f'Iniciando o download do vídeo :\n{self.video.title}\nAguarde um pouco!')
+            Message.set_output(self.__templates_strings['start'] % ('do vídeo', self.video.title))
             self.stream = self.video.streams.get_highest_resolution()
         self.path = DownloadEssential()._get_download_path()
         if DownloadEssential.VerifyIfFileNotExists(self):
             if self.convert:
-                Message.set_output(f'Download da música:\n{self.video.title}\nIniciado')
+                Message.set_output(self.__templates_strings['download'] % ('da música', self.video.title))
             else:
-                Message.set_output(f'Download do vídeo:\n{self.video.title}\nIniciado')
+                Message.set_output(self.__templates_strings['download'] % ('do vídeo', self.video.title))
             self.stream.download(output_path=f'{self.path}/Música/')
             if self.convert:
                 DownloadEssential.ConvertToMp3(self)
-                Message.set_output(f"Música:\n{self.video.title} baixado e convertido para MP3")
+                Message.set_output(self.__templates_strings['convert'] % (self.video.title))
                 Message.set_progressbar(100, 100)
             else:
-                Message.set_output(f"Vídeo:\n{self.video.title} baixado")
+                Message.set_output(self.__templates_strings['end'] % (self.video.title))
                 Message.set_progressbar(100, 100)
         else :
             if self.convert:
-                Message.set_output(f"Música: \n{self.video.title}\n já foi baixado!")
+                Message.set_output(self.__templates_strings['exists'] % ('Música', self.video.title))
             else:
-                Message.set_output(f"Vídeo: \n{self.video.title}\n já foi baixado!")
+                Message.set_output(self.__templates_strings['exists'] % ('Vídeo', self.video.title))
