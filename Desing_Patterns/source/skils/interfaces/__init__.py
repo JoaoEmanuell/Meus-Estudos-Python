@@ -1,1 +1,0 @@
-from .fight_interface import SkillInterface
