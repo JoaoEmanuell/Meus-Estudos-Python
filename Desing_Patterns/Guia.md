@@ -214,6 +214,8 @@ Uma coisa interessante a se notar é que se importamos o *element1* primeiro, o 
 
 Decorator é um design pattern que permite adicionar funcionalidades a uma função já existente.
 
+[Nesse arquivo](https://github.com/JoaoEmanuell/Meus-Estudos-Python/blob/master/Aulas%20txt/Decorators.txt) temos uma demonstração de implementação do decorator utilizando uma classe ao invés de uma função.
+
 ## Como implementar
 
 Diferente de outras linguagens, para implementar o decorator no python é bem simples, você só vai precisar criar uma função que receba outra função e fazer um processamento dentro de outra função e retornar essa outra função [confuso]
