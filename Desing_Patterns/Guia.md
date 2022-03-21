@@ -17,6 +17,9 @@
     - [Classe](#classe)
     - [Singleton](#singleton-1)
     - [Implementação](#implementação-1)
+- [Decorator](#decorator)
+  - [Como implementar](#como-implementar-3)
+    - [Decorator](#decorator-1)
 
 # Inicio
 
@@ -206,3 +209,39 @@ main.py
     from element2 import element2
 
 Uma coisa interessante a se notar é que se importamos o *element1* primeiro, o valor de *message* será alterado no *element2*, isso pode causar algumas dores de cabeça indesejadas, então tome cuidado.
+
+# Decorator
+
+Decorator é um design pattern que permite adicionar funcionalidades a uma função já existente.
+
+## Como implementar
+
+Diferente de outras linguagens, para implementar o decorator no python é bem simples, você só vai precisar criar uma função que receba outra função e fazer um processamento dentro de outra função e retornar essa outra função [confuso]
+
+### Decorator
+
+
+    from typing import Callable # Callable vai servir para dizer que o objeto passado tem que ser do tipo clamável, isso é uma função ou uma classe.
+
+    def decorator(function : Callable) -> None:
+
+Colocamos *args e **kwargs para evitar um bug de argumentos, pois se estamos trabalhando com uma *classe* e a *função* receber um *self*, ela iria da erro pois não tem argumentos.
+
+        def wrapper(*args, **kwargs):
+
+Wrapper é como normalmente é chamada a função superior que faz o processamento.
+
+            print("Hello World")
+            function(*args, **kwargs)
+
+No final ela deve chamar a função e passar o *args e *kwargs* para ela.
+
+        return wrapper
+
+    class MyClass:
+        @decorator
+        def method(self, number : int) -> None:
+            print(f"My method {number}")
+
+    cl = MyClass()
+    cl.method(6)
