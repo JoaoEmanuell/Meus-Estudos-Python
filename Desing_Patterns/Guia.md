@@ -20,6 +20,11 @@
 - [Decorator](#decorator)
   - [Como implementar](#como-implementar-3)
     - [Decorator](#decorator-1)
+- [Observer](#observer)
+  - [Como implementar](#como-implementar-4)
+    - [Interface](#interface-2)
+    - [Observer](#observer-1)
+    - [Implementação](#implementação-2)
 
 # Inicio
 
@@ -246,4 +251,85 @@ No final ela deve chamar a função e passar o *args e *kwargs* para ela.
             print(f"My method {number}")
 
     cl = MyClass()
-    cl.method(6)
+
+# Observer
+
+Observer é um *design pattern* que serve para que uma classe possa notificar outras classes por meio de um método.
+
+## Como implementar
+
+Para implementar crie uma interface com o método *update*, e uma classe que implemente essa interface.
+
+### Interface
+
+    from abc import ABC, abstractmethod
+
+    class ObserverInterface(ABC):
+        @abstractmethod
+        def update(self, message : str) -> None:
+            raise NotImplementedError
+
+### Observer
+
+    from .interfaces import ObserverInterface
+
+    class Person(ObserverInterface):
+        def __init__(self, name : str) -> None:
+            self.__name = name
+            self.__awake = False
+
+        def update(self) -> None:
+            print(f"{self.__name} Awake")
+            self.__awake = True
+
+### Implementação
+
+    # Imports
+
+    from .interfaces import ObserverInterface
+    from typing import Type
+
+    class Alarm:
+
+Class que irá utilizar o *observer*.
+
+        def __init__(self) -> None:
+            self.__beep = False
+
+persons será uma lista com pessoas que são do tipo *ObserverInterface*.
+
+            self.__persons = []
+
+        def add_person(self, person : Type[ObserverInterface]) -> None:
+            self.__persons.append(person)
+
+        def play(self) -> None:
+            self.__beep = True
+            for person in self.__persons:
+                person.update()
+
+Aqui estamos notificando as pessoas pelo método *update*, como elas implementam a interface, elas tem esse método.
+
+            self.__persons = []
+
+Por fim limpamos a lista de pessoas.
+
+    from source import Alarm, Person
+
+    emanuel = Person("Emanuel")
+    john = Person("John")
+    rebeca = Person("Rebeca")
+
+Criamos as pessoas
+
+    alarm = Alarm()
+
+    alarm.add_person(emanuel)
+    alarm.add_person(john)
+    alarm.add_person(rebeca)
+
+Adicionamos as pessoas
+
+    alarm.play()
+
+Notificamos as pessoas.

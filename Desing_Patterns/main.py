@@ -1,15 +1,13 @@
-from typing import Callable
+from source import Alarm, Person
 
-def decorator(function : Callable) -> None:
-    def wrapper(*args, **kwargs):
-        print("Hello World")
-        function(*args, **kwargs)
-    return wrapper
+emanuel = Person("Emanuel")
+john = Person("John")
+rebeca = Person("Rebeca")
 
-class MyClass:
-    @decorator
-    def method(self, number : int) -> None:
-        print(f"My method {number}")
+alarm = Alarm()
 
-cl = MyClass()
-cl.method(6)
+alarm.add_person(emanuel)
+alarm.add_person(john)
+alarm.add_person(rebeca)
+
+alarm.play()
