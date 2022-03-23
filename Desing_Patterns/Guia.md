@@ -25,6 +25,12 @@
     - [Interface](#interface-2)
     - [Observer](#observer-1)
     - [Implementação](#implementação-2)
+- [Facade](#facade)
+  - [Como implementar](#como-implementar-5)
+    - [Delete](#delete)
+    - [Insert](#insert)
+    - [Facade](#facade-1)
+    - [Lei de Demeter](#lei-de-demeter)
 
 # Inicio
 
@@ -333,3 +339,55 @@ Adicionamos as pessoas
     alarm.play()
 
 Notificamos as pessoas.
+
+# Facade
+
+O Facade [fachada em português] é um design pattern que serve para simplificar as interações, ao invés de você interagir com cada objeto de uma classe, quando for fazer algo, você irá atribuir esses objetos a uma classe de fachada que irá fazer a interação.
+
+## Como implementar
+
+Primeiramente iremos ter classes que fazem todo o trabalho de interação com o banco de dados.
+
+### Delete
+
+    class Delete :
+
+        def delete_single_element(self) -> None :
+            print('Delete a single register')
+
+### Insert
+
+    class Insert :
+
+        def insert_single_element(self) -> None :
+            print('Insert a single register')
+
+        def insert_many_elements(self) -> None :
+            print('Insert a list of registers')
+
+### Facade
+
+    from .delete import Delete
+    from .insert import Insert
+
+    class Repository:
+        def __init__(self) -> None :
+            self.__delete = Delete()
+            self.__insert = Insert()
+
+        def insert_one(self) -> None :
+            return self.__insert.insert_single_element()
+
+        def insert_many(self) -> None :
+            return self.__insert.insert_many_elements()
+
+        def delete_one(self) -> None :
+            return self.__delete.delete_single_element()
+
+Observe que a classe acima agrega as outras classes e simplifica os seus usos.
+
+### Lei de Demeter
+
+A Lei de Demeter diz que uma classe só deve interagir com objetos que estão sendo passados para ela ou que ela instanciou no inicio, isso é basicamente semelhante ao principio da inversão de dependência.
+
+Portanto a *facade* só deve interagir com objetos que estão sendo passados para ela ou que ela instanciou no inicio.
