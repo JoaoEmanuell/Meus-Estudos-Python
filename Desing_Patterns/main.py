@@ -1,8 +1,5 @@
-from models import Repository
+from source import MysqlFactory
 
-repository = Repository()
-repository.insert_one()
-repository.insert_many()
-repository.select_one()
-repository.select_many()
-repository.delete_one()
+usecase = MysqlFactory.create()
+response = usecase.do_something()
+print(response)
