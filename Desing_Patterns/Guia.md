@@ -31,6 +31,12 @@
     - [Insert](#insert)
     - [Facade](#facade-1)
     - [Lei de Demeter](#lei-de-demeter)
+- [Factory](#factory)
+  - [Como implementar](#como-implementar-6)
+    - [Interfaces](#interfaces)
+    - [Database](#database)
+    - [Caso de uso](#caso-de-uso)
+    - [Factory](#factory-1)
 
 # Inicio
 
@@ -391,3 +397,81 @@ Observe que a classe acima agrega as outras classes e simplifica os seus usos.
 A Lei de Demeter diz que uma classe só deve interagir com objetos que estão sendo passados para ela ou que ela instanciou no inicio, isso é basicamente semelhante ao principio da inversão de dependência.
 
 Portanto a *facade* só deve interagir com objetos que estão sendo passados para ela ou que ela instanciou no inicio.
+
+# Factory
+
+Factory é um design pattern que serve para criar objetos de forma dinâmica [como uma fabrica].
+
+## Como implementar
+
+A implementação dele depende de várias outras classes independentes, tudo que ele irá é unir elas e retornar um único resultado, ele simplifica alterações futuras.
+
+### Interfaces
+
+    from abc import ABC, abstractmethod
+
+    class DatabaseInterface(ABC) :
+        @abstractmethod
+        def select_one(self) -> dict :
+            raise NotImplementedError
+
+### Database
+
+    from ..interfaces import DatabaseInterface
+
+    class MysqlRepository(DatabaseInterface) :
+        def select_one(self) -> dict:
+            return {
+                'success' : True,
+                'data' : 'Hello World!'
+            }
+
+### Caso de uso
+
+    from ..interfaces import DatabaseInterface
+    from typing import Type, Union
+
+    class UseCase:
+
+        def __init__(self, repository : Type[DatabaseInterface]) -> None:
+
+Utilizando *Type* estamos evitando a injeção de dependência.
+
+            self.__repository = repository
+
+        def do_something(self, data : bool = True) -> Union[dict, None]:
+
+Union serve para dizer que tem duas respostas possíveis
+
+            if data :
+                repository_response = self.__repository.select_one()
+                return repository_response
+
+            return None
+
+### Factory
+
+    from ..usecase import UseCase
+    from ..databases import MysqlRepository
+
+    class MysqlFactory :
+        @staticmethod
+        def create() -> UseCase :
+            return UseCase(MysqlRepository())
+
+@staticmethod diz que o método é estático, então não é necessário instanciar a classe para utilizar o método.
+
+Create irá retornar uma instancia de UseCase, passando uma instancia de MysqlRepository como parâmetro, caso no futuro tenhamos que trocar o repositório, basta alterar a classe que está sendo passada como parâmetro.
+
+No nosso arquivo main iremos criar o UseCase por meio do MysqlFactory.
+
+    from source import MysqlFactory
+
+    usecase = MysqlFactory.create()
+
+Após isso vamos utilizar os métodos de UseCase : 
+
+    response = usecase.do_something()
+    print(response)
+
+Desta forma a modificação a longo prazo fica muito mais simples.
