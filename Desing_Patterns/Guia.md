@@ -37,6 +37,11 @@
     - [Database](#database)
     - [Caso de uso](#caso-de-uso)
     - [Factory](#factory-1)
+- [Chain of Responsibility](#chain-of-responsibility)
+  - [Como implementar](#como-implementar-7)
+    - [Interfaces](#interfaces-1)
+    - [Validators](#validators)
+    - [Chain of Responsibility](#chain-of-responsibility-1)
 
 # Inicio
 
@@ -475,3 +480,76 @@ Após isso vamos utilizar os métodos de UseCase :
     print(response)
 
 Desta forma a modificação a longo prazo fica muito mais simples.
+
+# Chain of Responsibility
+
+Chain of Responsibility trabalha no conceito de responsabilidades únicas, sendo um Design Pattern extremamente útil quando se tem muitas verificações há serem realizadas.
+
+## Como implementar
+
+Para implementar ele você irá precisar de sub-classes [pode haver milhares delas] e uma única classe que irá ser responsável por chamar a ação da sub-classe caso o valor corresponda a um validador dela.
+
+### Interfaces
+
+    from abc import ABC, abstractmethod
+
+    class ValidatorInterface(ABC) :
+        @abstractmethod
+        def validate(self, food : str) -> bool :
+            raise NotImplementedError
+
+        @abstractmethod
+        def action(self) -> None :
+            raise NotImplementedError
+
+### Validators
+
+    from ..interfaces import ValidatorInterface
+
+    class NutValidator(ValidatorInterface) :
+        def validate(self, food: str) -> bool:
+            if food == "nut" :
+                return True
+            return False
+
+        def action(self) -> None:
+            print("The squirrel eats the nut")
+
+    from ..interfaces import ValidatorInterface
+
+    class BananaValidator(ValidatorInterface) :
+
+        def validate(self, food : str) -> bool :
+            if food == 'banana' :
+                return True
+            return False
+
+        def action(self) -> None:
+            print("The monkey eats the banana")
+
+Perceba que em ambos os validadores temos uma verificação que irá retornar um *bool*.
+
+### Chain of Responsibility
+
+    from source.validators import MeatValidator, BananaValidator, NutValidator
+
+    class Validate :
+        def __init__(self) -> None :
+
+Adicionaremos as classes de validadores a uma lista, como elas seguem a implementação da interface, todas elas tem os métodos *validate* e *action*.
+
+    self.__validators = [
+        BananaValidator(),
+        NutValidator(),
+        MeatValidator()
+    ]
+
+Agora iremos verificar se o valor passado corresponde a alguma das classes, por meio de um *for*, caso o *validate* dela retorne verdadeiro então poderemos chamar o método *action* dela.
+
+    def process(self, food : str) -> None :
+        for validator in self.__validators :
+            if validator.validate(food) :
+                return validator.action()
+        print("Indefinite food")
+
+O *print* final serve caso não corresponda há nenhuma, se o *for* não for quebrado ele irá ser executado.
