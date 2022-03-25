@@ -43,6 +43,13 @@
     - [Validators](#validators)
     - [Chain of Responsibility](#chain-of-responsibility-1)
   - [Observações](#observações)
+- [Command](#command)
+  - [Como implementar](#como-implementar-8)
+    - [Interfaces](#interfaces-2)
+    - [ButtonCommand](#buttoncommand)
+    - [Receptor](#receptor)
+    - [Button](#button)
+    - [Command](#command-1)
 
 # Inicio
 
@@ -596,3 +603,97 @@ Caso prefira adicionar ele diretamente em *self.__validators* você pode utiliza
             NutValidator(), 
             MeatValidator()
         ]
+
+# Command
+
+Command é um Design pattern extremamente útil quando se tem um contexto de mensagens.
+
+## Como implementar
+
+A implementação dele depende primeiramente de um elemento que irá enviar a mensagem para outro elemento que irá formatar a mensagem e enviar, para um receptor.
+
+### Interfaces
+
+Interface do Command :
+
+    from abc import ABC, abstractmethod
+
+    class CommandInterface(ABC) :
+        
+        @abstractmethod
+        def execute(self) -> None :
+            raise NotImplementedError
+
+    from abc import ABC, abstractmethod
+
+Interface do receptor :
+
+    class ReceptorInterface(ABC) :
+
+        @abstractmethod
+        def process_information(self, information : any) -> None :
+            raise NotImplementedError
+
+### ButtonCommand 
+
+    from typing import Type
+    from .interfaces import CommandInterface, ReceptorInterface
+
+    class ButtonCommand(CommandInterface) :
+        def __init__(self, receptor : Type[ReceptorInterface], information : any) -> None:
+            self.__receptor = receptor
+            self.__information = self.__format_information(information)
+
+Perceba que ele formata a mensagem, para que ela seja enviada para o receptor.
+
+        def __format_information(self, information : any) -> any :
+            return information
+
+        def execute(self) -> None:
+            self.__receptor.process_information(self.__information)
+
+### Receptor
+
+    from .commands.interfaces import ReceptorInterface
+
+    class Receptor(ReceptorInterface) :
+        def process_information(self, information : any) -> None :
+            print('Receptor : send information to back-end!')
+            print(information)
+
+### Button
+
+    from typing import Type
+    from .commands.interfaces import CommandInterface
+
+    class Button :
+        def __init__(self) -> None:
+            self.__command = None
+
+        def set_command(self, command : Type[CommandInterface]) -> None:
+            self.__command = command
+
+        def action(self) -> None :
+            if self.__command :
+                self.__command.execute()
+
+Caso exista um *command* execute ele.
+
+
+### Command
+
+    from source import Button, Receptor
+    from source.commands import ButtonCommand
+
+    receptor = Receptor()
+    button = Button()
+
+Iremos setar o *command* no *button*, para isso iremos passar o receptor e um dicionario com uma mensagem.
+
+    button.set_command(ButtonCommand(receptor, {
+        'Hello' : 'World'
+    }))
+
+Após isso iremos chamar o método *action* que irá executar toda a ação necessária para que a mensagem seja enviada ao back-end.
+
+    button.action()
