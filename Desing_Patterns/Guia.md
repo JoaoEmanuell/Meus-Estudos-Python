@@ -50,6 +50,11 @@
     - [Receptor](#receptor)
     - [Button](#button)
     - [Command](#command-1)
+- [Template Method](#template-method)
+  - [Como implementar](#como-implementar-9)
+    - [Classe principal](#classe-principal)
+    - [Classe filha](#classe-filha)
+    - [Template Method](#template-method-1)
 
 # Inicio
 
@@ -697,3 +702,65 @@ Iremos setar o *command* no *button*, para isso iremos passar o receptor e um di
 Após isso iremos chamar o método *action* que irá executar toda a ação necessária para que a mensagem seja enviada ao back-end.
 
     button.action()
+
+# Template Method
+
+Template method é um design pattern que permite que um objeto seja construído a partir de um conjunto de métodos que podem ser sobrescritos.
+
+## Como implementar
+
+Para implementar esse padrão teremos uma classe que irá ser a principal e outras classes que irão herdar dela, a classe principal terá métodos concretos e abstratos, e as classes que herdarão terão métodos concretos.
+
+### Classe principal
+
+    from typing import Dict, List
+    from random import randint
+    from abc import ABC, abstractmethod
+
+    class AlgorithmTemplate(ABC) :
+
+        def insert_data(self, data : List[str]) -> None :
+            formatted_data = self.__format_data(data)
+            formatted_data_with_id = self.__insert_id(formatted_data)
+            self.insert_value_in_doc(formatted_data_with_id)
+
+Nota que em insert_data estamos chamando um método abstrato *insert_value_in_doc*.
+
+    def __format_data(self, data : List[str]) -> Dict[str, str] :
+        formatted_data = {
+            "name" : data[0],
+            "last name" : data[1],
+            "city" : data[2]
+        }
+        return formatted_data
+
+    def __insert_id(self, formatted_data : Dict[str, str]) :
+        formatted_data["id"] = randint(1, 1000)
+        return formatted_data
+
+    @abstractmethod
+    def insert_value_in_doc(self, formatted_data_with_id : Dict[str, str]) -> None :
+        raise NotImplementedError
+
+### Classe filha
+
+    from typing import Dict
+
+    from .algorithm_template import AlgorithmTemplate
+
+    class CSVProcessor(AlgorithmTemplate) :
+
+        def insert_value_in_doc(self, formatted_data_with_id : Dict[str, str]) -> None :
+            print("CSV Processor")
+            print(formatted_data_with_id)
+
+Observe que a classe filha herda da classe principal e implementa o método *insert_value_in_doc*, como ela herda da principal ela possui o método *insert_data*, sendo assim no nosso código principal devemos chamar a classe filha e chamar o *insert_data*.
+
+### Template Method
+
+    from source import CSVProcessor
+
+    data_1 = [ "John", "Doe", "New York" ]
+
+    csv_processor = CSVProcessor()
+    csv_processor.insert_data(data_1)
