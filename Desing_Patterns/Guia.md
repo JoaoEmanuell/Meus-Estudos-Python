@@ -42,6 +42,7 @@
     - [Interfaces](#interfaces-1)
     - [Validators](#validators)
     - [Chain of Responsibility](#chain-of-responsibility-1)
+  - [Observações](#observações)
 
 # Inicio
 
@@ -553,3 +554,45 @@ Agora iremos verificar se o valor passado corresponde a alguma das classes, por 
         print("Indefinite food")
 
 O *print* final serve caso não corresponda há nenhuma, se o *for* não for quebrado ele irá ser executado.
+
+## Observações
+
+Ao invés de criar a lista com todos as instancias já feitas, podemos criar uma função que irá adicionar os *validators* a lista.
+
+    from typing import List 
+
+A importação acima irá servir para indicar o tipo da lista (int, float, interface, etc).
+
+    from source.validators import MeatValidator, BananaValidator, NutValidator
+    from source.interfaces import ValidatorInterface
+
+    class Validate :
+        def __init__(self) -> None :
+
+Especificaremos que o tipo da lista vai ser de ValidatorInterface.
+
+    self.__validators : List[ValidatorInterface] = []
+
+Especificamos o tipo da lista do parâmetro.
+
+    def add_validators(self, validators : List[ValidatorInterface]) -> None :
+
+Faremos um for e verificaremos se é uma instancia da interface, caso não seja iremos exibir um *TypeErro*, caso esse erro não ocorra iremos adicionar ele a lista.
+
+        for validator in validators :
+            if not isinstance(validator(), ValidatorInterface) :
+                raise TypeError(f"Invalid validator type {validator}")
+            self.__validators.append(validator())
+
+    if __name__ == '__main__' :
+        validate = Validate()
+        validate.add_validators([BananaValidator, NutValidator, MeatValidator])
+
+Caso prefira adicionar ele diretamente em *self.__validators* você pode utilizar o *List* :
+
+    def __init__(self) -> None :
+        self.__validators : List[ValidatorInterface] = [
+            BananaValidator(), 
+            NutValidator(), 
+            MeatValidator()
+        ]
