@@ -31,8 +31,8 @@ class Tela(Screen):
         self.ids.progressbar.value = 0
         try:
             url = str(self.ids.link.text)
-            Thread(target=download.DownloadVerfiy.main, args=(url, self.verify_mp3(), video.DownloadVideo, playlist.DownloadPlaylist)).start()
-            #download.DownloadVerfiy.main(url, self.verify_mp3())
+            Thread(target=download.DownloadVerify.main, args=(url, self.verify_mp3(), video.DownloadVideo, playlist.DownloadPlaylist)).start()
+            #download.DownloadVerify.main(url, self.verify_mp3())
         except Exception as erro:
             self.ids.output.text = f'Alguma coisa deu errado!\nPor favor insira uma nova url\nTente novamente!\n {erro}'
 
