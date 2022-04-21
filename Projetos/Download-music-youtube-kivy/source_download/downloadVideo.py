@@ -1,6 +1,5 @@
 # Global imports
 
-from moviepy.editor import AudioFileClip
 from os import remove
 
 from pytube import YouTube
@@ -57,13 +56,11 @@ class DownloadVideo(DownloadInterface):
 
             self.__stream.download(output_path=f'{self.__path}/Música/')
 
-            # DownloadEssential().ConvertToMp3(self.__stream, self.__video, self.__path)
+            DownloadEssential().ConvertToMp3(self.__stream, self.__video, self.__path)
 
             Message.set_progressbar(100, 100)
 
             Message.set_output('Convertendo para mp3')
-
-            AudioFileClip(f'{self.__path}/Música/{self.__video.title}.mp4').write_audiofile(f'{self.__path}/Música/{self.__video.title}.mp3')
 
             Message.set_output(self.__templates_strings['convert'] % (self.__video.title))
 

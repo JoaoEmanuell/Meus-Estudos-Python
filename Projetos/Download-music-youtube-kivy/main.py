@@ -23,7 +23,7 @@ class Tela(Screen):
         try :
             urlopen('https://www.youtube.com')
         except URLError:
-            self.ids.output.text = 'Sua conexão de internet está indiponivel, por favor tente novamente'
+            self.ids.output.text = 'Sua conexão de internet está indisponível, por favor tente novamente'
         else:
             self.startDownload()
     def startDownload(self):
