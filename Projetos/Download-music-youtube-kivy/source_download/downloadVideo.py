@@ -13,6 +13,7 @@ from .downloadEssential import DownloadEssential
 from .interfaces import DownloadInterface
 from .message import Message
 
+
 class DownloadVideo(DownloadInterface):
     def __init__(self, link : str, mp3 : bool) -> None:
         self.__video = YouTube(link, on_progress_callback=on_progress)
@@ -56,11 +57,13 @@ class DownloadVideo(DownloadInterface):
 
             self.__stream.download(output_path=f'{self.__path}/Música/')
 
-            DownloadEssential().ConvertToMp3(self.__stream, self.__video, self.__path)
+            Message.set_output('Iniciando conversão para mp3, aguarde um pouco!')
+
+            filename = str(self.__stream.default_filename).replace('.mp4', '')
+
+            DownloadEssential().ConvertToMp3(f'{self.__path}Música/{filename}.mp3')
 
             Message.set_progressbar(100, 100)
-
-            Message.set_output('Convertendo para mp3')
 
             Message.set_output(self.__templates_strings['convert'] % (self.__video.title))
 

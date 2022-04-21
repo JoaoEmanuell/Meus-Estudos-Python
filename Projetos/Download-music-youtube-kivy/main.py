@@ -11,6 +11,7 @@ from urllib.request import urlopen
 import download
 from intent import Intent
 from source_android import Android
+from source_api import ApiControll
 import source_download.downloadPlaylist as playlist
 import source_download.downloadVideo as video
 
@@ -19,6 +20,8 @@ class Tela(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.ids.link.text = Intent(platform).get_intent_text()
+        ApiControll()
+
     def main(self):
         try :
             urlopen('https://www.youtube.com')
@@ -32,7 +35,6 @@ class Tela(Screen):
         try:
             url = str(self.ids.link.text)
             Thread(target=download.DownloadVerify.main, args=(url, self.verify_mp3(), video.DownloadVideo, playlist.DownloadPlaylist)).start()
-            #download.DownloadVerify.main(url, self.verify_mp3())
         except Exception as erro:
             self.ids.output.text = f'Alguma coisa deu errado!\nPor favor insira uma nova url\nTente novamente!\n {erro}'
 
