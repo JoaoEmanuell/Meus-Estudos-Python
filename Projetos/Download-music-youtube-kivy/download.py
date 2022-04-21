@@ -34,17 +34,20 @@ class DownloadVerify():
     def main(link : str, mp3 : bool, video : Type[DownloadEssentialInterface], playlist : Type[DownloadPlaylistInterface]) -> None:
         link = str(link)
         print("Iniciando o download")
-        if DownloadVerify.VerifyUrl(link):
-            DownloadEssential().createDirectory('Música')
-            if DownloadVerify.VerifyPlaylist(link):
-                print("Verificado playlist, iniciando o download da playlist")
-                playlist(link, mp3).download_playlist(video)
-            else :
-                print("Verificado vídeo, iniciando o download do vídeo")
-                if mp3:
-                    video(link, mp3).downloadAudio()
+        try :
+            if DownloadVerify.VerifyUrl(link):
+                DownloadEssential().createDirectory('Música')
+                if DownloadVerify.VerifyPlaylist(link):
+                    print("Verificado playlist, iniciando o download da playlist")
+                    playlist(link, mp3).download_playlist(video)
                 else :
-                    video(link, mp3).downloadVideo()
-        else:
-            Message.set_output("Erro, url invalida!")
+                    print("Verificado vídeo, iniciando o download do vídeo")
+                    if mp3:
+                        video(link, mp3).downloadAudio()
+                    else :
+                        video(link, mp3).downloadVideo()
+            else:
+                Message.set_output("Erro, url invalida!")
 
+        except :
+            Message.set_output("Youtube quebrou o app :/")
