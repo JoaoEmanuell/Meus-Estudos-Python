@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class DownloadInterface(ABC):
+class DownloadEssentialInterface(ABC):
     @abstractmethod
     def __init__(self, link : str, mp3 : bool) -> None:
         raise NotImplementedError
