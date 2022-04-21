@@ -10,7 +10,6 @@ from time import sleep
 # Local imports
 
 from pytube.streams import Stream
-from pytube import YouTube
 from source_api import ApiControll
 from .message import Message
 from .download import Download
@@ -36,35 +35,46 @@ class DownloadEssential():
 
         print("Upload file")
 
-        response = api_controll.upload(file_path)
+        try :
 
-        hash = response['hash']
+            Message.set_output('Enviando a música para a api...')
 
-        Message.set_output('Conversão iniciada!')
+            response = api_controll.upload(file_path)
 
-        print(f'Hash : {hash}')
+            hash = response['hash']
 
-        while True :
+            Message.set_output('Conversão iniciada!')
+
+            Message.set_progressbar(0, 100)
+
+            print(f'Hash : {hash}')
 
             sleep(2)
 
-            response = api_controll.get_status(hash)
+            while True :
 
-            print(f"Status : {response}")
+                sleep(2)
 
-            if response['status'] :
-                break
-            
-            try :
+                response = api_controll.get_status(hash)
 
-                Message.set_progressbar(response['total'], response['current'])
+                print(f"Status : {response}")
 
-            except KeyError :
-                pass
+                if response['status'] :
+                    break
+                
+                try :
 
-        # Download File
+                    Message.set_progressbar(response['total'], response['current'])
 
-        converted = api_controll.get_file(hash)
+                except KeyError :
+                    pass
+
+            # Download File
+
+            converted = api_controll.get_file(hash)
+
+        except Exception :
+            Message.set_output('Erro na api')
 
         print(f'Converted : {converted}')
 
