@@ -26,7 +26,7 @@ class ApiControll(ApiControllInterface) :
         else :
             raise Exception(f'Error : {response.status_code}')
 
-    def get_file(self, hash : str) -> None :
+    def get_file(self, hash : str) -> Dict[str, str] :
         response = get(f'{self.__endpoint}converteds/{hash}')
         if response.status_code == 200 :
             return response.json()

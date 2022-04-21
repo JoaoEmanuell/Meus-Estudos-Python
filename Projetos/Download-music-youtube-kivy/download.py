@@ -6,7 +6,7 @@ from typing import Type
 # Local imports
 
 from source_download.downloadEssential import DownloadEssential
-from source_download.interfaces import DownloadInterface, DownloadPlaylistInterface
+from source_download.interfaces import DownloadEssentialInterface, DownloadPlaylistInterface
 from source_download.message import Message
 
 class DownloadVerify():
@@ -31,7 +31,7 @@ class DownloadVerify():
             return False
     
     # @staticmethod
-    def main(link : str, mp3 : bool, video : Type[DownloadInterface], playlist : Type[DownloadPlaylistInterface]) -> None:
+    def main(link : str, mp3 : bool, video : Type[DownloadEssentialInterface], playlist : Type[DownloadPlaylistInterface]) -> None:
         link = str(link)
         print("Iniciando o download")
         if DownloadVerify.VerifyUrl(link):

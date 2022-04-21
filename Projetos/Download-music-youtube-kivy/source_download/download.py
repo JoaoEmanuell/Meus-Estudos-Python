@@ -42,6 +42,6 @@ class Download(DownloadInterface) :
 
             return file
 
-    def save_file(name : str = '', dir : str = '.', content : bytes = b'') -> None :
+    def save_file(self, name : str = '', dir : str = '.', content : bytes = b'') -> None :
         with open(f'{dir}/{name}', 'wb') as f :
             f.write(content)

@@ -10,11 +10,11 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # Local imports
 
 from .downloadEssential import DownloadEssential
-from .interfaces import DownloadInterface
+from .interfaces import DownloadEssentialInterface
 from .message import Message
 
 
-class DownloadVideo(DownloadInterface):
+class DownloadVideo(DownloadEssentialInterface):
     def __init__(self, link : str, mp3 : bool) -> None:
         self.__video = YouTube(link, on_progress_callback=on_progress)
         self.__convert = mp3
@@ -57,17 +57,17 @@ class DownloadVideo(DownloadInterface):
 
             self.__stream.download(output_path=f'{self.__path}/Música/')
 
+            Message.set_progressbar(100, 100)
+
             Message.set_output('Iniciando conversão para mp3, aguarde um pouco!')
 
-            filename = str(self.__stream.default_filename).replace('.mp4', '')
+            filename = str(self.__stream.default_filename)
 
-            DownloadEssential().ConvertToMp3(f'{self.__path}Música/{filename}.mp3')
+            DownloadEssential().ConvertToMp3(f'{self.__path}Música/{filename}')
 
             Message.set_progressbar(100, 100)
 
             Message.set_output(self.__templates_strings['convert'] % (self.__video.title))
-
-            remove(f'{self.__path}/Música/{self.__video.title}.mp4')
 
         else :
 
