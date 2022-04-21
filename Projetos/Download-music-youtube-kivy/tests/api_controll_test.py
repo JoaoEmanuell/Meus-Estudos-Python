@@ -1,4 +1,4 @@
-from requests import post
+from time import sleep
 from sys import path
 path.append('../')
 
@@ -19,3 +19,13 @@ def test_answer() :
 
     assert type(response) == dict
     assert response['message'] == 'Audio uploaded successfully'
+
+    # Status
+
+    sleep(3)
+
+    response = api_controll.get_status(response['hash'])
+
+    assert type(response) == dict
+    assert type(response['status']) == bool
+    assert response['status'] == False
