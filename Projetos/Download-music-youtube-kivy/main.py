@@ -11,6 +11,7 @@ from urllib.request import urlopen
 import download
 from intent import Intent
 from source_android import Android
+from source_api import ApiControll
 import source_download.downloadPlaylist as playlist
 import source_download.downloadVideo as video
 
@@ -19,11 +20,13 @@ class Tela(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.ids.link.text = Intent(platform).get_intent_text()
+        ApiControll()
+
     def main(self):
         try :
             urlopen('https://www.youtube.com')
         except URLError:
-            self.ids.output.text = 'Sua conexão de internet está indiponivel, por favor tente novamente'
+            self.ids.output.text = 'Sua conexão de internet está indisponível, por favor tente novamente'
         else:
             self.startDownload()
     def startDownload(self):
@@ -31,8 +34,7 @@ class Tela(Screen):
         self.ids.progressbar.value = 0
         try:
             url = str(self.ids.link.text)
-            Thread(target=download.DownloadVerfiy.main, args=(url, self.verify_mp3(), video.DownloadVideo, playlist.DownloadPlaylist)).start()
-            #download.DownloadVerfiy.main(url, self.verify_mp3())
+            Thread(target=download.DownloadVerify.main, args=(url, self.verify_mp3(), video.DownloadVideo, playlist.DownloadPlaylist)).start()
         except Exception as erro:
             self.ids.output.text = f'Alguma coisa deu errado!\nPor favor insira uma nova url\nTente novamente!\n {erro}'
 

@@ -1,5 +1,7 @@
 # Global imports
 
+from os import remove
+
 from pytube import YouTube
 from pytube.cli import on_progress
 import ssl
@@ -8,10 +10,11 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # Local imports
 
 from .downloadEssential import DownloadEssential
-from .interfaces import DownloadInterface
+from .interfaces import DownloadEssentialInterface
 from .message import Message
 
-class DownloadVideo(DownloadInterface):
+
+class DownloadVideo(DownloadEssentialInterface):
     def __init__(self, link : str, mp3 : bool) -> None:
         self.__video = YouTube(link, on_progress_callback=on_progress)
         self.__convert = mp3
@@ -54,10 +57,17 @@ class DownloadVideo(DownloadInterface):
 
             self.__stream.download(output_path=f'{self.__path}/Música/')
 
-            DownloadEssential().ConvertToMp3(self.__stream, self.__video, self.__path)
+            Message.set_progressbar(100, 100)
+
+            Message.set_output('Iniciando conversão para mp3, aguarde um pouco!')
+
+            filename = str(self.__stream.default_filename)
+
+            DownloadEssential().ConvertToMp3(f'{self.__path}Música/{filename}')
+
+            Message.set_progressbar(100, 100)
 
             Message.set_output(self.__templates_strings['convert'] % (self.__video.title))
-            Message.set_progressbar(100, 100)
 
         else :
 

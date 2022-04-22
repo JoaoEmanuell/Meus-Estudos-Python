@@ -10,6 +10,7 @@ filelock==3.4.2
 idna==3.3
 importlib-metadata==4.11.0
 Jinja2==3.0.3
+jnius==1.1.0
 Kivy==2.0.0
 Kivy-Garden==0.1.4
 MarkupSafe==2.0.1
