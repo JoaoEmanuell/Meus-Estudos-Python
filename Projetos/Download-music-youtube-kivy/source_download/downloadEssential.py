@@ -103,7 +103,9 @@ class DownloadEssential():
                     "android" : "/storage/emulated/0/"
                 }
         try :
-            return paths[platform] % getuser()
+            if platform != 'android' :
+                return paths[platform] % getuser()
+            return paths[platform]
         except KeyError:
             raise "Plataforma invalida"
 
