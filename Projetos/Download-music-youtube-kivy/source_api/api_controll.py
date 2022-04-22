@@ -1,6 +1,6 @@
 from .interfaces import ApiControllInterface
 from threading import Thread
-from requests import get, post
+from .external_modules.requests import get, post
 from typing import Dict
 
 class ApiControll(ApiControllInterface) :
@@ -9,11 +9,11 @@ class ApiControll(ApiControllInterface) :
         self.private__start_api()
 
     def private__start_api(self) -> None :
-        Thread(target= get, args=(self.__endpoint, )).start()
+        Thread(target = get, args = (self.__endpoint, )).start()
 
     def upload(self, file_path : str) -> Dict[str, str] :
         with open(file_path, 'rb') as file :
-            response = post(f'{self.__endpoint}upload/', files={'file': file})
+            response = post(f'{self.__endpoint}upload/', files = {'file': file})
             if response.status_code == 200 :
                 return response.json()
             else :
