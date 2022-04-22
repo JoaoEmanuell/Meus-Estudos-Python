@@ -49,5 +49,6 @@ class DownloadVerify():
             else:
                 Message.set_output("Erro, url invalida!")
 
-        except :
+        except Exception as Ex :
             Message.set_output("Youtube quebrou o app :/")
+            print(Ex.with_traceback())
