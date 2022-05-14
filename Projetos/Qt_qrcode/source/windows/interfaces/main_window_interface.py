@@ -7,7 +7,8 @@ class MainWindowInterface(ABC) :
     def __init__(self) -> None :
         """Init
         Create a new instance of the main window.
-        Create a form.
+        Create all forms.
+        Set all button events.
         Create a app and exec_().
         Create a buttons events.
 
