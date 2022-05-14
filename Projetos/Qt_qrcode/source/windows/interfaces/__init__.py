@@ -1,1 +1,2 @@
 from .main_window_interface import MainWindowInterface
+from .window_interface import WindowInterface

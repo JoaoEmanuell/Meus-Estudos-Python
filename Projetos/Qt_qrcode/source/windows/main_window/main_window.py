@@ -15,13 +15,13 @@ from ..interfaces import MainWindowInterface
 
 class MainWindow(MainWindowInterface):
     def __init__(self) -> None :
-        self.app = QApplication([])
+        self.__app = QApplication([])
 
-        self.main_form = self.load_ui("main.ui")
+        self.__main_form = self.load_ui("main.ui")
 
-        self.main_form.show()
+        self.__main_form.show()
 
-        self.app.exec_()
+        self.__app.exec_()
 
     def load_ui(self, ui_file : str) -> Type[QWidget] :
         path = Path().absolute()
