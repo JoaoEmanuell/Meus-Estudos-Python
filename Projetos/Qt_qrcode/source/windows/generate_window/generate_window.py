@@ -14,4 +14,7 @@ class GenerateWindow(GenerateWindowInterface) :
         return make(self.__url)
 
     def save_image(self, image: Union[PilImage, BaseImage], path: str) -> None:
-        image.save(path)
+        if path.endswith('.png'):
+            image.save(path)
+        else :
+            raise ValueError('Invalid file extension')

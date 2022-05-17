@@ -3,7 +3,7 @@
 # Global imports
 
 from PySide2.QtUiTools import QUiLoader
-from PySide2.QtWidgets import QApplication, QWidget
+from PySide2.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
 from PySide2.QtCore import QFile
 from pathlib import Path
 from os.path import join
@@ -48,9 +48,31 @@ class MainWindow(MainWindowInterface):
         self.__main_form.close()
 
     def __generate_form_generate_button_clicked(self) -> None :
-        win = GenerateWindow()
+        url = str(self.__generate_form.lineEdit.text()).strip()
 
-        win.generate_button_clicked()
+        path = str(QFileDialog.getSaveFileName(
+            filter='Images (*.png)', # Filter for file types
+        )[0])
+
+        generate_window = GenerateWindow(url)
+
+        del url # Delete variable to free memory
+
+        image = generate_window.generate_qrcode()
+
+        try : 
+
+            generate_window.save_image(image, path)
+
+            del path, image, generate_window
+
+        except ValueError :
+            
+            QMessageBox.warning(self.__generate_form, "Error", "Invalid file extension")
+
+        else :
+
+            QMessageBox.information(self.__generate_form, "Success", "QR code generated")
 
     def __scan_button_clicked(self) -> None :
         pass
