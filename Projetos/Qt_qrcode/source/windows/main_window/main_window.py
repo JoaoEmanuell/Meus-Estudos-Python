@@ -2,9 +2,9 @@
 
 # Global imports
 
-from PySide2.QtUiTools import QUiLoader
-from PySide2.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
-from PySide2.QtCore import QFile
+from PySide6.QtUiTools import QUiLoader
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
+from PySide6.QtCore import QFile
 from pathlib import Path
 from os.path import join
 from typing import Type
@@ -31,7 +31,7 @@ class MainWindow(MainWindowInterface):
 
         self.__main_form.show()
 
-        self.__app.exec_()
+        self.__app.exec()
 
     def load_ui(self, ui_file : str) -> Type[QWidget] :
         path = Path().absolute()

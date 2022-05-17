@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Type
-from PySide2.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget
 
 class MainWindowInterface(ABC) :
     @abstractmethod
