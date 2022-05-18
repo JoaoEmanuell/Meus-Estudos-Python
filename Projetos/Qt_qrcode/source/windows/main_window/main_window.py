@@ -13,6 +13,7 @@ from typing import Type
 
 from ..interfaces import MainWindowInterface
 from ..generate_window import GenerateWindow
+from ..scan_window import ScanWindow
 
 class MainWindow(MainWindowInterface):
     def __init__(self) -> None :
@@ -22,12 +23,17 @@ class MainWindow(MainWindowInterface):
 
         self.__main_form = self.load_ui("main.ui")
         self.__main_form.generate_button.clicked.connect(self.__main_generate_button_clicked)
-        self.__main_form.scan_button.clicked.connect(self.__scan_button_clicked)
+        self.__main_form.scan_button.clicked.connect(self.__main_scan_button_clicked)
 
         # Generate form
 
         self.__generate_form = self.load_ui("generate_qr_code.ui")
         self.__generate_form.pushButton.clicked.connect(self.__generate_form_generate_button_clicked)
+
+        # Scan form
+
+        self.__scan_form = self.load_ui("scan_qr_code.ui")
+        self.__scan_form.select_button.clicked.connect(self.__scan_form_scan_button_clicked)
 
         self.__main_form.show()
 
@@ -74,5 +80,27 @@ class MainWindow(MainWindowInterface):
 
             QMessageBox.information(self.__generate_form, "Success", "QR code generated")
 
-    def __scan_button_clicked(self) -> None :
-        pass
+    def __main_scan_button_clicked(self) -> None :
+        self.__main_form.close()
+
+        self.__scan_form.show()
+
+    def __scan_form_scan_button_clicked(self) -> None :
+        path = str(QFileDialog.getOpenFileName(
+            filter='Images (*.png)', # Filter for file types
+        )[0])
+
+        qr_codes = ScanWindow.extract_qr(path)
+
+        del path
+
+        qr_text = ''
+
+        for qr in qr_codes :
+            qr_text += f'{str(qr)}\n'
+
+        del qr_codes
+
+        self.__scan_form.result_label.setText(qr_text)
+
+        del qr_text
