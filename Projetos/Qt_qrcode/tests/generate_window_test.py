@@ -1,4 +1,3 @@
-from re import A
 from sys import path
 path.append('../')
 

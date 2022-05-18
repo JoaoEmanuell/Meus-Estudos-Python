@@ -15,7 +15,8 @@ class ScanWindow(ScanWindowInterface) :
             raise Exception("No QR code found")
 
         images = (
-            * [image for image.data in images_decode], 
+            * [image.data.decode("utf-8") for image in images_decode], # Image is a PIL.PngImagePlugin.PngImageFile
+            # Decode a byte string to string
         )
 
         return images
