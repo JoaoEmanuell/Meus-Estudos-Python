@@ -2,12 +2,17 @@
 
 # Global imports
 
+## Qt imports
+
 from PySide6.QtUiTools import QUiLoader
-from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox, QLabel
 from PySide6.QtCore import QFile
+from PySide6.QtGui import QPixmap
+
 from pathlib import Path
 from os.path import join
 from typing import Type
+from PIL import Image
 
 # Local imports
 
@@ -28,7 +33,8 @@ class MainWindow(MainWindowInterface):
         # Generate form
 
         self.__generate_form = self.load_ui("generate_qr_code.ui")
-        self.__generate_form.pushButton.clicked.connect(self.__generate_form_generate_button_clicked)
+        self.__generate_form.generate_qr_code.clicked.connect(self.__generate_form_generate_button_clicked)
+        self.__generate_form.pushButton.clicked.connect(self.__generate_form_save_button_clicked)
 
         # Scan form
 
@@ -56,29 +62,53 @@ class MainWindow(MainWindowInterface):
     def __generate_form_generate_button_clicked(self) -> None :
         url = str(self.__generate_form.lineEdit.text()).strip()
 
-        path = str(QFileDialog.getSaveFileName(
-            filter='Images (*.png)', # Filter for file types
-        )[0])
-
         generate_window = GenerateWindow(url)
 
         del url # Delete variable to free memory
 
         image = generate_window.generate_qrcode()
 
-        try : 
+        tmp_path = join(Path().absolute(), '.tmp', 'tmp.png')
 
-            generate_window.save_image(image, path)
+        generate_window.save_image(image, tmp_path)
 
-            del path, image, generate_window
+        image_label : QLabel = self.__generate_form.image_label
+        image_label.setPixmap(QPixmap(tmp_path))
 
-        except ValueError :
+        del image, generate_window, tmp_path # Delete variable to free memory
+
+        image_label.adjustSize()
+
+        del image_label
+
+        QMessageBox.information(self.__generate_form, "Success", "QR code generated")
+
+    def __generate_form_save_button_clicked(self) -> None :
+        path = str(QFileDialog.getSaveFileName(
+            filter='Images (*.png)', # Filter for file types
+        )[0])
+
+        generate_window = GenerateWindow('')
+
+        tmp_path = join(Path().absolute(), '.tmp', 'tmp.png')
+
+        with Image.open(tmp_path) as image :
+
+            try : 
+
+                generate_window.save_image(image, path)
+
+            except ValueError :
             
-            QMessageBox.warning(self.__generate_form, "Error", "Invalid file extension")
+                QMessageBox.warning(self.__generate_form, "Error", "Invalid file extension")
 
-        else :
+            except FileNotFoundError :
 
-            QMessageBox.information(self.__generate_form, "Success", "QR code generated")
+                QMessageBox.warning(self.__generate_form, "Error", "File not found")
+
+            else :
+
+                QMessageBox.information(self.__generate_form, "Success", "QR code saved")
 
     def __main_scan_button_clicked(self) -> None :
         self.__main_form.close()
