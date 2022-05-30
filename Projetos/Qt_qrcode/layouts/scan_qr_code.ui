@@ -39,6 +39,9 @@
           <property name="text">
            <string>Selecionar imagem</string>
           </property>
+          <property name="shortcut">
+           <string>Return</string>
+          </property>
          </widget>
         </item>
        </layout>

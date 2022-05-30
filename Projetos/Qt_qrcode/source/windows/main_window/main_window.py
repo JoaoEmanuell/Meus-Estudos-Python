@@ -41,6 +41,16 @@ class MainWindow(MainWindowInterface):
         self.__scan_form = self.load_ui("scan_qr_code.ui")
         self.__scan_form.select_button.clicked.connect(self.__scan_form_scan_button_clicked)
 
+        # Menus
+
+        # Generate form
+
+        self.__generate_form.action_return.triggered.connect(self.__menu_generate_form_return_clicked)
+
+        # Scan form
+
+        self.__scan_form.action_return.triggered.connect(self.__menu_scan_form_return_clicked)
+
         self.__main_form.show()
 
         self.__app.exec()
@@ -136,3 +146,13 @@ class MainWindow(MainWindowInterface):
         self.__scan_form.result_label.setText(qr_text)
 
         del qr_text
+
+    def __menu_generate_form_return_clicked(self) -> None :
+        self.__generate_form.close()
+
+        self.__main_form.show()
+
+    def __menu_scan_form_return_clicked(self) -> None :
+        self.__scan_form.close()
+
+        self.__main_form.show()
