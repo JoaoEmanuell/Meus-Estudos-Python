@@ -6,7 +6,7 @@
 
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QMessageBox, QLabel
-from PySide6.QtCore import QFile
+from PySide6.QtCore import QFile, Qt
 from PySide6.QtGui import QPixmap
 
 from pathlib import Path
@@ -76,6 +76,8 @@ class MainWindow(MainWindowInterface):
         image_label.setPixmap(QPixmap(tmp_path))
 
         del image, generate_window, tmp_path # Delete variable to free memory
+
+        self.__generate_form.image_layout.addWidget(image_label, alignment=Qt.AlignCenter) # Add image to layout and center it
 
         image_label.adjustSize()
 
