@@ -66,6 +66,28 @@
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>576</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_return">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="action_return"/>
+   </widget>
+   <addaction name="menu_return"/>
+  </widget>
+  <action name="action_return">
+   <property name="text">
+    <string>Voltar</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
