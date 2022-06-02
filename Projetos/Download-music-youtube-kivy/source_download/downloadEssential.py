@@ -23,7 +23,7 @@ class DownloadEssential():
             filename = file.default_filename
             return not(exists(f"{path}Música/{filename}"))
 
-    def ConvertToMp3(self, file_path : str) -> None :
+    def ConvertToMp3(self, file_path : str, file_name : str) -> None :
 
         rename(file_path, file_path.replace('.mp4', '.mp3'))
 
@@ -35,46 +35,41 @@ class DownloadEssential():
 
         print("Upload file")
 
-        try :
+        Message.set_output('Enviando a música para a api...')
 
-            Message.set_output('Enviando a música para a api...')
+        response = api_controll.upload(file_path)
 
-            response = api_controll.upload(file_path)
+        hash = response['hash']
 
-            hash = response['hash']
+        Message.set_output('Conversão iniciada!')
 
-            Message.set_output('Conversão iniciada!')
+        Message.set_progressbar(0, 100)
 
-            Message.set_progressbar(0, 100)
+        print(f'Hash : {hash}')
 
-            print(f'Hash : {hash}')
+        sleep(2)
+
+        while True :
 
             sleep(2)
 
-            while True :
+            response = api_controll.get_status(hash)
 
-                sleep(2)
+            print(f"Status : {response}")
 
-                response = api_controll.get_status(hash)
+            if response['status'] :
+                break
+            
+            try :
 
-                print(f"Status : {response}")
+                Message.set_progressbar(response['total'], response['current'])
 
-                if response['status'] :
-                    break
-                
-                try :
+            except KeyError :
+                pass
 
-                    Message.set_progressbar(response['total'], response['current'])
+        # Download File
 
-                except KeyError :
-                    pass
-
-            # Download File
-
-            converted = api_controll.get_file(hash)
-
-        except Exception :
-            Message.set_output('Erro na api')
+        converted = api_controll.get_file(hash)
 
         print(f'Converted : {converted}')
 
@@ -94,7 +89,7 @@ class DownloadEssential():
 
         path = f'{self._get_download_path()}Música/'
 
-        download.save_file(name=converted['filename'], dir=path, content=file)
+        download.save_file(name=file_name, dir=path, content=file)
 
     def _get_download_path(self) -> str:
         paths = {
