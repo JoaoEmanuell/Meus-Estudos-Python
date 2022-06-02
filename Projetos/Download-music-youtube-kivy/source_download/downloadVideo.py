@@ -1,7 +1,5 @@
 # Global imports
 
-from os import remove
-
 from pytube import YouTube
 from pytube.cli import on_progress
 import ssl
@@ -63,11 +61,18 @@ class DownloadVideo(DownloadEssentialInterface):
 
             filename = str(self.__stream.default_filename)
 
-            DownloadEssential().ConvertToMp3(f'{self.__path}Música/{filename}')
+            try : 
 
-            Message.set_progressbar(100, 100)
+                DownloadEssential().ConvertToMp3(f'{self.__path}Música/{filename}', self.__stream.default_filename)
 
-            Message.set_output(self.__templates_strings['convert'] % (self.__video.title))
+            except Exception :
+                Message.set_output(f'Ocorreu um erro durante a conversão\nO vídeo não pode ser convertido mas ele já está salvo em sua pasta de download!')
+            
+            else :
+
+                Message.set_progressbar(100, 100)
+
+                Message.set_output(self.__templates_strings['convert'] % (self.__video.title))
 
         else :
 
