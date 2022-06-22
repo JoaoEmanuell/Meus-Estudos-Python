@@ -9,8 +9,8 @@ def verify_virtual_env(path : str) -> bool:
         return True
     raise FileNotFoundError("VIRTUAL ENV NOT FOUND!")
 
-def move_external_modules(absolute_path : str, directories : Tuple[str]) -> bool:
-    external_modules_directory = join(absolute_path, 'source_api', 'external_modules')
+def move_external_modules(absolute_path : str, new_directory : str, directories : Tuple[str]) -> bool:
+    external_modules_directory = join(absolute_path, new_directory, 'external_modules')
 
     if not exists(external_modules_directory):
         print(f"Mkdir : {external_modules_directory}")
@@ -31,7 +31,7 @@ def move_external_modules(absolute_path : str, directories : Tuple[str]) -> bool
         path = join(path_to_directory_packages, directory, '')
 
         try :
-            move(path, join(absolute_path, 'source_api', 'external_modules'))
+            move(path, join(absolute_path, new_directory, 'external_modules'))
             print(f'Package {directory} moved with success')
         except FileNotFoundError:
             print(f'Package not found : {directory}')
@@ -43,6 +43,7 @@ if __name__ == '__main__':
     verify_virtual_env(join(absolute_path, 'bin', 'pip'))
     move_external_modules(
         absolute_path=absolute_path,
+        new_directory='source_api',
         directories=(
         'certifi', 'charset_normalizer', 'idna', 'requests', 'urllib3'
         )
