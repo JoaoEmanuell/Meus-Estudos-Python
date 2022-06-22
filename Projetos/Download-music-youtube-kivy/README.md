@@ -32,4 +32,4 @@ Specific directories need specific settings.
 
 Since kivy on android gives some [many] bugs related to the lack of modules, even though they are installed, it ends up being necessary to add them to the project manually, if they aren't, they can work on windows and linux, but on android are almost certain to fail.
 
-To do this, just run *setup.py* if it hasn't run before, it will move the directories, thus preventing bugs from occurring.
+To do this, just run *_setup_local.py* if it hasn't run before, it will move the directories, thus preventing bugs from occurring.
