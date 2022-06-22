@@ -11,7 +11,6 @@ from source_download.message import Message
 
 class DownloadVerify():
 
-    # @staticmethod
     def VerifyUrl(url : str) -> bool:
         verify_url = findall('^(https\:\/\/)', str(url))
         verify_domain_full = findall('^(https:\/\/www.youtube.com\/)', str(url))
@@ -22,7 +21,6 @@ class DownloadVerify():
         else:
             return False
 
-    # @staticmethod
     def VerifyPlaylist(url : str) -> bool:
         verify_url = findall('(playlist\?list=)', str(url))
         if len(verify_url) != 0 :
@@ -30,7 +28,6 @@ class DownloadVerify():
         else :
             return False
     
-    # @staticmethod
     def main(link : str, mp3 : bool, video : Type[DownloadEssentialInterface], playlist : Type[DownloadPlaylistInterface]) -> None:
         link = str(link)
         print("Iniciando o download")
@@ -50,5 +47,5 @@ class DownloadVerify():
                 Message.set_output("Erro, url invalida!")
 
         except Exception as Ex :
-            Message.set_output("Youtube quebrou o app :/")
-            print(Ex.with_traceback())
+            Message.set_output("YouTube quebrou o app :/")
+            print(f'ERROR : {Ex.with_traceback()}')
