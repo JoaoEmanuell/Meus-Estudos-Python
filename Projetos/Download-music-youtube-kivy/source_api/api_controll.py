@@ -34,4 +34,4 @@ class ApiControll(ApiControllInterface) :
             raise Exception(f'Error : {response.status_code}')
 
     def delete_file(self, hash: str) -> None:
-        pass
+        get(f'{self.__endpoint}delete/{hash}')
