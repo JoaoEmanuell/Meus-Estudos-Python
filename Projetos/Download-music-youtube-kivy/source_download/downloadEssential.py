@@ -35,7 +35,7 @@ class DownloadEssential():
 
         print("Upload file")
 
-        Message.set_output('Enviando a música para a api...')
+        Message.set_output('Iniciando conversão para mp3, aguarde um pouco!')
 
         response = api_controll.upload(file_path)
 
@@ -67,6 +67,10 @@ class DownloadEssential():
             except KeyError :
                 pass
 
+        # Set progress to max
+
+        Message.set_progressbar(1, 1)
+
         # Download File
 
         converted = api_controll.get_file(hash)
@@ -90,6 +94,10 @@ class DownloadEssential():
         path = f'{self._get_download_path()}Música/'
 
         download.save_file(name=file_name, dir=path, content=file)
+
+        # Delete file on server
+
+        api_controll.delete_file(hash)
 
     def _get_download_path(self) -> str:
         paths = {
