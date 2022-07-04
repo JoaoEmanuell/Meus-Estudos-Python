@@ -84,3 +84,15 @@ class ApiControllInterface(ABC) :
         """  
       
         raise NotImplementedError
+
+    @abstractmethod
+    def delete_file(self, hash : str) -> None:
+        """Delete file on server
+
+        Args:
+            hash (str): Hash provide by upload
+
+        Raises:
+            NotImplementedError: NotImplementedError
+        """        
+        raise NotImplementedError()
