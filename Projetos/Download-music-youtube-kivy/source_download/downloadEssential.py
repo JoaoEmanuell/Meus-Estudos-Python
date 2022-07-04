@@ -2,6 +2,7 @@
 
 from os.path import exists, isdir, join
 from os import mkdir, remove, rename
+from re import sub
 from kivy.utils import platform
 from getpass import getuser
 from typing import Type
@@ -17,8 +18,12 @@ from .download import Download
 class DownloadEssential():
     def VerifyIfFileNotExists(self, convert : bool, file : Type[Stream], path : str) -> bool:
         if convert:
-            filename = str(file.default_filename).replace('.mp4', '')
-            return not(exists(f"{path}Música/{filename}.mp3"))
+
+            filename = str(file.default_filename)
+            filename = filename.replace('.mp4', '.mp3') # Remove .mp4 extension
+            filename = sub(r'(\s\s)', ' ', filename) # Remove double spaces
+            
+            return not(exists(f"{path}Música/{filename}"))
         else:
             filename = file.default_filename
             return not(exists(f"{path}Música/{filename}"))
@@ -93,7 +98,14 @@ class DownloadEssential():
 
         path = f'{self._get_download_path()}Música/'
 
-        download.save_file(name=file_name, dir=path, content=file)
+        filename = file_name.replace('.mp4', '.mp3') # Remove .mp4 extension
+        filename = sub(r'(\s\s)', ' ', filename) # Remove double spaces
+
+        download.save_file(
+            name=filename,
+            dir=path, 
+            content=file
+            )
 
         # Delete file on server
 
