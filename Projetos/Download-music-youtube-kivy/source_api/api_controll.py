@@ -5,7 +5,7 @@ from typing import Dict
 
 class ApiControll(ApiControllInterface) :
     def __init__(self) -> None :
-        self.__endpoint = 'https://joaoemanuellmp3api.herokuapp.com/api/'
+        self.__endpoint = 'https://joaoemanuellmp3api2.herokuapp.com/api/'
         self.private__start_api()
 
     def private__start_api(self) -> None :
